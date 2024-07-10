@@ -12,8 +12,8 @@ function About() {
             </div>
             <div className="flex flex-col">
                 <p className="max-w-2xl">
-                    Based in Umuarama, Eduardo is a developer curious about user
-                    interface / experience and how a website is built /
+                    Resident of Umuarama, Eduardo is a developer curious about
+                    user interface / experience and how a website is built /
                     developed. He is currently working at Texsa do Brasil LTDA.
                     as a front-end developer and is always looking for new
                     challenges.

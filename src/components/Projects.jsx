@@ -18,7 +18,7 @@ function Project({ title, years, path, image1, image2, image3 }) {
                 <img
                     src={image1}
                     alt=""
-                    className="w-4/5 mx-auto h-full rounded-lg sm:h-[709px] sm:w-full"
+                    className=" mx-auto h-full rounded-lg sm:h-[709px] w-full"
                 />
                 <div className="flex-col hidden sm:flex gap-5 sm:h-[709px]">
                     <img

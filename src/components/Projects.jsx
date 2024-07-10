@@ -6,8 +6,16 @@ function Project({ title, years, path, image1, image2, image3 }) {
         <div className="flex flex-col gap-2 my-12 sm:w-4/5 sm:mx-auto">
             <div className="flex justify-between">
                 <span className="flex gap-2">
-                    <Link to={path}>{title}</Link>
-                    <img src="/images/Vector.svg" alt="" width={12} />
+                    <Link className="transition hover:text-gray-500" to={path}>
+                        {title}
+                    </Link>
+                    <svg
+                        className="w-3 h-3 my-auto transition fill-black hover:fill-yellow-500"
+                        viewBox="0 0 27 27"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path d="M3.06659 26.75L0.208252 23.8917L19.8083 4.29168H2.24992V0.208344H26.7499V24.7083H22.6666V7.15001L3.06659 26.75Z" />
+                    </svg>
                 </span>
                 <p>{years}</p>
             </div>

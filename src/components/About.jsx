@@ -1,6 +1,6 @@
 function About() {
     return (
-        <div className="flex flex-col my-12 sm:mx-auto sm:w-4/5">
+        <div className="flex flex-col mx-auto my-12 w-fit">
             <div className="flex flex-col">
                 <h1 className="text-4xl sm:text-6xl">eduardo fernandes</h1>
                 <h2 className="text-xl">
@@ -10,8 +10,8 @@ function About() {
                     currently working at Texsa do Brasil LTDA.
                 </h3>
             </div>
-            <div className="mt-5">
-                <p>
+            <div className="flex flex-col">
+                <p className="max-w-2xl">
                     Based in Umuarama, Eduardo is a developer curious about user
                     interface / experience and how a website is built /
                     developed. He is currently working at Texsa do Brasil LTDA.

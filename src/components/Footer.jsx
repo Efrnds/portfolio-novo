@@ -33,13 +33,22 @@ function Footer() {
         <footer className="flex flex-col gap-5 p-5 sm:p-10">
             <row className="flex justify-between text-xl">
                 <p className="text-lg sm:text-xl">©2024</p>
-                <p className="hidden sm:flex">contato.efrnds@outlook.com</p>
+                <a
+                    href="mailto:contato.efrnds@outlook.com"
+                    className="hidden transition hover:text-gray-500 sm:flex"
+                >
+                    contato.efrnds@outlook.com
+                </a>
                 <button onClick={ToTheTop}>
-                    <img
-                        className="w-[24px] sm:w-[32px]"
-                        src="/images/arrow_up.svg"
-                        alt=""
-                    />
+                    <svg
+                        className="w-[24px] sm:w-[32px] transition fill-black hover:fill-gray-500 sm:flex"
+                        viewBox="0 0 31 31"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M13.625 30.5V7.67188L3.125 18.1719L0.5 15.5L15.5 0.5L30.5 15.5L27.875 18.1719L17.375 7.67188V30.5H13.625Z"
+                        />
+                    </svg>
                 </button>
             </row>
             <row className="flex justify-between text-xl">

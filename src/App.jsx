@@ -8,12 +8,12 @@ function App() {
         <BrowserRouter>
             <div className="font-Urbanist" id="index">
                 <Header />
-                <hr className="mx-5 border-2 border-black sm:mx-10" />
+                <hr className="mx-5 border-2 border-black rounded-full sm:mx-10" />
                 <Routes>
                     <Route path="/" element={<Main />} />
                     <Route path="/SakuraVerse" element={<SakuraVerse />} />
                 </Routes>
-                <hr className="mx-5 border-2 border-black sm:mx-10" />
+                <hr className="mx-5 border-2 border-black rounded-full sm:mx-10" />
                 <Footer />
             </div>
         </BrowserRouter>

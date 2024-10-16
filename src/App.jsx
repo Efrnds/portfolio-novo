@@ -7,13 +7,15 @@ import Footer from "./components/Footer";
 function App() {
     return (
         <BrowserRouter>
-            <div className="font-Urbanist" id="index">
+            <div className="flex flex-col h-screen font-Urbanist" id="index">
                 <Header />
                 <hr className="mx-5 border-2 border-black rounded-full sm:mx-10" />
-                <Routes>
-                    <Route path="/" element={<Main />} />
-                    <Route path="/Y" element={<Y />} />
-                </Routes>
+                <div className="flex-1 ">
+                    <Routes>
+                        <Route path="/" element={<Main />} />
+                        <Route path="/Y" element={<Y />} />
+                    </Routes>
+                </div>
                 <hr className="mx-5 border-2 border-black rounded-full sm:mx-10" />
                 <Footer />
             </div>

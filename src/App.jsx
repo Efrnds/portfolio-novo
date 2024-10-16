@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Main from "./components/Main";
-import SakuraVerse from "./components/SakuraVerse";
-import Footer from "./components/Footer"
+import Y from "./components/Y";
+import Footer from "./components/Footer";
+
 function App() {
     return (
         <BrowserRouter>
@@ -11,7 +12,7 @@ function App() {
                 <hr className="mx-5 border-2 border-black rounded-full sm:mx-10" />
                 <Routes>
                     <Route path="/" element={<Main />} />
-                    <Route path="/SakuraVerse" element={<SakuraVerse />} />
+                    <Route path="/Y" element={<Y />} />
                 </Routes>
                 <hr className="mx-5 border-2 border-black rounded-full sm:mx-10" />
                 <Footer />

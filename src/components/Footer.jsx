@@ -10,6 +10,7 @@ function Footer() {
             hour: "2-digit",
             minute: "2-digit",
             second: "2-digit",
+            millisecond: "2-digit",
         })
     );
 
@@ -21,6 +22,7 @@ function Footer() {
                     hour: "2-digit",
                     minute: "2-digit",
                     second: "2-digit",
+                    millisecond: "2-digit",
                 })
             );
         }, 1000);

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Project({ title, years, path, image1, image2, image3 }) {
     return (
-        <div className="flex flex-col gap-2 my-12 sm:w-4/5 sm:mx-auto">
+        <div className="flex flex-col gap-2 my-12 sm:w-2/3 sm:mx-auto">
             <div className="flex justify-between">
                 <Link
                     className="flex gap-2 transition hover:text-gray-500"
@@ -22,23 +22,23 @@ function Project({ title, years, path, image1, image2, image3 }) {
             </div>
             <Link
                 to={path}
-                className="flex flex-col justify-center gap-5 sm:grid sm:grid-cols-2 h-[345px] overflow-hidden  sm:h-full"
+                className="flex flex-col justify-center gap-5 overflow-hidden sm:grid sm:grid-cols-2"
             >
                 <img
                     src={image1}
                     alt=""
-                    className=" mx-auto h-full rounded-lg sm:h-[709px] w-full aspect-[9/16]"
+                    className="flex-1 object-cover h-full mx-auto rounded-lg w-fit"
                 />
-                <div className="flex-col hidden sm:flex gap-5 sm:h-[709px]">
+                <div className="flex-col hidden gap-5 sm:flex ">
                     <img
                         src={image2}
                         alt=""
-                        className="w-4/5 mx-auto rounded-lg sm:h-[344.5px] sm:w-full aspect-video"
+                        className="object-cover mx-auto rounded-lg h-fit w-fit"
                     />
                     <img
                         src={image3}
                         alt=""
-                        className="w-4/5 mx-auto rounded-lg sm:h-[344.5px] sm:w-full aspect-video"
+                        className="object-cover mx-auto rounded-lg w-fit h-fit"
                     />
                 </div>
             </Link>

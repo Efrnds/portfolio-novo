@@ -2,16 +2,14 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function Project({ title, years, path, image1, image2, image3 }) {
+    const onHover = "transform scale-105 transition duration-500 ease-in-out";
     return (
-        <div className="flex flex-col gap-2 my-12 sm:w-2/3 sm:mx-auto">
+        <div className="flex flex-col gap-2 my-12 group hover:text-gray-500 hover:scale-[1.01] transition sm:w-2/3 sm:mx-auto">
             <div className="flex justify-between">
-                <Link
-                    className="flex gap-2 transition hover:text-gray-500"
-                    to={path}
-                >
+                <Link className="flex gap-2 transition" to={path}>
                     {title}
                     <svg
-                        className="w-3 h-3 my-auto transition fill-black hover:fill-yellow-500"
+                        className="w-3 h-3 my-auto transition fill-black group-hover:fill-gray-500"
                         viewBox="0 0 27 27"
                         xmlns="http://www.w3.org/2000/svg"
                     >
@@ -27,18 +25,18 @@ function Project({ title, years, path, image1, image2, image3 }) {
                 <img
                     src={image1}
                     alt=""
-                    className="flex-1 object-cover h-full mx-auto rounded-lg w-fit"
+                    className="flex-1 object-cover h-full mx-auto transition rounded-lg w-fit group-hover:drop-shadow-xl"
                 />
-                <div className="flex-col hidden gap-5 sm:flex ">
+                <div className="flex-col hidden gap-5 sm:flex">
                     <img
                         src={image2}
                         alt=""
-                        className="object-cover mx-auto rounded-lg h-fit w-fit"
+                        className="object-cover mx-auto transition rounded-lg h-fit w-fit group-hover:drop-shadow-xl"
                     />
                     <img
                         src={image3}
                         alt=""
-                        className="object-cover mx-auto rounded-lg w-fit h-fit"
+                        className="object-cover mx-auto transition rounded-lg w-fit h-fit group-hover:drop-shadow-xl"
                     />
                 </div>
             </Link>

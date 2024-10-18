@@ -1,6 +1,6 @@
 export default function Y() {
     return (
-        <div className="flex flex-col flex-1 h-full py-10 mx-10">
+        <div className="flex flex-col flex-1 w-2/3 h-full py-10 mx-auto">
             <div className="m-auto">
                 <div className="flex justify-between">
                     <h1 className="text-4xl ">Y</h1>

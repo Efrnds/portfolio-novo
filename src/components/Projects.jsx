@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function Project({ title, years, path, image1, image2, image3 }) {
-    const onHover = "transform scale-105 transition duration-500 ease-in-out";
     return (
         <div className="flex flex-col gap-2 my-12 group hover:text-gray-500 hover:scale-[1.01] transition sm:w-2/3 sm:mx-auto">
             <div className="flex justify-between">

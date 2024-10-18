@@ -6,18 +6,18 @@ export default function Y() {
                     <h1 className="text-4xl ">Y</h1>
                     <p className="mt-auto text-2xl">2024</p>
                 </div>
-                <content className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4">
                     <p className="text-lg">
-                        This is an open-source project developed to administer a
-                        college course about backend and frontend development.
+                        This project was developed to administer a college
+                        course about backend and frontend development.
                     </p>
                     <p>
-                        The project was developed using modern web technologies,
-                        including React for the frontend, Node.js for
-                        server-side rendering and routing, and TailwindCSS for
-                        styling. The backend is powered by Express, handling API
-                        requests and data management, while Axios facilitates
-                        seamless communication between the client and server.
+                        The project uses modern web technologies, including
+                        React for the frontend, Node.js for server-side
+                        rendering and routing, and TailwindCSS for styling. The
+                        backend is powered by Express, handling API requests and
+                        data management, while Axios facilitates seamless
+                        communication between the client and server.
                     </p>
                     <p>
                         Our team developed a custom API to handle user
@@ -29,22 +29,8 @@ export default function Y() {
                         applications in a professional environment.
                     </p>
                     <p>
-                        The project is hosted on{" "}
-                        <a
-                            href="https://github.com/dankei/setec-o-y"
-                            className="mr-1 transition hover:text-gray-500 hover:cursor-pointer font-UrbanistBold"
-                            target="_blank"
-                        >
-                            GitHub
-                        </a>
-                        and is available for anyone to use, modify, and
-                        contribute to. We encourage students, developers, and
-                        educators to explore the code, contribute to the
-                        project, and use it as a learning resource.
-                    </p>
-                    <p>
-                        If you&#39;d like to keep up with me and the creators of
-                        Y, feel free to follow us:
+                        If you&apos;d like to keep up with me and the creators of Y,
+                        feel free to follow us:
                         <br />
                         <div className="flex gap-4">
                             <a
@@ -77,8 +63,12 @@ export default function Y() {
                             </a>
                         </div>
                     </p>
-                </content>
-                <img src="/images/y-desktop.png" alt="" className="w-3/4 mx-auto" />
+                </div>
+                <img
+                    src="/images/y-desktop.png"
+                    alt=""
+                    className="w-3/4 mx-auto"
+                />
             </div>
         </div>
     );

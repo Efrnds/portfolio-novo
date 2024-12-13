@@ -63,6 +63,16 @@ export default function Y() {
                             </a>
                         </div>
                     </p>
+                    <p>
+            <h2 className="text-xl">Technologies used:</h2>
+            <div className="flex gap-4 font-semibold text-slate-500">
+              <p>React</p>
+              <p>Node.js</p>
+              <p>Express</p>
+              <p>MySQL</p>
+              <p>TailwindCSS</p>
+            </div>
+          </p>
                 </div>
                 <img
                     src="/images/y-desktop.png"

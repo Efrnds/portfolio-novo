@@ -2,7 +2,7 @@ import ImageModal from "../components/ImageModal";
 
 export default function Patrimonio() {
   return (
-    <div className="flex flex-col flex-1 w-2/3 h-full py-10 mx-auto">
+    <div className="flex flex-col flex-1 w-2/3 h-full py-10 mx-auto pt-20 sm:pt-24">
       <div className="m-auto">
         <div className="flex justify-between">
           <h1 className="text-4xl ">Property System</h1>
@@ -41,7 +41,7 @@ export default function Patrimonio() {
             </div>
           </p>
         </div>
-        <ImageModal 
+        <ImageModal
           src="/images/pat-notebook.png"
           alt="Property System Interface"
         />

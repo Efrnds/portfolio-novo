@@ -11,7 +11,6 @@ function App() {
     <BrowserRouter>
       <div className="flex flex-col h-screen font-Urbanist" id="index">
         <Header />
-        <hr className="mx-5 border-2 border-black rounded-full sm:mx-10" />
         <div className="flex-1 ">
           <Routes>
             <Route path="/" element={<Main />} />

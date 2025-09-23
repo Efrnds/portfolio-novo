@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Main from "./components/Main";
+import Header from "./Layout/Header";
+import Main from "./Layout/Main";
 import Y from "./pages/Y";
 import Patrimonio from "./pages/Patrimonio";
-import Footer from "./components/Footer";
+import Footer from "./Layout/Footer";
+import Vwrks from "./pages/Vwrks";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/Y" element={<Y />} />
+            <Route path="/Vwrks" element={<Vwrks />} />
             <Route path="/sistema-patrimonio" element={<Patrimonio />} />
           </Routes>
         </div>

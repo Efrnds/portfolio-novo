@@ -1,3 +1,5 @@
+import ImageModal from "../components/ImageModal";
+
 export default function Y() {
     return (
         <div className="flex flex-col flex-1 w-2/3 h-full py-10 mx-auto">
@@ -74,10 +76,9 @@ export default function Y() {
             </div>
           </p>
                 </div>
-                <img
+                <ImageModal 
                     src="/images/y-desktop.png"
-                    alt=""
-                    className="w-3/4 mx-auto"
+                    alt="Y Project Interface"
                 />
             </div>
         </div>

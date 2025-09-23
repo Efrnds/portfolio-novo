@@ -1,3 +1,5 @@
+import ImageModal from "../components/ImageModal";
+
 export default function Patrimonio() {
   return (
     <div className="flex flex-col flex-1 w-2/3 h-full py-10 mx-auto">
@@ -39,7 +41,10 @@ export default function Patrimonio() {
             </div>
           </p>
         </div>
-        <img src="/images/pat-notebook.png" alt="" className="w-3/4 mx-auto" />
+        <ImageModal 
+          src="/images/pat-notebook.png"
+          alt="Property System Interface"
+        />
       </div>
     </div>
   );

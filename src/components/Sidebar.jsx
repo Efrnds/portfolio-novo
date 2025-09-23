@@ -66,11 +66,11 @@ export default function Sidebar({ isOpen, onClose }) {
               Home
             </Link>
             <Link
-              to="/vwrks"
+              to="/y"
               onClick={onClose}
               className="block text-lg hover:text-blue-600 transition-colors duration-200 py-2 border-b border-gray-800"
             >
-              Vwrks
+              Y Project
             </Link>
             <Link
               to="/patrimonio"
@@ -80,11 +80,11 @@ export default function Sidebar({ isOpen, onClose }) {
               Property System
             </Link>
             <Link
-              to="/y"
+              to="/vwrks"
               onClick={onClose}
               className="block text-lg hover:text-blue-600 transition-colors duration-200 py-2 border-b border-gray-800"
             >
-              Y Project
+              Vwrks
             </Link>
           </nav>
 

@@ -14,7 +14,7 @@ export default function Skills() {
         transition={{ duration: 0.55 }}
       >
         <p className="text-xs uppercase tracking-[0.28em] text-neutral-500 mb-3">
-          03 — Tools
+          03 / Tools
         </p>
         <h2 className="text-2xl sm:text-4xl tracking-tight mb-8">Stack</h2>
       </motion.div>
@@ -23,7 +23,7 @@ export default function Skills() {
         {entries.map(([category, items], i) => (
           <motion.div
             key={category}
-            className={`p-5 sm:p-6 hover:bg-black hover:text-[#f0f0e9] transition-colors duration-300 group ${
+            className={`p-5 sm:p-6 hover:bg-black/[0.03] transition-colors duration-300 ${
               i < entries.length - 1 ? "border-b sm:border-b-0" : ""
             } ${i % 2 === 0 ? "sm:border-r" : ""} ${
               i < entries.length - 1 ? "lg:border-r" : "lg:border-r-0"
@@ -33,11 +33,11 @@ export default function Skills() {
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: i * 0.05 }}
           >
-            <h3 className="text-xs uppercase tracking-[0.18em] text-neutral-500 group-hover:text-neutral-300 mb-3">
+            <h3 className="text-xs uppercase tracking-[0.18em] text-neutral-500 mb-3">
               {category}
             </h3>
             <p className="text-base sm:text-lg leading-relaxed">
-              {items.join(" · ")}
+              {items.join(", ")}
             </p>
           </motion.div>
         ))}

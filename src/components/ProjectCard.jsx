@@ -24,7 +24,12 @@ function Arrow() {
 
 export default function ProjectCard({ project, index }) {
   const reduced = useReducedMotion();
-  const image = project.cardImages?.desktop || project.cardImages?.mobile;
+  const image =
+    project.cover ||
+    project.gallery?.[0]?.src ||
+    project.images?.[0]?.src ||
+    project.cardImages?.desktop ||
+    project.cardImages?.mobile;
   const cardRef = useRef(null);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
@@ -57,11 +62,11 @@ export default function ProjectCard({ project, index }) {
       viewport={{ once: true, amount: 0.25 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: index * 0.04 }}
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 py-10 sm:py-14 lg:py-16">
-        {/* Meta rail — sticky on large screens for order, not clutter */}
-        <div className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start flex flex-col gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-10 py-8 sm:py-12 lg:py-16">
+        {/* Sticky project meta on large screens */}
+        <div className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start flex flex-col gap-3 sm:gap-4 order-1">
           <div className="flex items-center justify-between gap-4">
-            <span className="text-xs sm:text-sm tabular-nums tracking-[0.2em] text-neutral-500">
+            <span className="text-xs sm:text-sm tabular-nums tracking-[0.16em] text-neutral-500">
               {String(index + 1).padStart(2, "0")} / {project.years}
             </span>
           </div>
@@ -69,25 +74,25 @@ export default function ProjectCard({ project, index }) {
           <div>
             <Link
               to={`/projects/${project.slug}`}
-              className="inline-flex items-center gap-3 text-3xl sm:text-4xl lg:text-5xl tracking-tight hover:opacity-60 transition-opacity"
+              className="inline-flex items-center gap-2 text-2xl sm:text-4xl lg:text-5xl tracking-tight hover:opacity-60 transition-opacity leading-tight"
             >
               {project.title}
-              <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+              <span className="opacity-40 sm:opacity-0 sm:-translate-x-2 sm:group-hover:opacity-100 sm:group-hover:translate-x-0 transition-all duration-300">
                 <Arrow />
               </span>
             </Link>
-            <p className="mt-2 text-sm sm:text-base text-neutral-600">
+            <p className="mt-2 text-sm text-neutral-600 leading-snug">
               {project.role}
-              <span className="text-neutral-400"> · </span>
+              <span className="text-neutral-400"> / </span>
               {project.company}
             </p>
           </div>
 
-          <p className="text-sm sm:text-base text-neutral-700 max-w-sm leading-relaxed">
+          <p className="text-sm text-neutral-700 max-w-sm leading-relaxed">
             {project.tagline}
           </p>
 
-          <div className="flex flex-wrap gap-2 pt-1">
+          <div className="hidden sm:flex flex-wrap gap-2 pt-1">
             {project.stack.slice(0, 4).map((tech) => (
               <span
                 key={tech}
@@ -100,15 +105,15 @@ export default function ProjectCard({ project, index }) {
 
           <Link
             to={`/projects/${project.slug}`}
-            className="mt-2 inline-flex w-fit items-center gap-2 text-sm font-UrbanistBold underline underline-offset-4 hover:text-neutral-500 transition-colors"
+            className="mt-1 inline-flex w-fit items-center gap-2 text-sm underline underline-offset-4 decoration-black/40 hover:decoration-black hover:text-neutral-600 transition-colors"
           >
-            Open case study
+            View project
             <span aria-hidden="true">→</span>
           </Link>
         </div>
 
-        {/* Visual stage — ONE primary mockup, full width of this column */}
-        <div className="lg:col-span-8">
+        {/* Image after title on mobile for recognition */}
+        <div className="lg:col-span-8 order-2">
           <Link
             to={`/projects/${project.slug}`}
             aria-label={`Open ${project.title}`}
@@ -127,21 +132,19 @@ export default function ProjectCard({ project, index }) {
                       transformPerspective: 1200,
                     }
               }
-              className="relative w-full overflow-hidden border border-black/10 bg-[#e6e6de] min-h-[280px] sm:min-h-[360px] lg:min-h-[460px] flex items-center justify-center p-4 sm:p-8 lg:p-10"
+              className="relative w-full overflow-hidden border border-black/15 bg-[#1a1a1a] aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9]"
             >
-              <div className="pointer-events-none absolute inset-0 opacity-[0.04] noise-bg" />
-
               {image ? (
                 <motion.img
                   src={image}
                   alt={`${project.title} preview`}
                   loading="lazy"
-                  className="relative z-[1] w-full h-auto max-h-[52vh] lg:max-h-[58vh] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.12)]"
-                  whileHover={reduced ? undefined : { scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  whileHover={reduced ? undefined : { scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 22 }}
                 />
               ) : (
-                <div className="relative z-[1] w-full h-full min-h-[240px] sm:min-h-[340px] flex flex-col justify-between bg-black text-[#f0f0e9] p-6 sm:p-10">
+                <div className="absolute inset-0 flex flex-col justify-between bg-black text-[#f0f0e9] p-6 sm:p-10">
                   <div>
                     <p className="text-xs uppercase tracking-[0.24em] text-neutral-400 mb-4">
                       {project.company}
@@ -169,8 +172,9 @@ export default function ProjectCard({ project, index }) {
                 </div>
               )}
 
-              <div className="pointer-events-none absolute left-4 top-4 sm:left-6 sm:top-6 z-[2] text-[0.65rem] uppercase tracking-[0.2em] text-neutral-500 bg-[#f0f0e9]/80 backdrop-blur px-2 py-1">
-                Preview
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="pointer-events-none absolute left-4 bottom-4 sm:left-5 sm:bottom-5 z-[2] text-[0.65rem] uppercase tracking-[0.2em] text-white/80">
+                View project →
               </div>
             </motion.div>
           </Link>
@@ -190,7 +194,20 @@ ProjectCard.propTypes = {
     summary: PropTypes.string.isRequired,
     role: PropTypes.string,
     company: PropTypes.string,
+    cover: PropTypes.string,
     stack: PropTypes.arrayOf(PropTypes.string).isRequired,
+    images: PropTypes.arrayOf(
+      PropTypes.shape({
+        src: PropTypes.string,
+        alt: PropTypes.string,
+      })
+    ),
+    gallery: PropTypes.arrayOf(
+      PropTypes.shape({
+        src: PropTypes.string,
+        alt: PropTypes.string,
+      })
+    ),
     cardImages: PropTypes.shape({
       mobile: PropTypes.string,
       desktop: PropTypes.string,

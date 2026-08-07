@@ -5,7 +5,7 @@ import { projects } from "../data/projects";
 export default function WorkSection() {
   const reduced = useReducedMotion();
   const withVisuals = projects.filter(
-    (p) => p.cardImages?.desktop || p.cardImages?.mobile
+    (p) => p.cover || p.gallery?.length || p.cardImages?.desktop || p.cardImages?.mobile
   ).length;
 
   return (
@@ -19,31 +19,30 @@ export default function WorkSection() {
       >
         <div className="lg:col-span-7">
           <p className="text-xs uppercase tracking-[0.28em] text-neutral-500 mb-3">
-            02 — Portfolio
+            02 / Portfolio
           </p>
           <h2 className="text-3xl sm:text-5xl lg:text-6xl tracking-tight leading-none">
             Selected work
           </h2>
           <p className="mt-4 text-neutral-600 max-w-xl text-sm sm:text-base leading-relaxed">
-            Shipped product and client work. One clear story per project — meta
-            on the left, a single primary mockup on the right.
+            Real client and product work. Details on the left, main screenshot on
+            the right.
           </p>
         </div>
         <div className="lg:col-span-5 lg:text-right flex lg:flex-col gap-4 lg:gap-2 lg:items-end text-sm text-neutral-500">
           <p className="tabular-nums">
-            <span className="font-UrbanistBold text-black text-2xl sm:text-3xl">
+            <span className="text-black text-2xl sm:text-3xl">
               {projects.length}
             </span>{" "}
             projects
           </p>
           <p className="tabular-nums">
-            <span className="font-UrbanistBold text-black">{withVisuals}</span> with
-            live previews
+            <span className="text-black">{withVisuals}</span> with live previews
           </p>
         </div>
       </motion.div>
 
-      {/* Compact index strip — scan before diving into deep rows */}
+      {/* Jump links into each project row */}
       <motion.nav
         aria-label="Project index"
         className="hidden md:flex flex-wrap gap-x-1 gap-y-2 py-5 border-b border-black/20 text-sm"

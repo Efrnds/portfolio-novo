@@ -14,7 +14,7 @@ function Footer() {
     })
   );
 
-  const [lastUpdated, setLastUpdated] = useState("—");
+  const [lastUpdated, setLastUpdated] = useState("...");
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -48,7 +48,7 @@ function Footer() {
           })
         );
       } catch {
-        setLastUpdated("—");
+        setLastUpdated("n/a");
       }
     };
 
@@ -84,13 +84,13 @@ function Footer() {
 
       <div className="flex justify-between gap-4">
         <div>
-          <p className="text-xs font-UrbanistBold uppercase tracking-wider">
+          <p className="text-xs uppercase tracking-wider text-neutral-500">
             Local time
           </p>
           <p className="text-sm tabular-nums">{time} (BRT)</p>
         </div>
         <div className="text-right">
-          <p className="text-xs font-UrbanistBold uppercase tracking-wider">
+          <p className="text-xs uppercase tracking-wider text-neutral-500">
             Last updated
           </p>
           <p className="text-sm">{lastUpdated}</p>

@@ -4,11 +4,11 @@ import { motion, useReducedMotion } from "framer-motion";
 const HeroCanvas = lazy(() => import("./HeroCanvas"));
 
 const fadeUp = (delay = 0) => ({
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 18 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], delay },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1], delay },
   },
 });
 
@@ -18,7 +18,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative w-full min-h-[88vh] sm:min-h-[92vh] scroll-mt-28 flex items-end lg:items-center overflow-hidden -mx-5 sm:-mx-8 lg:-mx-12 px-5 sm:px-8 lg:px-12"
+      className="relative w-full min-h-[78vh] sm:min-h-[85vh] lg:min-h-[88vh] scroll-mt-24 flex items-end lg:items-center overflow-hidden -mx-5 sm:-mx-8 lg:-mx-12 px-5 sm:px-8 lg:px-12"
     >
       <Suspense
         fallback={
@@ -28,10 +28,10 @@ export default function About() {
         <HeroCanvas />
       </Suspense>
 
-      <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 py-16 sm:py-24">
-        <div className="lg:col-span-6 flex flex-col gap-5">
+      <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 py-12 sm:py-20">
+        <div className="lg:col-span-6 flex flex-col gap-4 sm:gap-5">
           <motion.p
-            className="text-xs sm:text-sm uppercase tracking-[0.28em] text-neutral-500"
+            className="text-xs sm:text-sm uppercase tracking-[0.22em] text-neutral-500"
             variants={fadeUp(0)}
             initial={reduced ? false : "hidden"}
             animate="show"
@@ -40,8 +40,8 @@ export default function About() {
           </motion.p>
 
           <motion.h1
-            className="text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.9]"
-            variants={fadeUp(0.08)}
+            className="text-[2.6rem] sm:text-6xl lg:text-7xl tracking-tight leading-[0.95] text-black"
+            variants={fadeUp(0.06)}
             initial={reduced ? false : "hidden"}
             animate="show"
           >
@@ -51,44 +51,38 @@ export default function About() {
           </motion.h1>
 
           <motion.p
-            className="text-lg sm:text-2xl max-w-xl text-neutral-800"
-            variants={fadeUp(0.16)}
+            className="text-base sm:text-xl max-w-md text-neutral-700 leading-snug"
+            variants={fadeUp(0.1)}
             initial={reduced ? false : "hidden"}
             animate="show"
           >
-            Product-minded engineer shipping B2B SaaS and internal tools
-            end-to-end.
+            I build B2B SaaS and internal tools with React, Next.js, and Node.
+          </motion.p>
+
+          <motion.p
+            className="text-sm text-neutral-500"
+            variants={fadeUp(0.14)}
+            initial={reduced ? false : "hidden"}
+            animate="show"
+          >
+            Umuarama, PR · Remote-ready · English B2
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm sm:text-base text-neutral-600"
-            variants={fadeUp(0.24)}
-            initial={reduced ? false : "hidden"}
-            animate="show"
-          >
-            <span>Umuarama, PR</span>
-            <span className="w-1 h-1 rounded-full bg-black/40" />
-            <span>Remote-ready</span>
-            <span className="w-1 h-1 rounded-full bg-black/40" />
-            <span>English B2</span>
-          </motion.div>
-
-          <motion.div
-            className="flex flex-wrap gap-3 pt-2"
-            variants={fadeUp(0.3)}
+            className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-1 text-sm sm:text-base"
+            variants={fadeUp(0.18)}
             initial={reduced ? false : "hidden"}
             animate="show"
           >
             <a
               href="mailto:contato.efrnds@outlook.com"
-              className="inline-flex items-center gap-2 bg-black text-[#f0f0e9] px-5 py-3 text-sm sm:text-base font-UrbanistBold hover:bg-neutral-800 transition-colors"
+              className="underline underline-offset-4 decoration-black/40 hover:decoration-black hover:text-neutral-600 transition-colors"
             >
               Let&apos;s talk
-              <span aria-hidden="true">→</span>
             </a>
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 border border-black px-5 py-3 text-sm sm:text-base hover:bg-black hover:text-[#f0f0e9] transition-colors"
+              className="underline underline-offset-4 decoration-black/40 hover:decoration-black hover:text-neutral-600 transition-colors"
             >
               Selected work
             </a>
@@ -96,31 +90,22 @@ export default function About() {
         </div>
 
         <motion.div
-          className="lg:col-span-5 lg:col-start-8 flex flex-col justify-end gap-4 text-sm sm:text-base leading-relaxed text-neutral-700 max-w-md lg:ml-auto"
-          variants={fadeUp(0.22)}
+          className="lg:col-span-5 lg:col-start-8 flex flex-col gap-3 text-sm sm:text-base leading-relaxed text-neutral-600 max-w-md lg:ml-auto lg:pt-10"
+          variants={fadeUp(0.16)}
           initial={reduced ? false : "hidden"}
           animate="show"
         >
           <p>
-            Over 4 years bridging software development and IT operations —
-            architecture, UI, APIs, Docker, and the boring ops that keep
-            products alive.
+            4+ years between software and IT ops: UIs, APIs, Docker deploys, and
+            the maintenance work that keeps tools running.
           </p>
           <p>
-            Co-founder at{" "}
-            <span className="font-UrbanistBold text-black">Prisma Tech</span>{" "}
-            (Trato) ·{" "}
-            <span className="font-UrbanistBold text-black">
-              IT Ops &amp; Software
-            </span>{" "}
-            at Texsa do Brasil.
+            Co-founder at Prisma Tech (Trato). IT Ops &amp; Software at Texsa do
+            Brasil.
           </p>
-          <div className="pt-2 flex flex-wrap gap-x-5 gap-y-2 text-xs uppercase tracking-[0.18em] text-neutral-500">
-            <span>React / Next.js</span>
-            <span>Node.js</span>
-            <span>TypeScript</span>
-            <span>Docker</span>
-          </div>
+          <p className="text-xs uppercase tracking-[0.14em] text-neutral-500 pt-1">
+            React / Next.js · Node.js · TypeScript · Docker
+          </p>
         </motion.div>
       </div>
     </section>

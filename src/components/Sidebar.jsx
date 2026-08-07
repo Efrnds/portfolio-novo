@@ -77,6 +77,7 @@ export default function Sidebar({ isOpen, onClose }) {
       />
 
       <aside
+        id="site-menu"
         className={`fixed top-0 right-0 h-full w-full max-w-sm bg-[#f0f0e9] z-50 shadow-2xl transform transition-transform duration-300 ease-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
@@ -125,7 +126,7 @@ export default function Sidebar({ isOpen, onClose }) {
               >
                 <span>{project.title}</span>
                 <span className="text-xs text-neutral-400 shrink-0 self-center">
-                  {project.years.split("—")[0].trim()}
+                  {project.years.split(" - ")[0].trim()}
                 </span>
               </Link>
             ))}

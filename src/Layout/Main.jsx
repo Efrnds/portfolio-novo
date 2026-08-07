@@ -5,7 +5,7 @@ import WorkSection from "../components/WorkSection";
 
 function Main() {
   return (
-    <main className="w-full px-5 sm:px-8 lg:px-12 pt-16 sm:pt-20 pb-10">
+    <main className="w-full px-5 sm:px-8 lg:px-12 pt-[4.5rem] sm:pt-20 pb-8 sm:pb-10">
       <About />
       <Experience />
       <WorkSection />

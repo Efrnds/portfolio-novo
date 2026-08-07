@@ -4,17 +4,17 @@ const roles = [
   {
     title: "Co-Founder & Full Stack Engineer",
     company: "Prisma Tech",
-    period: "Jan 2024 — Present",
+    period: "Jan 2024 - Present",
   },
   {
     title: "IT Operations & Software Developer",
     company: "Texsa do Brasil",
-    period: "Oct 2021 — Present",
+    period: "Oct 2021 - Present",
   },
   {
     title: "Frontend Engineer (Freelance)",
     company: "Align Websites",
-    period: "Apr 2025 — Jun 2025",
+    period: "Apr 2025 - Jun 2025",
   },
 ];
 
@@ -30,7 +30,7 @@ export default function Experience() {
         transition={{ duration: 0.55 }}
       >
         <p className="text-xs uppercase tracking-[0.28em] text-neutral-500 mb-3">
-          01 — Career
+          01 / Career
         </p>
         <h2 className="text-2xl sm:text-4xl tracking-tight mb-8">Experience</h2>
       </motion.div>
@@ -45,7 +45,7 @@ export default function Experience() {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.45, delay: i * 0.06 }}
           >
-            <p className="sm:col-span-5 text-base sm:text-lg font-UrbanistBold">
+            <p className="sm:col-span-5 text-base sm:text-lg">
               {role.title}
             </p>
             <p className="sm:col-span-4 text-sm sm:text-base text-neutral-700 self-center">

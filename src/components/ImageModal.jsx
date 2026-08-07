@@ -1,70 +1,75 @@
 import { useState, useEffect } from "react";
 import { GrClose } from "react-icons/gr";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-export default function ImageModal({ 
-  src, 
-  alt, 
-  thumbnail, 
-  thumbnailClassName = "w-3/4 mx-auto hover:scale-[101%] cursor-pointer transition",
-  modalImageClassName = "w-full mx-auto h-full object-contain rounded-lg max-w-[90vw] max-h-[90vh]"
+export default function ImageModal({
+  src,
+  alt,
+  thumbnail,
+  thumbnailClassName = "w-full h-auto object-contain mx-auto cursor-pointer transition hover:opacity-90",
+  modalImageClassName = "w-full mx-auto h-auto object-contain max-w-[92vw] max-h-[90vh]",
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Previne scroll do body quando modal está aberto
   useEffect(() => {
     if (isModalOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
 
-    // Cleanup ao desmontar o componente
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isModalOpen]);
 
-  // Fechar modal com tecla ESC
   useEffect(() => {
     const handleEscKey = (event) => {
-      if (event.key === 'Escape') {
-        setIsModalOpen(false);
-      }
+      if (event.key === "Escape") setIsModalOpen(false);
     };
 
     if (isModalOpen) {
-      document.addEventListener('keydown', handleEscKey);
+      document.addEventListener("keydown", handleEscKey);
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscKey);
+      document.removeEventListener("keydown", handleEscKey);
     };
   }, [isModalOpen]);
 
   return (
     <>
-      {/* Thumbnail clicável */}
-      <img 
-        src={thumbnail || src} 
-        alt={alt} 
-        className={thumbnailClassName}
+      <button
+        type="button"
+        className="block w-full p-0 border-0 bg-transparent cursor-pointer"
         onClick={() => setIsModalOpen(true)}
-      />
+        aria-label={`Expand image: ${alt}`}
+      >
+        <img
+          src={thumbnail || src}
+          alt={alt}
+          className={thumbnailClassName}
+          loading="lazy"
+        />
+      </button>
 
-      {/* Modal */}
       {isModalOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-75 z-50 overflow-auto"
+        <div
+          className="fixed inset-0 bg-black/80 z-50 overflow-auto"
           onClick={() => setIsModalOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={alt}
         >
-          <div className="min-h-full flex items-center justify-center">
-            <div className="relative w-screen h-screen flex items-center">
+          <div className="min-h-full flex items-center justify-center p-4">
+            <div className="relative flex items-center justify-center w-full">
               <button
+                type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 hover:scale-[101%] text-white text-2xl font-bold bg-black bg-opacity-80 rounded-full w-8 h-8 flex items-center justify-center hover:bg-opacity-100 transition-all p-1.5 z-10"
+                className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white bg-black/80 rounded-full w-9 h-9 flex items-center justify-center hover:bg-black transition-all z-10"
+                aria-label="Close image preview"
               >
-                <GrClose/>
+                <GrClose />
               </button>
               <img
                 src={src}
@@ -85,5 +90,5 @@ ImageModal.propTypes = {
   alt: PropTypes.string.isRequired,
   thumbnail: PropTypes.string,
   thumbnailClassName: PropTypes.string,
-  modalImageClassName: PropTypes.string
+  modalImageClassName: PropTypes.string,
 };

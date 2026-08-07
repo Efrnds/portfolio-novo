@@ -7,23 +7,31 @@ function Header() {
 
   return (
     <>
-      <header className="fixed top-0 w-full left-0 right-0 bg-[#f0f0e9] flex justify-between p-5 sm:pb-4 sm:p-10 z-30">
+      <header className="fixed top-0 w-full left-0 right-0 bg-[#f0f0e9]/95 backdrop-blur-sm flex items-center justify-between px-5 py-4 sm:px-8 lg:px-12 sm:py-6 z-30">
         <Link
           to="/"
-          className="text-xl hover:scale-110 transition-transform duration-200 cursor-pointer"
+          className="text-xl font-UrbanistBold hover:opacity-60 transition-opacity"
+          aria-label="Eduardo Fernandes — home"
         >
           EF
         </Link>
-        <p className="hidden text-xl sm:block">
-          front-end developer & ux / ui designer
+        <p className="hidden text-sm sm:text-base tracking-wide text-neutral-700 sm:block">
+          Full Stack Software Engineer
         </p>
         <button
+          type="button"
           onClick={() => setIsSidebarOpen(true)}
-          className="bg-black rounded-full h-[28px] w-[28px] hover:scale-110 transition-transform duration-200 cursor-pointer"
+          className="relative bg-black rounded-full h-7 w-7 hover:scale-110 transition-transform duration-200 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           aria-label="Open navigation menu"
-        ></button>
+          aria-expanded={isSidebarOpen}
+        >
+          <span className="sr-only">Menu</span>
+        </button>
       </header>
-      <hr className="fixed top-16 sm:top-20 left-5 right-5 sm:left-10 sm:right-10 border-2 border-black rounded-full bg-[#f0f0e9] z-30" />
+      <div
+        className="fixed top-14 sm:top-[4.5rem] left-5 right-5 sm:left-8 lg:left-12 sm:right-8 lg:right-12 h-0.5 bg-black z-30"
+        aria-hidden="true"
+      />
 
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
     </>

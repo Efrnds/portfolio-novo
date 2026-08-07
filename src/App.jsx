@@ -1,25 +1,43 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./Layout/Header";
 import Main from "./Layout/Main";
-import Y from "./pages/Y";
-import Patrimonio from "./pages/Patrimonio";
 import Footer from "./Layout/Footer";
-import Vwrks from "./pages/Vwrks";
+import ProjectPage from "./pages/ProjectPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex flex-col h-screen font-Urbanist" id="index">
+      <ScrollToTop />
+      <div className="flex flex-col min-h-screen font-Urbanist" id="index">
         <Header />
-        <div className="flex-1 ">
+        <div className="flex-1">
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/Y" element={<Y />} />
-            <Route path="/Vwrks" element={<Vwrks />} />
-            <Route path="/sistema-patrimonio" element={<Patrimonio />} />
+            <Route path="/projects/:slug" element={<ProjectPage />} />
+            {/* Legacy paths */}
+            <Route path="/Y" element={<Navigate to="/projects/y" replace />} />
+            <Route path="/y" element={<Navigate to="/projects/y" replace />} />
+            <Route
+              path="/Vwrks"
+              element={<Navigate to="/projects/vwrks" replace />}
+            />
+            <Route
+              path="/vwrks"
+              element={<Navigate to="/projects/vwrks" replace />}
+            />
+            <Route
+              path="/sistema-patrimonio"
+              element={<Navigate to="/projects/property-system" replace />}
+            />
+            <Route
+              path="/patrimonio"
+              element={<Navigate to="/projects/property-system" replace />}
+            />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
-        <hr className="mx-5 border-2 border-black rounded-full sm:mx-10" />
+        <hr className="mx-5 sm:mx-8 lg:mx-12 border border-black" />
         <Footer />
       </div>
     </BrowserRouter>

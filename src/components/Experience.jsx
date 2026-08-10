@@ -35,11 +35,11 @@ export default function Experience() {
         <h2 className="text-2xl sm:text-4xl tracking-tight mb-8">Experience</h2>
       </motion.div>
 
-      <ul className="flex flex-col border-y border-black">
+      <ul className="flex flex-col border-y border-black/20">
         {roles.map((role, i) => (
           <motion.li
             key={role.company + role.title}
-            className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 py-5 sm:py-6 border-b border-black/15 last:border-b-0 group hover:bg-black/[0.03] transition-colors px-1"
+            className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 py-5 sm:py-6 border-b border-black/10 last:border-b-0 group hover:bg-black/[0.02] transition-colors px-1"
             initial={reduced ? false : { opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.5 }}

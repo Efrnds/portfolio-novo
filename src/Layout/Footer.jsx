@@ -102,7 +102,7 @@ function Footer() {
           href="https://github.com/Efrnds"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-black transition-colors"
+          className="link-draw"
         >
           GitHub
         </a>
@@ -110,13 +110,13 @@ function Footer() {
           href="https://linkedin.com/in/edudfrs"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-black transition-colors"
+          className="link-draw"
         >
           LinkedIn
         </a>
         <a
           href="mailto:contato.efrnds@outlook.com"
-          className="sm:hidden hover:text-black transition-colors"
+          className="sm:hidden link-draw"
         >
           Email
         </a>

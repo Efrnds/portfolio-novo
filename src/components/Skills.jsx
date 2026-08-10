@@ -1,9 +1,9 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { skills } from "../data/projects";
+import { getSkillsFromProjects } from "../data/projects";
 
 export default function Skills() {
   const reduced = useReducedMotion();
-  const entries = Object.entries(skills);
+  const entries = Object.entries(getSkillsFromProjects());
 
   return (
     <section id="skills" className="w-full my-16 sm:my-24 scroll-mt-28">
@@ -19,15 +19,15 @@ export default function Skills() {
         <h2 className="text-2xl sm:text-4xl tracking-tight mb-8">Stack</h2>
       </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-black">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-black/25">
         {entries.map(([category, items], i) => (
           <motion.div
             key={category}
-            className={`p-5 sm:p-6 hover:bg-black/[0.03] transition-colors duration-300 ${
+            className={`p-5 sm:p-6 hover:bg-black/[0.02] transition-colors duration-300 ${
               i < entries.length - 1 ? "border-b sm:border-b-0" : ""
             } ${i % 2 === 0 ? "sm:border-r" : ""} ${
               i < entries.length - 1 ? "lg:border-r" : "lg:border-r-0"
-            } border-black`}
+            } border-black/15`}
             initial={reduced ? false : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

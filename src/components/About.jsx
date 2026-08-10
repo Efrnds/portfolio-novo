@@ -76,14 +76,11 @@ export default function About() {
           >
             <a
               href="mailto:contato.efrnds@outlook.com"
-              className="underline underline-offset-4 decoration-black/40 hover:decoration-black hover:text-neutral-600 transition-colors"
+              className="link-draw text-sm sm:text-base"
             >
               Let&apos;s talk
             </a>
-            <a
-              href="#projects"
-              className="underline underline-offset-4 decoration-black/40 hover:decoration-black hover:text-neutral-600 transition-colors"
-            >
+            <a href="#projects" className="link-draw text-sm sm:text-base">
               Selected work
             </a>
           </motion.div>

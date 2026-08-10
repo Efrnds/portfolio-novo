@@ -27,13 +27,19 @@ export default function ProjectPage() {
       >
         <Link
           to="/#projects"
-          className="inline-flex items-center gap-2 text-sm text-neutral-600 hover:text-black transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-sm text-neutral-600 link-draw mb-8"
         >
           <span aria-hidden="true">←</span> All projects
         </Link>
 
-        <header className="w-full mb-8 sm:mb-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 border-b border-black pb-8">
-          <div className="lg:col-span-7">
+        <header className="relative w-full mb-8 sm:mb-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 border-b border-black pb-8 overflow-hidden">
+          <span
+            className="pointer-events-none select-none absolute -right-2 -top-4 sm:right-0 text-[7rem] sm:text-[10rem] leading-none tracking-tighter text-black/[0.04] tabular-nums"
+            aria-hidden="true"
+          >
+            {String(currentIndex + 1).padStart(2, "0")}
+          </span>
+          <div className="relative z-[1] lg:col-span-7">
             <p className="text-xs uppercase tracking-[0.24em] text-neutral-500 mb-3 tabular-nums">
               {String(currentIndex + 1).padStart(2, "0")} / {project.years}
             </p>
@@ -65,7 +71,7 @@ export default function ProjectPage() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline underline-offset-4 decoration-black/40 hover:decoration-black hover:text-neutral-600 transition-colors"
+                    className="link-draw"
                   >
                     {link.label}
                   </a>
@@ -140,7 +146,7 @@ export default function ProjectPage() {
       </div>
 
       <nav
-        className="flex flex-wrap justify-between gap-4 mt-16 pt-8 border-t border-black text-sm sm:text-base"
+        className="flex flex-wrap justify-between gap-4 mt-16 pt-8 border-t border-black/20 text-sm sm:text-base"
         aria-label="Project navigation"
       >
         {prev ? (

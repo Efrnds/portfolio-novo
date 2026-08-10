@@ -45,7 +45,7 @@ export default function WorkSection() {
       {/* Jump links into each project row */}
       <motion.nav
         aria-label="Project index"
-        className="hidden md:flex flex-wrap gap-x-1 gap-y-2 py-5 border-b border-black/20 text-sm"
+        className="hidden md:flex flex-wrap gap-x-1 gap-y-2 py-5 border-b border-black/15 text-sm"
         initial={reduced ? false : { opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -55,7 +55,7 @@ export default function WorkSection() {
           <a
             key={project.slug}
             href={`#work-${project.slug}`}
-            className="group/index inline-flex items-center gap-2 px-3 py-1.5 hover:bg-black hover:text-[#f0f0e9] transition-colors"
+            className="group/index inline-flex items-center gap-2 px-3 py-1.5 border border-transparent hover:border-black/20 hover:bg-black/[0.03] transition-colors"
           >
             <span className="tabular-nums text-neutral-400 group-hover/index:text-neutral-300">
               {String(index + 1).padStart(2, "0")}

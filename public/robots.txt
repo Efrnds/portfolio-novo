@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://efrnds.vercel.app/sitemap.xml

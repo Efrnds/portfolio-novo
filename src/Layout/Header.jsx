@@ -13,10 +13,6 @@ function MenuToggle({ open, onClick }) {
       aria-expanded={open}
       aria-controls="site-menu"
     >
-      <span className="text-xs sm:text-sm uppercase tracking-[0.18em] sm:tracking-[0.22em]">
-        {open ? "Close" : "Menu"}
-      </span>
-
       <span className="relative w-5 h-3.5 shrink-0" aria-hidden="true">
         <span
           className={`absolute left-0 h-[2px] bg-current transition-all duration-300 ease-out ${
@@ -69,7 +65,7 @@ function Header() {
         />
       </header>
       <div
-        className="fixed top-16 sm:top-[4.25rem] left-5 right-5 sm:left-8 lg:left-12 sm:right-8 lg:right-12 h-0.5 bg-black z-30"
+        className="fixed top-16 sm:top-[4.25rem] left-5 right-5 sm:left-8 lg:left-12 sm:right-8 lg:right-12 h-px bg-black z-30"
         aria-hidden="true"
       />
 

@@ -8,6 +8,12 @@ import {
 import { GrClose } from "react-icons/gr";
 import { getProjectSlides } from "../utils/gallery";
 
+const slideShape = PropTypes.shape({
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string,
+  aspect: PropTypes.oneOf(["9/16", "16/9"]),
+});
+
 export default function ProjectCarousel({ project, className = "" }) {
   const slides = getProjectSlides(project);
   const reduced = useReducedMotion();
@@ -18,6 +24,7 @@ export default function ProjectCarousel({ project, className = "" }) {
 
   const count = slides.length;
   const current = slides[index];
+  const isPortrait = current?.aspect === "9/16";
 
   const go = useCallback(
     (next) => {
@@ -99,34 +106,54 @@ export default function ProjectCarousel({ project, className = "" }) {
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
       >
-        <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-[72vh]">
-          <AnimatePresence initial={false} custom={direction} mode="wait">
-            <motion.button
-              key={current.src + index}
-              type="button"
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                duration: reduced ? 0.15 : 0.38,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="absolute inset-0 w-full h-full p-0 border-0 bg-transparent cursor-zoom-in"
-              onClick={() => setLightbox(true)}
-              aria-label={`Expand slide ${index + 1}: ${current.alt}`}
-            >
-              <img
-                src={current.src}
-                alt={current.alt}
-                draggable={false}
-                className="w-full h-full object-cover object-top"
-              />
-            </motion.button>
-          </AnimatePresence>
+        <div
+          className={`relative w-full transition-all duration-300 ${
+            isPortrait
+              ? "flex justify-center items-center min-h-[min(78vh,40rem)] py-8 sm:py-10"
+              : ""
+          }`}
+        >
+          <div
+            className={`relative overflow-hidden ${
+              isPortrait
+                ? "w-full max-w-[min(100%,20rem)] sm:max-w-[22rem] aspect-[9/16] max-h-[72vh]"
+                : "w-full aspect-[16/10] sm:aspect-[16/9] max-h-[72vh]"
+            }`}
+          >
+            <AnimatePresence initial={false} custom={direction} mode="wait">
+              <motion.button
+                key={current.src + index}
+                type="button"
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  duration: reduced ? 0.15 : 0.38,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="absolute inset-0 w-full h-full p-0 border-0 bg-transparent cursor-zoom-in"
+                onClick={() => setLightbox(true)}
+                aria-label={`Expand slide ${index + 1}: ${current.alt}`}
+              >
+                <img
+                  src={current.src}
+                  alt={current.alt}
+                  draggable={false}
+                  className={`w-full h-full ${
+                    isPortrait
+                      ? "object-contain object-center"
+                      : "object-cover object-top"
+                  }`}
+                />
+              </motion.button>
+            </AnimatePresence>
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/50 to-transparent" />
+            {!isPortrait && (
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/50 to-transparent" />
+            )}
+          </div>
         </div>
 
         {count > 1 && (
@@ -188,26 +215,37 @@ export default function ProjectCarousel({ project, className = "" }) {
 
       {count > 1 && (
         <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
-          {slides.map((slide, i) => (
-            <button
-              key={`thumb-${slide.src}`}
-              type="button"
-              onClick={() => go(i)}
-              className={`relative shrink-0 w-20 h-14 sm:w-28 sm:h-16 overflow-hidden border transition-colors ${
-                i === index
-                  ? "border-black opacity-100"
-                  : "border-black/15 opacity-55 hover:opacity-100"
-              }`}
-              aria-label={`Thumbnail ${i + 1}`}
-            >
-              <img
-                src={slide.src}
-                alt=""
-                className="w-full h-full object-cover object-top"
-                loading="lazy"
-              />
-            </button>
-          ))}
+          {slides.map((slide, i) => {
+            const thumbPortrait = slide.aspect === "9/16";
+            return (
+              <button
+                key={`thumb-${slide.src}`}
+                type="button"
+                onClick={() => go(i)}
+                className={`relative shrink-0 overflow-hidden border transition-colors ${
+                  thumbPortrait
+                    ? "w-12 h-20 sm:w-14 sm:h-24"
+                    : "w-20 h-14 sm:w-28 sm:h-16"
+                } ${
+                  i === index
+                    ? "border-black opacity-100"
+                    : "border-black/15 opacity-55 hover:opacity-100"
+                }`}
+                aria-label={`Thumbnail ${i + 1}`}
+              >
+                <img
+                  src={slide.src}
+                  alt=""
+                  className={`w-full h-full ${
+                    thumbPortrait
+                      ? "object-contain object-center bg-[#1a1a1a]"
+                      : "object-cover object-top"
+                  }`}
+                  loading="lazy"
+                />
+              </button>
+            );
+          })}
         </div>
       )}
 
@@ -258,7 +296,9 @@ export default function ProjectCarousel({ project, className = "" }) {
           <img
             src={current.src}
             alt={current.alt}
-            className="max-w-full max-h-[88vh] object-contain"
+            className={`max-w-full max-h-[88vh] object-contain ${
+              isPortrait ? "max-w-[min(100%,28rem)]" : ""
+            }`}
             onClick={(e) => e.stopPropagation()}
           />
         </div>
@@ -272,18 +312,8 @@ ProjectCarousel.propTypes = {
   project: PropTypes.shape({
     slug: PropTypes.string,
     title: PropTypes.string.isRequired,
-    images: PropTypes.arrayOf(
-      PropTypes.shape({
-        src: PropTypes.string.isRequired,
-        alt: PropTypes.string,
-      })
-    ),
-    gallery: PropTypes.arrayOf(
-      PropTypes.shape({
-        src: PropTypes.string.isRequired,
-        alt: PropTypes.string,
-      })
-    ),
+    images: PropTypes.arrayOf(slideShape),
+    gallery: PropTypes.arrayOf(slideShape),
     cardImages: PropTypes.shape({
       mobile: PropTypes.string,
       desktop: PropTypes.string,

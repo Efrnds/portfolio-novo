@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { MaskReveal } from "./project-cases/CaseMotion";
 import { useLanguage } from "../i18n/LanguageContext";
 
@@ -196,8 +196,9 @@ export default function ProjectCard({ project, index }) {
   const reduced = useReducedMotion();
   const { copy } = useLanguage();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const headingY = useTransform(scrollYProgress, [0, 0.06, 0.76, 0.9], [42, 0, 0, -110]);
-  const bodyY = useTransform(scrollYProgress, [0, 0.08, 0.76, 0.92], [64, 0, 0, -130]);
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 68, damping: 24, mass: 0.34 });
+  const headingY = useTransform(smoothProgress, [0, 0.06, 0.72, 0.88], [42, 0, 0, -1100]);
+  const bodyY = useTransform(smoothProgress, [0, 0.08, 0.72, 0.88], [64, 0, 0, -1100]);
   const number = String(index + 1).padStart(2, "0");
   const Layout = layouts[project.slug];
 
@@ -209,9 +210,9 @@ export default function ProjectCard({ project, index }) {
           <h3>{project.statement}</h3>
         </motion.div>
         <motion.div className="project-chapter__body" style={reduced ? undefined : { y: bodyY }}>
-          <Layout project={project} progress={scrollYProgress} />
+          <Layout project={project} progress={smoothProgress} />
         </motion.div>
-        <motion.div className="project-chapter__progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />
+        <motion.div className="project-chapter__progress" style={{ scaleX: smoothProgress }} aria-hidden="true" />
       </div>
     </article>
   );

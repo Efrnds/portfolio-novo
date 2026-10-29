@@ -13,7 +13,7 @@ function Footer() {
         initial={reduced ? false : { y: 48, clipPath: "inset(0 0 22% 0)" }}
         whileInView={{ y: 0, clipPath: "inset(0 0 0 0)" }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
       >
         <p className="eyebrow">{copy.footer.eyebrow}</p>
         <h2>{copy.footer.title}</h2>

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Experience() {
@@ -7,10 +7,11 @@ export default function Experience() {
   const reduced = useReducedMotion();
   const { copy } = useLanguage();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const headingX = useTransform(scrollYProgress, [0, 0.16, 0.62, 0.82], [-60, 0, 0, -180]);
-  const headingOpacity = useTransform(scrollYProgress, [0, 0.12, 0.64, 0.82], [0, 1, 1, 0]);
-  const listY = useTransform(scrollYProgress, [0, 0.18, 0.64, 0.84], [60, 0, 0, -180]);
-  const listOpacity = useTransform(scrollYProgress, [0, 0.14, 0.66, 0.84], [0, 1, 1, 0]);
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 62, damping: 23, mass: 0.38 });
+  const headingX = useTransform(smoothProgress, [0, 0.16, 0.62, 0.84], [-60, 0, 0, -260]);
+  const headingOpacity = useTransform(smoothProgress, [0, 0.12, 0.66, 0.84], [0, 1, 1, 0]);
+  const listY = useTransform(smoothProgress, [0, 0.18, 0.66, 0.86], [60, 0, 0, -240]);
+  const listOpacity = useTransform(smoothProgress, [0, 0.14, 0.68, 0.86], [0, 1, 1, 0]);
 
   return (
     <section ref={ref} id="experience" className="experience-section scroll-mt-20">
@@ -31,7 +32,7 @@ export default function Experience() {
             </li>
           ))}
         </motion.ul>
-        <motion.div className="experience-section__progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />
+        <motion.div className="experience-section__progress" style={{ scaleX: smoothProgress }} aria-hidden="true" />
       </div>
     </section>
   );

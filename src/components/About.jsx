@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { KineticTitle } from "./project-cases/CaseMotion";
 import { useLanguage } from "../i18n/LanguageContext";
 
@@ -8,9 +8,10 @@ export default function About() {
   const reduced = useReducedMotion();
   const { copy } = useLanguage();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const markScale = useTransform(scrollYProgress, [0, 1], [1, 1.18]);
-  const markRotate = useTransform(scrollYProgress, [0, 1], [0, -4]);
-  const copyY = useTransform(scrollYProgress, [0, 1], [0, -36]);
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 64, damping: 24, mass: 0.36 });
+  const markScale = useTransform(smoothProgress, [0, 1], [1, 1.18]);
+  const markRotate = useTransform(smoothProgress, [0, 1], [0, -4]);
+  const copyY = useTransform(smoothProgress, [0, 1], [0, -36]);
 
   return (
     <section ref={ref} id="about" className="hero-section scroll-mt-24">

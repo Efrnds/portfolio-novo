@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import Sidebar from "../components/Sidebar";
@@ -46,10 +46,12 @@ MenuToggle.propTypes = {
 
 function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { pathname } = useLocation();
+  const isVwrks = pathname === "/projects/vwrks";
 
   return (
     <>
-      <header className="site-header">
+      <header className={`site-header ${isVwrks ? "site-header--vwrks" : ""}`}>
         <Link
           to="/"
           className="site-header__mark"
@@ -60,8 +62,8 @@ function Header() {
         </Link>
         <nav className="site-header__nav" aria-label="Primary navigation">
           <Link to="/#about">About</Link>
-          <Link to="/#work">Work</Link>
           <Link to="/#experience">Experience</Link>
+          <Link to="/#work">Work</Link>
         </nav>
         <a className="site-header__contact" href="mailto:contato.efrnds@outlook.com">
           Start a project

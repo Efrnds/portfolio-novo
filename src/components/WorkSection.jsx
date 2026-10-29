@@ -22,8 +22,8 @@ export default function WorkSection() {
           <h2>Work measured by the routine it supports.</h2>
         </div>
         <p>
-          Three products, three operating contexts. Each case follows the path
-          from a human action to the system behind it.
+          Three products, three operating contexts. Each case uses a layout
+          shaped by the product and the evidence available.
         </p>
       </motion.div>
 
@@ -33,7 +33,13 @@ export default function WorkSection() {
         ))}
       </div>
 
-      <div className="project-archive">
+      <motion.div
+        className="project-archive"
+        initial={reduced ? false : { opacity: 0, clipPath: "inset(0 0 16% 0)" }}
+        whileInView={{ opacity: 1, clipPath: "inset(0 0 0 0)" }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+      >
         <div className="project-archive__heading">
           <p className="eyebrow">More shipped work</p>
           <p>Client delivery and internal operations.</p>
@@ -48,7 +54,7 @@ export default function WorkSection() {
             </Link>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

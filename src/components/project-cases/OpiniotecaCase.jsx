@@ -1,4 +1,6 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
 import { CaseReveal, KineticTitle, MaskReveal, ParallaxImage } from "./CaseMotion";
 
@@ -10,6 +12,14 @@ export default function OpiniotecaCase({ project, prev, next }) {
   const explore = findImage(project, "Explore");
   const messages = findImage(project, "Messages");
   const mobile = findImage(project, "Mobile screen");
+  const views = [
+    explore && { ...explore, label: "Discovery", note: "Books, profiles, and recommendations." },
+    messages && { ...messages, label: "Messages", note: "Realtime conversations between readers." },
+    mobile && { ...mobile, label: "Mobile", note: "The reading routine in a narrower context." },
+  ].filter(Boolean);
+  const [activeView, setActiveView] = useState(0);
+  const reduced = useReducedMotion();
+  const currentView = views[activeView];
 
   return (
     <article id="main-content" className="project-detail opinioteca-detail">
@@ -41,11 +51,46 @@ export default function OpiniotecaCase({ project, prev, next }) {
         </div>
       </CaseReveal>
 
-      <section className="opinioteca-detail__collage" aria-label="Opinioteca product views">
-        {explore && <CaseReveal className="opinioteca-detail__explore" direction="left"><figure><img src={explore.src} alt={explore.alt} loading="lazy" /><figcaption>Discovery</figcaption></figure></CaseReveal>}
-        {messages && <CaseReveal className="opinioteca-detail__messages" direction="right" delay={0.08}><figure><img src={messages.src} alt={messages.alt} loading="lazy" /><figcaption>Realtime conversation</figcaption></figure></CaseReveal>}
-        {mobile && <CaseReveal className="opinioteca-detail__phone" delay={0.14}><figure><img src={mobile.src} alt={mobile.alt} loading="lazy" /><figcaption>Mobile reading routine</figcaption></figure></CaseReveal>}
-      </section>
+      <CaseReveal className="opinioteca-detail__gallery">
+        <div className="opinioteca-detail__gallery-heading">
+          <div>
+            <p className="eyebrow">Walk through the product</p>
+            <h2>One interface at a time.</h2>
+          </div>
+          <div className="opinioteca-detail__gallery-controls" aria-label="Choose an Opinioteca view">
+            {views.map((view, index) => (
+              <button
+                key={view.src}
+                type="button"
+                className={index === activeView ? "is-active" : ""}
+                aria-pressed={index === activeView}
+                onClick={() => setActiveView(index)}
+              >
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                {view.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className={`opinioteca-detail__gallery-stage ${currentView.aspect === "9/16" ? "is-portrait" : ""}`} aria-live="polite">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.figure
+              key={currentView.src}
+              initial={reduced ? false : { opacity: 0, x: 48, clipPath: "inset(0 0 0 18%)" }}
+              animate={{ opacity: 1, x: 0, clipPath: "inset(0 0 0 0)" }}
+              exit={reduced ? undefined : { opacity: 0, x: -32 }}
+              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <img src={currentView.src} alt={currentView.alt} loading="lazy" />
+              <figcaption>
+                <strong>{currentView.label}</strong>
+                {currentView.note}
+              </figcaption>
+            </motion.figure>
+          </AnimatePresence>
+        </div>
+      </CaseReveal>
 
       <CaseReveal className="opinioteca-detail__surface">
         <div>

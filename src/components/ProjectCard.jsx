@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
+import { MaskReveal } from "./project-cases/CaseMotion";
 
 function CaseLink({ project, children }) {
   return (
@@ -26,29 +27,30 @@ function TratoChapter({ project }) {
         </div>
         <div className="trato-case__ownership">
           <p>System ownership</p>
-          <strong>Schema → interface → container → daily use</strong>
+          <strong>Architecture, product UI, deployment, and maintenance.</strong>
         </div>
         <CaseLink project={project}>Read the operating case</CaseLink>
       </div>
 
-      <Link
-        to={`/projects/${project.slug}`}
-        className="trato-case__console"
-        aria-label="Read the Trato case study"
-      >
-        <div className="trato-case__status">
-          <span>Shop operating view</span>
-          <span><i aria-hidden="true" /> Production system</span>
-        </div>
-        <div className="trato-case__screen">
-          <img src={project.cover} alt="Trato operations dashboard" loading="lazy" />
-        </div>
-        <ol aria-label="Trato operating flow">
-          {project.flow.map((step, index) => (
-            <li key={step}><span>{String(index + 1).padStart(2, "0")}</span>{step}</li>
-          ))}
-        </ol>
-      </Link>
+      <MaskReveal className="trato-case__console-reveal">
+        <Link
+          to={`/projects/${project.slug}`}
+          className="trato-case__console"
+          aria-label="Read the Trato case study"
+        >
+          <div className="trato-case__status">
+            <span>Shop operating view</span>
+            <span><i aria-hidden="true" /> Production system</span>
+          </div>
+          <div className="trato-case__screen">
+            <img src={project.cover} alt="Trato operations dashboard" loading="lazy" />
+          </div>
+          <div className="trato-case__console-note">
+            <span>Daily operating surface</span>
+            <span>{project.stack.slice(0, 3).join(" / ")}</span>
+          </div>
+        </Link>
+      </MaskReveal>
     </div>
   );
 }
@@ -61,11 +63,12 @@ function OpiniotecaChapter({ project }) {
 
   return (
     <div className="opinioteca-case">
-      <Link
-        to={`/projects/${project.slug}`}
-        className="opinioteca-case__network"
-        aria-label="Read the Opinioteca case study"
-      >
+      <MaskReveal className="opinioteca-case__network-reveal" from="left">
+        <Link
+          to={`/projects/${project.slug}`}
+          className="opinioteca-case__network"
+          aria-label="Read the Opinioteca case study"
+        >
         <div className="opinioteca-case__index">
           <span>Reader network</span>
           <span>Feed / catalog / realtime</span>
@@ -83,17 +86,17 @@ function OpiniotecaChapter({ project }) {
             <img src={mobile.src} alt="Opinioteca mobile interface" loading="lazy" />
           </div>
         )}
-      </Link>
+        </Link>
+      </MaskReveal>
 
       <div className="opinioteca-case__brief">
         <p className="project-chapter__context">{project.company} / {project.role}</p>
         <h4>{project.title}</h4>
         <p>{project.summary}</p>
-        <ol aria-label="Opinioteca product flow">
-          {project.flow.map((step, index) => (
-            <li key={step}><span>{String(index + 1).padStart(2, "0")}</span>{step}</li>
-          ))}
-        </ol>
+        <div className="opinioteca-case__scope">
+          <span>Product surface</span>
+          <p>{project.tagline}</p>
+        </div>
         <CaseLink project={project}>Follow the product flow</CaseLink>
       </div>
     </div>
@@ -113,22 +116,19 @@ function CalmeraChapter({ project }) {
           <h4>{project.title}</h4>
           <p>{project.summary}</p>
         </div>
-        <ol aria-label="Calmera production flow">
-          {project.flow.map((step, index) => (
-            <li key={step}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <strong>{step}</strong>
-            </li>
-          ))}
-        </ol>
+        <div className="calmera-case__note">
+          <p>Built around a real home production routine.</p>
+          <p>{project.stack.slice(0, 4).join(" / ")}</p>
+        </div>
         <CaseLink project={project}>Open the production notes</CaseLink>
       </div>
 
-      <Link
-        to={`/projects/${project.slug}`}
-        className="calmera-case__storefront"
-        aria-label="Read the Calmera case study"
-      >
+      <MaskReveal className="calmera-case__storefront-reveal" from="bottom">
+        <Link
+          to={`/projects/${project.slug}`}
+          className="calmera-case__storefront"
+          aria-label="Read the Calmera case study"
+        >
         <figure className="calmera-case__hero">
           <img src={project.cover} alt="Calmera artisan candle storefront" loading="lazy" />
           <figcaption>Customer-facing storefront</figcaption>
@@ -139,7 +139,8 @@ function CalmeraChapter({ project }) {
             <figcaption>Catalog connected to the operation</figcaption>
           </figure>
         )}
-      </Link>
+        </Link>
+      </MaskReveal>
     </div>
   );
 }
@@ -184,7 +185,8 @@ ProjectCard.propTypes = {
     company: PropTypes.string.isRequired,
     summary: PropTypes.string.isRequired,
     statement: PropTypes.string.isRequired,
-    flow: PropTypes.arrayOf(PropTypes.string).isRequired,
+    tagline: PropTypes.string.isRequired,
+    stack: PropTypes.arrayOf(PropTypes.string).isRequired,
     cover: PropTypes.string.isRequired,
     gallery: PropTypes.arrayOf(
       PropTypes.shape({

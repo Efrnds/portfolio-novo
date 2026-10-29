@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
 import Header from "./Layout/Header";
 import Main from "./Layout/Main";
 import Footer from "./Layout/Footer";
@@ -10,6 +11,24 @@ import JsonLd from "./components/JsonLd";
 import ScrollProgress from "./components/ScrollProgress";
 import GrainOverlay from "./components/GrainOverlay";
 
+function RouteCurtain() {
+  const { pathname } = useLocation();
+  const reduced = useReducedMotion();
+
+  if (reduced) return null;
+
+  return (
+    <motion.div
+      key={pathname}
+      className="route-curtain"
+      initial={{ scaleY: 1 }}
+      animate={{ scaleY: 0 }}
+      transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+      aria-hidden="true"
+    />
+  );
+}
+
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +37,7 @@ function App() {
       <JsonLd />
       <GrainOverlay />
       <ScrollProgress />
+      <RouteCurtain />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-black focus:text-[#ece9df] focus:px-4 focus:py-2"

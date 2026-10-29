@@ -29,7 +29,6 @@ const sections = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "work", label: "Selected work" },
-  { id: "playground", label: "Playground" },
 ];
 
 export default function Sidebar({ isOpen, onClose }) {

@@ -16,7 +16,6 @@ export const projects = [
     summary:
       "Full product from schema to deploy for real shops: scheduling, cashflow, stock, and multi-tenant setup.",
     statement: "From the first booking to the end-of-day numbers.",
-    flow: ["Booking", "Schedule", "Cashflow", "Inventory", "Reports"],
     description: [
       "Trato is a barbershop management platform. At Prisma Tech I own the stack from architecture to production.",
       "Backend is Node.js, Express, Prisma, and PostgreSQL. Frontend is Next.js, TypeScript, Tailwind, and Shadcn UI. Deploy runs on Docker with Nginx Proxy Manager for SSL.",
@@ -71,7 +70,6 @@ export const projects = [
     summary:
       "Full product with a Go API, Next.js app, PostgreSQL, WebSockets, and subscription tiers (OpinioTop / OpinioPro).",
     statement: "Catalog, identity, and realtime conversation in one social system.",
-    flow: ["Reader", "Feed", "Go API", "PostgreSQL", "WebSocket"],
     description: [
       "Opinioteca is a social network built around books. Users rate titles, keep a shelf and reading diary, message each other, explore recommendations, and move across free and paid plans.",
       "The backend is Go with PostgreSQL, session auth, file uploads, and real-time messaging over WebSocket. The frontend is Next.js (App Router) with Auth.js, Tailwind, and a full product UI (home, explore, books, profiles, admin).",
@@ -124,7 +122,6 @@ export const projects = [
     summary:
       "A storefront and home operations system for inventory, recipes, production lots, sales, clients, and expenses.",
     statement: "A small home production routine, translated into one connected system.",
-    flow: ["Recipe", "Batch", "Inventory", "Storefront", "Cash view"],
     description: [
       "Calmera OS came out of a real need. My wife makes artisan candles as a hobby and needed a single place to control stock, recipes, production lots, sales, and money, instead of scattered notes and spreadsheets.",
       "I built the app so she can log materials with unit cost, keep production recipes, plan batches, register sales and expenses, track clients, and pull basic performance numbers. PDFs cover simple quotes and care cards.",
@@ -169,7 +166,6 @@ export const projects = [
     summary:
       "Next.js client site with responsive layouts, basic SEO, and a Vercel deploy so the client can own it.",
     statement: "A visual archive that stays fast even when the images do the talking.",
-    flow: ["Content", "Image pipeline", "Next.js", "SEO", "Vercel"],
     description: [
       "Through Align Websites I shipped a portfolio for a designer, Victor Fernandes (live at vwrks.cc).",
       "The brief needed a clean layout, lots of images, and a simple deploy on Vercel.",
@@ -205,7 +201,6 @@ export const projects = [
     summary:
       "I build and run the tools staff use for orders, tickets, and equipment instead of email chains and sheets.",
     statement: "Internal workflows moved out of inboxes and into software people use daily.",
-    flow: ["Request", "Ticket", "Equipment", "Support", "Report"],
     description: [
       "At Texsa I write and support internal software people use every day.",
       "That covers a corporate gifting platform (inventory and client orders) and an IT helpdesk for tickets, users, equipment, and reports.",

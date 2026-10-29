@@ -7,7 +7,7 @@ function Footer() {
         <p className="eyebrow">Open channel</p>
         <h2>Have a system that needs to work beyond the demo?</h2>
         <a href="mailto:contato.efrnds@outlook.com" className="action-link action-link--light">
-          Tell me where it gets difficult <span aria-hidden="true">↗</span>
+          Tell me where it gets difficult
         </a>
       </div>
 
@@ -16,10 +16,10 @@ function Footer() {
         <p>Umuarama, Brazil / BRT</p>
         <nav aria-label="Social links">
           <a href="https://github.com/Efrnds" target="_blank" rel="noopener noreferrer">
-            GitHub ↗
+            GitHub
           </a>
           <a href="https://linkedin.com/in/edudfrs" target="_blank" rel="noopener noreferrer">
-            LinkedIn ↗
+            LinkedIn
           </a>
         </nav>
         <button type="button" onClick={toTheTop}>

@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import OperationalFlow from "./OperationalFlow";
+import { KineticTitle } from "./project-cases/CaseMotion";
 
 export default function About() {
   const reduced = useReducedMotion();
@@ -16,13 +16,9 @@ export default function About() {
           Eduardo Fernandes / Full-stack + IT operations
         </motion.p>
 
-        <motion.h1
-          initial={reduced ? false : { opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.04 }}
-        >
-          I build software that survives the handoff.
-        </motion.h1>
+        <h1>
+          <KineticTitle>I build software that survives the handoff.</KineticTitle>
+        </h1>
 
         <motion.p
           className="hero-section__intro"
@@ -44,18 +40,26 @@ export default function About() {
             See the systems <span aria-hidden="true">↓</span>
           </a>
           <a className="action-link" href="mailto:contato.efrnds@outlook.com">
-            Start a conversation <span aria-hidden="true">↗</span>
+            Start a conversation
           </a>
         </motion.div>
       </div>
 
       <motion.div
-        className="hero-section__system"
+        className="hero-section__signature"
         initial={reduced ? false : { opacity: 0, x: 18 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.55, delay: 0.16 }}
       >
-        <OperationalFlow />
+        <p className="hero-signature__mark" aria-hidden="true">EF</p>
+        <div className="hero-signature__note">
+          <p>Product engineering with operational memory.</p>
+          <dl>
+            <div><dt>Products</dt><dd>Trato / Opinioteca / Calmera</dd></div>
+            <div><dt>Practice</dt><dd>Full-stack engineering and IT operations</dd></div>
+            <div><dt>Current</dt><dd>Prisma Tech / Texsa do Brasil</dd></div>
+          </dl>
+        </div>
       </motion.div>
 
       <div className="hero-section__meta" aria-label="Current details">

@@ -44,7 +44,7 @@ export default function WorkSection() {
               <span>{String(index + 4).padStart(2, "0")}</span>
               <strong>{project.title}</strong>
               <p>{project.statement}</p>
-              <span>{project.years} ↗</span>
+              <span>{project.years}</span>
             </Link>
           ))}
         </div>

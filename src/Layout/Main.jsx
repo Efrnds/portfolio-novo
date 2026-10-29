@@ -1,6 +1,5 @@
 import About from "../components/About";
 import Experience from "../components/Experience";
-import Playground from "../components/Playground";
 import WorkSection from "../components/WorkSection";
 
 function Main() {
@@ -9,7 +8,6 @@ function Main() {
       <About />
       <Experience />
       <WorkSection />
-      <Playground />
     </main>
   );
 }

@@ -61,10 +61,10 @@ function Header() {
         <nav className="site-header__nav" aria-label="Primary navigation">
           <Link to="/#about">About</Link>
           <Link to="/#work">Work</Link>
-          <Link to="/#playground">Playground</Link>
+          <Link to="/#experience">Experience</Link>
         </nav>
         <a className="site-header__contact" href="mailto:contato.efrnds@outlook.com">
-          Start a project <span aria-hidden="true">↗</span>
+          Start a project
         </a>
         <div className="site-header__mobile-menu">
           <MenuToggle

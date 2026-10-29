@@ -110,3 +110,26 @@ ParallaxImage.propTypes = {
   src: PropTypes.string.isRequired,
   strength: PropTypes.number,
 };
+
+export function CaseScrollScene({ children, className = "" }) {
+  const ref = useRef(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  const y = useTransform(scrollYProgress, [0, 0.07, 0.76, 0.9], [56, 0, 0, -96]);
+  const opacity = useTransform(scrollYProgress, [0, 0.06, 0.78, 0.9], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.07, 0.76, 0.9], [0.985, 1, 1, 0.99]);
+
+  return (
+    <section ref={ref} className={`case-scroll-scene ${className}`}>
+      <motion.div className="case-scroll-scene__stage" style={reduced ? undefined : { y, opacity, scale }}>
+        <div className="case-scroll-scene__content">{children}</div>
+        <motion.span className="case-scroll-scene__progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />
+      </motion.div>
+    </section>
+  );
+}
+
+CaseScrollScene.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};

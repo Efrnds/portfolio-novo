@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { AdjacentProjects, BackToWork, ProjectStack } from "./CaseParts";
-import { CaseReveal, KineticTitle } from "./CaseMotion";
+import { CaseReveal, CaseScrollScene, KineticTitle } from "./CaseMotion";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 export default function TexsaCase({ project, prev, next }) {
@@ -34,13 +34,15 @@ export default function TexsaCase({ project, prev, next }) {
         </div>
       </section>
 
-      <CaseReveal className="texsa-detail__worklog">
+      <CaseScrollScene className="texsa-detail__worklog-scene">
+        <div className="texsa-detail__worklog">
         <div>
           <p className="eyebrow">{labels.log}</p>
           <h2>{labels.heading}</h2>
         </div>
         <ul>{project.highlights.map((item) => <li key={item}>{item}</li>)}</ul>
-      </CaseReveal>
+        </div>
+      </CaseScrollScene>
 
       <CaseReveal className="texsa-detail__stack" direction="right">
         <p>{labels.stack}</p>

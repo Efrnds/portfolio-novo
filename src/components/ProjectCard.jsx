@@ -165,8 +165,10 @@ export default function ProjectCard({ project, index }) {
   const reduced = useReducedMotion();
   const { copy } = useLanguage();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const stageScale = useTransform(scrollYProgress, [0, 0.12, 0.88, 1], [0.96, 1, 1, 0.96]);
-  const stageOpacity = useTransform(scrollYProgress, [0, 0.1, 0.92, 1], [0.35, 1, 1, 0.45]);
+  const headingY = useTransform(scrollYProgress, [0, 0.06, 0.76, 0.9], [42, 0, 0, -110]);
+  const headingOpacity = useTransform(scrollYProgress, [0, 0.05, 0.78, 0.9], [0, 1, 1, 0]);
+  const bodyY = useTransform(scrollYProgress, [0, 0.08, 0.76, 0.92], [64, 0, 0, -130]);
+  const bodyOpacity = useTransform(scrollYProgress, [0, 0.07, 0.8, 0.92], [0, 1, 1, 0]);
   const number = String(index + 1).padStart(2, "0");
   const Layout = layouts[project.slug];
 
@@ -179,14 +181,16 @@ export default function ProjectCard({ project, index }) {
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
     >
-      <motion.div className="project-chapter__stage" style={reduced ? undefined : { scale: stageScale, opacity: stageOpacity }}>
-        <div className="project-chapter__heading">
+      <div className="project-chapter__stage">
+        <motion.div className="project-chapter__heading" style={reduced ? undefined : { y: headingY, opacity: headingOpacity }}>
           <p className="eyebrow">{copy.work.case} {number} / {project.years}</p>
           <h3>{project.statement}</h3>
-        </div>
-        <Layout project={project} />
+        </motion.div>
+        <motion.div className="project-chapter__body" style={reduced ? undefined : { y: bodyY, opacity: bodyOpacity }}>
+          <Layout project={project} />
+        </motion.div>
         <motion.div className="project-chapter__progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />
-      </motion.div>
+      </div>
     </motion.article>
   );
 }

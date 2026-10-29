@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import ProjectCarousel from "../ProjectCarousel";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
-import { CaseReveal, KineticTitle, MaskReveal, ParallaxImage } from "./CaseMotion";
+import { CaseReveal, CaseScrollScene, KineticTitle, ParallaxImage } from "./CaseMotion";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 export default function TratoCase({ project, prev, next }) {
@@ -25,12 +25,12 @@ export default function TratoCase({ project, prev, next }) {
         </div>
       </header>
 
-      <MaskReveal className="trato-detail__cover-reveal">
+      <CaseScrollScene className="trato-detail__cover-reveal">
         <figure className="trato-detail__cover">
           <ParallaxImage src={project.cover} alt="Trato daily operations dashboard" />
           <figcaption>{labels.caption}</figcaption>
         </figure>
-      </MaskReveal>
+      </CaseScrollScene>
 
       <CaseReveal className="trato-detail__story" direction="left">
         <div className="trato-detail__statement">

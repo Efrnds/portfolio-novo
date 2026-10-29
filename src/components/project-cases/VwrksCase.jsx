@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
-import { CaseReveal, KineticTitle, MaskReveal, ParallaxImage } from "./CaseMotion";
+import { CaseReveal, CaseScrollScene, KineticTitle, MaskReveal, ParallaxImage } from "./CaseMotion";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 export default function VwrksCase({ project, prev, next }) {
@@ -24,7 +24,7 @@ export default function VwrksCase({ project, prev, next }) {
         </div>
       </header>
 
-      {home && <MaskReveal className="vwrks-detail__hero-reveal"><figure className="vwrks-detail__hero-image"><ParallaxImage src={home.src} alt={home.alt} strength={26} /><figcaption>{labels.pages[0]} / 01</figcaption></figure></MaskReveal>}
+      {home && <CaseScrollScene className="vwrks-detail__hero-reveal"><figure className="vwrks-detail__hero-image"><ParallaxImage src={home.src} alt={home.alt} strength={26} /><figcaption>{labels.pages[0]} / 01</figcaption></figure></CaseScrollScene>}
 
       <CaseReveal className="vwrks-detail__brief" direction="left">
         <p className="eyebrow">{labels.brief}</p>
@@ -32,12 +32,14 @@ export default function VwrksCase({ project, prev, next }) {
         <ProjectStack stack={project.stack} />
       </CaseReveal>
 
-      <section className="vwrks-detail__archive" aria-label="Vwrks page archive">
-        {about && <MaskReveal className="vwrks-detail__about" from="left"><figure><img src={about.src} alt={about.alt} loading="lazy" /><figcaption>{labels.pages[1]} / 02</figcaption></figure></MaskReveal>}
-        {works && <MaskReveal className="vwrks-detail__works" from="right" delay={0.06}><figure><img src={works.src} alt={works.alt} loading="lazy" /><figcaption>{labels.pages[2]} / 03</figcaption></figure></MaskReveal>}
-        {projectView && <MaskReveal className="vwrks-detail__project" from="bottom"><figure><img src={projectView.src} alt={projectView.alt} loading="lazy" /><figcaption>{labels.pages[3]} / 04</figcaption></figure></MaskReveal>}
-        {archive && <MaskReveal className="vwrks-detail__archive-view" from="left" delay={0.08}><figure><img src={archive.src} alt={archive.alt} loading="lazy" /><figcaption>{labels.pages[4]} / 05</figcaption></figure></MaskReveal>}
-      </section>
+      <CaseScrollScene className="vwrks-detail__archive-scene">
+        <section className="vwrks-detail__archive" aria-label="Vwrks page archive">
+          {about && <MaskReveal className="vwrks-detail__about" from="left"><figure><img src={about.src} alt={about.alt} loading="lazy" /><figcaption>{labels.pages[1]} / 02</figcaption></figure></MaskReveal>}
+          {works && <MaskReveal className="vwrks-detail__works" from="right" delay={0.06}><figure><img src={works.src} alt={works.alt} loading="lazy" /><figcaption>{labels.pages[2]} / 03</figcaption></figure></MaskReveal>}
+          {projectView && <MaskReveal className="vwrks-detail__project" from="bottom"><figure><img src={projectView.src} alt={projectView.alt} loading="lazy" /><figcaption>{labels.pages[3]} / 04</figcaption></figure></MaskReveal>}
+          {archive && <MaskReveal className="vwrks-detail__archive-view" from="left" delay={0.08}><figure><img src={archive.src} alt={archive.alt} loading="lazy" /><figcaption>{labels.pages[4]} / 05</figcaption></figure></MaskReveal>}
+        </section>
+      </CaseScrollScene>
 
       <CaseReveal className="vwrks-detail__handoff" direction="right">
         <h2>{labels.handoff}</h2>

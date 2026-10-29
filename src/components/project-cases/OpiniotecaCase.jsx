@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
-import { CaseReveal, KineticTitle, MaskReveal, ParallaxImage } from "./CaseMotion";
+import { CaseReveal, CaseScrollScene, KineticTitle, ParallaxImage } from "./CaseMotion";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 function findImage(project, alt) {
@@ -40,12 +40,12 @@ export default function OpiniotecaCase({ project, prev, next }) {
         </div>
       </header>
 
-      <MaskReveal className="opinioteca-detail__feed-reveal" from="left">
+      <CaseScrollScene className="opinioteca-detail__feed-reveal">
         <figure className="opinioteca-detail__feed">
           <ParallaxImage src={project.cover} alt="Opinioteca reading feed" strength={28} />
           <figcaption>{labels.caption}</figcaption>
         </figure>
-      </MaskReveal>
+      </CaseScrollScene>
 
       <CaseReveal className="opinioteca-detail__essay" direction="right">
         <p className="opinioteca-detail__lead">{project.description[0]}</p>

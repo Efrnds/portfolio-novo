@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
-import { CaseReveal, KineticTitle, MaskReveal, ParallaxImage } from "./CaseMotion";
+import { CaseReveal, CaseScrollScene, KineticTitle, MaskReveal, ParallaxImage } from "./CaseMotion";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 function findImage(project, alt) {
@@ -30,12 +30,12 @@ export default function CalmeraCase({ project, prev, next }) {
         </div>
       </header>
 
-      <MaskReveal className="calmera-detail__cover-reveal" from="bottom">
+      <CaseScrollScene className="calmera-detail__cover-reveal">
         <figure className="calmera-detail__cover">
           <ParallaxImage src={project.cover} alt="Calmera candle storefront" strength={30} />
           <figcaption>{labels.caption}</figcaption>
         </figure>
-      </MaskReveal>
+      </CaseScrollScene>
 
       <CaseReveal className="calmera-detail__origin" direction="left">
         <p className="eyebrow">{labels.why}</p>
@@ -57,10 +57,12 @@ export default function CalmeraCase({ project, prev, next }) {
       </CaseReveal>
 
       {(profile || collections) && (
-        <section className="calmera-detail__closing-images" aria-label="More Calmera interfaces">
-          {profile && <figure><img src={profile.src} alt={profile.alt} loading="lazy" /></figure>}
-          {collections && <figure><img src={collections.src} alt={collections.alt} loading="lazy" /></figure>}
-        </section>
+        <CaseScrollScene className="calmera-detail__closing-scene">
+          <section className="calmera-detail__closing-images" aria-label="More Calmera interfaces">
+            {profile && <figure><img src={profile.src} alt={profile.alt} loading="lazy" /></figure>}
+            {collections && <figure><img src={collections.src} alt={collections.alt} loading="lazy" /></figure>}
+          </section>
+        </CaseScrollScene>
       )}
 
       <AdjacentProjects prev={prev} next={next} />

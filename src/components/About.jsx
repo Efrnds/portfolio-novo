@@ -16,20 +16,20 @@ export default function About() {
     <section ref={ref} id="about" className="hero-section scroll-mt-24">
       <div className="hero-section__stage">
         <motion.div className="hero-section__copy" style={reduced ? undefined : { y: copyY }}>
-          <motion.p className="eyebrow" initial={reduced ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
+          <motion.p className="eyebrow" initial={reduced ? false : { y: 10 }} animate={{ y: 0 }} transition={{ duration: 0.35 }}>
             {copy.hero.eyebrow}
           </motion.p>
           <h1><KineticTitle>{copy.hero.title}</KineticTitle></h1>
-          <motion.p className="hero-section__intro" initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.45, delay: 0.12 }}>
+          <motion.p className="hero-section__intro" initial={reduced ? false : { y: 12 }} animate={{ y: 0 }} transition={{ duration: 0.45, delay: 0.12 }}>
             {copy.hero.intro}
           </motion.p>
-          <motion.div className="hero-section__actions" initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.18 }}>
+          <motion.div className="hero-section__actions" initial={reduced ? false : { y: 12 }} animate={{ y: 0 }} transition={{ duration: 0.4, delay: 0.18 }}>
             <a className="action-link action-link--solid" href="#work">{copy.hero.primary} <span aria-hidden="true">↓</span></a>
             <a className="action-link" href="mailto:contato.efrnds@outlook.com">{copy.hero.secondary}</a>
           </motion.div>
         </motion.div>
 
-        <motion.div className="hero-section__signature" initial={reduced ? false : { opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.55, delay: 0.16 }}>
+        <motion.div className="hero-section__signature" initial={reduced ? false : { x: 18 }} animate={{ x: 0 }} transition={{ duration: 0.55, delay: 0.16 }}>
           <motion.p className="hero-signature__mark" aria-hidden="true" style={reduced ? undefined : { scale: markScale, rotate: markRotate }}>EF</motion.p>
           <div className="hero-signature__note">
             <p>{copy.hero.note}</p>

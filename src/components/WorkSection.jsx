@@ -15,8 +15,8 @@ export default function WorkSection() {
     <section id="work" className="work-section scroll-mt-28">
       <motion.div
         className="section-heading section-heading--work"
-        initial={reduced ? false : { opacity: 0, y: 18 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={reduced ? false : { y: 18 }}
+        whileInView={{ y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.45 }}
       >
@@ -35,8 +35,8 @@ export default function WorkSection() {
 
       <motion.div
         className="project-archive"
-        initial={reduced ? false : { opacity: 0, clipPath: "inset(0 0 16% 0)" }}
-        whileInView={{ opacity: 1, clipPath: "inset(0 0 0 0)" }}
+        initial={reduced ? false : { clipPath: "inset(0 0 16% 0)" }}
+        whileInView={{ clipPath: "inset(0 0 0 0)" }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
       >

@@ -89,9 +89,9 @@ export default function OpiniotecaCase({ project, prev, next }) {
             <AnimatePresence mode="wait" initial={false}>
               <motion.figure
                 key={currentView.src}
-                initial={reduced ? false : { opacity: 0, x: 48, clipPath: "inset(0 0 0 18%)" }}
-                animate={{ opacity: 1, x: 0, clipPath: "inset(0 0 0 0)" }}
-                exit={reduced ? undefined : { opacity: 0, x: -32 }}
+                initial={reduced ? false : { x: 48, clipPath: "inset(0 0 0 18%)" }}
+                animate={{ x: 0, clipPath: "inset(0 0 0 0)" }}
+                exit={reduced ? undefined : { x: -32, clipPath: "inset(0 18% 0 0)" }}
                 transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               >
                 <img src={currentView.src} alt={currentView.alt} loading="lazy" />

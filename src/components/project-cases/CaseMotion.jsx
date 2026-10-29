@@ -15,8 +15,8 @@ export function CaseReveal({ children, className = "", delay = 0, direction = "u
   return (
     <motion.div
       className={className}
-      initial={reduced ? false : { opacity: 0, ...offset }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      initial={reduced ? false : offset}
+      whileInView={{ x: 0, y: 0 }}
       viewport={{ once: true, amount: 0.16 }}
       transition={{ duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] }}
     >
@@ -116,12 +116,11 @@ export function CaseScrollScene({ children, className = "" }) {
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const y = useTransform(scrollYProgress, [0, 0.07, 0.76, 0.9], [56, 0, 0, -96]);
-  const opacity = useTransform(scrollYProgress, [0, 0.06, 0.78, 0.9], [0, 1, 1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.07, 0.76, 0.9], [0.985, 1, 1, 0.99]);
 
   return (
     <section ref={ref} className={`case-scroll-scene ${className}`}>
-      <motion.div className="case-scroll-scene__stage" style={reduced ? undefined : { y, opacity, scale }}>
+      <motion.div className="case-scroll-scene__stage" style={reduced ? undefined : { y, scale }}>
         <div className="case-scroll-scene__content">{children}</div>
         <motion.span className="case-scroll-scene__progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />
       </motion.div>

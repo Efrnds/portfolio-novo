@@ -79,15 +79,12 @@ export default function ProjectCarousel({ project, className = "" }) {
   const variants = {
     enter: (dir) => ({
       x: reduced ? 0 : dir > 0 ? 48 : -48,
-      opacity: 0,
     }),
     center: {
       x: 0,
-      opacity: 1,
     },
     exit: (dir) => ({
       x: reduced ? 0 : dir > 0 ? -48 : 48,
-      opacity: 0,
     }),
   };
 

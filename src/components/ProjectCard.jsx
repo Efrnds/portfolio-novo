@@ -18,8 +18,40 @@ CaseLink.propTypes = {
   project: PropTypes.shape({ slug: PropTypes.string.isRequired }).isRequired,
 };
 
-function TratoChapter({ project }) {
+function ScrollSwap({ slides, progress, className = "" }) {
+  const reduced = useReducedMotion();
+  const firstY = useTransform(progress, [0, 0.42, 0.58, 1], ["0%", "0%", "-100%", "-100%"]);
+  const secondY = useTransform(progress, [0, 0.42, 0.58, 1], ["100%", "100%", "0%", "0%"]);
+
+  return (
+    <div className={`scroll-swap ${reduced ? "is-reduced" : ""} ${className}`}>
+      {slides.slice(0, 2).map((slide, index) => (
+        <motion.figure
+          key={slide.src}
+          className={`scroll-swap__slide ${index === 1 ? "scroll-swap__slide--secondary" : ""}`}
+          style={reduced ? undefined : { y: index === 0 ? firstY : secondY }}
+        >
+          <img src={slide.src} alt={slide.alt} loading="lazy" />
+          {slide.caption && <figcaption>{slide.caption}</figcaption>}
+        </motion.figure>
+      ))}
+    </div>
+  );
+}
+
+ScrollSwap.propTypes = {
+  className: PropTypes.string,
+  progress: PropTypes.object.isRequired,
+  slides: PropTypes.arrayOf(PropTypes.shape({
+    alt: PropTypes.string.isRequired,
+    caption: PropTypes.string,
+    src: PropTypes.string.isRequired,
+  })).isRequired,
+};
+
+function TratoChapter({ project, progress }) {
   const { copy } = useLanguage();
+  const reports = project.gallery.find((image) => image.alt === "Reports");
   return (
     <div className="trato-case">
       <div className="trato-case__brief">
@@ -46,7 +78,13 @@ function TratoChapter({ project }) {
             <span><i aria-hidden="true" /> {copy.homeCases.production}</span>
           </div>
           <div className="trato-case__screen">
-            <img src={project.cover} alt="Trato operations dashboard" loading="lazy" />
+            <ScrollSwap
+              progress={progress}
+              slides={[
+                { src: project.cover, alt: "Trato operations dashboard", caption: copy.homeCases.daily },
+                { src: reports?.src || project.gallery[1].src, alt: "Trato reports and operating numbers", caption: copy.homeCases.production },
+              ]}
+            />
           </div>
           <div className="trato-case__console-note">
             <span>{copy.homeCases.daily}</span>
@@ -58,11 +96,10 @@ function TratoChapter({ project }) {
   );
 }
 
-TratoChapter.propTypes = { project: PropTypes.object.isRequired };
+TratoChapter.propTypes = { project: PropTypes.object.isRequired, progress: PropTypes.object.isRequired };
 
-function OpiniotecaChapter({ project }) {
+function OpiniotecaChapter({ project, progress }) {
   const { copy } = useLanguage();
-  const mobile = project.gallery.find((image) => image.aspect === "9/16");
   const messages = project.gallery.find((image) => image.alt === "Messages");
 
   return (
@@ -77,21 +114,14 @@ function OpiniotecaChapter({ project }) {
             <span>{copy.homeCases.reader}</span>
             <span>{copy.homeCases.readerModes}</span>
           </div>
-          <div className="opinioteca-case__media">
-            <div className="opinioteca-case__desktop">
-              <img src={project.cover} alt="Opinioteca social reading feed" loading="lazy" />
-            </div>
-            {messages && (
-              <div className="opinioteca-case__messages">
-                <img src={messages.src} alt="Opinioteca messages" loading="lazy" />
-              </div>
-            )}
-            {mobile && (
-              <div className="opinioteca-case__mobile">
-                <img src={mobile.src} alt="Opinioteca mobile interface" loading="lazy" />
-              </div>
-            )}
-          </div>
+          <ScrollSwap
+            className="opinioteca-case__media"
+            progress={progress}
+            slides={[
+              { src: project.cover, alt: "Opinioteca social reading feed", caption: copy.homeCases.reader },
+              { src: messages?.src || project.gallery[2].src, alt: "Opinioteca realtime messages", caption: copy.homeCases.readerModes },
+            ]}
+          />
         </Link>
       </MaskReveal>
 
@@ -109,9 +139,9 @@ function OpiniotecaChapter({ project }) {
   );
 }
 
-OpiniotecaChapter.propTypes = { project: PropTypes.object.isRequired };
+OpiniotecaChapter.propTypes = { project: PropTypes.object.isRequired, progress: PropTypes.object.isRequired };
 
-function CalmeraChapter({ project }) {
+function CalmeraChapter({ project, progress }) {
   const { copy } = useLanguage();
   const catalog = project.gallery.find((image) => image.alt === "Catalogs");
 
@@ -136,23 +166,24 @@ function CalmeraChapter({ project }) {
           className="calmera-case__storefront"
           aria-label="Read the Calmera case study"
         >
-        <figure className="calmera-case__hero">
-          <img src={project.cover} alt="Calmera artisan candle storefront" loading="lazy" />
-          <figcaption>{copy.homeCases.storefront}</figcaption>
-        </figure>
-        {catalog && (
-          <figure className="calmera-case__catalog">
-            <img src={catalog.src} alt="Calmera product catalog" loading="lazy" />
-            <figcaption>{copy.homeCases.catalog}</figcaption>
-          </figure>
-        )}
+          <div className="calmera-case__index">
+            <span>{copy.homeCases.storefront}</span>
+            <span>01 → 02</span>
+          </div>
+          <ScrollSwap
+            progress={progress}
+            slides={[
+              { src: project.cover, alt: "Calmera artisan candle storefront", caption: copy.homeCases.storefront },
+              { src: catalog?.src || project.gallery[1].src, alt: "Calmera product catalog", caption: copy.homeCases.catalog },
+            ]}
+          />
         </Link>
       </MaskReveal>
     </div>
   );
 }
 
-CalmeraChapter.propTypes = { project: PropTypes.object.isRequired };
+CalmeraChapter.propTypes = { project: PropTypes.object.isRequired, progress: PropTypes.object.isRequired };
 
 const layouts = {
   trato: TratoChapter,
@@ -166,32 +197,23 @@ export default function ProjectCard({ project, index }) {
   const { copy } = useLanguage();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
   const headingY = useTransform(scrollYProgress, [0, 0.06, 0.76, 0.9], [42, 0, 0, -110]);
-  const headingOpacity = useTransform(scrollYProgress, [0, 0.05, 0.78, 0.9], [0, 1, 1, 0]);
   const bodyY = useTransform(scrollYProgress, [0, 0.08, 0.76, 0.92], [64, 0, 0, -130]);
-  const bodyOpacity = useTransform(scrollYProgress, [0, 0.07, 0.8, 0.92], [0, 1, 1, 0]);
   const number = String(index + 1).padStart(2, "0");
   const Layout = layouts[project.slug];
 
   return (
-    <motion.article
-      ref={ref}
-      className={`project-chapter project-chapter--${project.slug}`}
-      initial={reduced ? false : { opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <article ref={ref} className={`project-chapter project-chapter--${project.slug}`}>
       <div className="project-chapter__stage">
-        <motion.div className="project-chapter__heading" style={reduced ? undefined : { y: headingY, opacity: headingOpacity }}>
+        <motion.div className="project-chapter__heading" style={reduced ? undefined : { y: headingY }}>
           <p className="eyebrow">{copy.work.case} {number} / {project.years}</p>
           <h3>{project.statement}</h3>
         </motion.div>
-        <motion.div className="project-chapter__body" style={reduced ? undefined : { y: bodyY, opacity: bodyOpacity }}>
-          <Layout project={project} />
+        <motion.div className="project-chapter__body" style={reduced ? undefined : { y: bodyY }}>
+          <Layout project={project} progress={scrollYProgress} />
         </motion.div>
         <motion.div className="project-chapter__progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />
       </div>
-    </motion.article>
+    </article>
   );
 }
 

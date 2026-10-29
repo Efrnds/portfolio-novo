@@ -2,9 +2,9 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getProject } from "../data/projects";
 
-const HOME_TITLE = "Eduardo Fernandes | Full Stack Engineer";
+const HOME_TITLE = "Eduardo Fernandes | Full-stack & Systems Engineer";
 const HOME_DESC =
-  "Eduardo Fernandes, full stack engineer. B2B SaaS, internal tools, Next.js, Node.js, Go, TypeScript. Brazil-based, open to remote.";
+  "Eduardo Fernandes builds product software, internal tools, and the infrastructure behind them, from interface to real operations.";
 
 function setMeta(name, content, attr = "name") {
   if (!content) return;

@@ -19,8 +19,8 @@ function App() {
       <GrainOverlay />
       <ScrollProgress />
       <a
-        href="#about"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-black focus:text-[#f0f0e9] focus:px-4 focus:py-2"
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-black focus:text-[#ece9df] focus:px-4 focus:py-2"
       >
         Skip to content
       </a>
@@ -56,7 +56,6 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
-        <hr className="mx-5 sm:mx-8 lg:mx-12 border border-black/20" />
         <Footer />
       </div>
     </BrowserRouter>

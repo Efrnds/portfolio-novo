@@ -22,38 +22,36 @@ export default function Experience() {
   const reduced = useReducedMotion();
 
   return (
-    <section id="experience" className="w-full my-16 sm:my-24 scroll-mt-28">
+    <section id="experience" className="experience-section scroll-mt-28">
       <motion.div
+        className="experience-section__lead"
         initial={reduced ? false : { opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.55 }}
       >
-        <p className="text-xs uppercase tracking-[0.28em] text-neutral-500 mb-3">
-          01 / Career
+        <p className="eyebrow">01 / Field notes</p>
+        <h2>I work on the whole distance between request and routine.</h2>
+        <p>
+          Four years across product engineering and IT operations taught me to
+          care about what happens after launch: deployment, adoption,
+          maintenance, and the person using the tool under real pressure.
         </p>
-        <h2 className="text-2xl sm:text-4xl tracking-tight mb-8">Experience</h2>
       </motion.div>
 
-      <ul className="flex flex-col border-y border-black/20">
+      <ul className="experience-list">
         {roles.map((role, i) => (
           <motion.li
             key={role.company + role.title}
-            className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 py-5 sm:py-6 border-b border-black/10 last:border-b-0 group hover:bg-black/[0.02] transition-colors px-1"
+            className="experience-list__item"
             initial={reduced ? false : { opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.45, delay: i * 0.06 }}
           >
-            <p className="sm:col-span-5 text-base sm:text-lg">
-              {role.title}
-            </p>
-            <p className="sm:col-span-4 text-sm sm:text-base text-neutral-700 self-center">
-              {role.company}
-            </p>
-            <p className="sm:col-span-3 text-sm text-neutral-500 sm:text-right self-center">
-              {role.period}
-            </p>
+            <span className="tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+            <p><strong>{role.title}</strong>{role.company}</p>
+            <p>{role.period}</p>
           </motion.li>
         ))}
       </ul>

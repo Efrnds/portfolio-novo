@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineX } from "react-icons/hi";
 import PropTypes from "prop-types";
@@ -28,21 +28,39 @@ const contacts = [
 const sections = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
-  { id: "skills", label: "Stack" },
+  { id: "work", label: "Selected work" },
+  { id: "playground", label: "Playground" },
 ];
 
 export default function Sidebar({ isOpen, onClose }) {
   const navigate = useNavigate();
+  const dialogRef = useRef(null);
+  const closeRef = useRef(null);
 
   useEffect(() => {
+    const previouslyFocused = document.activeElement;
     const handleEscKey = (event) => {
       if (event.key === "Escape") onClose();
+      if (event.key !== "Tab" || !dialogRef.current) return;
+
+      const focusable = dialogRef.current.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
     };
 
     if (isOpen) {
       document.addEventListener("keydown", handleEscKey);
       document.body.style.overflow = "hidden";
+      requestAnimationFrame(() => closeRef.current?.focus());
     } else {
       document.body.style.overflow = "unset";
     }
@@ -50,6 +68,9 @@ export default function Sidebar({ isOpen, onClose }) {
     return () => {
       document.removeEventListener("keydown", handleEscKey);
       document.body.style.overflow = "unset";
+      if (isOpen && previouslyFocused instanceof HTMLElement) {
+        previouslyFocused.focus();
+      }
     };
   }, [isOpen, onClose]);
 
@@ -66,31 +87,32 @@ export default function Sidebar({ isOpen, onClose }) {
     }
   };
 
+  if (!isOpen) return null;
+
   return (
     <>
       <div
-        className={`fixed inset-0 bg-black z-40 transition-opacity duration-300 ${
-          isOpen ? "opacity-50" : "opacity-0 pointer-events-none"
-        }`}
+        className="fixed inset-0 bg-black/60 z-40"
         onClick={onClose}
         aria-hidden="true"
       />
 
       <aside
+        ref={dialogRef}
         id="site-menu"
-        className={`fixed top-0 right-0 h-full w-full max-w-sm bg-[#f0f0e9] z-50 shadow-2xl transform transition-transform duration-300 ease-out ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-        aria-hidden={!isOpen}
+        className="fixed top-0 right-0 h-full w-full max-w-sm bg-[#ece9df] z-50"
         aria-label="Site navigation"
+        aria-modal="true"
+        role="dialog"
       >
         <div className="flex flex-col h-full p-6 sm:p-8 overflow-y-auto">
           <div className="flex items-center justify-between mb-10">
             <p className="text-sm uppercase tracking-[0.2em]">Menu</p>
             <button
+              ref={closeRef}
               type="button"
               onClick={onClose}
-              className="p-2 -mr-2 rounded-full hover:bg-black/5 transition-colors"
+              className="w-11 h-11 -mr-2 flex items-center justify-center hover:bg-black/5 transition-colors"
               aria-label="Close menu"
             >
               <HiOutlineX size={22} />
@@ -106,7 +128,7 @@ export default function Sidebar({ isOpen, onClose }) {
                 key={item.id}
                 type="button"
                 onClick={() => goToSection(item.id)}
-                className="py-3 text-lg text-left border-b border-black/20 hover:text-neutral-500 transition-colors"
+                className="min-h-11 py-3 text-lg text-left border-b border-black/20 hover:text-neutral-500 transition-colors"
               >
                 {item.label}
               </button>

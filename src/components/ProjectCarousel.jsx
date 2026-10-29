@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import {
   AnimatePresence,
@@ -21,6 +21,11 @@ export default function ProjectCarousel({ project, className = "" }) {
   const [direction, setDirection] = useState(0);
   const [lightbox, setLightbox] = useState(false);
   const [dragStartX, setDragStartX] = useState(null);
+  const zoomButtonRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const lightboxRef = useRef(null);
+  const wasOpenRef = useRef(false);
+  const didDragRef = useRef(false);
 
   const count = slides.length;
   const current = slides[index];
@@ -45,6 +50,7 @@ export default function ProjectCarousel({ project, className = "" }) {
 
   useEffect(() => {
     if (!lightbox) return undefined;
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const onKey = (e) => {
       if (e.key === "Escape") setLightbox(false);
@@ -53,20 +59,20 @@ export default function ProjectCarousel({ project, className = "" }) {
     };
     window.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKey);
     };
   }, [lightbox, next, prev]);
 
   useEffect(() => {
-    if (lightbox || count <= 1) return undefined;
-    const onKey = (e) => {
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [lightbox, count, next, prev]);
+    if (lightbox) {
+      wasOpenRef.current = true;
+      requestAnimationFrame(() => closeButtonRef.current?.focus());
+    } else if (wasOpenRef.current) {
+      wasOpenRef.current = false;
+      requestAnimationFrame(() => zoomButtonRef.current?.focus());
+    }
+  }, [lightbox]);
 
   if (!count) return null;
 
@@ -85,12 +91,16 @@ export default function ProjectCarousel({ project, className = "" }) {
     }),
   };
 
-  const onPointerDown = (e) => setDragStartX(e.clientX);
+  const onPointerDown = (e) => {
+    didDragRef.current = false;
+    setDragStartX(e.clientX);
+  };
   const onPointerUp = (e) => {
     if (dragStartX == null) return;
     const delta = e.clientX - dragStartX;
     setDragStartX(null);
     if (Math.abs(delta) < 48) return;
+    didDragRef.current = true;
     if (delta < 0) next();
     else prev();
   };
@@ -100,9 +110,21 @@ export default function ProjectCarousel({ project, className = "" }) {
       className={`w-full ${className}`}
       aria-roledescription="carousel"
       aria-label={`${project.title} screenshots`}
+      tabIndex={count > 1 ? 0 : undefined}
+      onKeyDown={(event) => {
+        if (lightbox) return;
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          next();
+        }
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          prev();
+        }
+      }}
     >
       <div
-        className="relative w-full border border-black/15 bg-[#1a1a1a] overflow-hidden select-none"
+        className="relative w-full border border-black/15 bg-[#1a1a1a] overflow-hidden select-none touch-pan-y"
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
       >
@@ -122,6 +144,7 @@ export default function ProjectCarousel({ project, className = "" }) {
           >
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.button
+                ref={zoomButtonRef}
                 key={current.src + index}
                 type="button"
                 custom={direction}
@@ -134,7 +157,13 @@ export default function ProjectCarousel({ project, className = "" }) {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className="absolute inset-0 w-full h-full p-0 border-0 bg-transparent cursor-zoom-in"
-                onClick={() => setLightbox(true)}
+                onClick={() => {
+                  if (didDragRef.current) {
+                    didDragRef.current = false;
+                    return;
+                  }
+                  setLightbox(true);
+                }}
                 aria-label={`Expand slide ${index + 1}: ${current.alt}`}
               >
                 <img
@@ -150,9 +179,6 @@ export default function ProjectCarousel({ project, className = "" }) {
               </motion.button>
             </AnimatePresence>
 
-            {!isPortrait && (
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/50 to-transparent" />
-            )}
           </div>
         </div>
 
@@ -161,7 +187,7 @@ export default function ProjectCarousel({ project, className = "" }) {
             <button
               type="button"
               onClick={prev}
-              className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-[#f0f0e9] text-black hover:bg-white transition-colors"
+              className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center bg-[#ece9df] text-black hover:bg-white transition-colors"
               aria-label="Previous screenshot"
             >
               ←
@@ -169,7 +195,7 @@ export default function ProjectCarousel({ project, className = "" }) {
             <button
               type="button"
               onClick={next}
-              className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-[#f0f0e9] text-black hover:bg-white transition-colors"
+              className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center bg-[#ece9df] text-black hover:bg-white transition-colors"
               aria-label="Next screenshot"
             >
               →
@@ -177,7 +203,7 @@ export default function ProjectCarousel({ project, className = "" }) {
           </>
         )}
 
-        <div className="absolute bottom-3 sm:bottom-4 left-0 right-0 z-10 flex items-center justify-between px-4 sm:px-6 gap-4">
+        <div className="absolute bottom-0 left-0 right-0 z-10 flex items-center justify-between bg-black/70 px-4 sm:px-6 py-1 gap-4">
           <p className="text-xs sm:text-sm tabular-nums tracking-[0.18em] text-white/80">
             {String(index + 1).padStart(2, "0")} /{" "}
             {String(count).padStart(2, "0")}
@@ -186,23 +212,25 @@ export default function ProjectCarousel({ project, className = "" }) {
           {count > 1 && (
             <div
               className="flex items-center gap-2"
-              role="tablist"
               aria-label="Slides"
             >
               {slides.map((slide, i) => (
                 <button
                   key={slide.src}
                   type="button"
-                  role="tab"
-                  aria-selected={i === index}
+                  aria-current={i === index ? "true" : undefined}
                   aria-label={`Go to slide ${i + 1}`}
                   onClick={() => go(i)}
-                  className={`h-1.5 transition-all duration-300 ${
-                    i === index
-                      ? "w-8 bg-[#f0f0e9]"
-                      : "w-3 bg-white/35 hover:bg-white/60"
-                  }`}
-                />
+                  className="group w-11 h-11 flex items-center justify-center"
+                >
+                  <span className={`block h-1.5 transition-all duration-300 ${
+                      i === index
+                        ? "w-8 bg-[#ece9df]"
+                        : "w-3 bg-white/35 group-hover:bg-white/60"
+                    }`}
+                    aria-hidden="true"
+                  />
+                </button>
               ))}
             </div>
           )}
@@ -251,16 +279,31 @@ export default function ProjectCarousel({ project, className = "" }) {
 
       {lightbox && (
         <div
+          ref={lightboxRef}
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 sm:p-8"
           role="dialog"
           aria-modal="true"
           aria-label={current.alt}
           onClick={() => setLightbox(false)}
+          onKeyDown={(event) => {
+            if (event.key !== "Tab" || !lightboxRef.current) return;
+            const focusable = lightboxRef.current.querySelectorAll("button");
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+              event.preventDefault();
+              last?.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+              event.preventDefault();
+              first?.focus();
+            }
+          }}
         >
           <button
+            ref={closeButtonRef}
             type="button"
             onClick={() => setLightbox(false)}
-            className="absolute top-4 right-4 text-white bg-white/10 hover:bg-white/20 rounded-full w-10 h-10 flex items-center justify-center z-10"
+            className="absolute top-4 right-4 text-white bg-white/10 hover:bg-white/20 w-11 h-11 flex items-center justify-center z-10"
             aria-label="Close lightbox"
           >
             <GrClose />

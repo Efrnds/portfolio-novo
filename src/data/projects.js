@@ -15,6 +15,8 @@ export const projects = [
     tagline: "B2B SaaS for barbershops: scheduling, finance, and inventory.",
     summary:
       "Full product from schema to deploy for real shops: scheduling, cashflow, stock, and multi-tenant setup.",
+    statement: "From the first booking to the end-of-day numbers.",
+    flow: ["Booking", "Schedule", "Cashflow", "Inventory", "Reports"],
     description: [
       "Trato is a barbershop management platform. At Prisma Tech I own the stack from architecture to production.",
       "Backend is Node.js, Express, Prisma, and PostgreSQL. Frontend is Next.js, TypeScript, Tailwind, and Shadcn UI. Deploy runs on Docker with Nginx Proxy Manager for SSL.",
@@ -42,7 +44,7 @@ export const projects = [
     links: [
       { label: "Website", href: "https://trato.prismapp.com.br" },
     ],
-    cover: "/images/trato/login.png",
+    cover: "/images/trato/homepage.png",
     gallery: [
       { src: "/images/trato/homepage.png", alt: "Homepage" },
       { src: "/images/trato/booking.png", alt: "Booking" },
@@ -68,6 +70,8 @@ export const projects = [
       "Social network for book lovers: reviews, shelves, reading diary, DMs, and discovery.",
     summary:
       "Full product with a Go API, Next.js app, PostgreSQL, WebSockets, and subscription tiers (OpinioTop / OpinioPro).",
+    statement: "Catalog, identity, and realtime conversation in one social system.",
+    flow: ["Reader", "Feed", "Go API", "PostgreSQL", "WebSocket"],
     description: [
       "Opinioteca is a social network built around books. Users rate titles, keep a shelf and reading diary, message each other, explore recommendations, and move across free and paid plans.",
       "The backend is Go with PostgreSQL, session auth, file uploads, and real-time messaging over WebSocket. The frontend is Next.js (App Router) with Auth.js, Tailwind, and a full product UI (home, explore, books, profiles, admin).",
@@ -94,7 +98,7 @@ export const projects = [
       { label: "GitHub", href: "https://github.com/efrnds/opinioteca" },
       { label: "Website", href: "https://opinioteca.prismapp.com.br" },
     ],
-    cover: "/images/opinioteca/login.png",
+    cover: "/images/opinioteca/homepage.png",
     gallery: [
       { src: "/images/opinioteca/login.png", alt: "Starting page" },
       { src: "/images/opinioteca/homepage.png", alt: "Homepage" },
@@ -116,9 +120,11 @@ export const projects = [
     role: "Full Stack Engineer",
     company: "Personal project",
     tagline:
-      "Ops tool I built for my wife's artisan candle hobby: stock, recipes, batches, sales, and cash.",
+      "Storefront and operations for my wife's artisan candle hobby: recipes, batches, stock, sales, and cash.",
     summary:
-      "Home system for candle making at home: inventory, recipes, production lots, sales, clients, expenses, and simple PDFs.",
+      "A storefront and home operations system for inventory, recipes, production lots, sales, clients, and expenses.",
+    statement: "A small home production routine, translated into one connected system.",
+    flow: ["Recipe", "Batch", "Inventory", "Storefront", "Cash view"],
     description: [
       "Calmera OS came out of a real need. My wife makes artisan candles as a hobby and needed a single place to control stock, recipes, production lots, sales, and money, instead of scattered notes and spreadsheets.",
       "I built the app so she can log materials with unit cost, keep production recipes, plan batches, register sales and expenses, track clients, and pull basic performance numbers. PDFs cover simple quotes and care cards.",
@@ -141,7 +147,7 @@ export const projects = [
       "PDF",
     ],
     links: [
-      {label: "Website", href: "https://calmera.prismapp.com.br/"},
+      { label: "Website", href: "https://calmera.prismapp.com.br/" },
     ],
     cover: "/images/calmera/hero.png",
     gallery: [
@@ -162,6 +168,8 @@ export const projects = [
     tagline: "Portfolio site for a designer, built for speed and SEO.",
     summary:
       "Next.js client site with responsive layouts, basic SEO, and a Vercel deploy so the client can own it.",
+    statement: "A visual archive that stays fast even when the images do the talking.",
+    flow: ["Content", "Image pipeline", "Next.js", "SEO", "Vercel"],
     description: [
       "Through Align Websites I shipped a portfolio for a designer, Victor Fernandes (live at vwrks.cc).",
       "The brief needed a clean layout, lots of images, and a simple deploy on Vercel.",
@@ -196,6 +204,8 @@ export const projects = [
       "Internal apps for gifting, IT helpdesk, and equipment workflows.",
     summary:
       "I build and run the tools staff use for orders, tickets, and equipment instead of email chains and sheets.",
+    statement: "Internal workflows moved out of inboxes and into software people use daily.",
+    flow: ["Request", "Ticket", "Equipment", "Support", "Report"],
     description: [
       "At Texsa I write and support internal software people use every day.",
       "That covers a corporate gifting platform (inventory and client orders) and an IT helpdesk for tickets, users, equipment, and reports.",
@@ -227,59 +237,4 @@ export const projects = [
 
 export function getProject(slug) {
   return projects.find((p) => p.slug === slug);
-}
-
-/**
- * Skills auto-built from project stacks so the site stays in sync
- * without hand-editing a second list every time.
- */
-export function getSkillsFromProjects() {
-  const buckets = {
-    Frontend: new Set(),
-    Backend: new Set(),
-    Database: new Set(),
-    "DevOps & Infra": new Set(),
-  };
-
-  const classify = (tech) => {
-    const t = tech.toLowerCase();
-    if (
-      /react|next|typescript|tailwind|shadcn|radix|auth\.js|pdf/.test(t) &&
-      !/api/.test(t)
-    ) {
-      return "Frontend";
-    }
-    if (/postgres|mysql|sqlite/.test(t)) return "Database";
-    if (/docker|nginx|vercel|linux|ci\/cd|proxmox|windows/.test(t)) {
-      return "DevOps & Infra";
-    }
-    if (/node|express|go|prisma|websocket|restful|api/.test(t)) {
-      return "Backend";
-    }
-    return "Backend";
-  };
-
-  buckets["DevOps & Infra"].add("Linux");
-  buckets["DevOps & Infra"].add("CI/CD");
-  buckets["DevOps & Infra"].add("Proxmox");
-  buckets.Backend.add("RESTful APIs");
-
-  for (const project of projects) {
-    for (const tech of project.stack) {
-      buckets[classify(tech)].add(tech);
-    }
-  }
-
-  // Prisma is ORM, keep it under backend
-  if (buckets.Database.has("Prisma")) {
-    buckets.Database.delete("Prisma");
-    buckets.Backend.add("Prisma");
-  }
-
-  return Object.fromEntries(
-    Object.entries(buckets).map(([k, set]) => [
-      k,
-      [...set].sort((a, b) => a.localeCompare(b)),
-    ])
-  );
 }

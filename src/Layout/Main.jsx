@@ -1,15 +1,15 @@
 import About from "../components/About";
 import Experience from "../components/Experience";
-import Skills from "../components/Skills";
+import Playground from "../components/Playground";
 import WorkSection from "../components/WorkSection";
 
 function Main() {
   return (
-    <main className="w-full px-5 sm:px-8 lg:px-12 pt-[4.5rem] sm:pt-20 pb-8 sm:pb-10">
+    <main id="main-content" className="w-full px-5 sm:px-8 lg:px-12 pt-20 sm:pt-24 pb-8 sm:pb-10">
       <About />
       <Experience />
       <WorkSection />
-      <Skills />
+      <Playground />
     </main>
   );
 }

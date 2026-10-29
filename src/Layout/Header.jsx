@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import Sidebar from "../components/Sidebar";
+import { useLanguage } from "../i18n/LanguageContext";
 
-function MenuToggle({ open, onClick }) {
+function MenuToggle({ open, onClick, labels }) {
   return (
     <button
       type="button"
@@ -13,7 +14,7 @@ function MenuToggle({ open, onClick }) {
       aria-expanded={open}
       aria-controls="site-menu"
     >
-      <span>{open ? "Close" : "Menu"}</span>
+      <span>{open ? labels.close : labels.menu}</span>
       <span className="relative w-5 h-3.5 shrink-0" aria-hidden="true">
         <span
           className={`absolute left-0 h-[2px] bg-current transition-all duration-300 ease-out ${
@@ -42,10 +43,12 @@ function MenuToggle({ open, onClick }) {
 MenuToggle.propTypes = {
   open: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
+  labels: PropTypes.shape({ close: PropTypes.string, menu: PropTypes.string }).isRequired,
 };
 
 function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { language, setLanguage, copy } = useLanguage();
 
   return (
     <>
@@ -59,17 +62,25 @@ function Header() {
           <span>Systems / 26</span>
         </Link>
         <nav className="site-header__nav" aria-label="Primary navigation">
-          <Link to="/#about">About</Link>
-          <Link to="/#experience">Experience</Link>
-          <Link to="/#work">Work</Link>
+          <Link to="/#about">{copy.nav.about}</Link>
+          <Link to="/#experience">{copy.nav.experience}</Link>
+          <Link to="/#work">{copy.nav.work}</Link>
         </nav>
-        <a className="site-header__contact" href="mailto:contato.efrnds@outlook.com">
-          Start a project
-        </a>
+        <div className="site-header__actions">
+          <div className="language-switch" aria-label={copy.nav.language}>
+            {['pt', 'en'].map((item) => (
+              <button key={item} type="button" className={language === item ? "is-active" : ""} onClick={() => setLanguage(item)} aria-pressed={language === item}>
+                {item.toUpperCase()}
+              </button>
+            ))}
+          </div>
+          <a className="site-header__contact" href="mailto:contato.efrnds@outlook.com">{copy.nav.contact}</a>
+        </div>
         <div className="site-header__mobile-menu">
           <MenuToggle
             open={isSidebarOpen}
             onClick={() => setIsSidebarOpen((v) => !v)}
+            labels={copy.nav}
           />
         </div>
       </header>

@@ -5,6 +5,7 @@ import OpiniotecaCase from "../components/project-cases/OpiniotecaCase";
 import TexsaCase from "../components/project-cases/TexsaCase";
 import TratoCase from "../components/project-cases/TratoCase";
 import VwrksCase from "../components/project-cases/VwrksCase";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const layouts = {
   trato: TratoCase,
@@ -16,10 +17,12 @@ const layouts = {
 
 export default function ProjectPage() {
   const { slug } = useParams();
-  const project = getProject(slug);
+  const { localizeProject } = useLanguage();
+  const rawProject = getProject(slug);
 
-  if (!project) return <Navigate to="/" replace />;
+  if (!rawProject) return <Navigate to="/" replace />;
 
+  const project = localizeProject(rawProject);
   const index = projects.findIndex((item) => item.slug === project.slug);
   const Layout = layouts[project.slug];
 
@@ -27,8 +30,8 @@ export default function ProjectPage() {
     <Layout
       key={project.slug}
       project={project}
-      prev={projects[index - 1]}
-      next={projects[index + 1]}
+      prev={projects[index - 1] ? localizeProject(projects[index - 1]) : undefined}
+      next={projects[index + 1] ? localizeProject(projects[index + 1]) : undefined}
     />
   );
 }

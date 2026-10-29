@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 export function BackToWork({ className = "" }) {
+  const { copy } = useLanguage();
   return (
     <Link to="/#work" className={`case-back ${className}`}>
-      <span aria-hidden="true">←</span> Selected work
+      <span aria-hidden="true">←</span> {copy.case.back}
     </Link>
   );
 }
@@ -42,8 +44,9 @@ ProjectLinks.propTypes = {
 };
 
 export function ProjectStack({ stack, className = "" }) {
+  const { copy } = useLanguage();
   return (
-    <ul className={`case-stack ${className}`} aria-label="Technology stack">
+    <ul className={`case-stack ${className}`} aria-label={copy.case.stack}>
       {stack.map((technology) => <li key={technology}>{technology}</li>)}
     </ul>
   );
@@ -55,17 +58,18 @@ ProjectStack.propTypes = {
 };
 
 export function AdjacentProjects({ prev, next, className = "" }) {
+  const { copy } = useLanguage();
   return (
     <nav className={`case-adjacent ${className}`} aria-label="Project navigation">
       {prev ? (
         <Link to={`/projects/${prev.slug}`}>
-          <span>Previous case</span>
+          <span>{copy.case.previous}</span>
           ← {prev.title}
         </Link>
       ) : <span />}
       {next ? (
         <Link to={`/projects/${next.slug}`}>
-          <span>Next case</span>
+          <span>{copy.case.next}</span>
           {next.title} →
         </Link>
       ) : <span />}

@@ -1,7 +1,9 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { useLanguage } from "../i18n/LanguageContext";
 
 function Footer() {
   const reduced = useReducedMotion();
+  const { copy } = useLanguage();
   const toTheTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
@@ -13,16 +15,16 @@ function Footer() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="eyebrow">Open channel</p>
-        <h2>Have a system that needs to work beyond the demo?</h2>
+        <p className="eyebrow">{copy.footer.eyebrow}</p>
+        <h2>{copy.footer.title}</h2>
         <a href="mailto:contato.efrnds@outlook.com" className="action-link action-link--light">
-          Tell me where it gets difficult
+          {copy.footer.link}
         </a>
       </motion.div>
 
       <div className="site-footer__bottom">
         <p>© {new Date().getFullYear()} Eduardo Fernandes</p>
-        <p>Umuarama, Brazil / BRT</p>
+        <p>{copy.footer.location}</p>
         <nav aria-label="Social links">
           <a href="https://github.com/Efrnds" target="_blank" rel="noopener noreferrer">
             GitHub
@@ -32,7 +34,7 @@ function Footer() {
           </a>
         </nav>
         <button type="button" onClick={toTheTop}>
-          Back to top <span aria-hidden="true">↑</span>
+          {copy.footer.top} <span aria-hidden="true">↑</span>
         </button>
       </div>
     </footer>

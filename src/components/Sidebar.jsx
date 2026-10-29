@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineX } from "react-icons/hi";
 import PropTypes from "prop-types";
 import { projects } from "../data/projects";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const contacts = [
   {
@@ -25,13 +26,14 @@ const contacts = [
   },
 ];
 
-const sections = [
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "work", label: "Selected work" },
-];
-
 export default function Sidebar({ isOpen, onClose }) {
+  const { copy, localizeProject } = useLanguage();
+  const sections = [
+    { id: "about", label: copy.nav.about },
+    { id: "experience", label: copy.nav.experience },
+    { id: "work", label: copy.nav.work },
+  ];
+  const localizedProjects = projects.map(localizeProject);
   const navigate = useNavigate();
   const dialogRef = useRef(null);
   const closeRef = useRef(null);
@@ -106,7 +108,7 @@ export default function Sidebar({ isOpen, onClose }) {
       >
         <div className="flex flex-col h-full p-6 sm:p-8 overflow-y-auto">
           <div className="flex items-center justify-between mb-10">
-            <p className="text-sm uppercase tracking-[0.2em]">Menu</p>
+            <p className="text-sm uppercase tracking-[0.2em]">{copy.nav.menu}</p>
             <button
               ref={closeRef}
               type="button"
@@ -120,7 +122,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
           <nav className="flex flex-col gap-1">
             <p className="text-xs uppercase tracking-[0.15em] text-neutral-500 mb-2">
-              Sections
+              {copy.sidebar.sections}
             </p>
             {sections.map((item) => (
               <button
@@ -136,9 +138,9 @@ export default function Sidebar({ isOpen, onClose }) {
 
           <nav className="flex flex-col gap-1 mt-10">
             <p className="text-xs uppercase tracking-[0.15em] text-neutral-500 mb-2">
-              Projects
+              {copy.sidebar.projects}
             </p>
-            {projects.map((project) => (
+            {localizedProjects.map((project) => (
               <Link
                 key={project.slug}
                 to={`/projects/${project.slug}`}
@@ -155,7 +157,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
           <div className="mt-auto pt-12">
             <p className="text-xs uppercase tracking-[0.15em] text-neutral-500 mb-3">
-              Contact
+              {copy.sidebar.contact}
             </p>
             <div className="flex flex-col gap-3">
               {contacts.map((item) => (
@@ -166,7 +168,7 @@ export default function Sidebar({ isOpen, onClose }) {
                   rel={item.external ? "noopener noreferrer" : undefined}
                   className="text-base hover:text-neutral-500 transition-colors"
                 >
-                  {item.label}
+                  {item.label === "Resume" ? copy.sidebar.resume : item.label}
                 </a>
               ))}
             </div>

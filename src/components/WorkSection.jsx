@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import { projects } from "../data/projects";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function WorkSection() {
   const reduced = useReducedMotion();
-  const featured = projects.slice(0, 3);
-  const archive = projects.slice(3);
+  const { copy, localizeProject } = useLanguage();
+  const localizedProjects = projects.map(localizeProject);
+  const featured = localizedProjects.slice(0, 3);
+  const archive = localizedProjects.slice(3);
 
   return (
     <section id="work" className="work-section scroll-mt-28">
@@ -18,13 +21,10 @@ export default function WorkSection() {
         transition={{ duration: 0.45 }}
       >
         <div>
-          <p className="eyebrow">02 / Systems in the wild</p>
-          <h2>Work measured by the routine it supports.</h2>
+          <p className="eyebrow">{copy.work.eyebrow}</p>
+          <h2>{copy.work.title}</h2>
         </div>
-        <p>
-          Three products, three operating contexts. Each case uses a layout
-          shaped by the product and the evidence available.
-        </p>
+        <p>{copy.work.body}</p>
       </motion.div>
 
       <div className="work-section__chapters">
@@ -41,8 +41,8 @@ export default function WorkSection() {
         transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="project-archive__heading">
-          <p className="eyebrow">More shipped work</p>
-          <p>Client delivery and internal operations.</p>
+          <p className="eyebrow">{copy.work.more}</p>
+          <p>{copy.work.moreBody}</p>
         </div>
         <div className="project-archive__list">
           {archive.map((project, index) => (

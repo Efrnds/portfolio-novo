@@ -1,60 +1,36 @@
-import { motion, useReducedMotion } from "framer-motion";
-
-const roles = [
-  {
-    title: "Co-Founder & Full Stack Engineer",
-    company: "Prisma Tech",
-    period: "Jan 2024 - Present",
-  },
-  {
-    title: "IT Operations & Software Developer",
-    company: "Texsa do Brasil",
-    period: "Oct 2021 - Present",
-  },
-  {
-    title: "Frontend Engineer (Freelance)",
-    company: "Align Websites",
-    period: "Apr 2025 - Jun 2025",
-  },
-];
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Experience() {
+  const ref = useRef(null);
   const reduced = useReducedMotion();
+  const { copy } = useLanguage();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  const headingX = useTransform(scrollYProgress, [0, 0.55, 1], [0, 0, -80]);
+  const listY = useTransform(scrollYProgress, [0, 1], [70, -20]);
 
   return (
-    <section id="experience" className="experience-section scroll-mt-28">
-      <motion.div
-        className="experience-section__lead"
-        initial={reduced ? false : { opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.55 }}
-      >
-        <p className="eyebrow">01 / Field notes</p>
-        <h2>I work on the whole distance between request and routine.</h2>
-        <p>
-          Four years across product engineering and IT operations taught me to
-          care about what happens after launch: deployment, adoption,
-          maintenance, and the person using the tool under real pressure.
-        </p>
-      </motion.div>
+    <section ref={ref} id="experience" className="experience-section scroll-mt-20">
+      <div className="experience-section__stage">
+        <motion.div className="experience-section__lead" style={reduced ? undefined : { x: headingX }}>
+          <p className="eyebrow">{copy.experience.eyebrow}</p>
+          <h2>{copy.experience.title}</h2>
+          <p>{copy.experience.body}</p>
+          <strong className="experience-section__bridge">{copy.experience.bridge}</strong>
+        </motion.div>
 
-      <ul className="experience-list">
-        {roles.map((role, i) => (
-          <motion.li
-            key={role.company + role.title}
-            className="experience-list__item"
-            initial={reduced ? false : { opacity: 0, x: -16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.45, delay: i * 0.06 }}
-          >
-            <span className="tabular-nums">{String(i + 1).padStart(2, "0")}</span>
-            <p><strong>{role.title}</strong>{role.company}</p>
-            <p>{role.period}</p>
-          </motion.li>
-        ))}
-      </ul>
+        <motion.ul className="experience-list" style={reduced ? undefined : { y: listY }}>
+          {copy.experience.roles.map((role, index) => (
+            <li key={role[0]} className="experience-list__item">
+              <span className="tabular-nums">{String(index + 1).padStart(2, "0")}</span>
+              <p><strong>{role[0]}</strong>{role[1]}</p>
+              <p>{role[2]}</p>
+            </li>
+          ))}
+        </motion.ul>
+        <motion.div className="experience-section__progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />
+      </div>
     </section>
   );
 }

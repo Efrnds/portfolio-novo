@@ -10,6 +10,7 @@ import JsonLd from "./components/JsonLd";
 
 import ScrollProgress from "./components/ScrollProgress";
 import GrainOverlay from "./components/GrainOverlay";
+import { LanguageProvider } from "./i18n/LanguageContext";
 
 function RouteCurtain() {
   const { pathname } = useLocation();
@@ -31,7 +32,8 @@ function RouteCurtain() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
       <ScrollToTop />
       <DocumentMeta />
       <JsonLd />
@@ -78,7 +80,8 @@ function App() {
         </div>
         <Footer />
       </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }
 

@@ -1,7 +1,9 @@
+import { useRef } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { MaskReveal } from "./project-cases/CaseMotion";
+import { useLanguage } from "../i18n/LanguageContext";
 
 function CaseLink({ project, children }) {
   return (
@@ -17,6 +19,7 @@ CaseLink.propTypes = {
 };
 
 function TratoChapter({ project }) {
+  const { copy } = useLanguage();
   return (
     <div className="trato-case">
       <div className="trato-case__brief">
@@ -26,10 +29,10 @@ function TratoChapter({ project }) {
           <p>{project.summary}</p>
         </div>
         <div className="trato-case__ownership">
-          <p>System ownership</p>
-          <strong>Architecture, product UI, deployment, and maintenance.</strong>
+          <p>{copy.homeCases.ownership}</p>
+          <strong>{copy.homeCases.ownershipValue}</strong>
         </div>
-        <CaseLink project={project}>Read the operating case</CaseLink>
+        <CaseLink project={project}>{copy.homeCases.readTrato}</CaseLink>
       </div>
 
       <MaskReveal className="trato-case__console-reveal">
@@ -39,14 +42,14 @@ function TratoChapter({ project }) {
           aria-label="Read the Trato case study"
         >
           <div className="trato-case__status">
-            <span>Shop operating view</span>
-            <span><i aria-hidden="true" /> Production system</span>
+            <span>{copy.homeCases.shop}</span>
+            <span><i aria-hidden="true" /> {copy.homeCases.production}</span>
           </div>
           <div className="trato-case__screen">
             <img src={project.cover} alt="Trato operations dashboard" loading="lazy" />
           </div>
           <div className="trato-case__console-note">
-            <span>Daily operating surface</span>
+            <span>{copy.homeCases.daily}</span>
             <span>{project.stack.slice(0, 3).join(" / ")}</span>
           </div>
         </Link>
@@ -58,6 +61,7 @@ function TratoChapter({ project }) {
 TratoChapter.propTypes = { project: PropTypes.object.isRequired };
 
 function OpiniotecaChapter({ project }) {
+  const { copy } = useLanguage();
   const mobile = project.gallery.find((image) => image.aspect === "9/16");
   const messages = project.gallery.find((image) => image.alt === "Messages");
 
@@ -70,8 +74,8 @@ function OpiniotecaChapter({ project }) {
           aria-label="Read the Opinioteca case study"
         >
           <div className="opinioteca-case__index">
-            <span>Reader network</span>
-            <span>Feed / catalog / realtime</span>
+            <span>{copy.homeCases.reader}</span>
+            <span>{copy.homeCases.readerModes}</span>
           </div>
           <div className="opinioteca-case__media">
             <div className="opinioteca-case__desktop">
@@ -96,10 +100,10 @@ function OpiniotecaChapter({ project }) {
         <h4>{project.title}</h4>
         <p>{project.summary}</p>
         <div className="opinioteca-case__scope">
-          <span>Product surface</span>
+          <span>{copy.homeCases.surface}</span>
           <p>{project.tagline}</p>
         </div>
-        <CaseLink project={project}>Follow the product flow</CaseLink>
+        <CaseLink project={project}>{copy.homeCases.readOpinioteca}</CaseLink>
       </div>
     </div>
   );
@@ -108,6 +112,7 @@ function OpiniotecaChapter({ project }) {
 OpiniotecaChapter.propTypes = { project: PropTypes.object.isRequired };
 
 function CalmeraChapter({ project }) {
+  const { copy } = useLanguage();
   const catalog = project.gallery.find((image) => image.alt === "Catalogs");
 
   return (
@@ -119,10 +124,10 @@ function CalmeraChapter({ project }) {
           <p>{project.summary}</p>
         </div>
         <div className="calmera-case__note">
-          <p>Built around a real home production routine.</p>
+          <p>{copy.homeCases.calmeraNote}</p>
           <p>{project.stack.slice(0, 4).join(" / ")}</p>
         </div>
-        <CaseLink project={project}>Open the production notes</CaseLink>
+        <CaseLink project={project}>{copy.homeCases.readCalmera}</CaseLink>
       </div>
 
       <MaskReveal className="calmera-case__storefront-reveal" from="bottom">
@@ -133,12 +138,12 @@ function CalmeraChapter({ project }) {
         >
         <figure className="calmera-case__hero">
           <img src={project.cover} alt="Calmera artisan candle storefront" loading="lazy" />
-          <figcaption>Customer-facing storefront</figcaption>
+          <figcaption>{copy.homeCases.storefront}</figcaption>
         </figure>
         {catalog && (
           <figure className="calmera-case__catalog">
             <img src={catalog.src} alt="Calmera product catalog" loading="lazy" />
-            <figcaption>Catalog connected to the operation</figcaption>
+            <figcaption>{copy.homeCases.catalog}</figcaption>
           </figure>
         )}
         </Link>
@@ -156,23 +161,32 @@ const layouts = {
 };
 
 export default function ProjectCard({ project, index }) {
+  const ref = useRef(null);
   const reduced = useReducedMotion();
+  const { copy } = useLanguage();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  const stageScale = useTransform(scrollYProgress, [0, 0.12, 0.88, 1], [0.96, 1, 1, 0.96]);
+  const stageOpacity = useTransform(scrollYProgress, [0, 0.1, 0.92, 1], [0.35, 1, 1, 0.45]);
   const number = String(index + 1).padStart(2, "0");
   const Layout = layouts[project.slug];
 
   return (
     <motion.article
+      ref={ref}
       className={`project-chapter project-chapter--${project.slug}`}
-      initial={reduced ? false : { opacity: 0, y: 26 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={reduced ? false : { opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="project-chapter__heading">
-        <p className="eyebrow">Case {number} / {project.years}</p>
-        <h3>{project.statement}</h3>
-      </div>
-      <Layout project={project} />
+      <motion.div className="project-chapter__stage" style={reduced ? undefined : { scale: stageScale, opacity: stageOpacity }}>
+        <div className="project-chapter__heading">
+          <p className="eyebrow">{copy.work.case} {number} / {project.years}</p>
+          <h3>{project.statement}</h3>
+        </div>
+        <Layout project={project} />
+        <motion.div className="project-chapter__progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />
+      </motion.div>
     </motion.article>
   );
 }

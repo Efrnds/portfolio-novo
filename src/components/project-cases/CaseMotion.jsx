@@ -18,7 +18,7 @@ export function CaseReveal({ children, className = "", delay = 0, direction = "u
       initial={reduced ? false : offset}
       whileInView={{ x: 0, y: 0 }}
       viewport={{ once: true, amount: 0.16 }}
-      transition={{ duration: 0.75, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>
@@ -46,7 +46,7 @@ export function MaskReveal({ children, className = "", delay = 0, from = "right"
       initial={reduced ? false : { clipPath: hidden }}
       whileInView={{ clipPath: "inset(0 0 0 0)" }}
       viewport={{ once: true, amount: 0.08 }}
-      transition={{ duration: 1.05, delay, ease: [0.76, 0, 0.24, 1] }}
+      transition={{ duration: 1.35, delay, ease: [0.76, 0, 0.24, 1] }}
     >
       {children}
     </motion.div>
@@ -68,7 +68,7 @@ export function KineticTitle({ children, className = "" }) {
       <motion.span
         initial={reduced ? false : { y: "108%", rotate: 1.5 }}
         animate={{ y: 0, rotate: 0 }}
-        transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
       >
         {children}
       </motion.span>
@@ -115,9 +115,9 @@ export function CaseScrollScene({ children, className = "" }) {
   const ref = useRef(null);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 68, damping: 24, mass: 0.34 });
-  const y = useTransform(smoothProgress, [0, 0.07, 0.74, 0.9], [56, 0, 0, -1000]);
-  const scale = useTransform(smoothProgress, [0, 0.07, 0.74, 0.9], [0.985, 1, 1, 0.995]);
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 50, damping: 22, mass: 0.42 });
+  const y = useTransform(smoothProgress, [0, 0.2, 0.72, 0.96], [72, 0, 0, -120]);
+  const scale = useTransform(smoothProgress, [0, 0.2, 0.72, 0.96], [0.985, 1, 1, 0.995]);
 
   return (
     <section ref={ref} className={`case-scroll-scene ${className}`}>

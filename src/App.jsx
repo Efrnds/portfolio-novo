@@ -24,7 +24,7 @@ function RouteCurtain() {
       className="route-curtain"
       initial={{ scaleY: 1 }}
       animate={{ scaleY: 0 }}
-      transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+      transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
       aria-hidden="true"
     />
   );

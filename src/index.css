@@ -923,6 +923,12 @@ img {
   overflow: hidden;
 }
 
+.calmera-case .scroll-swap__slide {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: auto;
+}
+
 .calmera-case__catalog {
   border-top: 1px solid var(--ink);
 }

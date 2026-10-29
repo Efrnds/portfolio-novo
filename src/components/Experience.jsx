@@ -7,11 +7,11 @@ export default function Experience() {
   const reduced = useReducedMotion();
   const { copy } = useLanguage();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 62, damping: 23, mass: 0.38 });
-  const headingX = useTransform(smoothProgress, [0, 0.16, 0.62, 0.84], [-60, 0, 0, -260]);
-  const headingOpacity = useTransform(smoothProgress, [0, 0.12, 0.66, 0.84], [0, 1, 1, 0]);
-  const listY = useTransform(smoothProgress, [0, 0.18, 0.66, 0.86], [60, 0, 0, -240]);
-  const listOpacity = useTransform(smoothProgress, [0, 0.14, 0.68, 0.86], [0, 1, 1, 0]);
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 48, damping: 21, mass: 0.44 });
+  const headingX = useTransform(smoothProgress, [0, 0.24, 0.68, 0.94], [-60, 0, 0, -260]);
+  const headingOpacity = useTransform(smoothProgress, [0, 0.2, 0.7, 0.94], [0, 1, 1, 0]);
+  const listY = useTransform(smoothProgress, [0, 0.26, 0.7, 0.96], [60, 0, 0, -240]);
+  const listOpacity = useTransform(smoothProgress, [0, 0.22, 0.72, 0.96], [0, 1, 1, 0]);
 
   return (
     <section ref={ref} id="experience" className="experience-section scroll-mt-20">

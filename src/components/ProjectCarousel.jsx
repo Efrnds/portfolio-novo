@@ -150,7 +150,7 @@ export default function ProjectCarousel({ project, className = "" }) {
                 animate="center"
                 exit="exit"
                 transition={{
-                  duration: reduced ? 0.15 : 0.38,
+                  duration: reduced ? 0.15 : 0.58,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className="absolute inset-0 w-full h-full p-0 border-0 bg-transparent cursor-zoom-in"

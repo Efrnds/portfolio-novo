@@ -20,8 +20,8 @@ CaseLink.propTypes = {
 
 function ScrollSwap({ slides, progress, className = "" }) {
   const reduced = useReducedMotion();
-  const firstY = useTransform(progress, [0, 0.42, 0.58, 1], ["0%", "0%", "-100%", "-100%"]);
-  const secondY = useTransform(progress, [0, 0.42, 0.58, 1], ["100%", "100%", "0%", "0%"]);
+  const firstY = useTransform(progress, [0, 0.25, 0.75, 1], ["0%", "0%", "-100%", "-100%"]);
+  const secondY = useTransform(progress, [0, 0.25, 0.75, 1], ["100%", "100%", "0%", "0%"]);
 
   return (
     <div className={`scroll-swap ${reduced ? "is-reduced" : ""} ${className}`}>
@@ -193,25 +193,22 @@ const layouts = {
 
 export default function ProjectCard({ project, index }) {
   const ref = useRef(null);
-  const reduced = useReducedMotion();
   const { copy } = useLanguage();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 68, damping: 24, mass: 0.34 });
-  const headingY = useTransform(smoothProgress, [0, 0.06, 0.72, 0.88], [42, 0, 0, -1100]);
-  const bodyY = useTransform(smoothProgress, [0, 0.08, 0.72, 0.88], [64, 0, 0, -1100]);
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 52, damping: 22, mass: 0.42 });
   const number = String(index + 1).padStart(2, "0");
   const Layout = layouts[project.slug];
 
   return (
     <article ref={ref} className={`project-chapter project-chapter--${project.slug}`}>
       <div className="project-chapter__stage">
-        <motion.div className="project-chapter__heading" style={reduced ? undefined : { y: headingY }}>
+        <div className="project-chapter__heading">
           <p className="eyebrow">{copy.work.case} {number} / {project.years}</p>
           <h3>{project.statement}</h3>
-        </motion.div>
-        <motion.div className="project-chapter__body" style={reduced ? undefined : { y: bodyY }}>
+        </div>
+        <div className="project-chapter__body">
           <Layout project={project} progress={smoothProgress} />
-        </motion.div>
+        </div>
         <motion.div className="project-chapter__progress" style={{ scaleX: smoothProgress }} aria-hidden="true" />
       </div>
     </article>

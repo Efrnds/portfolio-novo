@@ -69,23 +69,25 @@ function OpiniotecaChapter({ project }) {
           className="opinioteca-case__network"
           aria-label="Read the Opinioteca case study"
         >
-        <div className="opinioteca-case__index">
-          <span>Reader network</span>
-          <span>Feed / catalog / realtime</span>
-        </div>
-        <div className="opinioteca-case__desktop">
-          <img src={project.cover} alt="Opinioteca social reading feed" loading="lazy" />
-        </div>
-        {messages && (
-          <div className="opinioteca-case__messages">
-            <img src={messages.src} alt="Opinioteca messages" loading="lazy" />
+          <div className="opinioteca-case__index">
+            <span>Reader network</span>
+            <span>Feed / catalog / realtime</span>
           </div>
-        )}
-        {mobile && (
-          <div className="opinioteca-case__mobile">
-            <img src={mobile.src} alt="Opinioteca mobile interface" loading="lazy" />
+          <div className="opinioteca-case__media">
+            <div className="opinioteca-case__desktop">
+              <img src={project.cover} alt="Opinioteca social reading feed" loading="lazy" />
+            </div>
+            {messages && (
+              <div className="opinioteca-case__messages">
+                <img src={messages.src} alt="Opinioteca messages" loading="lazy" />
+              </div>
+            )}
+            {mobile && (
+              <div className="opinioteca-case__mobile">
+                <img src={mobile.src} alt="Opinioteca mobile interface" loading="lazy" />
+              </div>
+            )}
           </div>
-        )}
         </Link>
       </MaskReveal>
 

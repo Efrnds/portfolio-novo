@@ -61,7 +61,7 @@ export default function OpiniotecaCase({ project, prev, next }) {
           <p className="opinioteca-detail__reading-intro">
             {labels.roomIntro}
           </p>
-          <div className="opinioteca-detail__reading-controls" aria-label="Choose a path through Opinioteca">
+          <div className="opinioteca-detail__reading-controls" aria-label={copy.a11y.chooseOpinioteca}>
             {views.map((view, index) => (
               <button
                 key={view.src}
@@ -92,9 +92,9 @@ export default function OpiniotecaCase({ project, prev, next }) {
                 initial={reduced ? false : { x: 48, clipPath: "inset(0 0 0 18%)" }}
                 animate={{ x: 0, clipPath: "inset(0 0 0 0)" }}
                 exit={reduced ? undefined : { x: -32, clipPath: "inset(0 18% 0 0)" }}
-                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               >
-                <img src={currentView.src} alt={currentView.alt} loading="lazy" />
+                <img src={currentView.src} alt={currentView.alt} loading="lazy" decoding="async" />
               </motion.figure>
             </AnimatePresence>
           </div>

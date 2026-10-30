@@ -18,7 +18,7 @@ export function CaseReveal({ children, className = "", delay = 0, direction = "u
       initial={reduced ? false : offset}
       whileInView={{ x: 0, y: 0 }}
       viewport={{ once: true, amount: 0.16 }}
-      transition={{ duration: 1, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 1.2, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>
@@ -46,7 +46,7 @@ export function MaskReveal({ children, className = "", delay = 0, from = "right"
       initial={reduced ? false : { clipPath: hidden }}
       whileInView={{ clipPath: "inset(0 0 0 0)" }}
       viewport={{ once: true, amount: 0.08 }}
-      transition={{ duration: 1.35, delay, ease: [0.76, 0, 0.24, 1] }}
+      transition={{ duration: 1.5, delay, ease: [0.76, 0, 0.24, 1] }}
     >
       {children}
     </motion.div>
@@ -68,7 +68,7 @@ export function KineticTitle({ children, className = "" }) {
       <motion.span
         initial={reduced ? false : { y: "108%", rotate: 1.5 }}
         animate={{ y: 0, rotate: 0 }}
-        transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
         {children}
       </motion.span>
@@ -97,6 +97,7 @@ export function ParallaxImage({ alt, className = "", loading, src, strength = 36
       src={src}
       alt={alt}
       loading={loading}
+      decoding="async"
       className={className}
       style={reduced ? undefined : { y, scale: 1.06 }}
     />
@@ -115,9 +116,9 @@ export function CaseScrollScene({ children, className = "" }) {
   const ref = useRef(null);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 50, damping: 22, mass: 0.42 });
-  const y = useTransform(smoothProgress, [0, 0.2, 0.72, 0.96], [72, 0, 0, -120]);
-  const scale = useTransform(smoothProgress, [0, 0.2, 0.72, 0.96], [0.985, 1, 1, 0.995]);
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 54, damping: 26, mass: 0.46 });
+  const y = useTransform(smoothProgress, [0, 0.2, 0.72, 0.9], [64, 0, 0, -112]);
+  const scale = useTransform(smoothProgress, [0, 0.2, 0.72, 0.9], [0.988, 1, 1, 0.996]);
 
   return (
     <section ref={ref} className={`case-scroll-scene ${className}`}>

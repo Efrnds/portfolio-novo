@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 import Sidebar from "../components/Sidebar";
 import { useLanguage } from "../i18n/LanguageContext";
 
-function MenuToggle({ open, onClick, labels }) {
+function MenuToggle({ open, onClick, labels, a11y }) {
   return (
     <button
       type="button"
       onClick={onClick}
       className="group menu-toggle"
-      aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+      aria-label={open ? a11y.closeMenu : a11y.openMenu}
       aria-expanded={open}
       aria-controls="site-menu"
     >
@@ -44,6 +44,7 @@ MenuToggle.propTypes = {
   open: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
   labels: PropTypes.shape({ close: PropTypes.string, menu: PropTypes.string }).isRequired,
+  a11y: PropTypes.shape({ closeMenu: PropTypes.string, openMenu: PropTypes.string }).isRequired,
 };
 
 function Header() {
@@ -56,12 +57,12 @@ function Header() {
         <Link
           to="/"
           className="site-header__mark"
-          aria-label="Eduardo Fernandes home"
+          aria-label={copy.a11y.home}
         >
           <span>EF</span>
           <span>Systems / 26</span>
         </Link>
-        <nav className="site-header__nav" aria-label="Primary navigation">
+        <nav className="site-header__nav" aria-label={copy.a11y.primaryNav}>
           <Link to="/#about">{copy.nav.about}</Link>
           <Link to="/#experience">{copy.nav.experience}</Link>
           <Link to="/#work">{copy.nav.work}</Link>
@@ -81,6 +82,7 @@ function Header() {
             open={isSidebarOpen}
             onClick={() => setIsSidebarOpen((v) => !v)}
             labels={copy.nav}
+            a11y={copy.a11y}
           />
         </div>
       </header>

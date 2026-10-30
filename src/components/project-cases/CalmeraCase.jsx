@@ -43,9 +43,9 @@ export default function CalmeraCase({ project, prev, next }) {
         <div>{project.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
       </CaseReveal>
 
-      <section className="calmera-detail__workbench" aria-label="Calmera product views">
-        {catalog && <MaskReveal from="left"><figure><img src={catalog.src} alt={catalog.alt} loading="lazy" /><figcaption>{labels.catalog}</figcaption></figure></MaskReveal>}
-        {cart && <MaskReveal from="right" delay={0.08}><figure><img src={cart.src} alt={cart.alt} loading="lazy" /><figcaption>{labels.cart}</figcaption></figure></MaskReveal>}
+      <section className="calmera-detail__workbench" aria-label={copy.a11y.calmeraViews}>
+        {catalog && <MaskReveal from="left"><figure><img src={catalog.src} alt={catalog.alt} loading="lazy" decoding="async" /><figcaption>{labels.catalog}</figcaption></figure></MaskReveal>}
+        {cart && <MaskReveal from="right" delay={0.08}><figure><img src={cart.src} alt={cart.alt} loading="lazy" decoding="async" /><figcaption>{labels.cart}</figcaption></figure></MaskReveal>}
       </section>
 
       <CaseReveal className="calmera-detail__notes" direction="right">
@@ -58,9 +58,9 @@ export default function CalmeraCase({ project, prev, next }) {
 
       {(profile || collections) && (
         <CaseScrollScene className="calmera-detail__closing-scene">
-          <section className="calmera-detail__closing-images" aria-label="More Calmera interfaces">
-            {profile && <figure><img src={profile.src} alt={profile.alt} loading="lazy" /></figure>}
-            {collections && <figure><img src={collections.src} alt={collections.alt} loading="lazy" /></figure>}
+          <section className="calmera-detail__closing-images" aria-label={copy.a11y.calmeraInterfaces}>
+            {profile && <figure><img src={profile.src} alt={profile.alt} loading="lazy" decoding="async" /></figure>}
+            {collections && <figure><img src={collections.src} alt={collections.alt} loading="lazy" decoding="async" /></figure>}
           </section>
         </CaseScrollScene>
       )}

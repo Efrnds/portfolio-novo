@@ -10,7 +10,7 @@ import JsonLd from "./components/JsonLd";
 
 import ScrollProgress from "./components/ScrollProgress";
 import GrainOverlay from "./components/GrainOverlay";
-import { LanguageProvider } from "./i18n/LanguageContext";
+import { LanguageProvider, useLanguage } from "./i18n/LanguageContext";
 
 function RouteCurtain() {
   const { pathname } = useLocation();
@@ -24,16 +24,17 @@ function RouteCurtain() {
       className="route-curtain"
       initial={{ scaleY: 1 }}
       animate={{ scaleY: 0 }}
-      transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
+      transition={{ duration: 0.32, ease: [0.76, 0, 0.24, 1] }}
       aria-hidden="true"
     />
   );
 }
 
-function App() {
+function AppShell() {
+  const { copy } = useLanguage();
+
   return (
-    <LanguageProvider>
-      <BrowserRouter>
+    <BrowserRouter>
       <ScrollToTop />
       <DocumentMeta />
       <JsonLd />
@@ -44,7 +45,7 @@ function App() {
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-black focus:text-[#ece9df] focus:px-4 focus:py-2"
       >
-        Skip to content
+        {copy.a11y.skip}
       </a>
       <div className="flex flex-col min-h-screen font-Urbanist" id="index">
         <Header />
@@ -80,7 +81,14 @@ function App() {
         </div>
         <Footer />
       </div>
-      </BrowserRouter>
+    </BrowserRouter>
+  );
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppShell />
     </LanguageProvider>
   );
 }

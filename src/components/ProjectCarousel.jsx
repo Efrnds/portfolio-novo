@@ -7,6 +7,7 @@ import {
 } from "framer-motion";
 import { GrClose } from "react-icons/gr";
 import { getProjectSlides } from "../utils/gallery";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const slideShape = PropTypes.shape({
   src: PropTypes.string.isRequired,
@@ -16,6 +17,8 @@ const slideShape = PropTypes.shape({
 
 export default function ProjectCarousel({ project, className = "" }) {
   const slides = getProjectSlides(project);
+  const { copy } = useLanguage();
+  const labels = copy.a11y.carousel;
   const reduced = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -106,7 +109,7 @@ export default function ProjectCarousel({ project, className = "" }) {
     <section
       className={`w-full ${className}`}
       aria-roledescription="carousel"
-      aria-label={`${project.title} screenshots`}
+      aria-label={`${project.title}, ${labels.screenshots}`}
       tabIndex={count > 1 ? 0 : undefined}
       onKeyDown={(event) => {
         if (lightbox) return;
@@ -150,7 +153,7 @@ export default function ProjectCarousel({ project, className = "" }) {
                 animate="center"
                 exit="exit"
                 transition={{
-                  duration: reduced ? 0.15 : 0.58,
+                  duration: reduced ? 0.15 : 0.72,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className="absolute inset-0 w-full h-full p-0 border-0 bg-transparent cursor-zoom-in"
@@ -161,12 +164,13 @@ export default function ProjectCarousel({ project, className = "" }) {
                   }
                   setLightbox(true);
                 }}
-                aria-label={`Expand slide ${index + 1}: ${current.alt}`}
+                aria-label={`${labels.expand} ${index + 1}: ${current.alt}`}
               >
                 <img
                   src={current.src}
                   alt={current.alt}
                   draggable={false}
+                  decoding="async"
                   className={`w-full h-full ${
                     isPortrait
                       ? "object-contain object-center"
@@ -185,7 +189,7 @@ export default function ProjectCarousel({ project, className = "" }) {
               type="button"
               onClick={prev}
               className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center bg-[#ece9df] text-black hover:bg-white transition-colors"
-              aria-label="Previous screenshot"
+              aria-label={labels.previousScreenshot}
             >
               ←
             </button>
@@ -193,7 +197,7 @@ export default function ProjectCarousel({ project, className = "" }) {
               type="button"
               onClick={next}
               className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center bg-[#ece9df] text-black hover:bg-white transition-colors"
-              aria-label="Next screenshot"
+              aria-label={labels.nextScreenshot}
             >
               →
             </button>
@@ -209,14 +213,14 @@ export default function ProjectCarousel({ project, className = "" }) {
           {count > 1 && (
             <div
               className="flex items-center gap-2"
-              aria-label="Slides"
+              aria-label={labels.slides}
             >
               {slides.map((slide, i) => (
                 <button
                   key={slide.src}
                   type="button"
                   aria-current={i === index ? "true" : undefined}
-                  aria-label={`Go to slide ${i + 1}`}
+                  aria-label={`${labels.goTo} ${i + 1}`}
                   onClick={() => go(i)}
                   className="group w-11 h-11 flex items-center justify-center"
                 >
@@ -232,8 +236,8 @@ export default function ProjectCarousel({ project, className = "" }) {
             </div>
           )}
 
-          <p className="hidden sm:block text-xs uppercase tracking-[0.18em] text-white/55">
-            Drag, arrows, or click to expand
+          <p className="hidden sm:block text-xs uppercase tracking-[0.18em] text-white/80">
+            {labels.instruction}
           </p>
         </div>
       </div>
@@ -256,7 +260,7 @@ export default function ProjectCarousel({ project, className = "" }) {
                     ? "border-black opacity-100"
                     : "border-black/15 opacity-55 hover:opacity-100"
                 }`}
-                aria-label={`Thumbnail ${i + 1}`}
+                aria-label={`${labels.thumbnail} ${i + 1}`}
               >
                 <img
                   src={slide.src}
@@ -267,6 +271,7 @@ export default function ProjectCarousel({ project, className = "" }) {
                       : "object-cover object-top"
                   }`}
                   loading="lazy"
+                  decoding="async"
                 />
               </button>
             );
@@ -301,7 +306,7 @@ export default function ProjectCarousel({ project, className = "" }) {
             type="button"
             onClick={() => setLightbox(false)}
             className="absolute top-4 right-4 text-white bg-white/10 hover:bg-white/20 w-11 h-11 flex items-center justify-center z-10"
-            aria-label="Close lightbox"
+            aria-label={labels.close}
           >
             <GrClose />
           </button>
@@ -315,7 +320,7 @@ export default function ProjectCarousel({ project, className = "" }) {
                   prev();
                 }}
                 className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 text-white text-2xl w-12 h-12 hover:bg-white/10"
-                aria-label="Previous"
+                aria-label={labels.previous}
               >
                 ←
               </button>
@@ -326,7 +331,7 @@ export default function ProjectCarousel({ project, className = "" }) {
                   next();
                 }}
                 className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 text-white text-2xl w-12 h-12 hover:bg-white/10"
-                aria-label="Next"
+                aria-label={labels.next}
               >
                 →
               </button>
@@ -336,6 +341,7 @@ export default function ProjectCarousel({ project, className = "" }) {
           <img
             src={current.src}
             alt={current.alt}
+            decoding="async"
             className={`max-w-full max-h-[88vh] object-contain ${
               isPortrait ? "max-w-[min(100%,28rem)]" : ""
             }`}

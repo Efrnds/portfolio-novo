@@ -33,11 +33,11 @@ export default function VwrksCase({ project, prev, next }) {
       </CaseReveal>
 
       <CaseScrollScene className="vwrks-detail__archive-scene">
-        <section className="vwrks-detail__archive" aria-label="Vwrks page archive">
-          {about && <MaskReveal className="vwrks-detail__about" from="left"><figure><img src={about.src} alt={about.alt} loading="lazy" /><figcaption>{labels.pages[1]} / 02</figcaption></figure></MaskReveal>}
-          {works && <MaskReveal className="vwrks-detail__works" from="right" delay={0.06}><figure><img src={works.src} alt={works.alt} loading="lazy" /><figcaption>{labels.pages[2]} / 03</figcaption></figure></MaskReveal>}
-          {projectView && <MaskReveal className="vwrks-detail__project" from="bottom"><figure><img src={projectView.src} alt={projectView.alt} loading="lazy" /><figcaption>{labels.pages[3]} / 04</figcaption></figure></MaskReveal>}
-          {archive && <MaskReveal className="vwrks-detail__archive-view" from="left" delay={0.08}><figure><img src={archive.src} alt={archive.alt} loading="lazy" /><figcaption>{labels.pages[4]} / 05</figcaption></figure></MaskReveal>}
+        <section className="vwrks-detail__archive" aria-label={copy.a11y.vwrksArchive}>
+          {about && <MaskReveal className="vwrks-detail__about" from="left"><figure><img src={about.src} alt={about.alt} loading="lazy" decoding="async" /><figcaption>{labels.pages[1]} / 02</figcaption></figure></MaskReveal>}
+          {works && <MaskReveal className="vwrks-detail__works" from="right" delay={0.06}><figure><img src={works.src} alt={works.alt} loading="lazy" decoding="async" /><figcaption>{labels.pages[2]} / 03</figcaption></figure></MaskReveal>}
+          {projectView && <MaskReveal className="vwrks-detail__project" from="bottom"><figure><img src={projectView.src} alt={projectView.alt} loading="lazy" decoding="async" /><figcaption>{labels.pages[3]} / 04</figcaption></figure></MaskReveal>}
+          {archive && <MaskReveal className="vwrks-detail__archive-view" from="left" delay={0.08}><figure><img src={archive.src} alt={archive.alt} loading="lazy" decoding="async" /><figcaption>{labels.pages[4]} / 05</figcaption></figure></MaskReveal>}
         </section>
       </CaseScrollScene>
 

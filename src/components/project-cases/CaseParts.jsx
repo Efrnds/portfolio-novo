@@ -14,6 +14,7 @@ export function BackToWork({ className = "" }) {
 BackToWork.propTypes = { className: PropTypes.string };
 
 export function ProjectLinks({ links, className = "" }) {
+  const { copy } = useLanguage();
   if (!links.length) return null;
 
   return (
@@ -24,7 +25,7 @@ export function ProjectLinks({ links, className = "" }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`${link.label}, opens in a new tab`}
+          aria-label={`${link.label}, ${copy.a11y.external}`}
         >
           {link.label}
         </a>
@@ -60,7 +61,7 @@ ProjectStack.propTypes = {
 export function AdjacentProjects({ prev, next, className = "" }) {
   const { copy } = useLanguage();
   return (
-    <nav className={`case-adjacent ${className}`} aria-label="Project navigation">
+    <nav className={`case-adjacent ${className}`} aria-label={copy.a11y.projectNav}>
       {prev ? (
         <Link to={`/projects/${prev.slug}`}>
           <span>{copy.case.previous}</span>

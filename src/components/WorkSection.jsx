@@ -18,7 +18,7 @@ export default function WorkSection() {
         initial={reduced ? false : { y: 18 }}
         whileInView={{ y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.45 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       >
         <div>
           <p className="eyebrow">{copy.work.eyebrow}</p>
@@ -38,7 +38,7 @@ export default function WorkSection() {
         initial={reduced ? false : { clipPath: "inset(0 0 16% 0)" }}
         whileInView={{ clipPath: "inset(0 0 0 0)" }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="project-archive__heading">
           <p className="eyebrow">{copy.work.more}</p>

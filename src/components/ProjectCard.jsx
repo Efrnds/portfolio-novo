@@ -2,13 +2,12 @@ import { useRef } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
-import { MaskReveal } from "./project-cases/CaseMotion";
 import { useLanguage } from "../i18n/LanguageContext";
 
 function CaseLink({ project, children }) {
   return (
     <Link to={`/projects/${project.slug}`} className="action-link">
-      {children} <span aria-hidden="true">↗</span>
+      {children}
     </Link>
   );
 }
@@ -20,8 +19,11 @@ CaseLink.propTypes = {
 
 function ScrollSwap({ slides, progress, className = "" }) {
   const reduced = useReducedMotion();
-  const firstY = useTransform(progress, [0, 0.25, 0.75, 1], ["0%", "0%", "-100%", "-100%"]);
-  const secondY = useTransform(progress, [0, 0.25, 0.75, 1], ["100%", "100%", "0%", "0%"]);
+  const secondClip = useTransform(
+    progress,
+    [0, 0.28, 0.78, 1],
+    ["inset(100% 0 0 0)", "inset(100% 0 0 0)", "inset(0% 0 0 0)", "inset(0% 0 0 0)"]
+  );
 
   return (
     <div className={`scroll-swap ${reduced ? "is-reduced" : ""} ${className}`}>
@@ -29,9 +31,9 @@ function ScrollSwap({ slides, progress, className = "" }) {
         <motion.figure
           key={slide.src}
           className={`scroll-swap__slide ${index === 1 ? "scroll-swap__slide--secondary" : ""}`}
-          style={reduced ? undefined : { y: index === 0 ? firstY : secondY }}
+          style={reduced || index === 0 ? undefined : { clipPath: secondClip }}
         >
-          <img src={slide.src} alt={slide.alt} loading="lazy" />
+          <img src={slide.src} alt={slide.alt} loading="lazy" decoding="async" />
           {slide.caption && <figcaption>{slide.caption}</figcaption>}
         </motion.figure>
       ))}
@@ -67,11 +69,11 @@ function TratoChapter({ project, progress }) {
         <CaseLink project={project}>{copy.homeCases.readTrato}</CaseLink>
       </div>
 
-      <MaskReveal className="trato-case__console-reveal">
+      <div className="trato-case__console-reveal">
         <Link
           to={`/projects/${project.slug}`}
           className="trato-case__console"
-          aria-label="Read the Trato case study"
+          aria-label={`${copy.a11y.readCase} ${project.title}`}
         >
           <div className="trato-case__status">
             <span>{copy.homeCases.shop}</span>
@@ -91,7 +93,7 @@ function TratoChapter({ project, progress }) {
             <span>{project.stack.slice(0, 3).join(" / ")}</span>
           </div>
         </Link>
-      </MaskReveal>
+      </div>
     </div>
   );
 }
@@ -104,11 +106,11 @@ function OpiniotecaChapter({ project, progress }) {
 
   return (
     <div className="opinioteca-case">
-      <MaskReveal className="opinioteca-case__network-reveal" from="left">
+      <div className="opinioteca-case__network-reveal">
         <Link
           to={`/projects/${project.slug}`}
           className="opinioteca-case__network"
-          aria-label="Read the Opinioteca case study"
+          aria-label={`${copy.a11y.readCase} ${project.title}`}
         >
           <div className="opinioteca-case__index">
             <span>{copy.homeCases.reader}</span>
@@ -123,7 +125,7 @@ function OpiniotecaChapter({ project, progress }) {
             ]}
           />
         </Link>
-      </MaskReveal>
+      </div>
 
       <div className="opinioteca-case__brief">
         <p className="project-chapter__context">{project.company} / {project.role}</p>
@@ -160,11 +162,11 @@ function CalmeraChapter({ project, progress }) {
         <CaseLink project={project}>{copy.homeCases.readCalmera}</CaseLink>
       </div>
 
-      <MaskReveal className="calmera-case__storefront-reveal" from="bottom">
+      <div className="calmera-case__storefront-reveal">
         <Link
           to={`/projects/${project.slug}`}
           className="calmera-case__storefront"
-          aria-label="Read the Calmera case study"
+          aria-label={`${copy.a11y.readCase} ${project.title}`}
         >
           <div className="calmera-case__index">
             <span>{copy.homeCases.storefront}</span>
@@ -178,7 +180,7 @@ function CalmeraChapter({ project, progress }) {
             ]}
           />
         </Link>
-      </MaskReveal>
+      </div>
     </div>
   );
 }

@@ -42,7 +42,7 @@ export default function About() {
           </div>
         </motion.div>
 
-        <div className="hero-section__meta" aria-label="Current details">
+        <div className="hero-section__meta" aria-label={copy.a11y.currentDetails}>
           <p><span>{copy.hero.status}</span>{copy.hero.statusValue}</p>
           <p><span>{copy.hero.based}</span>{copy.hero.basedValue}</p>
           <p><span>{copy.hero.across}</span>{copy.hero.acrossValue}</p>

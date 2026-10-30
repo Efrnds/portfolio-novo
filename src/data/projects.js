@@ -43,16 +43,16 @@ export const projects = [
     links: [
       { label: "Website", href: "https://trato.prismapp.com.br" },
     ],
-    cover: "/images/trato/homepage.png",
+    cover: "/images/trato/homepage.webp",
     gallery: [
-      { src: "/images/trato/homepage.png", alt: "Homepage" },
-      { src: "/images/trato/booking.png", alt: "Booking" },
-      { src: "/images/trato/listing.png", alt: "Listing" },
-      { src: "/images/trato/reports.png", alt: "Reports" },
-      { src: "/images/trato/subscriptions.png", alt: "Subscriptions" },
-      { src: "/images/trato/finances.png", alt: "Finances" },
+      { src: "/images/trato/homepage.webp", alt: "Homepage" },
+      { src: "/images/trato/booking.webp", alt: "Booking" },
+      { src: "/images/trato/listing.webp", alt: "Listing" },
+      { src: "/images/trato/reports.webp", alt: "Reports" },
+      { src: "/images/trato/subscriptions.webp", alt: "Subscriptions" },
+      { src: "/images/trato/finances.webp", alt: "Finances" },
       {
-        src: "/images/trato/mobile.png",
+        src: "/images/trato/mobile.webp",
         alt: "Mobile screen",
         aspect: "9/16",
       },
@@ -85,7 +85,7 @@ export const projects = [
     description: [
       "Opinioteca treats reading as a social activity. A person can discover a title, understand what trusted readers thought, record progress, organize a shelf, publish a review, and continue the discussion in a direct message.",
       "I designed it as a real multi-user system: Go and PostgreSQL handle the API, sessions, uploads, catalog data, social relationships, and WebSocket conversations; Next.js provides the feed, discovery, book, profile, messaging, and administration surfaces.",
-      "Free and paid plans shape product access, while moderation tools cover reports, users, categories, books, and plan assignment. The challenge is not displaying covers — it is making catalog data and human conversation feel like one network.",
+      "Free and paid plans shape product access, while moderation tools cover reports, users, categories, books, and plan assignment. The challenge is not displaying covers. It is making catalog data and human conversation feel like one network.",
     ],
     highlights: [
       "Go API with PostgreSQL, uploads, and WebSocket DMs",
@@ -108,15 +108,15 @@ export const projects = [
       { label: "GitHub", href: "https://github.com/efrnds/opinioteca" },
       { label: "Website", href: "https://opinioteca.prismapp.com.br" },
     ],
-    cover: "/images/opinioteca/homepage.png",
+    cover: "/images/opinioteca/homepage.webp",
     gallery: [
-      { src: "/images/opinioteca/login.png", alt: "Starting page" },
-      { src: "/images/opinioteca/homepage.png", alt: "Homepage" },
-      { src: "/images/opinioteca/explore.png", alt: "Explore" },
-      { src: "/images/opinioteca/messages.png", alt: "Messages" },
-      { src: "/images/opinioteca/profile.png", alt: "Profile" },
+      { src: "/images/opinioteca/login.webp", alt: "Starting page" },
+      { src: "/images/opinioteca/homepage.webp", alt: "Homepage" },
+      { src: "/images/opinioteca/explore.webp", alt: "Explore" },
+      { src: "/images/opinioteca/messages.webp", alt: "Messages" },
+      { src: "/images/opinioteca/profile.webp", alt: "Profile" },
       {
-        src: "/images/opinioteca/mobile.png",
+        src: "/images/opinioteca/mobile.webp",
         alt: "Mobile screen",
         aspect: "9/16",
       },
@@ -130,7 +130,7 @@ export const projects = [
       description: [
         "A Opinioteca trata leitura como atividade social. A pessoa descobre um título, entende o que leitores confiáveis acharam, registra o progresso, organiza a estante, publica uma avaliação e continua a conversa por mensagem.",
         "Projetei o produto como um sistema multiusuário real: Go e PostgreSQL cuidam da API, sessões, uploads, catálogo, relações sociais e conversas por WebSocket; o Next.js entrega feed, descoberta, livros, perfis, mensagens e administração.",
-        "Planos gratuitos e pagos definem o acesso, enquanto as ferramentas de moderação cobrem denúncias, usuários, categorias, livros e atribuição de planos. O desafio não é exibir capas — é fazer catálogo e conversa humana parecerem uma única rede.",
+        "Planos gratuitos e pagos definem o acesso, enquanto as ferramentas de moderação cobrem denúncias, usuários, categorias, livros e atribuição de planos. O desafio não é exibir capas. É fazer catálogo e conversa humana parecerem uma única rede.",
       ],
       highlights: ["API em Go com PostgreSQL, uploads e mensagens via WebSocket", "Feed, estantes, avaliações, descoberta e perfis", "Planos gratuito, OpinioTop e OpinioPro", "Administração de catálogo, usuários, denúncias e planos"],
     } },
@@ -149,7 +149,7 @@ export const projects = [
     description: [
       "Calmera OS began with my wife’s candle-making routine. Materials, formulas, batches, sales, and expenses were related in practice but separated across notes and spreadsheets.",
       "The system connects the public storefront to the work behind it. Materials carry unit costs, recipes explain consumption, batches update production, and sales and expenses reveal a simple cash position. Quotes and care cards can leave as PDFs.",
-      "It is intentionally smaller than a generic ERP. Next.js, Prisma, SQLite, and a focused interface keep the product appropriate for one person producing at home — the actual context it needs to serve.",
+      "It is intentionally smaller than a generic ERP. Next.js, Prisma, SQLite, and a focused interface keep the product appropriate for one person producing at home, the actual context it needs to serve.",
     ],
     highlights: [
       "Built for my wife's home candle production",
@@ -170,13 +170,13 @@ export const projects = [
     links: [
       { label: "Website", href: "https://calmera.prismapp.com.br/" },
     ],
-    cover: "/images/calmera/hero.png",
+    cover: "/images/calmera/hero.webp",
     gallery: [
-      { src: "/images/calmera/hero.png", alt: "Hero" },
-      { src: "/images/calmera/catalog.png", alt: "Catalogs" },
-      { src: "/images/calmera/cart.png", alt: "Cart" },
-      { src: "/images/calmera/profile.png", alt: "Profile" },
-      { src: "/images/calmera/collections.png", alt: "Collections" },
+      { src: "/images/calmera/hero.webp", alt: "Hero" },
+      { src: "/images/calmera/catalog.webp", alt: "Catalogs" },
+      { src: "/images/calmera/cart.webp", alt: "Cart" },
+      { src: "/images/calmera/profile.webp", alt: "Profile" },
+      { src: "/images/calmera/collections.webp", alt: "Collections" },
     ],
     featured: true,
     i18n: { pt: {
@@ -187,7 +187,7 @@ export const projects = [
       description: [
         "O Calmera OS começou com a rotina de produção de velas da minha esposa. Materiais, fórmulas, lotes, vendas e despesas eram relacionados na prática, mas estavam separados entre anotações e planilhas.",
         "O sistema conecta a loja pública ao trabalho por trás dela. Materiais carregam custo unitário, receitas explicam consumo, lotes atualizam a produção e vendas e despesas revelam uma posição simples de caixa. Orçamentos e cartões de cuidado saem em PDF.",
-        "Ele é intencionalmente menor do que um ERP genérico. Next.js, Prisma, SQLite e uma interface focada mantêm o produto adequado para uma pessoa produzindo em casa — o contexto real que precisa atender.",
+        "Ele é intencionalmente menor do que um ERP genérico. Next.js, Prisma, SQLite e uma interface focada mantêm o produto adequado para uma pessoa produzindo em casa, que é o contexto real que precisa atender.",
       ],
       highlights: ["Criado para uma rotina real de produção caseira", "Receitas e lotes ligados a estoque e custo unitário", "Loja, clientes, vendas, despesas e caixa simples", "Orçamentos e cartões de cuidado em PDF"],
     } },
@@ -216,13 +216,13 @@ export const projects = [
     links: [
       { label: "Website", href: "https://vwrks.cc" },
     ],
-    cover: "/images/vwrks/home.png",
+    cover: "/images/vwrks/home.webp",
     gallery: [
-      { src: "/images/vwrks/home.png", alt: "Homepage" },
-      { src: "/images/vwrks/about.png", alt: "About" },
-      { src: "/images/vwrks/project.png", alt: "Project" },
-      { src: "/images/vwrks/works.png", alt: "Works" },
-      { src: "/images/vwrks/archive.png", alt: "Archive" },
+      { src: "/images/vwrks/home.webp", alt: "Homepage" },
+      { src: "/images/vwrks/about.webp", alt: "About" },
+      { src: "/images/vwrks/project.webp", alt: "Project" },
+      { src: "/images/vwrks/works.webp", alt: "Works" },
+      { src: "/images/vwrks/archive.webp", alt: "Archive" },
     ],
     featured: true,
     i18n: { pt: {
@@ -252,7 +252,7 @@ export const projects = [
     description: [
       "At Texsa, software development and IT operations meet in the same responsibility: keep people equipped, unblock requests, and remove repeated manual work.",
       "I build and support a corporate gifting platform for inventory and client orders, plus an IT service desk for tickets, users, equipment history, and reporting. These tools move operational knowledge out of inboxes and individual spreadsheets.",
-      "The same context includes Windows deployment automation and network support across departments. Working close to users means problems become product requirements quickly — and the result can be verified in the routine it improves.",
+      "The same context includes Windows deployment automation and network support across departments. Working close to users turns problems into product requirements quickly, and the result can be verified in the routine it improves.",
     ],
     highlights: [
       "Gifting platform for inventory and orders",
@@ -283,7 +283,7 @@ export const projects = [
       description: [
         "Na Texsa, desenvolvimento de software e operações de TI se encontram na mesma responsabilidade: manter as pessoas equipadas, destravar solicitações e remover trabalho manual repetitivo.",
         "Construo e sustento uma plataforma de brindes corporativos para estoque e pedidos de clientes, além de uma central de serviços de TI para chamados, usuários, histórico de equipamentos e relatórios. Essas ferramentas tiram o conhecimento operacional de e-mails e planilhas individuais.",
-        "O mesmo contexto inclui automação da instalação do Windows e suporte de rede entre setores. Trabalhar perto dos usuários transforma problemas em requisitos rapidamente — e o resultado pode ser verificado na rotina que melhora.",
+        "O mesmo contexto inclui automação da instalação do Windows e suporte de rede entre setores. Trabalhar perto dos usuários transforma problemas em requisitos rapidamente, e o resultado pode ser verificado na rotina que melhora.",
       ],
       highlights: ["Plataforma de brindes para estoque e pedidos", "Central de TI para chamados, equipamentos e relatórios", "Instalação do Windows automatizada com autounattend", "Suporte de rede e continuidade entre setores"],
     } },

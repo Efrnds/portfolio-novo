@@ -102,7 +102,7 @@ export default function Sidebar({ isOpen, onClose }) {
         ref={dialogRef}
         id="site-menu"
         className="fixed top-0 right-0 h-full w-full max-w-sm bg-[#ece9df] z-50"
-        aria-label="Site navigation"
+        aria-label={copy.a11y.siteNav}
         aria-modal="true"
         role="dialog"
       >
@@ -114,14 +114,14 @@ export default function Sidebar({ isOpen, onClose }) {
               type="button"
               onClick={onClose}
               className="w-11 h-11 -mr-2 flex items-center justify-center hover:bg-black/5 transition-colors"
-              aria-label="Close menu"
+              aria-label={copy.a11y.closeMenu}
             >
               <HiOutlineX size={22} />
             </button>
           </div>
 
           <nav className="flex flex-col gap-1">
-            <p className="text-xs uppercase tracking-[0.15em] text-neutral-500 mb-2">
+            <p className="text-xs uppercase tracking-[0.15em] text-neutral-600 mb-2">
               {copy.sidebar.sections}
             </p>
             {sections.map((item) => (
@@ -137,7 +137,7 @@ export default function Sidebar({ isOpen, onClose }) {
           </nav>
 
           <nav className="flex flex-col gap-1 mt-10">
-            <p className="text-xs uppercase tracking-[0.15em] text-neutral-500 mb-2">
+            <p className="text-xs uppercase tracking-[0.15em] text-neutral-600 mb-2">
               {copy.sidebar.projects}
             </p>
             {localizedProjects.map((project) => (
@@ -148,7 +148,7 @@ export default function Sidebar({ isOpen, onClose }) {
                 className="py-3 text-base border-b border-black/15 hover:text-neutral-500 transition-colors flex justify-between gap-3"
               >
                 <span>{project.title}</span>
-                <span className="text-xs text-neutral-400 shrink-0 self-center">
+                <span className="text-xs text-neutral-600 shrink-0 self-center">
                   {project.years.split(" - ")[0].trim()}
                 </span>
               </Link>
@@ -156,7 +156,7 @@ export default function Sidebar({ isOpen, onClose }) {
           </nav>
 
           <div className="mt-auto pt-12">
-            <p className="text-xs uppercase tracking-[0.15em] text-neutral-500 mb-3">
+            <p className="text-xs uppercase tracking-[0.15em] text-neutral-600 mb-3">
               {copy.sidebar.contact}
             </p>
             <div className="flex flex-col gap-3">

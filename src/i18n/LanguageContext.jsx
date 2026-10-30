@@ -20,6 +20,7 @@ const copy = {
       socialLinks: "Social links",
       projectNav: "Project navigation",
       readCase: "Read the case study for",
+      projectScreens: "product screens arranged as a scroll sequence",
       external: "opens in a new tab",
       chooseOpinioteca: "Choose a path through Opinioteca",
       calmeraViews: "Calmera product views",
@@ -71,9 +72,9 @@ const copy = {
     sidebar: { sections: "Sections", projects: "Projects", contact: "Contact", resume: "Resume" },
     footer: { eyebrow: "Open channel", title: "Have a routine that deserves better software?", link: "Tell me what has to work", location: "Umuarama, Brazil / BRT", top: "Back to top" },
     details: {
-      trato: { label: "Product case", caption: "The dashboard is a working surface for the shop, not a presentation screen.", problem: "The operating problem", heading: "Appointments, money, and stock were part of the same day, but lived in separate places.", owned: "Built and operated end to end", inside: "Inside the product", gallery: "Scheduling, financial visibility, and inventory inside one operating system." },
-      opinioteca: { kicker: "A social product built around books", caption: "Reviews and reading activity form the main social surface.", room: "Inside the reader network", roomTitle: "A book becomes a conversation.", roomIntro: "Follow one reading habit from discovery to discussion and back to the shelf.", discover: "Find the next read", discoverNote: "Books, profiles, and recommendations meet in one discovery surface.", talk: "Talk with readers", talkNote: "Realtime conversations keep the community close to every book.", carry: "Carry the shelf", carryNote: "The social feed becomes part of a mobile reading routine.", surface: "What the product supports", stage: "Reader network", stageMeta: "Reviews / shelves / diary / messages" },
-      calmera: { label: "Personal product", caption: "A storefront connected to the reality of home production.", why: "Why it exists", heading: "It was built for one person before it became a portfolio project.", system: "What the system keeps connected", catalog: "Catalog", cart: "Cart" },
+      trato: { label: "Product case", caption: "The dashboard is a working surface for the shop, not a presentation screen.", problem: "The operating problem", heading: "Appointments, money, and stock were part of the same day, but lived in separate places.", owned: "Built and operated end to end", inside: "Inside the product", gallery: "Scheduling, financial visibility, and inventory inside one operating system.", views: ["Daily overview", "Booking", "Client listing", "Reports", "Subscriptions", "Financial control", "Mobile booking"] },
+      opinioteca: { kicker: "A social product built around books", caption: "Reviews and reading activity form the main social surface.", room: "Inside the reader network", roomTitle: "A book becomes a conversation.", roomIntro: "Follow one reading habit from discovery to discussion and back to the shelf.", discover: "Find the next read", discoverNote: "Books, profiles, and recommendations meet in one discovery surface.", talk: "Talk with readers", talkNote: "Realtime conversations keep the community close to every book.", carry: "Carry the shelf", carryNote: "The social feed becomes part of a mobile reading routine.", surface: "What the product supports", stage: "Reader network", stageMeta: "Reviews / shelves / diary / messages", views: ["Entry point", "Reading feed", "Book discovery", "Realtime conversations", "Reader profile", "Mobile routine"] },
+      calmera: { label: "Personal product", caption: "A storefront connected to the reality of home production.", why: "Why it exists", heading: "It was built for one person before it became a portfolio project.", system: "What the system keeps connected", catalog: "Catalog", cart: "Cart", views: ["Storefront", "Catalog", "Shopping cart", "Customer account", "Collections"] },
       vwrks: { label: "Client portfolio", brief: "The brief", handoff: "A visual portfolio should feel authored, load quickly, and remain easy for the client to own.", pages: ["Homepage", "About", "Work", "Project", "Archive"] },
       texsa: { label: "Internal systems / ongoing practice", field: "Field report", log: "Work kept moving", heading: "Support, infrastructure, and internal tools are parts of the same responsibility.", stack: "Technologies used across the internal environment" },
     },
@@ -95,6 +96,7 @@ const copy = {
       socialLinks: "Links sociais",
       projectNav: "Navegação entre projetos",
       readCase: "Ler o estudo de caso de",
+      projectScreens: "telas do produto organizadas em uma sequência por scroll",
       external: "abre em uma nova aba",
       chooseOpinioteca: "Escolha um caminho pela Opinioteca",
       calmeraViews: "Telas do produto Calmera",
@@ -146,9 +148,9 @@ const copy = {
     sidebar: { sections: "Seções", projects: "Projetos", contact: "Contato", resume: "Currículo" },
     footer: { eyebrow: "Canal aberto", title: "Tem uma rotina que merece um software melhor?", link: "Conte o que precisa funcionar", location: "Umuarama, Brasil / BRT", top: "Voltar ao topo" },
     details: {
-      trato: { label: "Caso de produto", caption: "O painel é uma superfície de trabalho da barbearia, não uma tela de apresentação.", problem: "O problema operacional", heading: "Agenda, dinheiro e estoque faziam parte do mesmo dia, mas viviam em lugares separados.", owned: "Construído e operado de ponta a ponta", inside: "Por dentro do produto", gallery: "Agendamento, visão financeira e estoque dentro do mesmo sistema operacional." },
-      opinioteca: { kicker: "Um produto social construído ao redor de livros", caption: "Avaliações e atividade de leitura formam a principal superfície social.", room: "Dentro da rede de leitores", roomTitle: "Um livro vira conversa.", roomIntro: "Acompanhe um hábito de leitura da descoberta à conversa e de volta para a estante.", discover: "Encontrar a próxima leitura", discoverNote: "Livros, perfis e recomendações se encontram na mesma superfície de descoberta.", talk: "Conversar com leitores", talkNote: "Conversas em tempo real mantêm a comunidade perto de cada livro.", carry: "Levar a estante", carryNote: "O feed social passa a fazer parte da rotina móvel de leitura.", surface: "O que o produto sustenta", stage: "Rede de leitores", stageMeta: "Avaliações / estantes / diário / mensagens" },
-      calmera: { label: "Produto pessoal", caption: "Uma loja conectada à realidade da produção em casa.", why: "Por que existe", heading: "Foi criado para uma pessoa antes de virar projeto de portfólio.", system: "O que o sistema mantém conectado", catalog: "Catálogo", cart: "Carrinho" },
+      trato: { label: "Caso de produto", caption: "O painel é uma superfície de trabalho da barbearia, não uma tela de apresentação.", problem: "O problema operacional", heading: "Agenda, dinheiro e estoque faziam parte do mesmo dia, mas viviam em lugares separados.", owned: "Construído e operado de ponta a ponta", inside: "Por dentro do produto", gallery: "Agendamento, visão financeira e estoque dentro do mesmo sistema operacional.", views: ["Visão do dia", "Agendamento", "Lista de clientes", "Relatórios", "Assinaturas", "Controle financeiro", "Agendamento mobile"] },
+      opinioteca: { kicker: "Um produto social construído ao redor de livros", caption: "Avaliações e atividade de leitura formam a principal superfície social.", room: "Dentro da rede de leitores", roomTitle: "Um livro vira conversa.", roomIntro: "Acompanhe um hábito de leitura da descoberta à conversa e de volta para a estante.", discover: "Encontrar a próxima leitura", discoverNote: "Livros, perfis e recomendações se encontram na mesma superfície de descoberta.", talk: "Conversar com leitores", talkNote: "Conversas em tempo real mantêm a comunidade perto de cada livro.", carry: "Levar a estante", carryNote: "O feed social passa a fazer parte da rotina móvel de leitura.", surface: "O que o produto sustenta", stage: "Rede de leitores", stageMeta: "Avaliações / estantes / diário / mensagens", views: ["Ponto de entrada", "Feed de leitura", "Descoberta de livros", "Conversas em tempo real", "Perfil do leitor", "Rotina mobile"] },
+      calmera: { label: "Produto pessoal", caption: "Uma loja conectada à realidade da produção em casa.", why: "Por que existe", heading: "Foi criado para uma pessoa antes de virar projeto de portfólio.", system: "O que o sistema mantém conectado", catalog: "Catálogo", cart: "Carrinho", views: ["Loja", "Catálogo", "Carrinho", "Conta do cliente", "Coleções"] },
       vwrks: { label: "Portfólio para cliente", brief: "O briefing", handoff: "Um portfólio visual precisa parecer autoral, carregar rápido e continuar simples para o cliente assumir.", pages: ["Início", "Sobre", "Trabalhos", "Projeto", "Arquivo"] },
       texsa: { label: "Sistemas internos / prática contínua", field: "Relato de campo", log: "O trabalho continuou andando", heading: "Suporte, infraestrutura e ferramentas internas fazem parte da mesma responsabilidade.", stack: "Tecnologias usadas no ambiente interno" },
     },
@@ -158,7 +160,7 @@ const copy = {
 const LanguageContext = createContext(null);
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState(() => localStorage.getItem("portfolio-language") || "pt");
+  const [language, setLanguage] = useState(() => localStorage.getItem("portfolio-language") || "en");
 
   useEffect(() => {
     localStorage.setItem("portfolio-language", language);

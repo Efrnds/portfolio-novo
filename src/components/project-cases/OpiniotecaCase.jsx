@@ -1,28 +1,15 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
-import { CaseReveal, CaseScrollScene, KineticTitle, ParallaxImage } from "./CaseMotion";
+import { CaseMediaSequence, CaseReveal, KineticTitle } from "./CaseMotion";
 import { useLanguage } from "../../i18n/LanguageContext";
-
-function findImage(project, alt) {
-  return project.gallery.find((image) => image.alt === alt);
-}
 
 export default function OpiniotecaCase({ project, prev, next }) {
   const { copy } = useLanguage();
   const labels = copy.details.opinioteca;
-  const explore = findImage(project, "Explore");
-  const messages = findImage(project, "Messages");
-  const mobile = findImage(project, "Mobile screen");
-  const views = [
-    explore && { ...explore, label: labels.discover, note: labels.discoverNote },
-    messages && { ...messages, label: labels.talk, note: labels.talkNote },
-    mobile && { ...mobile, label: labels.carry, note: labels.carryNote },
-  ].filter(Boolean);
-  const [activeView, setActiveView] = useState(0);
-  const reduced = useReducedMotion();
-  const currentView = views[activeView];
+  const slides = project.gallery.map((image, index) => ({
+    ...image,
+    caption: labels.views[index] || image.alt,
+  }));
 
   return (
     <article id="main-content" className="project-detail opinioteca-detail">
@@ -40,68 +27,24 @@ export default function OpiniotecaCase({ project, prev, next }) {
         </div>
       </header>
 
-      <CaseScrollScene className="opinioteca-detail__feed-reveal">
-        <figure className="opinioteca-detail__feed">
-          <ParallaxImage src={project.cover} alt="Opinioteca reading feed" strength={28} />
-          <figcaption>{labels.caption}</figcaption>
-        </figure>
-      </CaseScrollScene>
+      <CaseReveal className="opinioteca-detail__sequence-intro" direction="left">
+        <div>
+          <p className="eyebrow">{labels.room}</p>
+          <h2>{labels.roomTitle}</h2>
+        </div>
+        <p>{labels.roomIntro}</p>
+      </CaseReveal>
+
+      <CaseMediaSequence
+        ariaLabel={`${project.title}: ${copy.a11y.projectScreens}`}
+        className="opinioteca-media-sequence"
+        slides={slides}
+      />
 
       <CaseReveal className="opinioteca-detail__essay" direction="right">
         <p className="opinioteca-detail__lead">{project.description[0]}</p>
         <div>
           {project.description.slice(1).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-        </div>
-      </CaseReveal>
-
-      <CaseReveal className="opinioteca-detail__reading-room">
-        <div className="opinioteca-detail__reading-index">
-          <p className="eyebrow">{labels.room}</p>
-          <h2>{labels.roomTitle}</h2>
-          <p className="opinioteca-detail__reading-intro">
-            {labels.roomIntro}
-          </p>
-          <div className="opinioteca-detail__reading-controls" aria-label={copy.a11y.chooseOpinioteca}>
-            {views.map((view, index) => (
-              <button
-                key={view.src}
-                type="button"
-                className={index === activeView ? "is-active" : ""}
-                aria-pressed={index === activeView}
-                onClick={() => setActiveView(index)}
-              >
-                <span className="opinioteca-detail__reading-number">{String(index + 1).padStart(2, "0")}</span>
-                <span>
-                  <strong>{view.label}</strong>
-                  <small>{view.note}</small>
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className={`opinioteca-detail__reading-stage ${currentView.aspect === "9/16" ? "is-portrait" : ""}`} aria-live="polite">
-          <div className="opinioteca-detail__reading-stage-head">
-            <span>Opinioteca / {labels.stage}</span>
-            <span>{labels.stageMeta}</span>
-          </div>
-          <div className="opinioteca-detail__reading-media">
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.figure
-                key={currentView.src}
-                initial={reduced ? false : { x: 48, clipPath: "inset(0 0 0 18%)" }}
-                animate={{ x: 0, clipPath: "inset(0 0 0 0)" }}
-                exit={reduced ? undefined : { x: -32, clipPath: "inset(0 18% 0 0)" }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <img src={currentView.src} alt={currentView.alt} loading="lazy" decoding="async" />
-              </motion.figure>
-            </AnimatePresence>
-          </div>
-          <div className="opinioteca-detail__reading-stage-foot">
-            <p>{currentView.note}</p>
-            <span>{String(activeView + 1).padStart(2, "0")} / {String(views.length).padStart(2, "0")}</span>
-          </div>
         </div>
       </CaseReveal>
 

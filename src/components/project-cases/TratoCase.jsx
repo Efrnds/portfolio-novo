@@ -1,12 +1,16 @@
 import PropTypes from "prop-types";
-import ProjectCarousel from "../ProjectCarousel";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
-import { CaseReveal, CaseScrollScene, KineticTitle, ParallaxImage } from "./CaseMotion";
+import { CaseMediaSequence, CaseReveal, KineticTitle } from "./CaseMotion";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 export default function TratoCase({ project, prev, next }) {
   const { copy } = useLanguage();
   const labels = copy.details.trato;
+  const slides = project.gallery.map((image, index) => ({
+    ...image,
+    caption: labels.views[index] || image.alt,
+  }));
+
   return (
     <article id="main-content" className="project-detail trato-detail">
       <header className="trato-detail__hero">
@@ -25,12 +29,16 @@ export default function TratoCase({ project, prev, next }) {
         </div>
       </header>
 
-      <CaseScrollScene className="trato-detail__cover-reveal">
-        <figure className="trato-detail__cover">
-          <ParallaxImage src={project.cover} alt="Trato daily operations dashboard" />
-          <figcaption>{labels.caption}</figcaption>
-        </figure>
-      </CaseScrollScene>
+      <CaseReveal className="trato-detail__gallery-title" direction="left">
+        <p className="eyebrow">{labels.inside}</p>
+        <h2>{labels.gallery}</h2>
+      </CaseReveal>
+
+      <CaseMediaSequence
+        ariaLabel={`${project.title}: ${copy.a11y.projectScreens}`}
+        className="trato-media-sequence"
+        slides={slides}
+      />
 
       <CaseReveal className="trato-detail__story" direction="left">
         <div className="trato-detail__statement">
@@ -50,14 +58,6 @@ export default function TratoCase({ project, prev, next }) {
         <ul>
           {project.highlights.map((item) => <li key={item}>{item}</li>)}
         </ul>
-      </CaseReveal>
-
-      <CaseReveal className="trato-detail__gallery">
-        <div className="trato-detail__gallery-title">
-          <p className="eyebrow">{labels.inside}</p>
-          <h2 id="trato-gallery-title">{labels.gallery}</h2>
-        </div>
-        <ProjectCarousel project={project} />
       </CaseReveal>
 
       <AdjacentProjects prev={prev} next={next} className="trato-detail__adjacent" />

@@ -2,17 +2,19 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import Sidebar from "../components/Sidebar";
+import { useLanguage } from "../i18n/LanguageContext";
 
-function MenuToggle({ open, onClick }) {
+function MenuToggle({ open, onClick, labels, a11y }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="group relative flex items-center gap-2.5 sm:gap-3 pl-2.5 pr-2 sm:pl-3 sm:pr-2.5 py-2 border border-black bg-[#f0f0e9] active:bg-black active:text-[#f0f0e9] sm:hover:bg-black sm:hover:text-[#f0f0e9] transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black min-h-11"
-      aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+      className="group menu-toggle"
+      aria-label={open ? a11y.closeMenu : a11y.openMenu}
       aria-expanded={open}
       aria-controls="site-menu"
     >
+      <span>{open ? labels.close : labels.menu}</span>
       <span className="relative w-5 h-3.5 shrink-0" aria-hidden="true">
         <span
           className={`absolute left-0 h-[2px] bg-current transition-all duration-300 ease-out ${
@@ -41,33 +43,49 @@ function MenuToggle({ open, onClick }) {
 MenuToggle.propTypes = {
   open: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
+  labels: PropTypes.shape({ close: PropTypes.string, menu: PropTypes.string }).isRequired,
+  a11y: PropTypes.shape({ closeMenu: PropTypes.string, openMenu: PropTypes.string }).isRequired,
 };
 
 function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { language, setLanguage, copy } = useLanguage();
 
   return (
     <>
-      <header className="fixed top-0 w-full left-0 right-0 bg-[#f0f0e9]/95 backdrop-blur-sm flex items-center justify-between px-5 py-4 sm:px-8 lg:px-12 sm:py-5 z-30">
+      <header className="site-header">
         <Link
           to="/"
-          className="text-xl hover:opacity-60 transition-opacity"
-          aria-label="Eduardo Fernandes home"
+          className="site-header__mark"
+          aria-label={copy.a11y.home}
         >
-          EF
+          <span>EF</span>
+          <span>Systems / 26</span>
         </Link>
-        <p className="hidden text-sm sm:text-base tracking-wide text-neutral-700 sm:block">
-          Full Stack Software Engineer
-        </p>
-        <MenuToggle
-          open={isSidebarOpen}
-          onClick={() => setIsSidebarOpen((v) => !v)}
-        />
+        <nav className="site-header__nav" aria-label={copy.a11y.primaryNav}>
+          <Link to="/#about">{copy.nav.about}</Link>
+          <Link to="/#experience">{copy.nav.experience}</Link>
+          <Link to="/#work">{copy.nav.work}</Link>
+        </nav>
+        <div className="site-header__actions">
+          <div className="language-switch" aria-label={copy.nav.language}>
+            {['pt', 'en'].map((item) => (
+              <button key={item} type="button" className={language === item ? "is-active" : ""} onClick={() => setLanguage(item)} aria-pressed={language === item}>
+                {item.toUpperCase()}
+              </button>
+            ))}
+          </div>
+          <a className="site-header__contact" href="mailto:contato.efrnds@outlook.com">{copy.nav.contact}</a>
+        </div>
+        <div className="site-header__mobile-menu">
+          <MenuToggle
+            open={isSidebarOpen}
+            onClick={() => setIsSidebarOpen((v) => !v)}
+            labels={copy.nav}
+            a11y={copy.a11y}
+          />
+        </div>
       </header>
-      <div
-        className="fixed top-16 sm:top-[4.25rem] left-5 right-5 sm:left-8 lg:left-12 sm:right-8 lg:right-12 h-px bg-black z-30"
-        aria-hidden="true"
-      />
 
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
     </>

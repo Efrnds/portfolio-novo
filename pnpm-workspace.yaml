@@ -1,2 +1,9 @@
 allowBuilds:
   esbuild: true
+
+optimisticRepeatInstall: false
+
+overrides:
+  motion>framer-motion: 13.1.1
+  framer-motion>motion-dom: 13.1.1
+  motion-utils: 13.0.0

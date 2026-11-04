@@ -1,62 +1,48 @@
-import { motion, useReducedMotion } from "framer-motion";
-
-const roles = [
-  {
-    title: "Co-Founder & Full Stack Engineer",
-    company: "Prisma Tech",
-    period: "Jan 2024 - Present",
-  },
-  {
-    title: "IT Operations & Software Developer",
-    company: "Texsa do Brasil",
-    period: "Oct 2021 - Present",
-  },
-  {
-    title: "Frontend Engineer (Freelance)",
-    company: "Align Websites",
-    period: "Apr 2025 - Jun 2025",
-  },
-];
+import { useRef } from "react";
+import { motion, useReducedMotion, useTransform } from "motion/react";
+import { useLanguage } from "../i18n/LanguageContext";
+import { useConstructionScene } from "../hooks/useConstructionScene";
+import BuildPiece from "./construction/BuildPiece";
+import { AssemblyEdges } from "./Assembly";
 
 export default function Experience() {
+  const ref = useRef(null);
+  const surface = useRef(null);
   const reduced = useReducedMotion();
+  const { copy } = useLanguage();
+  const { progress } = useConstructionScene(ref, { surface });
+  const structure = useTransform(progress, [0, 0.4], [0, 1]);
+  const background = useTransform(progress, [0, 0.18], ["inset(0 0 0 100%)", "inset(0 0 0 0%)"]);
+  const textOpacity = useTransform(progress, [0, 0.14, 0.8, 0.94], [0, 1, 1, 0]);
+  const headingX = useTransform(progress, [0, 0.36, 0.8, 0.94], ["-34vw", "0vw", "0vw", "-16vw"]);
 
   return (
-    <section id="experience" className="w-full my-16 sm:my-24 scroll-mt-28">
-      <motion.div
-        initial={reduced ? false : { opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.55 }}
-      >
-        <p className="text-xs uppercase tracking-[0.28em] text-neutral-500 mb-3">
-          01 / Career
-        </p>
-        <h2 className="text-2xl sm:text-4xl tracking-tight mb-8">Experience</h2>
-      </motion.div>
+    <section ref={ref} id="experience" className="experience-section live-construction scroll-mt-20">
+      <div className="experience-section__stage construction-stage">
+        <motion.div className="experience-section__backplane" style={reduced ? undefined : { clipPath: background }} aria-hidden="true" />
+        <motion.div className="experience-section__lead build-piece" style={reduced ? undefined : { opacity: textOpacity, x: headingX }}>
+          <p className="eyebrow">{copy.experience.eyebrow}</p>
+          <h2>{copy.experience.title}</h2>
+          <p>{copy.experience.body}</p>
+          <strong className="experience-section__bridge">{copy.experience.bridge}</strong>
+        </motion.div>
 
-      <ul className="flex flex-col border-y border-black/20">
-        {roles.map((role, i) => (
-          <motion.li
-            key={role.company + role.title}
-            className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 py-5 sm:py-6 border-b border-black/10 last:border-b-0 group hover:bg-black/[0.02] transition-colors px-1"
-            initial={reduced ? false : { opacity: 0, x: -16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.45, delay: i * 0.06 }}
-          >
-            <p className="sm:col-span-5 text-base sm:text-lg">
-              {role.title}
-            </p>
-            <p className="sm:col-span-4 text-sm sm:text-base text-neutral-700 self-center">
-              {role.company}
-            </p>
-            <p className="sm:col-span-3 text-sm text-neutral-500 sm:text-right self-center">
-              {role.period}
-            </p>
-          </motion.li>
-        ))}
-      </ul>
+        <div ref={surface} className="experience-list-surface">
+          <AssemblyEdges progress={structure} />
+          <motion.ol className="experience-list" style={reduced ? undefined : { opacity: textOpacity }}>
+            {copy.experience.roles.map((role, index) => (
+              <li key={role[0]}>
+                <BuildPiece className="experience-list__item" progress={progress} start={0.08 + index * 0.045} end={0.28 + index * 0.06} x={index % 2 ? 42 : -42} y={index * 10}>
+                  <span className="tabular-nums">{String(index + 1).padStart(2, "0")}</span>
+                  <p><strong>{role[0]}</strong>{role[1]}</p>
+                  <p>{role[2]}</p>
+                </BuildPiece>
+              </li>
+            ))}
+          </motion.ol>
+        </div>
+        <motion.div className="experience-section__progress" style={reduced ? { scaleX: 1 } : { scaleX: progress }} aria-hidden="true" />
+      </div>
     </section>
   );
 }

@@ -1,10 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getProject } from "../data/projects";
-
-const HOME_TITLE = "Eduardo Fernandes | Full Stack Engineer";
-const HOME_DESC =
-  "Eduardo Fernandes, full stack engineer. B2B SaaS, internal tools, Next.js, Node.js, Go, TypeScript. Brazil-based, open to remote.";
+import { useLanguage } from "../i18n/LanguageContext";
 
 function setMeta(name, content, attr = "name") {
   if (!content) return;
@@ -19,17 +16,19 @@ function setMeta(name, content, attr = "name") {
 
 export default function DocumentMeta() {
   const { pathname } = useLocation();
+  const { language, localizeProject, copy } = useLanguage();
 
   useEffect(() => {
     const projectMatch = pathname.match(/^\/projects\/([^/]+)/);
-    const project = projectMatch ? getProject(projectMatch[1]) : null;
+    const rawProject = projectMatch ? getProject(projectMatch[1]) : null;
+    const project = rawProject ? localizeProject(rawProject) : null;
 
     const title = project
       ? `${project.title} | Eduardo Fernandes`
-      : HOME_TITLE;
+      : copy.meta.homeTitle;
     const description = project
-      ? project.tagline || project.summary || HOME_DESC
-      : HOME_DESC;
+      ? project.tagline || project.summary || copy.meta.homeDescription
+      : copy.meta.homeDescription;
 
     document.title = title;
     setMeta("description", description);
@@ -37,7 +36,8 @@ export default function DocumentMeta() {
     setMeta("og:description", description, "property");
     setMeta("twitter:title", title);
     setMeta("twitter:description", description);
-  }, [pathname]);
+    setMeta("og:locale", language === "pt" ? "pt_BR" : "en_US", "property");
+  }, [copy, language, localizeProject, pathname]);
 
   return null;
 }

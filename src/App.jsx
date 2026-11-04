@@ -1,28 +1,53 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { MotionConfig, motion, useReducedMotion } from "motion/react";
 import Header from "./Layout/Header";
 import Main from "./Layout/Main";
 import Footer from "./Layout/Footer";
 import ProjectPage from "./pages/ProjectPage";
-import ScrollToTop from "./components/ScrollToTop";
+import ConstructionDirector from "./components/construction/ConstructionDirector";
+import SceneNavigation from "./components/construction/SceneNavigation";
 import DocumentMeta from "./components/DocumentMeta";
 import JsonLd from "./components/JsonLd";
 
 import ScrollProgress from "./components/ScrollProgress";
 import GrainOverlay from "./components/GrainOverlay";
+import { LanguageProvider, useLanguage } from "./i18n/LanguageContext";
 
-function App() {
+function RouteCurtain() {
+  const { pathname, state } = useLocation();
+  const reduced = useReducedMotion();
+
+  if (reduced || state?.fromHome || pathname === "/") return null;
+
+  return (
+    <div key={pathname} className="route-transition" aria-hidden="true">
+      <motion.div
+        className="route-curtain route-curtain--ink"
+        initial={{ scaleY: 1 }}
+        animate={{ scaleY: 0 }}
+        transition={{ duration: 0.48, ease: [0.76, 0, 0.24, 1] }}
+      />
+    </div>
+  );
+}
+
+function AppShell() {
+  const { copy } = useLanguage();
+
   return (
     <BrowserRouter>
-      <ScrollToTop />
+      <SceneNavigation>
+      <ConstructionDirector>
       <DocumentMeta />
       <JsonLd />
       <GrainOverlay />
       <ScrollProgress />
+      <RouteCurtain />
       <a
-        href="#about"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-black focus:text-[#f0f0e9] focus:px-4 focus:py-2"
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-black focus:text-[#ece9df] focus:px-4 focus:py-2"
       >
-        Skip to content
+        {copy.a11y.skip}
       </a>
       <div className="flex flex-col min-h-screen font-Urbanist" id="index">
         <Header />
@@ -56,10 +81,21 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
-        <hr className="mx-5 sm:mx-8 lg:mx-12 border border-black/20" />
         <Footer />
       </div>
+      </ConstructionDirector>
+      </SceneNavigation>
     </BrowserRouter>
+  );
+}
+
+function App() {
+  return (
+    <MotionConfig reducedMotion="user">
+    <LanguageProvider>
+      <AppShell />
+    </LanguageProvider>
+    </MotionConfig>
   );
 }
 

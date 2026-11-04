@@ -1,4 +1,4 @@
-/* Grain as real SVG in the DOM — CSS feTurbulence backgrounds are unreliable */
+/* SVG grain stays consistent across browsers where CSS filter backgrounds do not. */
 export default function GrainOverlay() {
   return (
     <div className="site-grain" aria-hidden="true">

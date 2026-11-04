@@ -23,3 +23,10 @@ package-lock.json
 *.njsproj
 *.sln
 *.sw?
+
+# >>> handoff-padroes (local)
+/handoff/
+/.agents-skills/
+/.claude/skills/regression/
+/.claude/skills/guardian-review/
+# <<< handoff-padroes

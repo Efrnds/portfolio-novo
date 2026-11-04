@@ -1,125 +1,41 @@
-import { useState, useEffect } from "react";
+import { useRef } from "react";
+import { useTransform } from "motion/react";
+import { AssemblyEdges } from "../components/Assembly";
+import BuildPiece from "../components/construction/BuildPiece";
+import { useConstructionScene } from "../hooks/useConstructionScene";
+import { useLanguage } from "../i18n/LanguageContext";
 
 function Footer() {
-  function toTheTop() {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  const [time, setTime] = useState(
-    new Date().toLocaleTimeString("en-US", {
-      timeZone: "America/Sao_Paulo",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    })
-  );
-
-  const [lastUpdated, setLastUpdated] = useState("...");
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTime(
-        new Date().toLocaleTimeString("en-US", {
-          timeZone: "America/Sao_Paulo",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        })
-      );
-    }, 1000);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
-  useEffect(() => {
-    const fetchLastUpdated = async () => {
-      try {
-        const response = await fetch(
-          "https://api.github.com/repos/Efrnds/portfolio-novo/commits?per_page=1"
-        );
-        if (!response.ok) throw new Error("GitHub API error");
-        const data = await response.json();
-        const commitDate = new Date(data[0].commit.author.date);
-        setLastUpdated(
-          commitDate.toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-          })
-        );
-      } catch {
-        setLastUpdated("n/a");
-      }
-    };
-
-    fetchLastUpdated();
-  }, []);
+  const ref = useRef(null);
+  const surface = useRef(null);
+  const { progress } = useConstructionScene(ref, { surface });
+  const assembly = useTransform(progress, [0, 0.4], [0, 1]);
+  const { copy } = useLanguage();
+  const toTheTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="flex flex-col gap-6 px-5 sm:px-8 lg:px-12 py-8 sm:py-10">
-      <div className="flex items-center justify-between text-base sm:text-xl">
-        <p className="text-sm sm:text-base">© {new Date().getFullYear()} EF</p>
-        <a
-          href="mailto:contato.efrnds@outlook.com"
-          className="hidden sm:inline transition-colors hover:text-neutral-500"
-        >
-          contato.efrnds@outlook.com
+    <footer ref={ref} className="site-footer live-construction">
+      <div className="site-footer__stage construction-stage">
+      <AssemblyEdges progress={assembly} />
+      <div ref={surface} className="site-footer__cta">
+      <BuildPiece className="site-footer__assembly" progress={progress} x={-35} y={36} end={0.42}>
+        <p className="eyebrow">{copy.footer.eyebrow}</p>
+        <h2>{copy.footer.title}</h2>
+        <a href="mailto:contato.efrnds@outlook.com" className="action-link action-link--light">
+          {copy.footer.link}
         </a>
-        <button
-          type="button"
-          onClick={toTheTop}
-          className="p-1 hover:opacity-60 transition-opacity"
-          aria-label="Back to top"
-        >
-          <svg
-            className="w-6 h-6 sm:w-8 sm:h-8 fill-black"
-            viewBox="0 0 31 31"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path d="M13.625 30.5V7.67188L3.125 18.1719L0.5 15.5L15.5 0.5L30.5 15.5L27.875 18.1719L17.375 7.67188V30.5H13.625Z" />
-          </svg>
-        </button>
+      </BuildPiece>
       </div>
 
-      <div className="flex justify-between gap-4">
-        <div>
-          <p className="text-xs uppercase tracking-wider text-neutral-500">
-            Local time
-          </p>
-          <p className="text-sm tabular-nums">{time} (BRT)</p>
-        </div>
-        <div className="text-right">
-          <p className="text-xs uppercase tracking-wider text-neutral-500">
-            Last updated
-          </p>
-          <p className="text-sm">{lastUpdated}</p>
-        </div>
+      <div className="site-footer__bottom">
+        <p>© {new Date().getFullYear()} Eduardo Fernandes</p>
+        <p>{copy.footer.location}</p>
+        <nav aria-label={copy.a11y.socialLinks}>
+          <a href="https://github.com/Efrnds" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://linkedin.com/in/edudfrs" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </nav>
+        <button type="button" onClick={toTheTop}>{copy.footer.top} <span aria-hidden="true">↑</span></button>
       </div>
-
-      <div className="flex flex-wrap gap-4 sm:gap-8 text-sm text-neutral-600">
-        <a
-          href="https://github.com/Efrnds"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link-draw"
-        >
-          GitHub
-        </a>
-        <a
-          href="https://linkedin.com/in/edudfrs"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link-draw"
-        >
-          LinkedIn
-        </a>
-        <a
-          href="mailto:contato.efrnds@outlook.com"
-          className="sm:hidden link-draw"
-        >
-          Email
-        </a>
       </div>
     </footer>
   );

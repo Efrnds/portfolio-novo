@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { motion, useReducedMotion } from "framer-motion";
+import { MotionConfig, motion, useReducedMotion } from "motion/react";
 import Header from "./Layout/Header";
 import Main from "./Layout/Main";
 import Footer from "./Layout/Footer";
 import ProjectPage from "./pages/ProjectPage";
-import ScrollToTop from "./components/ScrollToTop";
+import ConstructionDirector from "./components/construction/ConstructionDirector";
+import SceneNavigation from "./components/construction/SceneNavigation";
 import DocumentMeta from "./components/DocumentMeta";
 import JsonLd from "./components/JsonLd";
 
@@ -13,20 +14,20 @@ import GrainOverlay from "./components/GrainOverlay";
 import { LanguageProvider, useLanguage } from "./i18n/LanguageContext";
 
 function RouteCurtain() {
-  const { pathname } = useLocation();
+  const { pathname, state } = useLocation();
   const reduced = useReducedMotion();
 
-  if (reduced) return null;
+  if (reduced || state?.fromHome || pathname === "/") return null;
 
   return (
-    <motion.div
-      key={pathname}
-      className="route-curtain"
-      initial={{ scaleY: 1 }}
-      animate={{ scaleY: 0 }}
-      transition={{ duration: 0.32, ease: [0.76, 0, 0.24, 1] }}
-      aria-hidden="true"
-    />
+    <div key={pathname} className="route-transition" aria-hidden="true">
+      <motion.div
+        className="route-curtain route-curtain--ink"
+        initial={{ scaleY: 1 }}
+        animate={{ scaleY: 0 }}
+        transition={{ duration: 0.48, ease: [0.76, 0, 0.24, 1] }}
+      />
+    </div>
   );
 }
 
@@ -35,7 +36,8 @@ function AppShell() {
 
   return (
     <BrowserRouter>
-      <ScrollToTop />
+      <SceneNavigation>
+      <ConstructionDirector>
       <DocumentMeta />
       <JsonLd />
       <GrainOverlay />
@@ -81,15 +83,19 @@ function AppShell() {
         </div>
         <Footer />
       </div>
+      </ConstructionDirector>
+      </SceneNavigation>
     </BrowserRouter>
   );
 }
 
 function App() {
   return (
+    <MotionConfig reducedMotion="user">
     <LanguageProvider>
       <AppShell />
     </LanguageProvider>
+    </MotionConfig>
   );
 }
 

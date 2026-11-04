@@ -1,217 +1,106 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValueEvent,
+  useReducedMotion,
+  useTransform,
+} from "motion/react";
+import StoryFilm from "./StoryFilm";
+import { AssemblyEdges } from "./Assembly";
+import BuildPiece from "./construction/BuildPiece";
+import { useConstructionScene } from "../hooks/useConstructionScene";
+import { useSceneNavigation } from "../hooks/useSceneNavigation";
+import { storyBeat } from "../utils/construction";
 import { useLanguage } from "../i18n/LanguageContext";
-
-function CaseLink({ project, children }) {
-  return (
-    <Link to={`/projects/${project.slug}`} className="action-link">
-      {children}
-    </Link>
-  );
-}
-
-CaseLink.propTypes = {
-  children: PropTypes.node.isRequired,
-  project: PropTypes.shape({ slug: PropTypes.string.isRequired }).isRequired,
-};
-
-function ScrollSwap({ slides, progress, className = "" }) {
-  const reduced = useReducedMotion();
-  const secondClip = useTransform(
-    progress,
-    [0, 0.28, 0.78, 1],
-    ["inset(100% 0 0 0)", "inset(100% 0 0 0)", "inset(0% 0 0 0)", "inset(0% 0 0 0)"]
-  );
-
-  return (
-    <div className={`scroll-swap ${reduced ? "is-reduced" : ""} ${className}`}>
-      {slides.slice(0, 2).map((slide, index) => (
-        <motion.figure
-          key={slide.src}
-          className={`scroll-swap__slide ${index === 1 ? "scroll-swap__slide--secondary" : ""}`}
-          style={reduced || index === 0 ? undefined : { clipPath: secondClip }}
-        >
-          <img src={slide.src} alt={slide.alt} loading="lazy" decoding="async" />
-          {slide.caption && <figcaption>{slide.caption}</figcaption>}
-        </motion.figure>
-      ))}
-    </div>
-  );
-}
-
-ScrollSwap.propTypes = {
-  className: PropTypes.string,
-  progress: PropTypes.object.isRequired,
-  slides: PropTypes.arrayOf(PropTypes.shape({
-    alt: PropTypes.string.isRequired,
-    caption: PropTypes.string,
-    src: PropTypes.string.isRequired,
-  })).isRequired,
-};
-
-function TratoChapter({ project, progress }) {
-  const { copy } = useLanguage();
-  const reports = project.gallery.find((image) => image.alt === "Reports");
-  return (
-    <div className="trato-case">
-      <div className="trato-case__brief">
-        <div>
-          <p className="project-chapter__context">{project.company} / {project.role}</p>
-          <h4>{project.title}</h4>
-          <p>{project.summary}</p>
-        </div>
-        <div className="trato-case__ownership">
-          <p>{copy.homeCases.ownership}</p>
-          <strong>{copy.homeCases.ownershipValue}</strong>
-        </div>
-        <CaseLink project={project}>{copy.homeCases.readTrato}</CaseLink>
-      </div>
-
-      <div className="trato-case__console-reveal">
-        <Link
-          to={`/projects/${project.slug}`}
-          className="trato-case__console"
-          aria-label={`${copy.a11y.readCase} ${project.title}`}
-        >
-          <div className="trato-case__status">
-            <span>{copy.homeCases.shop}</span>
-            <span><i aria-hidden="true" /> {copy.homeCases.production}</span>
-          </div>
-          <div className="trato-case__screen">
-            <ScrollSwap
-              progress={progress}
-              slides={[
-                { src: project.cover, alt: "Trato operations dashboard", caption: copy.homeCases.daily },
-                { src: reports?.src || project.gallery[1].src, alt: "Trato reports and operating numbers", caption: copy.homeCases.production },
-              ]}
-            />
-          </div>
-          <div className="trato-case__console-note">
-            <span>{copy.homeCases.daily}</span>
-            <span>{project.stack.slice(0, 3).join(" / ")}</span>
-          </div>
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-TratoChapter.propTypes = { project: PropTypes.object.isRequired, progress: PropTypes.object.isRequired };
-
-function OpiniotecaChapter({ project, progress }) {
-  const { copy } = useLanguage();
-  const messages = project.gallery.find((image) => image.alt === "Messages");
-
-  return (
-    <div className="opinioteca-case">
-      <div className="opinioteca-case__network-reveal">
-        <Link
-          to={`/projects/${project.slug}`}
-          className="opinioteca-case__network"
-          aria-label={`${copy.a11y.readCase} ${project.title}`}
-        >
-          <div className="opinioteca-case__index">
-            <span>{copy.homeCases.reader}</span>
-            <span>{copy.homeCases.readerModes}</span>
-          </div>
-          <ScrollSwap
-            className="opinioteca-case__media"
-            progress={progress}
-            slides={[
-              { src: project.cover, alt: "Opinioteca social reading feed", caption: copy.homeCases.reader },
-              { src: messages?.src || project.gallery[2].src, alt: "Opinioteca realtime messages", caption: copy.homeCases.readerModes },
-            ]}
-          />
-        </Link>
-      </div>
-
-      <div className="opinioteca-case__brief">
-        <p className="project-chapter__context">{project.company} / {project.role}</p>
-        <h4>{project.title}</h4>
-        <p>{project.summary}</p>
-        <div className="opinioteca-case__scope">
-          <span>{copy.homeCases.surface}</span>
-          <p>{project.tagline}</p>
-        </div>
-        <CaseLink project={project}>{copy.homeCases.readOpinioteca}</CaseLink>
-      </div>
-    </div>
-  );
-}
-
-OpiniotecaChapter.propTypes = { project: PropTypes.object.isRequired, progress: PropTypes.object.isRequired };
-
-function CalmeraChapter({ project, progress }) {
-  const { copy } = useLanguage();
-  const catalog = project.gallery.find((image) => image.alt === "Catalogs");
-
-  return (
-    <div className="calmera-case">
-      <div className="calmera-case__brief">
-        <div>
-          <p className="project-chapter__context">{project.company} / {project.role}</p>
-          <h4>{project.title}</h4>
-          <p>{project.summary}</p>
-        </div>
-        <div className="calmera-case__note">
-          <p>{copy.homeCases.calmeraNote}</p>
-          <p>{project.stack.slice(0, 4).join(" / ")}</p>
-        </div>
-        <CaseLink project={project}>{copy.homeCases.readCalmera}</CaseLink>
-      </div>
-
-      <div className="calmera-case__storefront-reveal">
-        <Link
-          to={`/projects/${project.slug}`}
-          className="calmera-case__storefront"
-          aria-label={`${copy.a11y.readCase} ${project.title}`}
-        >
-          <div className="calmera-case__index">
-            <span>{copy.homeCases.storefront}</span>
-            <span>01 → 02</span>
-          </div>
-          <ScrollSwap
-            progress={progress}
-            slides={[
-              { src: project.cover, alt: "Calmera artisan candle storefront", caption: copy.homeCases.storefront },
-              { src: catalog?.src || project.gallery[1].src, alt: "Calmera product catalog", caption: copy.homeCases.catalog },
-            ]}
-          />
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-CalmeraChapter.propTypes = { project: PropTypes.object.isRequired, progress: PropTypes.object.isRequired };
-
-const layouts = {
-  trato: TratoChapter,
-  opinioteca: OpiniotecaChapter,
-  "calmera-os": CalmeraChapter,
-};
 
 export default function ProjectCard({ project, index }) {
   const ref = useRef(null);
+  const surface = useRef(null);
+  const [activeBeat, setActiveBeat] = useState(0);
+  const reduced = useReducedMotion();
   const { copy } = useLanguage();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const smoothProgress = useSpring(scrollYProgress, { stiffness: 52, damping: 22, mass: 0.42 });
+  const navigation = useSceneNavigation();
+  const { raw: scrollYProgress, progress } = useConstructionScene(ref, { surface });
+  const assembly = useTransform(progress, [0, 0.42], [0, 1]);
   const number = String(index + 1).padStart(2, "0");
-  const Layout = layouts[project.slug];
+
+  useMotionValueEvent(scrollYProgress, "change", (value) => {
+    const nextBeat = storyBeat(value, project.story.length);
+    setActiveBeat((current) => (current === nextBeat ? current : nextBeat));
+  });
 
   return (
-    <article ref={ref} className={`project-chapter project-chapter--${project.slug}`}>
-      <div className="project-chapter__stage">
-        <div className="project-chapter__heading">
-          <p className="eyebrow">{copy.work.case} {number} / {project.years}</p>
-          <h3>{project.statement}</h3>
+    <article
+      ref={ref}
+      className={`project-chapter live-construction project-chapter--${project.slug}`}
+      style={{ "--story-beats": project.story.length }}
+    >
+      <div className="project-chapter__stage construction-stage">
+        <header className="project-chapter__heading">
+          <BuildPiece progress={progress} x={-4} start={0.03} end={0.22}>
+            <p className="eyebrow">{copy.work.case} {number} / {project.years}</p>
+          </BuildPiece>
+          <BuildPiece progress={progress} x={4} y={3} start={0.04} end={0.25}>
+            <h3>{project.statement}</h3>
+          </BuildPiece>
+        </header>
+
+        <div className="project-story">
+          <AssemblyEdges progress={assembly} />
+          <div ref={surface} className="project-story__media" data-project-preview={project.slug}>
+            <StoryFilm activeBeat={activeBeat} project={project} constructionProgress={progress} />
+          </div>
+
+          <BuildPiece className="project-story__rail" progress={progress} y={5} start={0.08} end={0.28}>
+            <div className="project-story__identity">
+              <p>{project.title}</p>
+              <span>{project.company}</span>
+            </div>
+
+            <ol className="project-story__beats">
+              {project.story.map((beat, beatIndex) => (
+                <li key={beat.title} className={activeBeat === beatIndex ? "is-active" : ""}>
+                  <button
+                    type="button"
+                    onClick={() => setActiveBeat(beatIndex)}
+                    aria-current={activeBeat === beatIndex ? "step" : undefined}
+                  >
+                    <span>{String(beatIndex + 1).padStart(2, "0")}</span>
+                    <span>{beat.label}</span>
+                  </button>
+                  <div className="project-story__mobile-copy">
+                    <h4>{beat.title}</h4>
+                    <p>{beat.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <motion.div
+              key={activeBeat}
+              className="project-story__active-copy"
+              initial={reduced ? false : { clipPath: "inset(0 0 100% 0)", y: 16 }}
+              animate={{ clipPath: "inset(0 0 0 0)", y: 0 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <h4>{project.story[activeBeat].title}</h4>
+              <p>{project.story[activeBeat].body}</p>
+            </motion.div>
+
+            <Link to={`/projects/${project.slug}`} className="action-link project-story__link"
+              onClick={(event) => navigation.openProject(event, project, project.film.frames[activeBeat] || project.film.poster)}>
+              {copy.homeCases.openStory}
+            </Link>
+          </BuildPiece>
         </div>
-        <div className="project-chapter__body">
-          <Layout project={project} progress={smoothProgress} />
-        </div>
-        <motion.div className="project-chapter__progress" style={{ scaleX: smoothProgress }} aria-hidden="true" />
+
+        <motion.div
+          className="project-chapter__progress"
+          style={reduced ? { scaleX: 1 } : { scaleX: progress }}
+          aria-hidden="true"
+        />
       </div>
     </article>
   );
@@ -220,22 +109,18 @@ export default function ProjectCard({ project, index }) {
 ProjectCard.propTypes = {
   index: PropTypes.number.isRequired,
   project: PropTypes.shape({
+    company: PropTypes.string.isRequired,
+    film: PropTypes.object.isRequired,
     slug: PropTypes.string.isRequired,
+    statement: PropTypes.string.isRequired,
+    story: PropTypes.arrayOf(
+      PropTypes.shape({
+        body: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
     title: PropTypes.string.isRequired,
     years: PropTypes.string.isRequired,
-    role: PropTypes.string.isRequired,
-    company: PropTypes.string.isRequired,
-    summary: PropTypes.string.isRequired,
-    statement: PropTypes.string.isRequired,
-    tagline: PropTypes.string.isRequired,
-    stack: PropTypes.arrayOf(PropTypes.string).isRequired,
-    cover: PropTypes.string.isRequired,
-    gallery: PropTypes.arrayOf(
-      PropTypes.shape({
-        src: PropTypes.string.isRequired,
-        alt: PropTypes.string,
-        aspect: PropTypes.string,
-      })
-    ).isRequired,
   }).isRequired,
 };

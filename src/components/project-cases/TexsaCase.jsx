@@ -12,12 +12,14 @@ export default function TexsaCase({ project, prev, next }) {
         <BackToWork />
         <p className="texsa-detail__label">{labels.label}</p>
         <h1><KineticTitle>{project.title}</KineticTitle></h1>
-        <p className="texsa-detail__statement">{project.statement}</p>
-        <div className="texsa-detail__role">
+        <CaseReveal className="texsa-detail__statement" direction="right">
+          <p>{project.statement}</p>
+        </CaseReveal>
+        <CaseReveal className="texsa-detail__role" direction="up">
           <p><span>{copy.case.role}</span>{project.role}</p>
           <p><span>{copy.case.company}</span>{project.company}</p>
           <p><span>{copy.case.period}</span>{project.years}</p>
-        </div>
+        </CaseReveal>
       </header>
 
       <section className="texsa-detail__memo">

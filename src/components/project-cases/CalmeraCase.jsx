@@ -1,15 +1,13 @@
 import PropTypes from "prop-types";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
-import { CaseMediaSequence, CaseReveal, KineticTitle } from "./CaseMotion";
+import { CaseHeroMedia, CaseReveal, KineticTitle } from "./CaseMotion";
+import ProductEnvironment from "./ProductEnvironment";
+import StoryFilm from "../StoryFilm";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 export default function CalmeraCase({ project, prev, next }) {
   const { copy } = useLanguage();
   const labels = copy.details.calmera;
-  const slides = project.gallery.map((image, index) => ({
-    ...image,
-    caption: labels.views[index] || image.alt,
-  }));
 
   return (
     <article id="main-content" className="project-detail calmera-detail">
@@ -26,17 +24,17 @@ export default function CalmeraCase({ project, prev, next }) {
         </div>
       </header>
 
+      <CaseHeroMedia image={project.gallery[0]} title={labels.views[0] || project.title} />
+
+      <ProductEnvironment project={project} />
+
       <CaseReveal className="calmera-detail__origin" direction="left">
         <p className="eyebrow">{labels.why}</p>
         <h2>{labels.heading}</h2>
         <div>{project.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
       </CaseReveal>
 
-      <CaseMediaSequence
-        ariaLabel={`${project.title}: ${copy.a11y.projectScreens}`}
-        className="calmera-media-sequence"
-        slides={slides}
-      />
+      <StoryFilm project={project} className="case-story-film" posterFallback={false} />
 
       <CaseReveal className="calmera-detail__notes" direction="right">
         <div>

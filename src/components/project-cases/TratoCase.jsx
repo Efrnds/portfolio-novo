@@ -1,15 +1,13 @@
 import PropTypes from "prop-types";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
-import { CaseMediaSequence, CaseReveal, KineticTitle } from "./CaseMotion";
+import { CaseHeroMedia, CaseReveal, KineticTitle } from "./CaseMotion";
+import ProductEnvironment from "./ProductEnvironment";
+import StoryFilm from "../StoryFilm";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 export default function TratoCase({ project, prev, next }) {
   const { copy } = useLanguage();
   const labels = copy.details.trato;
-  const slides = project.gallery.map((image, index) => ({
-    ...image,
-    caption: labels.views[index] || image.alt,
-  }));
 
   return (
     <article id="main-content" className="project-detail trato-detail">
@@ -29,16 +27,9 @@ export default function TratoCase({ project, prev, next }) {
         </div>
       </header>
 
-      <CaseReveal className="trato-detail__gallery-title" direction="left">
-        <p className="eyebrow">{labels.inside}</p>
-        <h2>{labels.gallery}</h2>
-      </CaseReveal>
+      <CaseHeroMedia image={project.gallery[0]} title={labels.views[0] || project.title} />
 
-      <CaseMediaSequence
-        ariaLabel={`${project.title}: ${copy.a11y.projectScreens}`}
-        className="trato-media-sequence"
-        slides={slides}
-      />
+      <ProductEnvironment project={project} />
 
       <CaseReveal className="trato-detail__story" direction="left">
         <div className="trato-detail__statement">
@@ -49,6 +40,8 @@ export default function TratoCase({ project, prev, next }) {
           {project.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
       </CaseReveal>
+
+      <StoryFilm project={project} className="case-story-film" posterFallback={false} />
 
       <CaseReveal className="trato-detail__scope" direction="right">
         <div>

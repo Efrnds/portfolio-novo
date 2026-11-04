@@ -1,0 +1,14 @@
+import { useSyncExternalStore } from "react";
+
+const query = "(max-width: 900px)";
+const subscribe = (callback) => {
+  const media = window.matchMedia(query);
+  media.addEventListener("change", callback);
+  return () => media.removeEventListener("change", callback);
+};
+const snapshot = () => window.matchMedia(query).matches;
+const serverSnapshot = () => false;
+
+export function useViewport() {
+  return useSyncExternalStore(subscribe, snapshot, serverSnapshot);
+}

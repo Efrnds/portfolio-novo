@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../i18n/LanguageContext";
+import { useSceneNavigation } from "../../hooks/useSceneNavigation";
 
 export function BackToWork({ className = "" }) {
   const { copy } = useLanguage();
+  const navigation = useSceneNavigation();
   return (
-    <Link to="/#work" className={`case-back ${className}`}>
+    <Link to="/#work" onClick={navigation?.backToWork} className={`case-back ${className}`}>
       <span aria-hidden="true">←</span> {copy.case.back}
     </Link>
   );

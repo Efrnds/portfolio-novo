@@ -1,15 +1,13 @@
 import PropTypes from "prop-types";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
-import { CaseMediaSequence, CaseReveal, KineticTitle } from "./CaseMotion";
+import { CaseHeroMedia, CaseReveal, KineticTitle } from "./CaseMotion";
+import ProductEnvironment from "./ProductEnvironment";
+import StoryFilm from "../StoryFilm";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 export default function OpiniotecaCase({ project, prev, next }) {
   const { copy } = useLanguage();
   const labels = copy.details.opinioteca;
-  const slides = project.gallery.map((image, index) => ({
-    ...image,
-    caption: labels.views[index] || image.alt,
-  }));
 
   return (
     <article id="main-content" className="project-detail opinioteca-detail">
@@ -27,19 +25,9 @@ export default function OpiniotecaCase({ project, prev, next }) {
         </div>
       </header>
 
-      <CaseReveal className="opinioteca-detail__sequence-intro" direction="left">
-        <div>
-          <p className="eyebrow">{labels.room}</p>
-          <h2>{labels.roomTitle}</h2>
-        </div>
-        <p>{labels.roomIntro}</p>
-      </CaseReveal>
+      <CaseHeroMedia image={project.gallery[1]} title={labels.views[1] || project.title} />
 
-      <CaseMediaSequence
-        ariaLabel={`${project.title}: ${copy.a11y.projectScreens}`}
-        className="opinioteca-media-sequence"
-        slides={slides}
-      />
+      <ProductEnvironment project={project} />
 
       <CaseReveal className="opinioteca-detail__essay" direction="right">
         <p className="opinioteca-detail__lead">{project.description[0]}</p>
@@ -47,6 +35,8 @@ export default function OpiniotecaCase({ project, prev, next }) {
           {project.description.slice(1).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
       </CaseReveal>
+
+      <StoryFilm project={project} className="case-story-film" posterFallback={false} />
 
       <CaseReveal className="opinioteca-detail__surface">
         <div>

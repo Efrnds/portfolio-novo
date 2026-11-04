@@ -16,6 +16,34 @@ export const projects = [
     summary:
       "A production B2B platform that brings booking, customer history, cash flow, subscriptions, and inventory into one daily workspace.",
     statement: "The shop’s day, from the first booking to the closing numbers.",
+    film: {
+      id: "trato",
+      poster: "/images/trato/homepage.webp",
+      duration: "00:50",
+      frames: ["/images/trato/booking.webp", "/images/trato/homepage.webp", "/images/trato/reports.webp", "/images/trato/mobile.webp"],
+    },
+    story: [
+      {
+        label: "The fragmented day",
+        title: "The work was connected, but the tools were not.",
+        body: "Appointments lived in one place, financial records in another, and stock decisions depended on memory.",
+      },
+      {
+        label: "The operating flow",
+        title: "One workspace now follows the shop from opening to close.",
+        body: "Booking, client history, subscriptions, cash flow, and inventory share the same daily context.",
+      },
+      {
+        label: "The decision layer",
+        title: "Operational data becomes a surface for decisions.",
+        body: "Reports and financial views turn the movement of the day into information the owner can act on.",
+      },
+      {
+        label: "The responsibility",
+        title: "The product remains close to production after launch.",
+        body: "I own product decisions, architecture, interface, deployment, and the maintenance that keeps the routine working.",
+      },
+    ],
     description: [
       "Trato was created for barbershops that had appointments in one place, financial records in another, and stock decisions living in memory. The product turns those fragments into one operating routine.",
       "I co-founded the product and own its path from domain modeling to production: a Next.js interface, a Node and PostgreSQL backend, multi-tenant rules, recurring services, financial views, inventory, and a Docker deployment behind Nginx and SSL.",
@@ -63,6 +91,12 @@ export const projects = [
       tagline: "Um sistema operacional para agenda, dinheiro e estoque que moldam o dia da barbearia.",
       summary: "Uma plataforma B2B em produção que reúne agenda, histórico de clientes, caixa, assinaturas e estoque no mesmo espaço de trabalho.",
       statement: "O dia da barbearia, do primeiro agendamento ao fechamento do caixa.",
+      story: [
+        { label: "O dia fragmentado", title: "O trabalho era conectado, mas as ferramentas não.", body: "Os agendamentos ficavam em um lugar, o financeiro em outro e as decisões de estoque dependiam da memória." },
+        { label: "O fluxo operacional", title: "Um único espaço acompanha a barbearia da abertura ao fechamento.", body: "Agenda, histórico de clientes, assinaturas, caixa e estoque compartilham o mesmo contexto diário." },
+        { label: "A camada de decisão", title: "Os dados operacionais viram uma superfície para decidir.", body: "Relatórios e visões financeiras transformam o movimento do dia em informação que o proprietário consegue usar." },
+        { label: "A responsabilidade", title: "O produto continua perto da operação depois do lançamento.", body: "Cuido das decisões de produto, arquitetura, interface, publicação e manutenção que mantêm a rotina funcionando." },
+      ],
       description: [
         "O Trato nasceu para barbearias que mantinham os agendamentos em um lugar, o financeiro em outro e as decisões de estoque na memória. O produto transforma esses fragmentos em uma única rotina operacional.",
         "Cofundei o produto e cuido do caminho entre modelagem de domínio e produção: interface em Next.js, backend Node com PostgreSQL, regras multiempresa, serviços recorrentes, visão financeira, estoque e deploy em Docker com Nginx e SSL.",
@@ -82,6 +116,29 @@ export const projects = [
     summary:
       "A multi-user reading product with a Go API, social feed, personal shelves, reviews, realtime messages, moderation, and paid plans.",
     statement: "Books become identity, memory, and conversation.",
+    film: {
+      id: "opinioteca",
+      poster: "/images/opinioteca/homepage.webp",
+      duration: "00:50",
+      frames: ["/images/opinioteca/explore.webp", "/images/opinioteca/messages.webp", "/images/opinioteca/profile.webp"],
+    },
+    story: [
+      {
+        label: "The reading trail",
+        title: "Discovery, memory, and conversation belonged to separate places.",
+        body: "Finding a title was easy. Carrying the reading into a shelf, a review, and a real conversation was the missing connection.",
+      },
+      {
+        label: "The reader network",
+        title: "A book now moves through one continuous social experience.",
+        body: "Feed, discovery, shelves, reviews, profiles, and direct messages form a network around the act of reading.",
+      },
+      {
+        label: "The system behind it",
+        title: "The social surface is backed by a real multi-user product.",
+        body: "Go, PostgreSQL, uploads, WebSockets, moderation, and access plans support the interactions visible on screen.",
+      },
+    ],
     description: [
       "Opinioteca treats reading as a social activity. A person can discover a title, understand what trusted readers thought, record progress, organize a shelf, publish a review, and continue the discussion in a direct message.",
       "I designed it as a real multi-user system: Go and PostgreSQL handle the API, sessions, uploads, catalog data, social relationships, and WebSocket conversations; Next.js provides the feed, discovery, book, profile, messaging, and administration surfaces.",
@@ -127,6 +184,11 @@ export const projects = [
       tagline: "Uma rede social em que descobrir um livro, registrar a leitura e conversar sobre ela fazem parte da mesma experiência.",
       summary: "Produto multiusuário com API em Go, feed social, estantes, avaliações, mensagens em tempo real, moderação e planos pagos.",
       statement: "Livros viram identidade, memória e conversa.",
+      story: [
+        { label: "O percurso da leitura", title: "Descoberta, memória e conversa viviam em lugares separados.", body: "Encontrar um título era simples. Levar a leitura para uma estante, uma avaliação e uma conversa real era a conexão que faltava." },
+        { label: "A rede de leitores", title: "Um livro agora percorre uma experiência social contínua.", body: "Feed, descoberta, estantes, avaliações, perfis e mensagens formam uma rede ao redor do ato de ler." },
+        { label: "O sistema por trás", title: "A superfície social é sustentada por um produto multiusuário real.", body: "Go, PostgreSQL, uploads, WebSockets, moderação e planos de acesso sustentam as interações visíveis na tela." },
+      ],
       description: [
         "A Opinioteca trata leitura como atividade social. A pessoa descobre um título, entende o que leitores confiáveis acharam, registra o progresso, organiza a estante, publica uma avaliação e continua a conversa por mensagem.",
         "Projetei o produto como um sistema multiusuário real: Go e PostgreSQL cuidam da API, sessões, uploads, catálogo, relações sociais e conversas por WebSocket; o Next.js entrega feed, descoberta, livros, perfis, mensagens e administração.",
@@ -146,6 +208,34 @@ export const projects = [
     summary:
       "A connected system for selling candles and understanding what it takes to produce each one at home.",
     statement: "Home production translated into a calm, connected system.",
+    film: {
+      id: "calmera-os",
+      poster: "/images/calmera/hero.webp",
+      duration: "00:50",
+      frames: ["/images/calmera/hero.webp", "/images/calmera/catalog.webp", "/images/calmera/cart.webp", "/images/calmera/collections.webp"],
+    },
+    story: [
+      {
+        label: "The real routine",
+        title: "Materials, formulas, batches, and sales met in practice, but not on paper.",
+        body: "A home production routine was spread across notes and spreadsheets that could not explain the cost of each candle.",
+      },
+      {
+        label: "The connected system",
+        title: "The storefront is now connected to what happens behind it.",
+        body: "Recipes consume materials, batches update production, and orders connect the customer experience to stock and money.",
+      },
+      {
+        label: "From making to selling",
+        title: "Production decisions continue into the customer experience.",
+        body: "Catalog, cart, orders, and care material carry the same product context from the workbench to the buyer.",
+      },
+      {
+        label: "The right scale",
+        title: "The product stays intentionally smaller than a generic ERP.",
+        body: "Every screen is shaped around one person producing at home, keeping the system calm enough to remain useful every day.",
+      },
+    ],
     description: [
       "Calmera OS began with my wife’s candle-making routine. Materials, formulas, batches, sales, and expenses were related in practice but separated across notes and spreadsheets.",
       "The system connects the public storefront to the work behind it. Materials carry unit costs, recipes explain consumption, batches update production, and sales and expenses reveal a simple cash position. Quotes and care cards can leave as PDFs.",
@@ -184,6 +274,12 @@ export const projects = [
       tagline: "Uma loja e um backoffice tranquilo para materiais, receitas, lotes, pedidos e dinheiro da produção caseira de velas.",
       summary: "Um sistema conectado para vender velas e entender o que é necessário para produzir cada uma em casa.",
       statement: "Produção em casa traduzida em um sistema calmo e conectado.",
+      story: [
+        { label: "A rotina real", title: "Materiais, fórmulas, lotes e vendas se encontravam na prática, mas não no papel.", body: "A produção em casa estava espalhada entre anotações e planilhas que não explicavam o custo de cada vela." },
+        { label: "O sistema conectado", title: "A loja agora se conecta ao trabalho que acontece por trás dela.", body: "Receitas consomem materiais, lotes atualizam a produção e pedidos ligam a experiência do cliente ao estoque e ao dinheiro." },
+        { label: "Da produção à venda", title: "As decisões de produção continuam na experiência do cliente.", body: "Catálogo, carrinho, pedidos e materiais de cuidado carregam o mesmo contexto da bancada até quem compra." },
+        { label: "A escala certa", title: "O produto permanece intencionalmente menor do que um ERP genérico.", body: "Cada tela parte de uma pessoa produzindo em casa, mantendo o sistema calmo o suficiente para continuar útil todos os dias." },
+      ],
       description: [
         "O Calmera OS começou com a rotina de produção de velas da minha esposa. Materiais, fórmulas, lotes, vendas e despesas eram relacionados na prática, mas estavam separados entre anotações e planilhas.",
         "O sistema conecta a loja pública ao trabalho por trás dela. Materiais carregam custo unitário, receitas explicam consumo, lotes atualizam a produção e vendas e despesas revelam uma posição simples de caixa. Orçamentos e cartões de cuidado saem em PDF.",

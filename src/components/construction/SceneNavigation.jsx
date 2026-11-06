@@ -11,6 +11,7 @@ export default function SceneNavigation({ children }) {
   const navigate = useNavigate();
   const reduced = useReducedMotion();
   const positions = useRef(new Map());
+  const views = useRef(new Map());
   const previousLocation = useRef(location);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function SceneNavigation({ children }) {
       } else if (location.hash) {
         const node = document.getElementById(location.hash.slice(1));
         if (node) {
-          const reading = node.id === "experience" ? Math.max(0, node.offsetHeight - window.innerHeight) * 0.44 : 0;
+          const reading = Number(node.dataset.sceneReadOffset ?? 0);
           const top = node.getBoundingClientRect().top + window.scrollY - header + reading;
           const samePage = previous.pathname === location.pathname && previous.key !== location.key;
           window.scrollTo({ top, behavior: samePage && !reduced && !returning ? "smooth" : "instant" });
@@ -62,7 +63,14 @@ export default function SceneNavigation({ children }) {
     navigate(-1);
   }, [location.state, navigate]);
 
-  const context = useMemo(() => ({ openProject, backToWork, travelling: false }), [openProject, backToWork]);
+  const readView = useCallback((id) => views.current.get(`${location.key}:${id}`), [location.key]);
+  const saveView = useCallback((id, value) => views.current.set(`${location.key}:${id}`, value), [location.key]);
+  const navigateToSection = useCallback((id) => {
+    positions.current.set(location.key, window.scrollY);
+    navigate(`/#${id}`);
+  }, [location.key, navigate]);
+  const restored = navigationType === "POP" && positions.current.has(location.key);
+  const context = useMemo(() => ({ openProject, backToWork, readView, saveView, navigateToSection, restored, travelling: false }), [openProject, backToWork, readView, saveView, navigateToSection, restored]);
 
   return <SceneNavigationContext.Provider value={context}>{children}</SceneNavigationContext.Provider>;
 }

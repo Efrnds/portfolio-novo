@@ -1,0 +1,16 @@
+.slice-app button { transition: scale 140ms cubic-bezier(.22, 1, .36, 1), background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+.slice-app button:not(:disabled):active { scale: .975; }
+.slice-app [data-demo-step] .animate-in { animation: none !important; }
+.slice-app [data-slot="sheet-content"][data-side="right"][data-state="open"] { animation: bag-enter 380ms cubic-bezier(.22, 1, .36, 1) both; }
+.slice-app [data-slot="sheet-content"][data-side="right"][data-state="closed"] { animation: bag-leave 260ms cubic-bezier(.4, 0, .8, .5) both; }
+.slice-app [data-slot="sheet-overlay"][data-state="open"] { animation: bag-scrim-enter 280ms cubic-bezier(.22, 1, .36, 1) both; }
+.slice-app [data-slot="sheet-overlay"][data-state="closed"] { animation: bag-scrim-leave 260ms cubic-bezier(.4, 0, .8, .5) both; }
+@keyframes bag-enter { from { transform: translateX(100%); } to { transform: translateX(0); } }
+@keyframes bag-leave { from { transform: translateX(0); } to { transform: translateX(100%); } }
+@keyframes bag-scrim-enter { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0); } }
+@keyframes bag-scrim-leave { from { clip-path: inset(0); } to { clip-path: inset(0 0 0 100%); } }
+@media (prefers-reduced-motion: reduce) {
+  .slice-app button { transition: none; }
+  .slice-app button:not(:disabled):active { scale: 1; }
+  .slice-app [data-slot="sheet-content"], .slice-app [data-slot="sheet-overlay"] { animation: none !important; }
+}

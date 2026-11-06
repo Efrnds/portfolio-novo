@@ -1,0 +1,1916 @@
+{
+  "date": "2026-11-06",
+  "baseCommit": "1b49fc5",
+  "environment": "Firefox (Zen) headless on Linux, bundled application components opened as local file fixtures",
+  "limitations": [
+    "Local HTTP server refused by sandbox: listen EPERM 127.0.0.1:5188",
+    "No physical phone, touch or trackpad verification",
+    "Frame samples document these headless runs only; they are not a device FPS benchmark",
+    "Screenshots inspect settled layout; no interaction video was captured"
+  ],
+  "commands": [
+    "node scripts/build-product-slices.mjs",
+    "pnpm lint",
+    "pnpm test",
+    "pnpm build",
+    "node scripts/review-motion.mjs"
+  ],
+  "summary": {
+    "scenarios": 18,
+    "checks": 209,
+    "failures": 0
+  },
+  "before": [
+    {
+      "name": "gallery settles on a whole screen when scrolling stops",
+      "passed": false,
+      "detail": 0.4925410949475545
+    },
+    {
+      "name": "choosing a gallery screen preserves page position",
+      "passed": false,
+      "detail": {
+        "before": 1810.5,
+        "after": 2074.816650390625
+      }
+    },
+    {
+      "name": "back restores the selected screen before its first frame",
+      "passed": false
+    },
+    {
+      "name": "back restores reading position",
+      "passed": false,
+      "detail": {
+        "before": 1810.5,
+        "after": 2074.816650390625
+      }
+    }
+  ],
+  "reports": [
+    {
+      "name": "home-desktop",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "gallery settles on a whole screen when scrolling stops",
+          "passed": true,
+          "detail": -0.0012642225031605564
+        },
+        {
+          "name": "gallery moves toward its destination without overshooting",
+          "passed": true
+        },
+        {
+          "name": "gallery reaches a readable destination within half a second",
+          "passed": true
+        },
+        {
+          "name": "choosing a gallery screen preserves page position",
+          "passed": true,
+          "detail": {
+            "before": 1810.5,
+            "after": 1810.5
+          }
+        },
+        {
+          "name": "reversing a gallery transition settles on the latest choice",
+          "passed": true
+        },
+        {
+          "name": "case opens directly into its product demo",
+          "passed": true
+        },
+        {
+          "name": "back restores the selected screen before its first frame",
+          "passed": true,
+          "detail": {
+            "mounted": true,
+            "selected": "02Booking a time"
+          }
+        },
+        {
+          "name": "back restores reading position",
+          "passed": true,
+          "detail": {
+            "before": 1810.5,
+            "after": 1810.5
+          }
+        },
+        {
+          "name": "language change preserves gallery selection",
+          "passed": true
+        },
+        {
+          "name": "operations holds a fully readable state",
+          "passed": true
+        },
+        {
+          "name": "pinned operations fits its available height",
+          "passed": true
+        },
+        {
+          "name": "operations disappears before its dark environment ends",
+          "passed": true
+        },
+        {
+          "name": "ending fills the available viewport",
+          "passed": true
+        },
+        {
+          "name": "ending reaches its complete composition",
+          "passed": true,
+          "detail": {
+            "top": 72,
+            "bottom": 984,
+            "viewport": 984
+          }
+        },
+        {
+          "name": "ending title is fully revealed",
+          "passed": true,
+          "detail": [
+            {
+              "y": 0,
+              "text": "O que precisa",
+              "visible": "true",
+              "top": 400.1166687011719,
+              "height": 133,
+              "animations": []
+            },
+            {
+              "y": 0,
+              "text": "funcionar?",
+              "visible": "true",
+              "top": 522.11669921875,
+              "height": 133,
+              "animations": []
+            }
+          ]
+        },
+        {
+          "name": "ending controls are visible at the end of the document",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 1810.5,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": [
+        {
+          "name": "gallery selection",
+          "frames": [
+            {
+              "ms": 6,
+              "value": -0.0012642225031605564
+            },
+            {
+              "ms": 22,
+              "value": 0.0387695158175964
+            },
+            {
+              "ms": 40,
+              "value": 0.21645597320440899
+            },
+            {
+              "ms": 73,
+              "value": 0.4012852993083814
+            },
+            {
+              "ms": 89,
+              "value": 0.5170248733308312
+            },
+            {
+              "ms": 106,
+              "value": 0.565971345575962
+            },
+            {
+              "ms": 122,
+              "value": 0.6432364134661919
+            },
+            {
+              "ms": 139,
+              "value": 0.7122840350858782
+            },
+            {
+              "ms": 156,
+              "value": 0.7691740477281033
+            },
+            {
+              "ms": 172,
+              "value": 0.8130847144820145
+            },
+            {
+              "ms": 189,
+              "value": 0.8530341340075853
+            },
+            {
+              "ms": 205,
+              "value": 0.8815634012523704
+            },
+            {
+              "ms": 223,
+              "value": 0.904698696208814
+            },
+            {
+              "ms": 239,
+              "value": 0.9244416402052387
+            },
+            {
+              "ms": 256,
+              "value": 0.9401179915282277
+            },
+            {
+              "ms": 273,
+              "value": 0.9525495256696429
+            },
+            {
+              "ms": 289,
+              "value": 0.961883699245911
+            },
+            {
+              "ms": 306,
+              "value": 0.9697850898906645
+            },
+            {
+              "ms": 322,
+              "value": 0.9757058472759956
+            },
+            {
+              "ms": 339,
+              "value": 0.980952401528919
+            },
+            {
+              "ms": 356,
+              "value": 0.984639704302801
+            },
+            {
+              "ms": 372,
+              "value": 0.9875685044395939
+            },
+            {
+              "ms": 389,
+              "value": 0.9901812103695875
+            },
+            {
+              "ms": 405,
+              "value": 0.992014348431574
+            },
+            {
+              "ms": 422,
+              "value": 0.9934681965940068
+            },
+            {
+              "ms": 440,
+              "value": 0.9947745495590037
+            },
+            {
+              "ms": 456,
+              "value": 0.9956594821626106
+            },
+            {
+              "ms": 473,
+              "value": 0.9964391271926359
+            },
+            {
+              "ms": 489,
+              "value": 0.9970080041704528
+            },
+            {
+              "ms": 506,
+              "value": 0.9974715549936789
+            },
+            {
+              "ms": 522,
+              "value": 0.9978297410813053
+            },
+            {
+              "ms": 539,
+              "value": 0.9981457967070955
+            },
+            {
+              "ms": 556,
+              "value": 0.998377591409213
+            },
+            {
+              "ms": 572,
+              "value": 0.9985461518375671
+            },
+            {
+              "ms": 589,
+              "value": 0.9986936470350032
+            },
+            {
+              "ms": 606,
+              "value": 0.9987989731895939
+            },
+            {
+              "ms": 623,
+              "value": 0.9989043379251936
+            },
+            {
+              "ms": 639,
+              "value": 0.998967572198957
+            },
+            {
+              "ms": 656,
+              "value": 0.9990307678917114
+            },
+            {
+              "ms": 673,
+              "value": 0.9990728983535477
+            },
+            {
+              "ms": 689,
+              "value": 0.999115028815384
+            },
+            {
+              "ms": 706,
+              "value": 0.9991360940463021
+            }
+          ],
+          "environment": "Firefox headless, file fixture; not a device FPS benchmark"
+        }
+      ]
+    },
+    {
+      "name": "home-mobile",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "menu opens",
+          "passed": true
+        },
+        {
+          "name": "Escape closes the menu and restores its trigger",
+          "passed": true
+        },
+        {
+          "name": "menu closes after choosing a destination",
+          "passed": true
+        },
+        {
+          "name": "menu releases scroll lock",
+          "passed": true
+        },
+        {
+          "name": "destination remains visible below the navbar",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 4818.93310546875,
+          "behavior": "smooth"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "home-reduced",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "menu opens",
+          "passed": true
+        },
+        {
+          "name": "Escape closes the menu and restores its trigger",
+          "passed": true
+        },
+        {
+          "name": "menu closes after choosing a destination",
+          "passed": true
+        },
+        {
+          "name": "menu releases scroll lock",
+          "passed": true
+        },
+        {
+          "name": "reduced motion never requests smooth scrolling",
+          "passed": true
+        },
+        {
+          "name": "destination remains visible below the navbar",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 4845.61669921875,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "home-low",
+      "viewport": [
+        1246,
+        744
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "gallery settles on a whole screen when scrolling stops",
+          "passed": true,
+          "detail": -0.0012642225031605564
+        },
+        {
+          "name": "gallery moves toward its destination without overshooting",
+          "passed": true
+        },
+        {
+          "name": "gallery reaches a readable destination within half a second",
+          "passed": true
+        },
+        {
+          "name": "choosing a gallery screen preserves page position",
+          "passed": true,
+          "detail": {
+            "before": 1498.5,
+            "after": 1498.5
+          }
+        },
+        {
+          "name": "reversing a gallery transition settles on the latest choice",
+          "passed": true
+        },
+        {
+          "name": "case opens directly into its product demo",
+          "passed": true
+        },
+        {
+          "name": "back restores the selected screen before its first frame",
+          "passed": true,
+          "detail": {
+            "mounted": true,
+            "selected": "02Booking a time"
+          }
+        },
+        {
+          "name": "back restores reading position",
+          "passed": true,
+          "detail": {
+            "before": 1498.5,
+            "after": 1498.5
+          }
+        },
+        {
+          "name": "language change preserves gallery selection",
+          "passed": true
+        },
+        {
+          "name": "operations holds a fully readable state",
+          "passed": true
+        },
+        {
+          "name": "pinned operations fits its available height",
+          "passed": true
+        },
+        {
+          "name": "operations disappears before its dark environment ends",
+          "passed": true
+        },
+        {
+          "name": "ending fills the available viewport",
+          "passed": true
+        },
+        {
+          "name": "ending reaches its complete composition",
+          "passed": true,
+          "detail": {
+            "top": 72,
+            "bottom": 744,
+            "viewport": 744
+          }
+        },
+        {
+          "name": "ending title is fully revealed",
+          "passed": true,
+          "detail": [
+            {
+              "y": 0,
+              "text": "O que precisa",
+              "visible": "true",
+              "top": 280.1166687011719,
+              "height": 133,
+              "animations": []
+            },
+            {
+              "y": 0,
+              "text": "funcionar?",
+              "visible": "true",
+              "top": 402.1166687011719,
+              "height": 133,
+              "animations": []
+            }
+          ]
+        },
+        {
+          "name": "ending controls are visible at the end of the document",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 1498.5,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": [
+        {
+          "name": "gallery selection",
+          "frames": [
+            {
+              "ms": 9,
+              "value": -0.0012642225031605564
+            },
+            {
+              "ms": 27,
+              "value": 0.043341751195085335
+            },
+            {
+              "ms": 44,
+              "value": 0.19565951688551872
+            },
+            {
+              "ms": 60,
+              "value": 0.2932364057499901
+            },
+            {
+              "ms": 77,
+              "value": 0.4012852993083814
+            },
+            {
+              "ms": 93,
+              "value": 0.47026970594480877
+            },
+            {
+              "ms": 110,
+              "value": 0.565971345575962
+            },
+            {
+              "ms": 127,
+              "value": 0.6520438405264796
+            },
+            {
+              "ms": 143,
+              "value": 0.7122840350858782
+            },
+            {
+              "ms": 160,
+              "value": 0.7691740477281033
+            },
+            {
+              "ms": 176,
+              "value": 0.8130847144820145
+            },
+            {
+              "ms": 193,
+              "value": 0.8530341340075853
+            },
+            {
+              "ms": 210,
+              "value": 0.8831647831932483
+            },
+            {
+              "ms": 226,
+              "value": 0.904698696208814
+            },
+            {
+              "ms": 244,
+              "value": 0.9244416402052387
+            },
+            {
+              "ms": 260,
+              "value": 0.9401179915282277
+            },
+            {
+              "ms": 277,
+              "value": 0.9525495256696429
+            },
+            {
+              "ms": 293,
+              "value": 0.961883699245911
+            },
+            {
+              "ms": 310,
+              "value": 0.9697850898906645
+            },
+            {
+              "ms": 327,
+              "value": 0.9760219029017857
+            },
+            {
+              "ms": 343,
+              "value": 0.9806995415958834
+            },
+            {
+              "ms": 360,
+              "value": 0.984639704302801
+            },
+            {
+              "ms": 376,
+              "value": 0.9875685044395939
+            },
+            {
+              "ms": 393,
+              "value": 0.9901812103695875
+            },
+            {
+              "ms": 410,
+              "value": 0.992014348431574
+            },
+            {
+              "ms": 426,
+              "value": 0.9935524960986883
+            },
+            {
+              "ms": 444,
+              "value": 0.9947745495590037
+            },
+            {
+              "ms": 460,
+              "value": 0.9956173517007744
+            },
+            {
+              "ms": 477,
+              "value": 0.9963969967307996
+            },
+            {
+              "ms": 493,
+              "value": 0.9970080041704528
+            },
+            {
+              "ms": 510,
+              "value": 0.9974715549936789
+            },
+            {
+              "ms": 527,
+              "value": 0.9978508063122234
+            },
+            {
+              "ms": 543,
+              "value": 0.9981457967070955
+            },
+            {
+              "ms": 560,
+              "value": 0.998377591409213
+            },
+            {
+              "ms": 576,
+              "value": 0.9985461518375671
+            },
+            {
+              "ms": 593,
+              "value": 0.9986936470350032
+            },
+            {
+              "ms": 609,
+              "value": 0.998820038420512
+            },
+            {
+              "ms": 627,
+              "value": 0.9989043379251936
+            },
+            {
+              "ms": 644,
+              "value": 0.998967572198957
+            },
+            {
+              "ms": 660,
+              "value": 0.9990307678917114
+            },
+            {
+              "ms": 677,
+              "value": 0.9990728983535477
+            },
+            {
+              "ms": 693,
+              "value": 0.999115028815384
+            },
+            {
+              "ms": 710,
+              "value": 0.9991360940463021
+            }
+          ],
+          "environment": "Firefox headless, file fixture; not a device FPS benchmark"
+        }
+      ]
+    },
+    {
+      "name": "home-wide",
+      "viewport": [
+        1726,
+        1064
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "gallery settles on a whole screen when scrolling stops",
+          "passed": true,
+          "detail": -0.0009090909090909091
+        },
+        {
+          "name": "gallery moves toward its destination without overshooting",
+          "passed": true
+        },
+        {
+          "name": "gallery reaches a readable destination within half a second",
+          "passed": true
+        },
+        {
+          "name": "choosing a gallery screen preserves page position",
+          "passed": true,
+          "detail": {
+            "before": 2014.316650390625,
+            "after": 2014.316650390625
+          }
+        },
+        {
+          "name": "reversing a gallery transition settles on the latest choice",
+          "passed": true
+        },
+        {
+          "name": "case opens directly into its product demo",
+          "passed": true
+        },
+        {
+          "name": "back restores the selected screen before its first frame",
+          "passed": true,
+          "detail": {
+            "mounted": true,
+            "selected": "02Booking a time"
+          }
+        },
+        {
+          "name": "back restores reading position",
+          "passed": true,
+          "detail": {
+            "before": 2014.316650390625,
+            "after": 2014.316650390625
+          }
+        },
+        {
+          "name": "language change preserves gallery selection",
+          "passed": true
+        },
+        {
+          "name": "operations holds a fully readable state",
+          "passed": true
+        },
+        {
+          "name": "pinned operations fits its available height",
+          "passed": true
+        },
+        {
+          "name": "operations disappears before its dark environment ends",
+          "passed": true
+        },
+        {
+          "name": "ending fills the available viewport",
+          "passed": true
+        },
+        {
+          "name": "ending reaches its complete composition",
+          "passed": true,
+          "detail": {
+            "top": 72,
+            "bottom": 1064,
+            "viewport": 1064
+          }
+        },
+        {
+          "name": "ending title is fully revealed",
+          "passed": true,
+          "detail": [
+            {
+              "y": 0,
+              "text": "O que precisa",
+              "visible": "true",
+              "top": 391.0333251953125,
+              "height": 184,
+              "animations": []
+            },
+            {
+              "y": 0,
+              "text": "funcionar?",
+              "visible": "true",
+              "top": 560.0333251953125,
+              "height": 184,
+              "animations": []
+            }
+          ]
+        },
+        {
+          "name": "ending controls are visible at the end of the document",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 2014.316650390625,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": [
+        {
+          "name": "gallery selection",
+          "frames": [
+            {
+              "ms": 1,
+              "value": -0.0009090909090909091
+            },
+            {
+              "ms": 18,
+              "value": 0.04368183482776988
+            },
+            {
+              "ms": 34,
+              "value": 0.2307121415571733
+            },
+            {
+              "ms": 51,
+              "value": 0.35522728659889913
+            },
+            {
+              "ms": 68,
+              "value": 0.45839395696466617
+            },
+            {
+              "ms": 84,
+              "value": 0.47054547396573154
+            },
+            {
+              "ms": 101,
+              "value": 0.5714091075550426
+            },
+            {
+              "ms": 118,
+              "value": 0.6434848577325994
+            },
+            {
+              "ms": 135,
+              "value": 0.7161818348277699
+            },
+            {
+              "ms": 151,
+              "value": 0.7663484885475852
+            },
+            {
+              "ms": 168,
+              "value": 0.8157575850053267
+            },
+            {
+              "ms": 185,
+              "value": 0.8532424371892756
+            },
+            {
+              "ms": 201,
+              "value": 0.8817727383700285
+            },
+            {
+              "ms": 218,
+              "value": 0.906196982643821
+            },
+            {
+              "ms": 234,
+              "value": 0.9246212213689631
+            },
+            {
+              "ms": 251,
+              "value": 0.9403030395507812
+            },
+            {
+              "ms": 267,
+              "value": 0.9527424205433238
+            },
+            {
+              "ms": 284,
+              "value": 0.9626060901988637
+            },
+            {
+              "ms": 301,
+              "value": 0.9703939541903409
+            },
+            {
+              "ms": 318,
+              "value": 0.9758939430930398
+            },
+            {
+              "ms": 335,
+              "value": 0.9811363636363636
+            },
+            {
+              "ms": 351,
+              "value": 0.9848182262073863
+            },
+            {
+              "ms": 368,
+              "value": 0.9879242498224432
+            },
+            {
+              "ms": 384,
+              "value": 0.9902424205433239
+            },
+            {
+              "ms": 401,
+              "value": 0.9921969881924716
+            },
+            {
+              "ms": 418,
+              "value": 0.9938181929154829
+            },
+            {
+              "ms": 434,
+              "value": 0.9948788174715909
+            },
+            {
+              "ms": 451,
+              "value": 0.9959090909090909
+            },
+            {
+              "ms": 467,
+              "value": 0.9965757612748579
+            },
+            {
+              "ms": 485,
+              "value": 0.9972121360085228
+            },
+            {
+              "ms": 501,
+              "value": 0.9976363858309659
+            },
+            {
+              "ms": 518,
+              "value": 0.9980303400213069
+            },
+            {
+              "ms": 535,
+              "value": 0.9983333518288352
+            },
+            {
+              "ms": 551,
+              "value": 0.9985454767400568
+            },
+            {
+              "ms": 568,
+              "value": 0.9987424538352273
+            },
+            {
+              "ms": 584,
+              "value": 0.9988787841796875
+            },
+            {
+              "ms": 601,
+              "value": 0.9990000221946023
+            },
+            {
+              "ms": 617,
+              "value": 0.9990909090909091
+            },
+            {
+              "ms": 634,
+              "value": 0.9991515003551137
+            },
+            {
+              "ms": 651,
+              "value": 0.9992121471058238
+            },
+            {
+              "ms": 668,
+              "value": 0.9992575905539772
+            },
+            {
+              "ms": 685,
+              "value": 0.9992878861860796
+            },
+            {
+              "ms": 701,
+              "value": 0.9993181818181818
+            }
+          ],
+          "environment": "Firefox headless, file fixture; not a device FPS benchmark"
+        }
+      ]
+    },
+    {
+      "name": "home-tablet",
+      "viewport": [
+        830,
+        752
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "menu opens",
+          "passed": true
+        },
+        {
+          "name": "Escape closes the menu and restores its trigger",
+          "passed": true
+        },
+        {
+          "name": "menu closes after choosing a destination",
+          "passed": true
+        },
+        {
+          "name": "menu releases scroll lock",
+          "passed": true
+        },
+        {
+          "name": "destination remains visible below the navbar",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 5553.2666015625,
+          "behavior": "smooth"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "trato-desktop",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its content in document flow",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "booking height changes continuously between steps",
+          "passed": true,
+          "detail": {
+            "beforeHeight": 1355,
+            "duringHeight": 810,
+            "afterHeight": 539,
+            "progress": 0.6678921568627451
+          }
+        },
+        {
+          "name": "service advances to professional",
+          "passed": true
+        },
+        {
+          "name": "booking step settles without opacity choreography",
+          "passed": true
+        },
+        {
+          "name": "booking reaches date and time",
+          "passed": true
+        },
+        {
+          "name": "booking reaches confirmation",
+          "passed": true
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "trato-mobile",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its content in document flow",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "booking height changes continuously between steps",
+          "passed": true,
+          "detail": {
+            "beforeHeight": 965,
+            "duringHeight": 745,
+            "afterHeight": 609,
+            "progress": 0.6179775280898876
+          }
+        },
+        {
+          "name": "service advances to professional",
+          "passed": true
+        },
+        {
+          "name": "booking step settles without opacity choreography",
+          "passed": true
+        },
+        {
+          "name": "booking reaches date and time",
+          "passed": true
+        },
+        {
+          "name": "booking reaches confirmation",
+          "passed": true
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "trato-reduced",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its content in document flow",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "service advances to professional",
+          "passed": true
+        },
+        {
+          "name": "booking step settles without opacity choreography",
+          "passed": true
+        },
+        {
+          "name": "booking reaches date and time",
+          "passed": true
+        },
+        {
+          "name": "booking reaches confirmation",
+          "passed": true
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "opinioteca-desktop",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its content in document flow",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "search results survive pointer down",
+          "passed": true
+        },
+        {
+          "name": "vote updates the original card",
+          "passed": true
+        },
+        {
+          "name": "comment and count update together",
+          "passed": true
+        },
+        {
+          "name": "comment insertion preserves the composer",
+          "passed": true
+        },
+        {
+          "name": "feed settles after making room",
+          "passed": true,
+          "detail": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "discovery remains inside the product",
+          "passed": true
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "opinioteca-mobile",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its content in document flow",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "search results survive pointer down",
+          "passed": true
+        },
+        {
+          "name": "vote updates the original card",
+          "passed": true
+        },
+        {
+          "name": "comment and count update together",
+          "passed": true
+        },
+        {
+          "name": "comment insertion preserves the composer",
+          "passed": true
+        },
+        {
+          "name": "feed settles after making room",
+          "passed": true,
+          "detail": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "discovery remains inside the product",
+          "passed": true
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "opinioteca-reduced",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its content in document flow",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "search results survive pointer down",
+          "passed": true
+        },
+        {
+          "name": "vote updates the original card",
+          "passed": true
+        },
+        {
+          "name": "comment and count update together",
+          "passed": true
+        },
+        {
+          "name": "comment insertion preserves the composer",
+          "passed": true
+        },
+        {
+          "name": "feed settles after making room",
+          "passed": true,
+          "detail": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "discovery remains inside the product",
+          "passed": true
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "calmera-os-desktop",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its content in document flow",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "original catalog has its three candles",
+          "passed": true
+        },
+        {
+          "name": "bag opens with selected item and its subtotal",
+          "passed": true
+        },
+        {
+          "name": "bag finishes its entrance",
+          "passed": true
+        },
+        {
+          "name": "bag remains mounted while exiting",
+          "passed": true
+        },
+        {
+          "name": "bag exits completely",
+          "passed": true
+        },
+        {
+          "name": "interrupted bag entrance releases its modal",
+          "passed": true
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "calmera-os-mobile",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its content in document flow",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "original catalog has its three candles",
+          "passed": true
+        },
+        {
+          "name": "bag opens with selected item and its subtotal",
+          "passed": true
+        },
+        {
+          "name": "bag finishes its entrance",
+          "passed": true
+        },
+        {
+          "name": "bag remains mounted while exiting",
+          "passed": true
+        },
+        {
+          "name": "bag exits completely",
+          "passed": true
+        },
+        {
+          "name": "interrupted bag entrance releases its modal",
+          "passed": true
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "calmera-os-reduced",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its content in document flow",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "original catalog has its three candles",
+          "passed": true
+        },
+        {
+          "name": "bag opens with selected item and its subtotal",
+          "passed": true
+        },
+        {
+          "name": "bag finishes its entrance",
+          "passed": true
+        },
+        {
+          "name": "bag exits completely",
+          "passed": true
+        },
+        {
+          "name": "interrupted bag entrance releases its modal",
+          "passed": true
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "vwrks-desktop",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its content in document flow",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "original work gallery is present",
+          "passed": true
+        },
+        {
+          "name": "responsive gallery uses available original media",
+          "passed": true
+        },
+        {
+          "name": "original about navigation remains local",
+          "passed": true
+        },
+        {
+          "name": "Vwrks leaves the main navbar neutral",
+          "passed": true
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "vwrks-mobile",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its content in document flow",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "original work gallery is present",
+          "passed": true
+        },
+        {
+          "name": "responsive gallery uses available original media",
+          "passed": true
+        },
+        {
+          "name": "original about navigation remains local",
+          "passed": true
+        },
+        {
+          "name": "Vwrks leaves the main navbar neutral",
+          "passed": true
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "vwrks-reduced",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its content in document flow",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "original work gallery is present",
+          "passed": true
+        },
+        {
+          "name": "responsive gallery uses available original media",
+          "passed": true
+        },
+        {
+          "name": "original about navigation remains local",
+          "passed": true
+        },
+        {
+          "name": "Vwrks leaves the main navbar neutral",
+          "passed": true
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    }
+  ]
+}

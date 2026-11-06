@@ -1,20 +1,33 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { galleryPosition, visibleGalleryIndex } from "../src/utils/choreography.js";
+import { nextGalleryState, visibleGalleryIndex } from "../src/utils/choreography.js";
 
-test("the gallery holds each screen for reading and moves continuously between them", () => {
-  assert.equal(galleryPosition(0), 0);
-  assert.equal(galleryPosition(0.18), 0);
-  assert.equal(galleryPosition(0.5), 0.5);
-  assert.equal(galleryPosition(0.82), 1);
-  assert.equal(galleryPosition(1), 1);
-  assert.ok(Math.abs(galleryPosition(0.521) - galleryPosition(0.519)) < 0.01);
-  let previous = 0;
-  for (let step = 0; step <= 1000; step++) {
-    const current = galleryPosition(step / 1000);
-    assert.ok(current >= previous && current <= 1);
-    previous = current;
+test("stopping anywhere in the scene gives the gallery a whole screen as its destination", () => {
+  let state = { index: 0 };
+  for (let step = 0; step <= 100; step++) {
+    state = nextGalleryState(state, step / 100);
+    assert.ok(state.index === 0 || state.index === 1);
   }
+  assert.equal(state.index, 1);
+  for (let step = 100; step >= 0; step--) state = nextGalleryState(state, step / 100);
+  assert.equal(state.index, 0);
+});
+
+test("a manual selection holds while scrolling toward it and rejoins after reaching its reading window", () => {
+  let state = { index: 1, manualOrigin: 0.1 };
+  for (const progress of [0.12, 0.2, 0.3, 0.5]) {
+    state = nextGalleryState(state, progress);
+    assert.equal(state.index, 1);
+  }
+  state = nextGalleryState(state, 0.7);
+  assert.equal(state.manualOrigin, undefined);
+  assert.equal(nextGalleryState(state, 0.4).index, 0);
+});
+
+test("reversing away from a manually selected screen releases it without a jump in the document", () => {
+  assert.equal(nextGalleryState({ index: 1, manualOrigin: 0.3 }, 0.2).index, 0);
+  assert.equal(nextGalleryState({ index: 0, manualOrigin: 0.7 }, 0.8).index, 1);
+  assert.equal(nextGalleryState({ index: 1, manualOrigin: 0.5 }, 0.49).index, 1);
 });
 
 test("small scroll reversals near the middle do not chatter between captions", () => {

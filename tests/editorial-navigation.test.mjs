@@ -3,14 +3,21 @@ import { access } from "node:fs/promises";
 import test from "node:test";
 import { renderEditorial } from "./editorial-render.mjs";
 
-test("the home presents work, operations, about and contact in navigation order in both languages", () => {
+test("the header shows only the mark and orders work, about and contact in both languages", () => {
   for (const language of ["en", "pt"]) {
     const html = renderEditorial(language);
+    const header = html.match(/<header class="site-header">[\s\S]*?<\/header>/)[0];
+    const navigation = header.match(/<nav class="site-header__nav"[\s\S]*?<\/nav>/)[0];
+    assert.deepEqual([...navigation.matchAll(/href="\/#([^"]+)"/g)].map((match) => match[1]), ["work", "about", "contact"]);
+    const mark = header.match(/<a[^>]*class="site-header__mark"[\s\S]*?<\/a>/)[0];
+    assert.equal(mark.replace(/<[^>]+>/g, ""), "ef.");
+    assert.doesNotMatch(header, /href="\/#experience"/);
+    assert.equal((header.match(/href="\/#contact"/g) ?? []).length, 1);
     let previous = -1;
     for (const anchor of ["work", "experience", "about", "contact"]) {
       const position = html.indexOf(`id="${anchor}"`);
       assert.ok(position > previous, `${anchor} must exist after the previous destination`);
-      assert.ok(html.includes(`href="/#${anchor}"`), `${anchor} must be reachable from the header`);
+      if (anchor !== "experience") assert.ok(header.includes(`href="/#${anchor}"`), `${anchor} must be reachable from the header`);
       previous = position;
     }
     for (const slug of ["trato", "opinioteca", "calmera-os", "vwrks", "texsa-tools"]) {

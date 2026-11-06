@@ -11,7 +11,11 @@ These demos render components copied from the product repositories. The portfoli
 
 `upstream/sources.json` records each copied file's original location. Files in `upstream` remain unchanged. The build bridge resolves Next links, images, navigation, authentication and data access without changing those copies. Source screens remain in Portuguese, as in the products. The portfolio instructions and controls use its selected language.
 
-Each screen lives in a ShadowRoot. Its Tailwind 4 theme cannot change the portfolio's Tailwind 3 styles. Radix portals stay inside the same theme boundary; Vwrks document queries target its own surface. There is no iframe, browser frame, detached screenshot assembly or screenshot overlay.
+Each screen lives in a ShadowRoot. Its Tailwind 4 theme cannot change the portfolio's Tailwind 3 styles. A shared browser window contains the interactive screen, with its own scrolling region, local back/forward history, address display and restart control. The window uses the portfolio's paper/type palette; each product keeps its own interface. There is no iframe, detached screenshot assembly or screenshot overlay.
+
+`DemoBrowserNavigation` shares local history with the compiled Next navigation bridge. Changing a product page resets only the inner scroll. Restart clears that product's demo data and history. Radix portals stay inside the product theme; dialogs inside the browser are nonmodal so browser controls and portfolio navigation remain usable. Vwrks document queries target its own surface.
+
+The scrolling element is `[data-browser-scroll]` inside the ShadowRoot. Portals are its siblings, anchored to the stationary outer browser viewport. Making the outer viewport scroll moves fixed drawers with the content and breaks the cart after scrolling. The image adapter also preserves explicit `loading="eager"` requests from the original Vwrks sequences, including Plena's five frames.
 
 The demos support service/professional/date/time selection and a local booking confirmation; review votes, comments and discovery navigation; catalog search, adding/removing items and shopping-bag quotations; and the original Vwrks work/about navigation and hover sequences. Unsupported product routes open the real product in a new tab. Account-dependent actions explain the demo's scope. Nothing submits to a production API or stores personal data. Restart clears the local session.
 

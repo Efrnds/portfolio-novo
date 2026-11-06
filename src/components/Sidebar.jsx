@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { HiOutlineX } from "react-icons/hi";
 import PropTypes from "prop-types";
 import { projects } from "../data/projects";
 import { useLanguage } from "../i18n/LanguageContext";
 import { springs } from "../utils/choreography";
+import { useSceneNavigation } from "../hooks/useSceneNavigation";
 
 const contacts = [
   {
@@ -33,12 +34,11 @@ export default function Sidebar({ isOpen, onClose }) {
   const reduced = useReducedMotion();
   const sections = [
     { id: "work", label: copy.nav.work },
-    { id: "experience", label: copy.nav.experience },
     { id: "about", label: copy.nav.about },
     { id: "contact", label: copy.nav.contact },
   ];
   const localizedProjects = projects.map(localizeProject);
-  const navigate = useNavigate();
+  const navigation = useSceneNavigation();
   const dialogRef = useRef(null);
   const closeRef = useRef(null);
 
@@ -73,33 +73,31 @@ export default function Sidebar({ isOpen, onClose }) {
     return () => {
       document.removeEventListener("keydown", handleEscKey);
       document.body.style.overflow = "unset";
-      if (isOpen && previouslyFocused instanceof HTMLElement) {
-        previouslyFocused.focus();
+      const trigger = document.querySelector('[aria-controls="site-menu"]');
+      const returnTo = trigger ?? previouslyFocused;
+      if (isOpen && returnTo instanceof HTMLElement) {
+        returnTo.focus({ preventScroll: true });
       }
     };
   }, [isOpen, onClose]);
 
   const goToSection = (id) => {
     onClose();
-    if (window.location.pathname !== "/") {
-      navigate(`/#${id}`);
-      return;
-    }
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      window.history.replaceState(null, "", `/#${id}`);
-    }
+    navigation?.navigateToSection(id);
   };
 
   if (!isOpen) return null;
 
   return (
     <>
-      <div
+      <motion.div
         className="fixed inset-0 bg-black/60 z-40"
         onClick={onClose}
         aria-hidden="true"
+        initial={reduced ? false : { clipPath: "inset(0 0 0 100%)" }}
+        animate={{ clipPath: "inset(0 0 0 0%)" }}
+        exit={{ clipPath: "inset(0 0 0 100%)" }}
+        transition={{ duration: reduced ? 0 : 0.32, ease: [0.22, 1, 0.36, 1] }}
       />
 
       <motion.aside

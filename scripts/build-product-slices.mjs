@@ -66,6 +66,19 @@ for (const [kind, component] of Object.entries(kinds)) {
       build.onLoad({ filter: /upstream\/.*\.(tsx?|jsx)$/ }, async (args) => {
         let contents = await fs.readFile(args.path, "utf8");
         contents = contents.replaceAll('"next/image"', '"__image__"');
+        if (kind === "trato" && args.path.endsWith("/BookingClient.tsx")) {
+          contents = contents.replace('className={`w-full max-w-2xl mx-auto', 'data-demo-step={step} className={`w-full max-w-2xl mx-auto');
+        }
+        if (kind === "opinioteca" && args.path.endsWith("/Box.tsx")) {
+          contents = contents.replace('function Box({ children, className }, ref)', 'function Box({ children, className, ...props }, ref)').replace('<div ref={ref}', '<div {...props} ref={ref}');
+        }
+        if (kind === "opinioteca" && args.path.endsWith("/PostCard.tsx")) {
+          contents = contents.replace('<Box className="flex flex-col gap-4">', '<Box data-demo-post="" className="flex flex-col gap-4">').replace('key={no.id}', 'key={no.id} data-demo-comment={no.id}');
+        }
+        if (kind === "vwrks" && args.path.endsWith("/Trabalho.jsx")) {
+          contents = `import {sequenceInterval as setInterval} from ${JSON.stringify(adapter("vwrks.jsx"))};\n${contents}`;
+          contents = contents.replace('setCurrentImages((prev) => ({ ...prev, [projectId]: 0 }));', '');
+        }
         if (kind === "vwrks") contents = `import {scopedDocument as document} from ${JSON.stringify(adapter("vwrks.jsx"))};\n${contents}`;
         if (kind !== "vwrks") contents = `import {${kind}Request as fetch} from ${JSON.stringify(path.join(base, "screens/api.js"))};\n${contents}`;
         return { contents, loader: path.extname(args.path).slice(1), resolveDir: path.dirname(args.path) };

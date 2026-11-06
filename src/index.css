@@ -194,13 +194,6 @@ img {
   font-weight: 700;
 }
 
-.site-header__mark span:last-child {
-  color: var(--muted);
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
 .site-header__nav {
   display: flex;
   min-height: 44px;
@@ -3143,12 +3136,6 @@ img {
     width: 100%;
     border: 0;
     border-top: 1px solid currentColor;
-  }
-}
-
-@media (max-width: 480px) {
-  .site-header__mark span:last-child {
-    display: none;
   }
 }
 

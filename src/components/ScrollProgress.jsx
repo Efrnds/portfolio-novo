@@ -1,13 +1,10 @@
 import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
+import { springs } from "../utils/choreography";
 
 export default function ScrollProgress() {
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 28,
-    restDelta: 0.001,
-  });
+  const scaleX = useSpring(scrollYProgress, { ...springs.scroll, skipInitialAnimation: true });
 
   return (
     <motion.div

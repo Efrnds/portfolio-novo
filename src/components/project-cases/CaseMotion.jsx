@@ -5,27 +5,19 @@ import {
   useReducedMotion,
   useScroll,
   useSpring,
-  useTransform,
 } from "motion/react";
-import { useAssembly } from "../../hooks/useAssembly";
 import { springs } from "../../utils/choreography";
+import SceneArrival from "../SceneArrival";
+import { useSceneNavigation } from "../../hooks/useSceneNavigation";
 
 export function CaseReveal({ children, className = "", delay = 0, direction = "up" }) {
-  const ref = useRef(null);
-  const reduced = useReducedMotion();
-  const progress = useAssembly(ref);
-  const start = Math.min(delay, 0.3);
-  const revealX = useTransform(progress, [start, 1], [direction === "left" ? -12 : direction === "right" ? 12 : 0, 0]);
-  const revealY = useTransform(progress, [start, 1], [20, 0]);
-
   return (
-    <motion.div
-      ref={ref}
+    <SceneArrival
       className={`assembly-part ${className}`}
-      style={reduced ? undefined : { x: revealX, y: revealY }}
+      delay={Math.min(delay, 0.12)} direction={direction}
     >
       {children}
-    </motion.div>
+    </SceneArrival>
   );
 }
 
@@ -38,11 +30,12 @@ CaseReveal.propTypes = {
 
 export function KineticTitle({ children, className = "" }) {
   const reduced = useReducedMotion();
+  const navigation = useSceneNavigation();
 
   return (
     <span className={`kinetic-title ${className}`}>
       <motion.span
-        initial={reduced ? false : { y: "65%" }}
+        initial={reduced || navigation?.restored ? false : { y: "105%" }}
         animate={{ y: 0 }}
         transition={springs.surface}
       >

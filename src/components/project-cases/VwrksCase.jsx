@@ -1,15 +1,19 @@
 import PropTypes from "prop-types";
+import { useRef } from "react";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
 import { CaseReveal, KineticTitle } from "./CaseMotion";
 import ProductEnvironment from "./ProductEnvironment";
 import { useLanguage } from "../../i18n/LanguageContext";
+import { useAmbientMotion } from "../../hooks/useAmbientMotion";
 
 export default function VwrksCase({ project, prev, next }) {
+  const ref = useRef(null);
+  useAmbientMotion(ref);
   const { copy } = useLanguage();
   const labels = copy.details.vwrks;
 
   return (
-    <article id="main-content" className="project-detail vwrks-detail">
+    <article ref={ref} id="main-content" className="project-detail vwrks-detail">
       <header className="vwrks-detail__header">
         <BackToWork />
         <div className="vwrks-detail__index">

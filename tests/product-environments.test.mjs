@@ -30,6 +30,10 @@ test("project demos explain their actions in both portfolio languages and link t
       for (const slug of ["trato", "opinioteca", "calmera-os", "vwrks"]) {
         const html = compiled.exports.render(slug);
         assert.match(html, /data-product-environment=/);
+        assert.match(html, /data-demo-browser=/);
+        assert.match(html, /data-browser-viewport=/);
+        assert.match(html, /data-browser-back="[^"]*" disabled=""/);
+        assert.match(html, language === "pt" ? /Recomeçar a demonstração/ : /Restart the demo/);
         assert.match(html, language === "pt" ? /As ações ficam nesta página/ : /Actions stay on this page/);
         assert.match(html, /target="_blank" rel="noopener noreferrer"/);
         assert.doesNotMatch(html, /prototype-toolbar|prototype-hotspot|<iframe\b|undefined/);
@@ -56,5 +60,9 @@ test("copied screens retain their original product navigation and controls", () 
   assert.match(trato, /1. Escolha os serviços/);
   assert.match(trato, /data-slot="card"/);
   assert.match(trato, /Adicionar um Corte/);
-  assert.match(compiled.exports.renderScreen("vwrks"), /Trabalhos Selecionados/);
+  const vwrks = compiled.exports.renderScreen("vwrks");
+  assert.match(vwrks, /Trabalhos Selecionados/);
+  const frames = [...vwrks.matchAll(/<img\b[^>]*>/g)].map((match) => match[0]).filter((image) => image.includes("02-Trabalho"));
+  assert.ok(frames.length > 30);
+  assert.ok(frames.every((image) => image.includes('loading="eager"')), "the original sequence's explicit eager loading must survive the framework bridge");
 });

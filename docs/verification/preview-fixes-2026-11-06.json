@@ -1,0 +1,2593 @@
+{
+  "date": "2026-11-06",
+  "change": "Cart scroll anchoring, eager media loading, header mark and navigation",
+  "environment": "Firefox (Zen) headless with local file fixtures; no HTTP or physical-device validation",
+  "summary": {
+    "scenarios": 18,
+    "checks": 326,
+    "failures": 0
+  },
+  "before": [
+    {
+      "name": "bag stays inside the browser window",
+      "passed": false,
+      "detail": {
+        "top": -23,
+        "bottom": 626.433349609375,
+        "viewport": [
+          177,
+          826.433349609375
+        ]
+      }
+    }
+  ],
+  "reports": [
+    {
+      "name": "home-desktop",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "gallery settles on a whole screen when scrolling stops",
+          "passed": true,
+          "detail": -0.0012642225031605564
+        },
+        {
+          "name": "gallery moves toward its destination without overshooting",
+          "passed": true
+        },
+        {
+          "name": "gallery reaches a readable destination within half a second",
+          "passed": true
+        },
+        {
+          "name": "choosing a gallery screen preserves page position",
+          "passed": true,
+          "detail": {
+            "before": 1810.5,
+            "after": 1810.5
+          }
+        },
+        {
+          "name": "reversing a gallery transition settles on the latest choice",
+          "passed": true
+        },
+        {
+          "name": "case opens directly into its product demo",
+          "passed": true
+        },
+        {
+          "name": "back restores the selected screen before its first frame",
+          "passed": true,
+          "detail": {
+            "mounted": true,
+            "selected": "02Booking a time"
+          }
+        },
+        {
+          "name": "back restores reading position",
+          "passed": true,
+          "detail": {
+            "before": 1810.5,
+            "after": 1810.5
+          }
+        },
+        {
+          "name": "language change preserves gallery selection",
+          "passed": true
+        },
+        {
+          "name": "operations holds a fully readable state",
+          "passed": true
+        },
+        {
+          "name": "pinned operations fits its available height",
+          "passed": true
+        },
+        {
+          "name": "operations disappears before its dark environment ends",
+          "passed": true
+        },
+        {
+          "name": "ending fills the available viewport",
+          "passed": true
+        },
+        {
+          "name": "ending reaches its complete composition",
+          "passed": true,
+          "detail": {
+            "top": 72,
+            "bottom": 984,
+            "viewport": 984
+          }
+        },
+        {
+          "name": "ending title is fully revealed",
+          "passed": true,
+          "detail": [
+            {
+              "y": 0,
+              "text": "O que precisa",
+              "visible": "true",
+              "top": 400.1166687011719,
+              "height": 133,
+              "animations": []
+            },
+            {
+              "y": 0,
+              "text": "funcionar?",
+              "visible": "true",
+              "top": 522.11669921875,
+              "height": 133,
+              "animations": []
+            }
+          ]
+        },
+        {
+          "name": "ending controls are visible at the end of the document",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 1810.5,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": [
+        {
+          "name": "gallery selection",
+          "frames": [
+            {
+              "ms": 1,
+              "value": -0.0012642225031605564
+            },
+            {
+              "ms": 18,
+              "value": 0.043341751195085335
+            },
+            {
+              "ms": 34,
+              "value": 0.202570590900561
+            },
+            {
+              "ms": 51,
+              "value": 0.30710072282291995
+            },
+            {
+              "ms": 68,
+              "value": 0.368352299242948
+            },
+            {
+              "ms": 84,
+              "value": 0.47026970594480877
+            },
+            {
+              "ms": 101,
+              "value": 0.5711546655551221
+            },
+            {
+              "ms": 117,
+              "value": 0.6476611922272538
+            },
+            {
+              "ms": 135,
+              "value": 0.715950272628842
+            },
+            {
+              "ms": 151,
+              "value": 0.7661399214367197
+            },
+            {
+              "ms": 168,
+              "value": 0.8155499445050767
+            },
+            {
+              "ms": 185,
+              "value": 0.8530341340075853
+            },
+            {
+              "ms": 201,
+              "value": 0.8815634012523704
+            },
+            {
+              "ms": 218,
+              "value": 0.9059839839428927
+            },
+            {
+              "ms": 234,
+              "value": 0.9244416402052387
+            },
+            {
+              "ms": 251,
+              "value": 0.9409397284390802
+            },
+            {
+              "ms": 267,
+              "value": 0.9525495256696429
+            },
+            {
+              "ms": 284,
+              "value": 0.961883699245911
+            },
+            {
+              "ms": 302,
+              "value": 0.9702065102520544
+            },
+            {
+              "ms": 318,
+              "value": 0.9760219029017857
+            },
+            {
+              "ms": 335,
+              "value": 0.980952401528919
+            },
+            {
+              "ms": 351,
+              "value": 0.984639704302801
+            },
+            {
+              "ms": 368,
+              "value": 0.987737026286939
+            },
+            {
+              "ms": 384,
+              "value": 0.9900547804030697
+            },
+            {
+              "ms": 401,
+              "value": 0.992014348431574
+            },
+            {
+              "ms": 417,
+              "value": 0.9935524960986883
+            },
+            {
+              "ms": 434,
+              "value": 0.9947745495590037
+            },
+            {
+              "ms": 452,
+              "value": 0.995722716436374
+            },
+            {
+              "ms": 468,
+              "value": 0.9963969967307996
+            },
+            {
+              "ms": 485,
+              "value": 0.9970291079823799
+            },
+            {
+              "ms": 501,
+              "value": 0.9974715549936789
+            },
+            {
+              "ms": 518,
+              "value": 0.9978508063122234
+            },
+            {
+              "ms": 535,
+              "value": 0.9981457967070955
+            },
+            {
+              "ms": 551,
+              "value": 0.998377591409213
+            },
+            {
+              "ms": 568,
+              "value": 0.9985461518375671
+            },
+            {
+              "ms": 584,
+              "value": 0.9986936470350032
+            },
+            {
+              "ms": 601,
+              "value": 0.998820038420512
+            },
+            {
+              "ms": 617,
+              "value": 0.9989043379251936
+            },
+            {
+              "ms": 634,
+              "value": 0.998967572198957
+            },
+            {
+              "ms": 652,
+              "value": 0.9990307678917114
+            },
+            {
+              "ms": 668,
+              "value": 0.9990728983535477
+            },
+            {
+              "ms": 685,
+              "value": 0.999115028815384
+            },
+            {
+              "ms": 701,
+              "value": 0.9991360940463021
+            }
+          ],
+          "environment": "Firefox headless, file fixture; not a device FPS benchmark"
+        }
+      ]
+    },
+    {
+      "name": "home-mobile",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "menu opens",
+          "passed": true
+        },
+        {
+          "name": "Escape closes the menu and restores its trigger",
+          "passed": true
+        },
+        {
+          "name": "menu closes after choosing a destination",
+          "passed": true
+        },
+        {
+          "name": "menu releases scroll lock",
+          "passed": true
+        },
+        {
+          "name": "destination remains visible below the navbar",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 6012.68310546875,
+          "behavior": "smooth"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "home-reduced",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "menu opens",
+          "passed": true
+        },
+        {
+          "name": "Escape closes the menu and restores its trigger",
+          "passed": true
+        },
+        {
+          "name": "menu closes after choosing a destination",
+          "passed": true
+        },
+        {
+          "name": "menu releases scroll lock",
+          "passed": true
+        },
+        {
+          "name": "reduced motion never requests smooth scrolling",
+          "passed": true
+        },
+        {
+          "name": "destination remains visible below the navbar",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 6105.93310546875,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "home-low",
+      "viewport": [
+        1246,
+        744
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "gallery settles on a whole screen when scrolling stops",
+          "passed": true,
+          "detail": -0.0012642225031605564
+        },
+        {
+          "name": "gallery moves toward its destination without overshooting",
+          "passed": true
+        },
+        {
+          "name": "gallery reaches a readable destination within half a second",
+          "passed": true
+        },
+        {
+          "name": "choosing a gallery screen preserves page position",
+          "passed": true,
+          "detail": {
+            "before": 1498.5,
+            "after": 1498.5
+          }
+        },
+        {
+          "name": "reversing a gallery transition settles on the latest choice",
+          "passed": true
+        },
+        {
+          "name": "case opens directly into its product demo",
+          "passed": true
+        },
+        {
+          "name": "back restores the selected screen before its first frame",
+          "passed": true,
+          "detail": {
+            "mounted": true,
+            "selected": "02Booking a time"
+          }
+        },
+        {
+          "name": "back restores reading position",
+          "passed": true,
+          "detail": {
+            "before": 1498.5,
+            "after": 1498.5
+          }
+        },
+        {
+          "name": "language change preserves gallery selection",
+          "passed": true
+        },
+        {
+          "name": "operations holds a fully readable state",
+          "passed": true
+        },
+        {
+          "name": "pinned operations fits its available height",
+          "passed": true
+        },
+        {
+          "name": "operations disappears before its dark environment ends",
+          "passed": true
+        },
+        {
+          "name": "ending fills the available viewport",
+          "passed": true
+        },
+        {
+          "name": "ending reaches its complete composition",
+          "passed": true,
+          "detail": {
+            "top": 72,
+            "bottom": 744,
+            "viewport": 744
+          }
+        },
+        {
+          "name": "ending title is fully revealed",
+          "passed": true,
+          "detail": [
+            {
+              "y": 0,
+              "text": "O que precisa",
+              "visible": "true",
+              "top": 280.1166687011719,
+              "height": 133,
+              "animations": []
+            },
+            {
+              "y": 0,
+              "text": "funcionar?",
+              "visible": "true",
+              "top": 402.1166687011719,
+              "height": 133,
+              "animations": []
+            }
+          ]
+        },
+        {
+          "name": "ending controls are visible at the end of the document",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 1498.5,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": [
+        {
+          "name": "gallery selection",
+          "frames": [
+            {
+              "ms": 2,
+              "value": -0.0012642225031605564
+            },
+            {
+              "ms": 19,
+              "value": 0.043341751195085335
+            },
+            {
+              "ms": 35,
+              "value": 0.2095027494370259
+            },
+            {
+              "ms": 52,
+              "value": 0.30710072282291995
+            },
+            {
+              "ms": 69,
+              "value": 0.40777497225253834
+            },
+            {
+              "ms": 85,
+              "value": 0.47026970594480877
+            },
+            {
+              "ms": 102,
+              "value": 0.565971345575962
+            },
+            {
+              "ms": 118,
+              "value": 0.6432364134661919
+            },
+            {
+              "ms": 135,
+              "value": 0.7122840350858782
+            },
+            {
+              "ms": 151,
+              "value": 0.7661399214367197
+            },
+            {
+              "ms": 168,
+              "value": 0.8130847144820145
+            },
+            {
+              "ms": 185,
+              "value": 0.8510535393291719
+            },
+            {
+              "ms": 201,
+              "value": 0.8815634012523704
+            },
+            {
+              "ms": 219,
+              "value": 0.904698696208814
+            },
+            {
+              "ms": 235,
+              "value": 0.9244416402052387
+            },
+            {
+              "ms": 252,
+              "value": 0.9401179915282277
+            },
+            {
+              "ms": 269,
+              "value": 0.9525495256696429
+            },
+            {
+              "ms": 285,
+              "value": 0.961883699245911
+            },
+            {
+              "ms": 302,
+              "value": 0.9697850898906645
+            },
+            {
+              "ms": 318,
+              "value": 0.9757058472759956
+            },
+            {
+              "ms": 335,
+              "value": 0.9806995415958834
+            },
+            {
+              "ms": 352,
+              "value": 0.984639704302801
+            },
+            {
+              "ms": 368,
+              "value": 0.987737026286939
+            },
+            {
+              "ms": 385,
+              "value": 0.9901812103695875
+            },
+            {
+              "ms": 401,
+              "value": 0.992014348431574
+            },
+            {
+              "ms": 419,
+              "value": 0.9935524960986883
+            },
+            {
+              "ms": 435,
+              "value": 0.9946902500543221
+            },
+            {
+              "ms": 452,
+              "value": 0.9956594821626106
+            },
+            {
+              "ms": 469,
+              "value": 0.9964391271926359
+            },
+            {
+              "ms": 485,
+              "value": 0.9970080041704528
+            },
+            {
+              "ms": 502,
+              "value": 0.9974715549936789
+            },
+            {
+              "ms": 518,
+              "value": 0.9978297410813053
+            },
+            {
+              "ms": 535,
+              "value": 0.9981457967070955
+            },
+            {
+              "ms": 552,
+              "value": 0.998377591409213
+            },
+            {
+              "ms": 568,
+              "value": 0.9985461518375671
+            },
+            {
+              "ms": 585,
+              "value": 0.9986936470350032
+            },
+            {
+              "ms": 601,
+              "value": 0.998820038420512
+            },
+            {
+              "ms": 619,
+              "value": 0.9989043379251936
+            },
+            {
+              "ms": 635,
+              "value": 0.998967572198957
+            },
+            {
+              "ms": 652,
+              "value": 0.9990307678917114
+            },
+            {
+              "ms": 669,
+              "value": 0.9990728983535477
+            },
+            {
+              "ms": 685,
+              "value": 0.999115028815384
+            },
+            {
+              "ms": 702,
+              "value": 0.9991360940463021
+            }
+          ],
+          "environment": "Firefox headless, file fixture; not a device FPS benchmark"
+        }
+      ]
+    },
+    {
+      "name": "home-wide",
+      "viewport": [
+        1726,
+        1064
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "gallery settles on a whole screen when scrolling stops",
+          "passed": true,
+          "detail": -0.0009090909090909091
+        },
+        {
+          "name": "gallery moves toward its destination without overshooting",
+          "passed": true
+        },
+        {
+          "name": "gallery reaches a readable destination within half a second",
+          "passed": true
+        },
+        {
+          "name": "choosing a gallery screen preserves page position",
+          "passed": true,
+          "detail": {
+            "before": 2014.316650390625,
+            "after": 2014.316650390625
+          }
+        },
+        {
+          "name": "reversing a gallery transition settles on the latest choice",
+          "passed": true
+        },
+        {
+          "name": "case opens directly into its product demo",
+          "passed": true
+        },
+        {
+          "name": "back restores the selected screen before its first frame",
+          "passed": true,
+          "detail": {
+            "mounted": true,
+            "selected": "02Booking a time"
+          }
+        },
+        {
+          "name": "back restores reading position",
+          "passed": true,
+          "detail": {
+            "before": 2014.316650390625,
+            "after": 2014.316650390625
+          }
+        },
+        {
+          "name": "language change preserves gallery selection",
+          "passed": true
+        },
+        {
+          "name": "operations holds a fully readable state",
+          "passed": true
+        },
+        {
+          "name": "pinned operations fits its available height",
+          "passed": true
+        },
+        {
+          "name": "operations disappears before its dark environment ends",
+          "passed": true
+        },
+        {
+          "name": "ending fills the available viewport",
+          "passed": true
+        },
+        {
+          "name": "ending reaches its complete composition",
+          "passed": true,
+          "detail": {
+            "top": 72,
+            "bottom": 1064,
+            "viewport": 1064
+          }
+        },
+        {
+          "name": "ending title is fully revealed",
+          "passed": true,
+          "detail": [
+            {
+              "y": 0,
+              "text": "O que precisa",
+              "visible": "true",
+              "top": 391.0333251953125,
+              "height": 184,
+              "animations": []
+            },
+            {
+              "y": 0,
+              "text": "funcionar?",
+              "visible": "true",
+              "top": 560.0333251953125,
+              "height": 184,
+              "animations": []
+            }
+          ]
+        },
+        {
+          "name": "ending controls are visible at the end of the document",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 2014.316650390625,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": [
+        {
+          "name": "gallery selection",
+          "frames": [
+            {
+              "ms": 6,
+              "value": -0.0009090909090909091
+            },
+            {
+              "ms": 22,
+              "value": 0.04368183482776988
+            },
+            {
+              "ms": 40,
+              "value": 0.2028939541903409
+            },
+            {
+              "ms": 56,
+              "value": 0.3211818348277699
+            },
+            {
+              "ms": 73,
+              "value": 0.36863637750799005
+            },
+            {
+              "ms": 90,
+              "value": 0.47656062733043325
+            },
+            {
+              "ms": 106,
+              "value": 0.5662272921475497
+            },
+            {
+              "ms": 123,
+              "value": 0.6522878889604048
+            },
+            {
+              "ms": 139,
+              "value": 0.7125151616876776
+            },
+            {
+              "ms": 156,
+              "value": 0.772393965287642
+            },
+            {
+              "ms": 173,
+              "value": 0.8157575850053267
+            },
+            {
+              "ms": 189,
+              "value": 0.8532424371892756
+            },
+            {
+              "ms": 206,
+              "value": 0.8817727383700285
+            },
+            {
+              "ms": 222,
+              "value": 0.906196982643821
+            },
+            {
+              "ms": 240,
+              "value": 0.9256515225497159
+            },
+            {
+              "ms": 257,
+              "value": 0.9411212158203125
+            },
+            {
+              "ms": 273,
+              "value": 0.9527424205433238
+            },
+            {
+              "ms": 290,
+              "value": 0.9626060901988637
+            },
+            {
+              "ms": 306,
+              "value": 0.9699848521839488
+            },
+            {
+              "ms": 323,
+              "value": 0.976212158203125
+            },
+            {
+              "ms": 340,
+              "value": 0.9811363636363636
+            },
+            {
+              "ms": 356,
+              "value": 0.9848182262073863
+            },
+            {
+              "ms": 373,
+              "value": 0.9879242498224432
+            },
+            {
+              "ms": 389,
+              "value": 0.9903636585582386
+            },
+            {
+              "ms": 406,
+              "value": 0.9923030229048295
+            },
+            {
+              "ms": 422,
+              "value": 0.9936515114524148
+            },
+            {
+              "ms": 440,
+              "value": 0.9949545565518466
+            },
+            {
+              "ms": 456,
+              "value": 0.9958030561967329
+            },
+            {
+              "ms": 473,
+              "value": 0.9966060569069602
+            },
+            {
+              "ms": 490,
+              "value": 0.9971818403764204
+            },
+            {
+              "ms": 506,
+              "value": 0.9976666814630681
+            },
+            {
+              "ms": 523,
+              "value": 0.9980606356534091
+            },
+            {
+              "ms": 539,
+              "value": 0.9983333518288352
+            },
+            {
+              "ms": 556,
+              "value": 0.998560624556108
+            },
+            {
+              "ms": 573,
+              "value": 0.9987424538352273
+            },
+            {
+              "ms": 589,
+              "value": 0.9988787841796875
+            },
+            {
+              "ms": 606,
+              "value": 0.9990000221946023
+            },
+            {
+              "ms": 623,
+              "value": 0.9990909090909091
+            },
+            {
+              "ms": 640,
+              "value": 0.9991515003551137
+            },
+            {
+              "ms": 656,
+              "value": 0.9992121471058238
+            },
+            {
+              "ms": 673,
+              "value": 0.9992575905539772
+            },
+            {
+              "ms": 690,
+              "value": 0.9992878861860796
+            },
+            {
+              "ms": 706,
+              "value": 0.9993181818181818
+            }
+          ],
+          "environment": "Firefox headless, file fixture; not a device FPS benchmark"
+        }
+      ]
+    },
+    {
+      "name": "home-tablet",
+      "viewport": [
+        830,
+        752
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "menu opens",
+          "passed": true
+        },
+        {
+          "name": "Escape closes the menu and restores its trigger",
+          "passed": true
+        },
+        {
+          "name": "menu closes after choosing a destination",
+          "passed": true
+        },
+        {
+          "name": "menu releases scroll lock",
+          "passed": true
+        },
+        {
+          "name": "destination remains visible below the navbar",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        },
+        {
+          "top": 6436.25,
+          "behavior": "smooth"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "trato-desktop",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its scrollable content inside the browser",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "product has a bounded browser viewport",
+          "passed": true
+        },
+        {
+          "name": "product fits the browser width",
+          "passed": true,
+          "detail": {
+            "content": 1144,
+            "available": 1144
+          }
+        },
+        {
+          "name": "scrolling the product preserves the portfolio position",
+          "passed": true
+        },
+        {
+          "name": "booking height changes continuously between steps",
+          "passed": true,
+          "detail": {
+            "beforeHeight": 1369,
+            "duringHeight": 882,
+            "afterHeight": 540,
+            "progress": 0.5874547647768396
+          }
+        },
+        {
+          "name": "service advances to professional",
+          "passed": true
+        },
+        {
+          "name": "booking step settles without opacity choreography",
+          "passed": true
+        },
+        {
+          "name": "booking reaches date and time",
+          "passed": true
+        },
+        {
+          "name": "booking reaches confirmation",
+          "passed": true
+        },
+        {
+          "name": "restart returns the demo to its first page",
+          "passed": true
+        },
+        {
+          "name": "browser navigation keeps the portfolio in place",
+          "passed": true,
+          "detail": {
+            "before": 637.5999755859375,
+            "after": 637.5999755859375
+          }
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "trato-mobile",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its scrollable content inside the browser",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "product has a bounded browser viewport",
+          "passed": true
+        },
+        {
+          "name": "product fits the browser width",
+          "passed": true,
+          "detail": {
+            "content": 270,
+            "available": 270
+          }
+        },
+        {
+          "name": "scrolling the product preserves the portfolio position",
+          "passed": true
+        },
+        {
+          "name": "booking height changes continuously between steps",
+          "passed": true,
+          "detail": {
+            "beforeHeight": 950,
+            "duringHeight": 771,
+            "afterHeight": 609,
+            "progress": 0.5249266862170088
+          }
+        },
+        {
+          "name": "service advances to professional",
+          "passed": true
+        },
+        {
+          "name": "booking step settles without opacity choreography",
+          "passed": true
+        },
+        {
+          "name": "booking reaches date and time",
+          "passed": true
+        },
+        {
+          "name": "booking reaches confirmation",
+          "passed": true
+        },
+        {
+          "name": "restart returns the demo to its first page",
+          "passed": true
+        },
+        {
+          "name": "browser navigation keeps the portfolio in place",
+          "passed": true,
+          "detail": {
+            "before": 760.5166625976562,
+            "after": 760.5166625976562
+          }
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "trato-reduced",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its scrollable content inside the browser",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "product has a bounded browser viewport",
+          "passed": true
+        },
+        {
+          "name": "product fits the browser width",
+          "passed": true,
+          "detail": {
+            "content": 270,
+            "available": 270
+          }
+        },
+        {
+          "name": "scrolling the product preserves the portfolio position",
+          "passed": true
+        },
+        {
+          "name": "service advances to professional",
+          "passed": true
+        },
+        {
+          "name": "booking step settles without opacity choreography",
+          "passed": true
+        },
+        {
+          "name": "booking reaches date and time",
+          "passed": true
+        },
+        {
+          "name": "booking reaches confirmation",
+          "passed": true
+        },
+        {
+          "name": "restart returns the demo to its first page",
+          "passed": true
+        },
+        {
+          "name": "browser navigation keeps the portfolio in place",
+          "passed": true,
+          "detail": {
+            "before": 760.5166625976562,
+            "after": 760.5166625976562
+          }
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "opinioteca-desktop",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its scrollable content inside the browser",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "product has a bounded browser viewport",
+          "passed": true
+        },
+        {
+          "name": "product fits the browser width",
+          "passed": true,
+          "detail": {
+            "content": 1138,
+            "available": 1138
+          }
+        },
+        {
+          "name": "scrolling the product preserves the portfolio position",
+          "passed": true
+        },
+        {
+          "name": "search results survive pointer down",
+          "passed": true
+        },
+        {
+          "name": "vote updates the original card",
+          "passed": true
+        },
+        {
+          "name": "comment and count update together",
+          "passed": true
+        },
+        {
+          "name": "comment insertion preserves the composer",
+          "passed": true
+        },
+        {
+          "name": "feed settles after making room",
+          "passed": true,
+          "detail": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "discovery remains inside the product",
+          "passed": true
+        },
+        {
+          "name": "browser back changes the product page",
+          "passed": true
+        },
+        {
+          "name": "browser forward restores the product page",
+          "passed": true
+        },
+        {
+          "name": "restart returns the demo to its first page",
+          "passed": true
+        },
+        {
+          "name": "browser navigation keeps the portfolio in place",
+          "passed": true,
+          "detail": {
+            "before": 732.066650390625,
+            "after": 732.066650390625
+          }
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "opinioteca-mobile",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its scrollable content inside the browser",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "product has a bounded browser viewport",
+          "passed": true
+        },
+        {
+          "name": "product fits the browser width",
+          "passed": true,
+          "detail": {
+            "content": 264,
+            "available": 264
+          }
+        },
+        {
+          "name": "scrolling the product preserves the portfolio position",
+          "passed": true
+        },
+        {
+          "name": "search results survive pointer down",
+          "passed": true
+        },
+        {
+          "name": "vote updates the original card",
+          "passed": true
+        },
+        {
+          "name": "comment and count update together",
+          "passed": true
+        },
+        {
+          "name": "comment insertion preserves the composer",
+          "passed": true
+        },
+        {
+          "name": "feed settles after making room",
+          "passed": true,
+          "detail": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "discovery remains inside the product",
+          "passed": true
+        },
+        {
+          "name": "browser back changes the product page",
+          "passed": true
+        },
+        {
+          "name": "browser forward restores the product page",
+          "passed": true
+        },
+        {
+          "name": "restart returns the demo to its first page",
+          "passed": true
+        },
+        {
+          "name": "browser navigation keeps the portfolio in place",
+          "passed": true,
+          "detail": {
+            "before": 746.4666748046875,
+            "after": 746.4666748046875
+          }
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "opinioteca-reduced",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its scrollable content inside the browser",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "product has a bounded browser viewport",
+          "passed": true
+        },
+        {
+          "name": "product fits the browser width",
+          "passed": true,
+          "detail": {
+            "content": 264,
+            "available": 264
+          }
+        },
+        {
+          "name": "scrolling the product preserves the portfolio position",
+          "passed": true
+        },
+        {
+          "name": "search results survive pointer down",
+          "passed": true
+        },
+        {
+          "name": "vote updates the original card",
+          "passed": true
+        },
+        {
+          "name": "comment and count update together",
+          "passed": true
+        },
+        {
+          "name": "comment insertion preserves the composer",
+          "passed": true
+        },
+        {
+          "name": "feed settles after making room",
+          "passed": true,
+          "detail": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "discovery remains inside the product",
+          "passed": true
+        },
+        {
+          "name": "browser back changes the product page",
+          "passed": true
+        },
+        {
+          "name": "browser forward restores the product page",
+          "passed": true
+        },
+        {
+          "name": "restart returns the demo to its first page",
+          "passed": true
+        },
+        {
+          "name": "browser navigation keeps the portfolio in place",
+          "passed": true,
+          "detail": {
+            "before": 746.4666748046875,
+            "after": 746.4666748046875
+          }
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "calmera-os-desktop",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its scrollable content inside the browser",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "product has a bounded browser viewport",
+          "passed": true
+        },
+        {
+          "name": "product fits the browser width",
+          "passed": true,
+          "detail": {
+            "content": 1138,
+            "available": 1138
+          }
+        },
+        {
+          "name": "scrolling the product preserves the portfolio position",
+          "passed": true
+        },
+        {
+          "name": "store logo and bag keep separate space",
+          "passed": true,
+          "detail": {
+            "logo": [
+              266.25,
+              225
+            ],
+            "cart": [
+              953.4166870117188,
+              193
+            ]
+          }
+        },
+        {
+          "name": "original catalog has its three candles",
+          "passed": true
+        },
+        {
+          "name": "bag opens with selected item and its subtotal",
+          "passed": true
+        },
+        {
+          "name": "bag stays inside the browser window",
+          "passed": true,
+          "detail": {
+            "top": 177,
+            "bottom": 826.433349609375,
+            "viewport": [
+              177,
+              826.433349609375
+            ]
+          }
+        },
+        {
+          "name": "product dialog leaves browser controls available",
+          "passed": true
+        },
+        {
+          "name": "bag finishes its entrance",
+          "passed": true
+        },
+        {
+          "name": "cart quantity updates the subtotal without dismissing the drawer",
+          "passed": true
+        },
+        {
+          "name": "cart removes items and keeps the empty drawer usable",
+          "passed": true
+        },
+        {
+          "name": "bag remains mounted while exiting",
+          "passed": true
+        },
+        {
+          "name": "bag exits completely",
+          "passed": true
+        },
+        {
+          "name": "interrupted bag entrance releases its modal",
+          "passed": true
+        },
+        {
+          "name": "catalog search updates the product and the browser address",
+          "passed": true
+        },
+        {
+          "name": "browser back changes the product page",
+          "passed": true
+        },
+        {
+          "name": "browser forward restores the product page",
+          "passed": true
+        },
+        {
+          "name": "restart returns the demo to its first page",
+          "passed": true
+        },
+        {
+          "name": "browser navigation keeps the portfolio in place",
+          "passed": true,
+          "detail": {
+            "before": 875.4666748046875,
+            "after": 875.4666748046875
+          }
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "calmera-os-mobile",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its scrollable content inside the browser",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "product has a bounded browser viewport",
+          "passed": true
+        },
+        {
+          "name": "product fits the browser width",
+          "passed": true,
+          "detail": {
+            "content": 264,
+            "available": 264
+          }
+        },
+        {
+          "name": "scrolling the product preserves the portfolio position",
+          "passed": true
+        },
+        {
+          "name": "store logo and bag keep separate space",
+          "passed": true,
+          "detail": {
+            "logo": [
+              191.78334045410156,
+              242
+            ],
+            "cart": [
+              25,
+              254
+            ]
+          }
+        },
+        {
+          "name": "original catalog has its three candles",
+          "passed": true
+        },
+        {
+          "name": "bag opens with selected item and its subtotal",
+          "passed": true
+        },
+        {
+          "name": "bag stays inside the browser window",
+          "passed": true,
+          "detail": {
+            "top": 208,
+            "bottom": 721.3499755859375,
+            "viewport": [
+              208,
+              721.3499755859375
+            ]
+          }
+        },
+        {
+          "name": "product dialog leaves browser controls available",
+          "passed": true
+        },
+        {
+          "name": "bag finishes its entrance",
+          "passed": true
+        },
+        {
+          "name": "cart quantity updates the subtotal without dismissing the drawer",
+          "passed": true
+        },
+        {
+          "name": "cart removes items and keeps the empty drawer usable",
+          "passed": true
+        },
+        {
+          "name": "bag remains mounted while exiting",
+          "passed": true
+        },
+        {
+          "name": "bag exits completely",
+          "passed": true
+        },
+        {
+          "name": "interrupted bag entrance releases its modal",
+          "passed": true
+        },
+        {
+          "name": "catalog search updates the product and the browser address",
+          "passed": true
+        },
+        {
+          "name": "browser back changes the product page",
+          "passed": true
+        },
+        {
+          "name": "browser forward restores the product page",
+          "passed": true
+        },
+        {
+          "name": "restart returns the demo to its first page",
+          "passed": true
+        },
+        {
+          "name": "browser navigation keeps the portfolio in place",
+          "passed": true,
+          "detail": {
+            "before": 850.0333251953125,
+            "after": 850.0333251953125
+          }
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "calmera-os-reduced",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its scrollable content inside the browser",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "product has a bounded browser viewport",
+          "passed": true
+        },
+        {
+          "name": "product fits the browser width",
+          "passed": true,
+          "detail": {
+            "content": 264,
+            "available": 264
+          }
+        },
+        {
+          "name": "scrolling the product preserves the portfolio position",
+          "passed": true
+        },
+        {
+          "name": "store logo and bag keep separate space",
+          "passed": true,
+          "detail": {
+            "logo": [
+              191.78334045410156,
+              242
+            ],
+            "cart": [
+              25,
+              254
+            ]
+          }
+        },
+        {
+          "name": "original catalog has its three candles",
+          "passed": true
+        },
+        {
+          "name": "bag opens with selected item and its subtotal",
+          "passed": true
+        },
+        {
+          "name": "bag stays inside the browser window",
+          "passed": true,
+          "detail": {
+            "top": 208,
+            "bottom": 721.3499755859375,
+            "viewport": [
+              208,
+              721.3499755859375
+            ]
+          }
+        },
+        {
+          "name": "product dialog leaves browser controls available",
+          "passed": true
+        },
+        {
+          "name": "bag finishes its entrance",
+          "passed": true
+        },
+        {
+          "name": "cart quantity updates the subtotal without dismissing the drawer",
+          "passed": true
+        },
+        {
+          "name": "cart removes items and keeps the empty drawer usable",
+          "passed": true
+        },
+        {
+          "name": "bag exits completely",
+          "passed": true
+        },
+        {
+          "name": "interrupted bag entrance releases its modal",
+          "passed": true
+        },
+        {
+          "name": "catalog search updates the product and the browser address",
+          "passed": true
+        },
+        {
+          "name": "browser back changes the product page",
+          "passed": true
+        },
+        {
+          "name": "browser forward restores the product page",
+          "passed": true
+        },
+        {
+          "name": "restart returns the demo to its first page",
+          "passed": true
+        },
+        {
+          "name": "browser navigation keeps the portfolio in place",
+          "passed": true,
+          "detail": {
+            "before": 850.0333251953125,
+            "after": 850.0333251953125
+          }
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "vwrks-desktop",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its scrollable content inside the browser",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "product has a bounded browser viewport",
+          "passed": true
+        },
+        {
+          "name": "product fits the browser width",
+          "passed": true,
+          "detail": {
+            "content": 1138,
+            "available": 1138
+          }
+        },
+        {
+          "name": "scrolling the product preserves the portfolio position",
+          "passed": true
+        },
+        {
+          "name": "original work gallery is present",
+          "passed": true
+        },
+        {
+          "name": "responsive gallery uses available original media",
+          "passed": true
+        },
+        {
+          "name": "every Plena frame decodes when the project is reached",
+          "passed": true,
+          "detail": [
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-static.webp",
+              "loaded": 1280,
+              "complete": true
+            },
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-01.webp",
+              "loaded": 1280,
+              "complete": true
+            },
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-02.webp",
+              "loaded": 2200,
+              "complete": true
+            },
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-03.webp",
+              "loaded": 2200,
+              "complete": true
+            },
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-04.webp",
+              "loaded": 1280,
+              "complete": true
+            }
+          ]
+        },
+        {
+          "name": "original about navigation remains local",
+          "passed": true
+        },
+        {
+          "name": "Vwrks leaves the main navbar neutral",
+          "passed": true
+        },
+        {
+          "name": "browser back changes the product page",
+          "passed": true
+        },
+        {
+          "name": "browser forward restores the product page",
+          "passed": true
+        },
+        {
+          "name": "restart returns the demo to its first page",
+          "passed": true
+        },
+        {
+          "name": "browser navigation keeps the portfolio in place",
+          "passed": true,
+          "detail": {
+            "before": 805.816650390625,
+            "after": 805.816650390625
+          }
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "vwrks-mobile",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its scrollable content inside the browser",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "product has a bounded browser viewport",
+          "passed": true
+        },
+        {
+          "name": "product fits the browser width",
+          "passed": true,
+          "detail": {
+            "content": 264,
+            "available": 264
+          }
+        },
+        {
+          "name": "scrolling the product preserves the portfolio position",
+          "passed": true
+        },
+        {
+          "name": "original work gallery is present",
+          "passed": true
+        },
+        {
+          "name": "responsive gallery uses available original media",
+          "passed": true
+        },
+        {
+          "name": "every Plena frame decodes when the project is reached",
+          "passed": true,
+          "detail": [
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-static.webp",
+              "loaded": 1280,
+              "complete": true
+            },
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-01.webp",
+              "loaded": 1280,
+              "complete": true
+            },
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-02.webp",
+              "loaded": 2200,
+              "complete": true
+            },
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-03.webp",
+              "loaded": 2200,
+              "complete": true
+            },
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-04.webp",
+              "loaded": 1280,
+              "complete": true
+            }
+          ]
+        },
+        {
+          "name": "original about navigation remains local",
+          "passed": true
+        },
+        {
+          "name": "Vwrks leaves the main navbar neutral",
+          "passed": true
+        },
+        {
+          "name": "browser back changes the product page",
+          "passed": true
+        },
+        {
+          "name": "browser forward restores the product page",
+          "passed": true
+        },
+        {
+          "name": "restart returns the demo to its first page",
+          "passed": true
+        },
+        {
+          "name": "browser navigation keeps the portfolio in place",
+          "passed": true,
+          "detail": {
+            "before": 844.1666870117188,
+            "after": 844.1666870117188
+          }
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    },
+    {
+      "name": "vwrks-reduced",
+      "viewport": [
+        306,
+        828
+      ],
+      "checks": [
+        {
+          "name": "page fits its viewport",
+          "passed": true
+        },
+        {
+          "name": "header mark keeps its original size on every viewport",
+          "passed": true
+        },
+        {
+          "name": "product loads without a cover image",
+          "passed": true
+        },
+        {
+          "name": "product keeps its scrollable content inside the browser",
+          "passed": true
+        },
+        {
+          "name": "case title is readable",
+          "passed": true
+        },
+        {
+          "name": "product has a bounded browser viewport",
+          "passed": true
+        },
+        {
+          "name": "product fits the browser width",
+          "passed": true,
+          "detail": {
+            "content": 264,
+            "available": 264
+          }
+        },
+        {
+          "name": "scrolling the product preserves the portfolio position",
+          "passed": true
+        },
+        {
+          "name": "original work gallery is present",
+          "passed": true
+        },
+        {
+          "name": "responsive gallery uses available original media",
+          "passed": true
+        },
+        {
+          "name": "every Plena frame decodes when the project is reached",
+          "passed": true,
+          "detail": [
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-static.webp",
+              "loaded": 1280,
+              "complete": true
+            },
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-01.webp",
+              "loaded": 1280,
+              "complete": true
+            },
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-02.webp",
+              "loaded": 2200,
+              "complete": true
+            },
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-03.webp",
+              "loaded": 2200,
+              "complete": true
+            },
+            {
+              "src": "file:///home/eduardo/Documents/Projetos/portfolio-novo/public/product-slices/vwrks/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-04.webp",
+              "loaded": 1280,
+              "complete": true
+            }
+          ]
+        },
+        {
+          "name": "original about navigation remains local",
+          "passed": true
+        },
+        {
+          "name": "Vwrks leaves the main navbar neutral",
+          "passed": true
+        },
+        {
+          "name": "browser back changes the product page",
+          "passed": true
+        },
+        {
+          "name": "browser forward restores the product page",
+          "passed": true
+        },
+        {
+          "name": "restart returns the demo to its first page",
+          "passed": true
+        },
+        {
+          "name": "browser navigation keeps the portfolio in place",
+          "passed": true,
+          "detail": {
+            "before": 844.1666870117188,
+            "after": 844.1666870117188
+          }
+        },
+        {
+          "name": "product interaction keeps the page within its viewport",
+          "passed": true
+        },
+        {
+          "name": "runtime is error free",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "scrollCalls": [
+        {
+          "top": 0,
+          "behavior": "instant"
+        }
+      ],
+      "recordings": []
+    }
+  ]
+}

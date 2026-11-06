@@ -1,12 +1,15 @@
-import { useId, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { motion, useTransform } from "motion/react";
+import { motion, useInView, useTransform } from "motion/react";
 import { useGalleryMotion } from "../hooks/useGalleryMotion";
 import { springs } from "../utils/choreography";
 import { useLanguage } from "../i18n/LanguageContext";
 import { demoBooks, demoCandles } from "../data/productDemos";
 import ProductCrop from "./project-cases/environments/ProductCrop";
+import { useSceneNavigation } from "../hooks/useSceneNavigation";
+import { TypeArrival } from "./SceneArrival";
+import { prepareProduct } from "../product-slices/preload";
 
 const captures = {
   trato: ["/images/trato/homepage.webp", "/images/trato/booking.webp"],
@@ -17,21 +20,32 @@ const captures = {
 export default function ProjectCard({ project, index }) {
   const ref = useRef(null);
   const indicator = useId();
-  const { active, position, select, reduced } = useGalleryMotion(ref);
+  const entered = useInView(ref, { once: true, margin: "0px 0px -12% 0px" });
+  const { active, position, select, reduced, flow } = useGalleryMotion(ref, project.slug);
+  const navigation = useSceneNavigation();
   const x = useTransform(position, [0, 1], ["0%", "-50%"]);
   const { language, copy } = useLanguage();
   const text = copy.editorial.projects[project.slug];
   const frames = captures[project.slug];
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) { prepareProduct(project.slug); observer.disconnect(); }
+    }, { rootMargin: "600px" });
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [project.slug]);
 
   return (
     <article id={`work-${project.slug}`} className={`work-feature work-feature--${project.slug}`} aria-labelledby={`title-${project.slug}`}>
       <header className="work-feature__heading">
         <p className="editorial-label">{String(index + 1).padStart(2, "0")} / {text.category}</p>
-        <h3 id={`title-${project.slug}`}>{project.title}</h3>
-        <p className="work-feature__headline">{text.headline}</p>
+        <h3 id={`title-${project.slug}`}><TypeArrival>{project.title}</TypeArrival></h3>
+        <p className="work-feature__headline"><TypeArrival delay={0.06}>{text.headline}</TypeArrival></p>
       </header>
-      <div ref={ref} className="work-feature__sequence">
+      <div ref={ref} className={`work-feature__sequence${flow ? " is-flow" : ""}`}>
         <div className="work-feature__stage">
+          <motion.span className="work-feature__rule" aria-hidden="true" initial={false}
+            animate={{ scaleX: entered || reduced || navigation?.restored ? 1 : 0 }} transition={springs.surface} />
           <div className="work-feature__context">
             {project.slug === "opinioteca" && <div className="work-feature__books" aria-hidden="true">
               {demoBooks.map((book) => <ProductCrop key={book.id} item={book} label={book.title} />)}
@@ -42,7 +56,7 @@ export default function ProjectCard({ project, index }) {
             <p className="work-feature__description">{text.body}</p>
             <dl className="work-feature__ownership"><dt>{copy.editorial.scope}</dt><dd>{text.ownership}</dd></dl>
             <p className="work-feature__stack">{text.stack}</p>
-            <Link to={`/projects/${project.slug}`} className="editorial-link">{copy.editorial.caseLink}<span aria-hidden="true">↗</span></Link>
+            <Link to={`/projects/${project.slug}`} onClick={(event) => navigation?.openProject(event, project, frames[active])} className="editorial-link">{copy.editorial.caseLink}<span aria-hidden="true">↗</span></Link>
           </div>
           <div className="work-feature__evidence">
             <div className="evidence-controls" role="group" aria-label={`${project.title}: ${copy.editorial.screens}`}>

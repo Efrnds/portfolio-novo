@@ -52,6 +52,7 @@
   84% { background-color: #e1d8f2; }
 }
 .vwrks-detail::before { animation: vwrks-color-drift 15s ease infinite; }
+.vwrks-detail[data-ambient-paused="true"]::before { animation-play-state: paused; }
 
 @media (max-width: 900px) {
   .construction-stage { perspective: 1000px; }

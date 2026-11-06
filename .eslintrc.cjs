@@ -12,8 +12,8 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   overrides: [{
-    files: ['src/product-slices/compat/**/*.{js,jsx}', 'src/product-slices/screens/**/*.{js,jsx}'],
-    // These are compiled into checked-in modules, outside Vite's refresh boundary.
+    files: ['src/product-slices/compat/**/*.{js,jsx}', 'src/product-slices/screens/**/*.{js,jsx}', 'tests/browser/**/*.{js,jsx}'],
+    // Generated adapters and browser fixtures are outside Vite's refresh boundary.
     rules: { 'react-refresh/only-export-components': 'off' },
   }],
   rules: {

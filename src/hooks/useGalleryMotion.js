@@ -1,45 +1,74 @@
 import { useEffect, useRef, useState } from "react";
 import { useMotionValueEvent, useReducedMotion, useScroll, useSpring } from "motion/react";
 import { useViewport } from "./useViewport";
-import { galleryPosition, springs, visibleGalleryIndex } from "../utils/choreography";
+import { useSceneNavigation } from "./useSceneNavigation";
+import { nextGalleryState, springs } from "../utils/choreography";
 
-export function useGalleryMotion(ref) {
+export function useGalleryMotion(ref, id) {
   const compact = useViewport();
   const reduced = useReducedMotion();
-  const followsScroll = !compact && !reduced;
-  const [active, setActive] = useState(0);
-  const selected = useRef(0);
-  const position = useSpring(0, springs.scroll);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 72px", "end end"] });
+  const navigation = useSceneNavigation();
+  const initial = useRef(navigation?.readView(id) ?? 0);
+  const [active, setActive] = useState(initial.current);
+  const selection = useRef({ index: initial.current });
+  const ready = useRef(false);
+  const [fits, setFits] = useState(true);
+  const position = useSpring(initial.current, springs.gallery);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 72px", "end end"], trackContentSize: true });
+
+  const commit = (next, instant = false) => {
+    selection.current = next;
+    navigation?.saveView(id, next.index);
+    setActive(next.index);
+    if (reduced || instant) position.jump(next.index);
+    else position.set(next.index);
+  };
 
   useMotionValueEvent(scrollYProgress, "change", (value) => {
-    if (followsScroll) position.set(galleryPosition(value));
-  });
-  useMotionValueEvent(position, "change", (value) => {
-    if (!followsScroll) return;
-    const next = visibleGalleryIndex(value, selected.current);
-    if (next === selected.current) return;
-    selected.current = next;
-    setActive(next);
+    if (!ready.current || compact || reduced || !fits) return;
+    const next = nextGalleryState(selection.current, value);
+    if (next.index === selection.current.index) { selection.current = next; return; }
+    commit(next, value === 0 || value === 1);
   });
 
   useEffect(() => {
-    position.jump(followsScroll ? galleryPosition(scrollYProgress.get()) : selected.current);
-  }, [followsScroll, position, scrollYProgress]);
+    const stage = ref.current?.querySelector(".work-feature__stage");
+    if (!stage) return;
+    const measure = () => setFits(stage.offsetHeight <= window.innerHeight - 72 + 1);
+    const observer = new ResizeObserver(measure);
+    observer.observe(stage);
+    window.addEventListener("resize", measure);
+    measure();
+    return () => { observer.disconnect(); window.removeEventListener("resize", measure); };
+  }, [ref]);
 
-  const select = (next) => {
-    const node = ref.current;
-    if (!followsScroll || !node) {
-      selected.current = next;
-      setActive(next);
-      if (reduced) position.jump(next);
-      else position.set(next);
-      return;
-    }
-    const start = node.getBoundingClientRect().top + window.scrollY - 72;
-    const travel = Math.max(0, node.offsetHeight - window.innerHeight + 72);
-    window.scrollTo({ top: start + travel * (next ? 0.9 : 0.1), behavior: "smooth" });
-  };
+  useEffect(() => {
+    let frame;
+    let second;
+    const restore = () => {
+      ready.current = false;
+      cancelAnimationFrame(frame);
+      cancelAnimationFrame(second);
+      const saved = navigation?.readView(id);
+      if (saved !== undefined) {
+        selection.current = { index: saved };
+        position.jump(saved);
+        setActive(saved);
+      }
+      frame = requestAnimationFrame(() => { second = requestAnimationFrame(() => {
+        const index = saved ?? nextGalleryState(selection.current, scrollYProgress.get()).index;
+        selection.current = { index };
+        position.jump(index);
+        setActive(index);
+        ready.current = true;
+      }); });
+    };
+    window.addEventListener("construction:restore", restore);
+    restore();
+    return () => { ready.current = false; cancelAnimationFrame(frame); cancelAnimationFrame(second); window.removeEventListener("construction:restore", restore); };
+  }, [id, navigation, position, scrollYProgress]);
 
-  return { active, position, select, reduced };
+  const select = (index) => commit({ index, manualOrigin: scrollYProgress.get() });
+
+  return { active, position, select, reduced, flow: compact || reduced || !fits };
 }

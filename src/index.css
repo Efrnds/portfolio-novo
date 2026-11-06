@@ -176,9 +176,8 @@ img {
   align-items: center;
   gap: 2rem;
   border-bottom: 1px solid var(--line);
-  background: rgba(236, 233, 223, 0.9);
+  background: var(--paper);
   padding: 0 3rem;
-  backdrop-filter: blur(14px);
 }
 
 .site-header__mark {

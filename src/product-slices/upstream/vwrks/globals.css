@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Authentic Sans 90";
+  src: url("/assets/fonts/InterTight-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Authentic Sans 60";
+  src: url("/assets/fonts/InterTight-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Authentic Sans 130";
+  src: url("/assets/fonts/InterTight-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Minecraft";
+  src: url("/assets/fonts/Monocraft.ttf");
+}
+
+@font-face {
+  font-family: "EditorialNew";
+  src: url("/assets/fonts/Editorial New/EditorialNew-Regular.ttf");
+}
+
+@theme {
+  --color-cinza-100: #f7f7f7;
+  --color-cinza-200: #ebebeb;
+  --color-verde-100: #d4edd4;
+  --color-roxo-100: #e1d8f2;
+  --color-azul-100: #cee0f3;
+  --azul-100: #cee0f3;
+  --color-vermelho-100: #f6dcd5;
+  --color-amarelo-100: #f3efc8;
+  --color-rosa-100: #f1d5ea;
+  --text-authentic-sans-90: "Authentic Sans 90", sans-serif;
+  --font-authentic-sans-90: "Authentic Sans 90", sans-serif;
+  --font-authentic-sans-130: "Authentic Sans 130", sans-serif;
+  --text-authentic-sans-130: "Authentic Sans 130", sans-serif;
+  --text-authentic-sans-60: "Authentic Sans 60", sans-serif;
+  --font-authentic-sans-60: "Authentic Sans 60", sans-serif;
+  --font-minecraft: "Minecraft", sans-serif;
+  --font-EditorialNew-regular: "EditorialNew", sans-serif;
+  --text-titulo: 64px;
+}
+
+html {
+  cursor: url("/cursors/cursor.svg"), auto;
+  height: 100vh;
+  margin: 0;
+  background-size: cover;
+  animation: gradientChange 15s ease infinite;
+}
+
+/* Soft layout containment — keep skip-render off to avoid "reload" feel */
+.media-contain {
+  contain: layout style;
+}
+
+/* Smooth full-res fades (compositor-only — keeps quality 1:1) */
+.media-fade {
+  opacity: 0;
+  transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.media-fade.is-ready {
+  opacity: 1;
+  /* drop compositor layer after fade — will-change stacks cost FPS */
+  transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.media-shell {
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.page-reveal {
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-reveal.is-ready {
+  opacity: 1;
+}
+
+.page-preloader-bar {
+  transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* During bulk media settle, pause expensive looping work */
+html.is-media-loading {
+  animation-play-state: paused;
+}
+
+html.is-media-loading .navbar-gradient {
+  animation-play-state: paused;
+}
+
+html.is-media-loading .skeleton-loader,
+html.is-media-decoding .skeleton-loader {
+  animation: none;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* Soften pointer work while serial decode is running */
+html.is-media-decoding {
+  pointer-events: auto;
+}
+
+@keyframes gradientChange {
+  0% {
+    background-color: rgba(222, 234, 247, 1);
+  }
+  33% {
+    background-color: rgba(226, 243, 226, 1);
+  }
+  66% {
+    background-color: rgba(246, 243, 213, 1);
+  }
+  100% {
+    background-color: rgba(234, 228, 246, 1);
+  }
+}
+
+.navbar-gradient {
+  animation: gradientChange 15s ease infinite;
+}
+
+/* Cursor ao passar por elementos clicáveis (botões, links, inputs, etc.) */
+button,
+a,
+input,
+textarea,
+select {
+  cursor: url("/cursors/click.svg"), pointer;
+}
+.carousel,
+.cursor-drag {
+  cursor: url("/cursors/drag.svg") 10 10, grab;
+}
+
+.cursor-dragging {
+  cursor: url("/cursors/drag.svg") 10 10, grabbing;
+}
+
+.custom-cursor-click {
+  cursor: url("/cursors/click.svg"), pointer;
+}
+
+.dark-bg-cursor {
+  cursor: url("/cursors/cursorWhite.svg"), pointer;
+}
+
+body {
+  font-family: var(--text-authentic-sans-90);
+}
+
+:root {
+  --cursor-offset: 20; /* Valor base */
+}
+
+@media (max-width: 768px) {
+  :root {
+    --cursor-offset: 15; /* Offset menor em mobile */
+  }
+}
+
+/* Adicione isso ao seu arquivo globals.css */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Skeleton — slow shimmer (less GPU than 1.35s thrash) */
+.skeleton-loader {
+  background: linear-gradient(
+    110deg,
+    rgba(0, 0, 0, 0.04) 0%,
+    rgba(0, 0, 0, 0.04) 40%,
+    rgba(0, 0, 0, 0.08) 50%,
+    rgba(0, 0, 0, 0.04) 60%,
+    rgba(0, 0, 0, 0.04) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 2.4s ease-in-out infinite;
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-loader {
+    animation: none;
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  .media-fade,
+  .page-reveal,
+  .page-preloader-bar {
+    transition: none !important;
+  }
+
+  .media-fade.is-ready,
+  .page-reveal.is-ready {
+    opacity: 1;
+  }
+}

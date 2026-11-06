@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
-import { CaseHeroMedia, CaseReveal, KineticTitle } from "./CaseMotion";
+import { CaseReveal, KineticTitle } from "./CaseMotion";
 import ProductEnvironment from "./ProductEnvironment";
 import StoryFilm from "../StoryFilm";
 import { useLanguage } from "../../i18n/LanguageContext";
@@ -8,6 +8,7 @@ import { useLanguage } from "../../i18n/LanguageContext";
 export default function TratoCase({ project, prev, next }) {
   const { copy } = useLanguage();
   const labels = copy.details.trato;
+  const flow = copy.editorial.tratoFlow;
 
   return (
     <article id="main-content" className="project-detail trato-detail">
@@ -18,7 +19,7 @@ export default function TratoCase({ project, prev, next }) {
             <p className="eyebrow">{labels.label} / {project.years}</p>
             <h1><KineticTitle>{project.title}</KineticTitle></h1>
           </div>
-          <p>{project.statement}</p>
+          <p>{copy.editorial.projects.trato.headline}</p>
         </div>
         <div className="trato-detail__facts">
           <p><span>{copy.case.role}</span>{project.role}</p>
@@ -27,9 +28,15 @@ export default function TratoCase({ project, prev, next }) {
         </div>
       </header>
 
-      <CaseHeroMedia image={project.gallery[0]} title={labels.views[0] || project.title} />
-
       <ProductEnvironment project={project} />
+
+      <section className="trato-routine" aria-labelledby="trato-routine-title">
+        <div><p className="eyebrow">{flow.label}</p><h2 id="trato-routine-title">{flow.title}</h2></div>
+        <div>
+          <ol>{flow.steps.map((step, index) => <li key={step}><span>{String(index + 1).padStart(2, "0")}</span>{step}</li>)}</ol>
+          <p>{flow.body}</p>
+        </div>
+      </section>
 
       <CaseReveal className="trato-detail__story" direction="left">
         <div className="trato-detail__statement">

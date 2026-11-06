@@ -1,40 +1,32 @@
-import { useRef } from "react";
-import { AssemblyEdges, AssemblyPart } from "./Assembly";
-import { useAssembly } from "../hooks/useAssembly";
-import ArchiveScene from "./construction/ArchiveScene";
+import { Link } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
 import { projects } from "../data/projects";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export default function WorkSection() {
-  const ref = useRef(null);
   const { copy, localizeProject } = useLanguage();
-  const localizedProjects = projects.map(localizeProject);
-  const featured = localizedProjects.filter((project) => project.film && project.story);
-  const archive = localizedProjects.filter((project) => !project.film || !project.story);
-  const assembly = useAssembly(ref);
+  const text = copy.editorial;
+  const featured = projects.filter((project) => project.film && project.story).map(localizeProject);
 
   return (
-    <section id="work" className="work-section scroll-mt-28">
-      <div
-        ref={ref}
-        className="section-heading section-heading--work"
-      >
-        <AssemblyEdges progress={assembly} />
-        <AssemblyPart progress={assembly} from="left">
-          <p className="eyebrow">{copy.work.eyebrow}</p>
-          <h2>{copy.work.title}</h2>
-        </AssemblyPart>
-        <AssemblyPart progress={assembly} start={0.36}><p>{copy.work.body}</p></AssemblyPart>
-      </div>
-
-      <div className="work-section__chapters">
-        {featured.map((project, index) => (
-          <ProjectCard key={project.slug} project={project} index={index} />
-        ))}
-      </div>
-
-      <ArchiveScene projects={archive} offset={featured.length} />
+    <section id="work" className="editorial-work" aria-labelledby="work-title">
+      <header className="editorial-work__heading">
+        <p className="editorial-label">01 / {text.index}</p>
+        <h2 id="work-title">{text.workTitle}</h2>
+        <p>{text.workIntro}</p>
+      </header>
+      {featured.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}
+      <article className="commission-entry">
+        <div className="commission-entry__copy">
+          <p className="editorial-label">04 / {text.commission}</p>
+          <h3>{text.commissionTitle}</h3>
+          <p>{text.commissionBody}</p>
+          <Link className="editorial-link" to="/projects/vwrks">{text.commissionLink}<span aria-hidden="true">↗</span></Link>
+        </div>
+        <Link to="/projects/vwrks" className="commission-entry__image" aria-label={`${copy.a11y.readCase} Vwrks`}>
+          <img src="/images/vwrks/home.webp" alt={`${copy.details.vwrks.pages[0]} / Vwrks`} width="1876" height="996" loading="lazy" />
+        </Link>
+      </article>
     </section>
   );
 }

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
-import { CaseHeroMedia, CaseReveal, KineticTitle } from "./CaseMotion";
+import { CaseReveal, KineticTitle } from "./CaseMotion";
 import ProductEnvironment from "./ProductEnvironment";
 import StoryFilm from "../StoryFilm";
 import { useLanguage } from "../../i18n/LanguageContext";
@@ -23,8 +23,6 @@ export default function CalmeraCase({ project, prev, next }) {
           <ProjectLinks links={project.links} />
         </div>
       </header>
-
-      <CaseHeroMedia image={project.gallery[0]} title={labels.views[0] || project.title} />
 
       <ProductEnvironment project={project} />
 

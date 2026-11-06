@@ -1,0 +1,14 @@
+{
+  "Montserrat.ttf": {
+    "repository": "google/fonts",
+    "url": "https://github.com/google/fonts/blob/main/ofl/montserrat/Montserrat[wght].ttf",
+    "blobSha": "c97aca18592834d8706549c279cb8d5ac5d85f69",
+    "license": "montserrat-OFL.txt"
+  },
+  "LibreBaskerville.ttf": {
+    "repository": "google/fonts",
+    "url": "https://github.com/google/fonts/blob/main/ofl/librebaskerville/LibreBaskerville[wght].ttf",
+    "blobSha": "eae4eba83203138da3a3a7603b598b7ebc5a5238",
+    "license": "librebaskerville-OFL.txt"
+  }
+}

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { AdjacentProjects, BackToWork, ProjectLinks, ProjectStack } from "./CaseParts";
-import { CaseHeroMedia, CaseReveal, KineticTitle } from "./CaseMotion";
+import { CaseReveal, KineticTitle } from "./CaseMotion";
 import ProductEnvironment from "./ProductEnvironment";
 import StoryFilm from "../StoryFilm";
 import { useLanguage } from "../../i18n/LanguageContext";
@@ -24,8 +24,6 @@ export default function OpiniotecaCase({ project, prev, next }) {
           </div>
         </div>
       </header>
-
-      <CaseHeroMedia image={project.gallery[1]} title={labels.views[1] || project.title} />
 
       <ProductEnvironment project={project} />
 

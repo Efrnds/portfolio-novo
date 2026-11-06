@@ -3,6 +3,10 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "!./src/product-slices/upstream/**",
+    "!./src/product-slices/generated/**",
+    "!./src/product-slices/compat/**",
+    "!./src/product-slices/screens/**",
   ],
   theme: {
     extend: {

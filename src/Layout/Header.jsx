@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { AnimatePresence } from "motion/react";
 import PropTypes from "prop-types";
 import Sidebar from "../components/Sidebar";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -59,13 +60,13 @@ function Header() {
           className="site-header__mark"
           aria-label={copy.a11y.home}
         >
-          <span>EF</span>
-          <span>Systems / 26</span>
+          <span>ef.</span>
+          <span>Eduardo Fernandes</span>
         </Link>
         <nav className="site-header__nav" aria-label={copy.a11y.primaryNav}>
-          <Link to="/#about">{copy.nav.about}</Link>
-          <Link to="/#experience">{copy.nav.experience}</Link>
           <Link to="/#work">{copy.nav.work}</Link>
+          <Link to="/#experience">{copy.nav.experience}</Link>
+          <Link to="/#about">{copy.nav.about}</Link>
         </nav>
         <div className="site-header__actions">
           <div className="language-switch" aria-label={copy.nav.language}>
@@ -75,7 +76,7 @@ function Header() {
               </button>
             ))}
           </div>
-          <a className="site-header__contact" href="mailto:contato.efrnds@outlook.com">{copy.nav.contact}</a>
+          <Link className="site-header__contact" to="/#contact">{copy.nav.contact}</Link>
         </div>
         <div className="site-header__mobile-menu">
           <MenuToggle
@@ -87,7 +88,7 @@ function Header() {
         </div>
       </header>
 
-      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+      <AnimatePresence>{isSidebarOpen && <Sidebar isOpen onClose={() => setIsSidebarOpen(false)} />}</AnimatePresence>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import { useScroll, useSpring } from "motion/react";
+import { springs } from "../utils/choreography";
 
 export function useAssembly(ref) {
   const { scrollYProgress } = useScroll({
@@ -6,5 +7,5 @@ export function useAssembly(ref) {
     offset: ["start 92%", "start 24%"],
   });
 
-  return useSpring(scrollYProgress, { stiffness: 65, damping: 28, mass: 0.55 });
+  return useSpring(scrollYProgress, springs.scroll);
 }

@@ -1,10 +1,11 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import PropTypes from "prop-types";
+import { editorialCopy } from "./editorial";
 
 const copy = {
   en: {
-    nav: { about: "Approach", experience: "Experience", work: "Work", contact: "Start a project", menu: "Menu", close: "Close", language: "Language" },
+    nav: { about: "About", experience: "Operations", work: "Work", contact: "Contact", menu: "Menu", close: "Close", language: "Language" },
     meta: {
       homeTitle: "Eduardo Fernandes | Full-stack & Systems Engineer",
       homeDescription: "Eduardo Fernandes builds product software, internal tools, and the infrastructure behind them, from interface to real operations.",
@@ -82,7 +83,7 @@ const copy = {
     },
   },
   pt: {
-    nav: { about: "Abordagem", experience: "Experiência", work: "Projetos", contact: "Iniciar projeto", menu: "Menu", close: "Fechar", language: "Idioma" },
+    nav: { about: "Sobre", experience: "Operação", work: "Projetos", contact: "Contato", menu: "Menu", close: "Fechar", language: "Idioma" },
     meta: {
       homeTitle: "Eduardo Fernandes | Engenharia Full Stack e Sistemas",
       homeDescription: "Eduardo Fernandes constrói produtos digitais, ferramentas internas e a infraestrutura que sustenta operações reais.",
@@ -174,7 +175,7 @@ export function LanguageProvider({ children }) {
   const value = useMemo(() => ({
     language,
     setLanguage,
-    copy: copy[language],
+    copy: { ...copy[language], editorial: editorialCopy[language] },
     localizeProject: (project) => ({ ...project, ...(project.i18n?.[language] || {}) }),
   }), [language]);
 

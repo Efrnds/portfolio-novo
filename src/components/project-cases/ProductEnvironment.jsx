@@ -1,15 +1,11 @@
 import PropTypes from "prop-types";
-import TratoEnvironment from "./environments/TratoEnvironment";
-import OpiniotecaEnvironment from "./environments/OpiniotecaEnvironment";
-import CalmeraEnvironment from "./environments/CalmeraEnvironment";
-import VwrksEnvironment from "./environments/VwrksEnvironment";
-import "./environments/environment.css";
+import ProductSlice from "../../product-slices/ProductSlice";
 
-const environments = { trato: TratoEnvironment, opinioteca: OpiniotecaEnvironment, "calmera-os": CalmeraEnvironment, vwrks: VwrksEnvironment };
+const environments = { trato: ["trato", "https://trato.prismap.com.br"], opinioteca: ["opinioteca", "https://opinioteca.prismapp.com.br"], "calmera-os": ["calmera", "https://calmera.prismapp.com.br/"], vwrks: ["vwrks", "https://vwrks.cc"] };
 
 export default function ProductEnvironment({ project }) {
-  const Content = environments[project.slug];
-  return Content ? <Content /> : null;
+  const screen = environments[project.slug];
+  return screen ? <ProductSlice kind={screen[0]} href={screen[1]} /> : null;
 }
 
 ProductEnvironment.propTypes = { project: PropTypes.shape({ slug: PropTypes.string.isRequired }).isRequired };

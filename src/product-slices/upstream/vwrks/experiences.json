@@ -1,0 +1,80 @@
+{
+  "experiences": [
+    {
+      "id": 1,
+      "title": "Designer de Identidade Visual",
+      "location": "Estúdio Kimura",
+      "date": "dez. 2020 → jan. 2025"
+    },
+    {
+      "id": 2,
+      "title": "Diretor de Arte",
+      "location": "Grupo Allo",
+      "date": "jul. 2019 → dez. 2020"
+    },
+    {
+      "id": 3,
+      "title": "Designer Júnior",
+      "location": "Agência Pixel",
+      "date": "mai. 2019 → jul. 2019"
+    },
+    {
+      "id": 4,
+      "title": "Social Media Designer",
+      "location": "Amblard Marketing",
+      "location2": "ANIMALAMPS",
+      "date": "jul. 2019 → ago. 2019",
+      "date2": "out. 2017 → dez. 2017"
+    }
+  ],
+  "educations": [
+    {
+      "id": 1,
+      "title": "Decodificando Identidades",
+      "location": "Aprender Design",
+      "date": "dez. 2024"
+    },
+    {
+      "id": 2,
+      "title": "Graphic Design with Paula Scher",
+      "location": "BBC Maestro",
+      "date": "nov. 2016"
+    },
+    {
+      "id": 3,
+      "title": "ID Class 2.0",
+      "location": "Marcelo Kimura",
+      "date": "abr. 2023"
+    },
+    {
+      "id": 4,
+      "title": "Introdução à Identidade Visual",
+      "location": "Marcelo Kimura",
+      "date": "set. 2023"
+    },
+    {
+      "id": 5,
+      "title": "Introdução à Modelagem 3D no Blender com Rafael Moco",
+      "location": "UNHIDE School",
+      "date": "jan. 2021"
+    },
+    {
+      "id": 6,
+      "title": "Shading no Blender para Iniciantes com Rafael Vallaperde",
+      "location": "UNHIDE School",
+      "date": "fev. 2021"
+    },
+    {
+      "id": 7,
+      "title": "Iluminando em 3D e Técnicas de Iluminação com Rafael Vallaperde",
+      "location": "UNHIDE School",
+      "date": "mar. 2021"
+    },
+    {
+      "id": 8,
+      "title": "Workshop de Storytelling",
+      "location": "Ivan Mizanzuk",
+      "date": "jun. 2023"
+    }
+  ]
+}

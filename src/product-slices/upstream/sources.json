@@ -1,0 +1,61 @@
+{
+  "calmera": {
+    "StoreRecipeGrid.tsx": "/home/eduardo/Documents/Projetos/calmera-os/src/components/store/StoreRecipeGrid.tsx",
+    "StoreNav.tsx": "/home/eduardo/Documents/Projetos/calmera-os/src/components/store/StoreNav.tsx",
+    "StoreCartDrawer.tsx": "/home/eduardo/Documents/Projetos/calmera-os/src/components/store/StoreCartDrawer.tsx",
+    "button.tsx": "/home/eduardo/Documents/Projetos/calmera-os/src/components/ui/button.tsx",
+    "input.tsx": "/home/eduardo/Documents/Projetos/calmera-os/src/components/ui/input.tsx",
+    "globals.css": "/home/eduardo/Documents/Projetos/calmera-os/src/app/globals.css",
+    "sheet.tsx": "/home/eduardo/Documents/Projetos/calmera-os/src/components/ui/sheet.tsx",
+    "routes.ts": "/home/eduardo/Documents/Projetos/calmera-os/src/lib/routes.ts",
+    "store-checkout-urls.ts": "/home/eduardo/Documents/Projetos/calmera-os/src/lib/store-checkout-urls.ts",
+    "parse-json-response.ts": "/home/eduardo/Documents/Projetos/calmera-os/src/lib/parse-json-response.ts"
+  },
+  "opinioteca": {
+    "Main.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/Main.tsx",
+    "Header.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/Header.tsx",
+    "MenuEsquerdo.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/MenuEsquerdo.tsx",
+    "MenuDireito.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/MenuDireito.tsx",
+    "Feed.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/Feed.tsx",
+    "PostCard.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/PostCard.tsx",
+    "SeletorPilula.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/SeletorPilula.tsx",
+    "Box.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/Box.tsx",
+    "AvatarUsuario.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/AvatarUsuario.tsx",
+    "BadgeTop.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/BadgeTop.tsx",
+    "BadgeRank.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/BadgeRank.tsx",
+    "NomeUsuario.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/NomeUsuario.tsx",
+    "SpoilerGuard.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/SpoilerGuard.tsx",
+    "ComentarioComposer.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/ComentarioComposer.tsx",
+    "globals.css": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/globals.css",
+    "DescobertaSecoes.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/DescobertaSecoes.tsx",
+    "MomentumCarousel.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/MomentumCarousel.tsx",
+    "NovaAvaliacaoModal.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/NovaAvaliacaoModal.tsx",
+    "RegistrarLeituraModal.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/RegistrarLeituraModal.tsx",
+    "LightboxImagem.tsx": "/home/eduardo/Documents/Projetos/opinioteca/frontend/app/components/LightboxImagem.tsx",
+    "nav.ts": "/home/eduardo/Documents/Projetos/opinioteca/frontend/lib/nav.ts",
+    "avaliacao.ts": "/home/eduardo/Documents/Projetos/opinioteca/frontend/lib/avaliacao.ts",
+    "tema.ts": "/home/eduardo/Documents/Projetos/opinioteca/frontend/lib/tema.ts",
+    "plano.ts": "/home/eduardo/Documents/Projetos/opinioteca/frontend/lib/plano.ts",
+    "texto.ts": "/home/eduardo/Documents/Projetos/opinioteca/frontend/lib/texto.ts"
+  },
+  "trato": {
+    "BookingClient.tsx": "/home/eduardo/Documents/Projetos/trato/app/agendar/[id]/BookingClient.tsx",
+    "button.tsx": "/home/eduardo/Documents/Projetos/trato/components/ui/button.tsx",
+    "card.tsx": "/home/eduardo/Documents/Projetos/trato/components/ui/card.tsx",
+    "input.tsx": "/home/eduardo/Documents/Projetos/trato/components/ui/input.tsx",
+    "globals.css": "/home/eduardo/Documents/Projetos/trato/app/globals.css",
+    "dialog.tsx": "/home/eduardo/Documents/Projetos/trato/components/ui/dialog.tsx",
+    "popover.tsx": "/home/eduardo/Documents/Projetos/trato/components/ui/popover.tsx",
+    "catalogo-foto.tsx": "/home/eduardo/Documents/Projetos/trato/components/catalogo-foto.tsx"
+  },
+  "vwrks": {
+    "Trabalho.jsx": "/home/eduardo/Documents/Projetos/align-vf/app/trabalho/page.jsx",
+    "Sobre.jsx": "/home/eduardo/Documents/Projetos/align-vf/app/sobre/page.jsx",
+    "navBar.jsx": "/home/eduardo/Documents/Projetos/align-vf/app/componentes/navBar.jsx",
+    "SequenceImage.jsx": "/home/eduardo/Documents/Projetos/align-vf/app/componentes/SequenceImage.jsx",
+    "projects.json": "/home/eduardo/Documents/Projetos/align-vf/app/mock/projects.json",
+    "experiences.json": "/home/eduardo/Documents/Projetos/align-vf/app/mock/experiences.json",
+    "globals.css": "/home/eduardo/Documents/Projetos/align-vf/app/globals.css",
+    "v.jsx": "/home/eduardo/Documents/Projetos/align-vf/app/componentes/v.jsx"
+  }
+}

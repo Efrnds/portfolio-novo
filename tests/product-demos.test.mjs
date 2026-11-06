@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { access } from "node:fs/promises";
 import test from "node:test";
 import { demoBooks, demoCandles } from "../src/data/productDemos.js";
+import { vwrksWorks } from "../src/data/vwrksDemo.js";
 import { availableDemoSlots, bookingReducer, cartReducer, cartTotal, initialBookingState, initialReaderState, readerReducer } from "../src/utils/productDemos.js";
 
 test("reserving a demo appointment removes overlapping starts and cancelling restores them", () => {
@@ -53,5 +54,8 @@ test("product imagery references real captures and crops stay inside their sourc
     await access(new URL(`../public${item.source}`, import.meta.url));
     const [x, y, width, height] = item.crop;
     assert.ok(x >= 0 && y >= 0 && x + width <= item.size[0] && y + height <= item.size[1]);
+  }
+  for (const work of vwrksWorks) {
+    for (const image of work.images) await access(new URL(`../public${image}`, import.meta.url));
   }
 });

@@ -1,0 +1,17 @@
+@font-face { font-family: 'Gabarito-Regular'; src: url('/product-slices/opinioteca/fonts/Gabarito-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Gabarito-Medium'; src: url('/product-slices/opinioteca/fonts/Gabarito-Medium.ttf') format('truetype'); font-weight: 400 600; font-display: swap; }
+@font-face { font-family: 'Gabarito-Bold'; src: url('/product-slices/opinioteca/fonts/Gabarito-Bold.ttf') format('truetype'); font-weight: 400 900; font-display: swap; }
+@font-face { font-family: 'Gabarito-SemiBold'; src: url('/product-slices/opinioteca/fonts/Gabarito-SemiBold.ttf') format('truetype'); font-weight: 400 900; font-display: swap; }
+@font-face { font-family: 'Gabarito-ExtraBold'; src: url('/product-slices/opinioteca/fonts/Gabarito-ExtraBold.ttf') format('truetype'); font-weight: 400 900; font-display: swap; }
+@font-face { font-family: 'Gabarito-Black'; src: url('/product-slices/opinioteca/fonts/Gabarito-Black.ttf') format('truetype'); font-weight: 400 900; font-display: swap; }
+@font-face { font-family: 'Nunito-Regular'; src: url('/product-slices/trato/fonts/Nunito-Regular.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Nunito-Bold'; src: url('/product-slices/trato/fonts/Nunito-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Raleway-Regular'; src: url('/product-slices/trato/fonts/Raleway-Regular.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Raleway-Bold'; src: url('/product-slices/trato/fonts/Raleway-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Authentic Sans 90'; src: url('/product-slices/vwrks/fonts/InterTight-Medium.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Authentic Sans 60'; src: url('/product-slices/vwrks/fonts/InterTight-Medium.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Authentic Sans 130'; src: url('/product-slices/vwrks/fonts/InterTight-Medium.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Minecraft'; src: url('/product-slices/vwrks/fonts/Monocraft.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'EditorialNew'; src: url('/product-slices/vwrks/fonts/EditorialNew-Regular.ttf') format('truetype'); font-display: swap; }
+@font-face { font-family: 'Montserrat'; src: url('/product-slices/calmera/fonts/Montserrat.ttf') format('truetype'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Libre Baskerville'; src: url('/product-slices/calmera/fonts/LibreBaskerville.ttf') format('truetype'); font-weight: 400 700; font-style: normal; font-display: swap; }

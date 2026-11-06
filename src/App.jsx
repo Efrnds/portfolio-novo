@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { MotionConfig, motion, useReducedMotion } from "motion/react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { MotionConfig } from "motion/react";
 import Header from "./Layout/Header";
 import Main from "./Layout/Main";
 import Footer from "./Layout/Footer";
@@ -12,24 +12,7 @@ import JsonLd from "./components/JsonLd";
 import ScrollProgress from "./components/ScrollProgress";
 import GrainOverlay from "./components/GrainOverlay";
 import { LanguageProvider, useLanguage } from "./i18n/LanguageContext";
-
-function RouteCurtain() {
-  const { pathname, state } = useLocation();
-  const reduced = useReducedMotion();
-
-  if (reduced || state?.fromHome || pathname === "/") return null;
-
-  return (
-    <div key={pathname} className="route-transition" aria-hidden="true">
-      <motion.div
-        className="route-curtain route-curtain--ink"
-        initial={{ scaleY: 1 }}
-        animate={{ scaleY: 0 }}
-        transition={{ duration: 0.48, ease: [0.76, 0, 0.24, 1] }}
-      />
-    </div>
-  );
-}
+import { springs } from "./utils/choreography";
 
 function AppShell() {
   const { copy } = useLanguage();
@@ -42,7 +25,6 @@ function AppShell() {
       <JsonLd />
       <GrainOverlay />
       <ScrollProgress />
-      <RouteCurtain />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-black focus:text-[#ece9df] focus:px-4 focus:py-2"
@@ -91,7 +73,7 @@ function AppShell() {
 
 function App() {
   return (
-    <MotionConfig reducedMotion="user">
+    <MotionConfig reducedMotion="user" transition={springs.surface}>
     <LanguageProvider>
       <AppShell />
     </LanguageProvider>

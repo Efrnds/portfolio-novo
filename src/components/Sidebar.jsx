@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineX } from "react-icons/hi";
 import PropTypes from "prop-types";
 import { projects } from "../data/projects";
 import { useLanguage } from "../i18n/LanguageContext";
+import { springs } from "../utils/choreography";
 
 const contacts = [
   {
@@ -28,10 +30,12 @@ const contacts = [
 
 export default function Sidebar({ isOpen, onClose }) {
   const { copy, localizeProject } = useLanguage();
+  const reduced = useReducedMotion();
   const sections = [
-    { id: "about", label: copy.nav.about },
-    { id: "experience", label: copy.nav.experience },
     { id: "work", label: copy.nav.work },
+    { id: "experience", label: copy.nav.experience },
+    { id: "about", label: copy.nav.about },
+    { id: "contact", label: copy.nav.contact },
   ];
   const localizedProjects = projects.map(localizeProject);
   const navigate = useNavigate();
@@ -98,13 +102,17 @@ export default function Sidebar({ isOpen, onClose }) {
         aria-hidden="true"
       />
 
-      <aside
+      <motion.aside
         ref={dialogRef}
         id="site-menu"
         className="fixed top-0 right-0 h-full w-full max-w-sm bg-[#ece9df] z-50"
         aria-label={copy.a11y.siteNav}
         aria-modal="true"
         role="dialog"
+        initial={reduced ? false : { x: "100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "100%" }}
+        transition={reduced ? { duration: 0 } : springs.panel}
       >
         <div className="flex flex-col h-full p-6 sm:p-8 overflow-y-auto">
           <div className="flex items-center justify-between mb-10">
@@ -174,7 +182,7 @@ export default function Sidebar({ isOpen, onClose }) {
             </div>
           </div>
         </div>
-      </aside>
+      </motion.aside>
     </>
   );
 }

@@ -1,0 +1,463 @@
+{
+  "date": "2026-11-05",
+  "browser": "Zen / Firefox headless",
+  "delivery": "file bundles from the actual React components; localhost server unavailable",
+  "sourceFilesCompared": 51,
+  "sourceFilesUnchanged": 51,
+  "scenarios": [
+    {
+      "product": "calmera",
+      "viewport": [
+        306,
+        984
+      ],
+      "checks": [
+        {
+          "label": "screen loaded",
+          "passed": true
+        },
+        {
+          "label": "no page overflow",
+          "passed": true,
+          "details": [
+            294,
+            306
+          ]
+        },
+        {
+          "label": "screen contains its content in the page flow",
+          "passed": true,
+          "details": [
+            2230,
+            2230,
+            []
+          ]
+        },
+        {
+          "label": "original Calmera fonts loaded",
+          "passed": true
+        },
+        {
+          "label": "store logo stays in its navbar",
+          "passed": true,
+          "details": 20
+        },
+        {
+          "label": "catalog search control stays centered",
+          "passed": true,
+          "details": [
+            205,
+            44,
+            209,
+            36
+          ]
+        },
+        {
+          "label": "original catalog cards",
+          "passed": true
+        },
+        {
+          "label": "original bag opens with item",
+          "passed": true
+        },
+        {
+          "label": "cart subtotal",
+          "passed": true
+        }
+      ],
+      "runtimeErrors": [],
+      "brokenCompletedImages": []
+    },
+    {
+      "product": "calmera",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "label": "screen loaded",
+          "passed": true
+        },
+        {
+          "label": "no page overflow",
+          "passed": true,
+          "details": [
+            1234,
+            1246
+          ]
+        },
+        {
+          "label": "screen contains its content in the page flow",
+          "passed": true,
+          "details": [
+            1021,
+            1021,
+            []
+          ]
+        },
+        {
+          "label": "original Calmera fonts loaded",
+          "passed": true
+        },
+        {
+          "label": "store logo stays in its navbar",
+          "passed": true,
+          "details": 24
+        },
+        {
+          "label": "catalog search control stays centered",
+          "passed": true,
+          "details": [
+            120,
+            48,
+            124,
+            40
+          ]
+        },
+        {
+          "label": "original catalog cards",
+          "passed": true
+        },
+        {
+          "label": "original bag opens with item",
+          "passed": true
+        },
+        {
+          "label": "cart subtotal",
+          "passed": true
+        }
+      ],
+      "runtimeErrors": [],
+      "brokenCompletedImages": []
+    },
+    {
+      "product": "opinioteca",
+      "viewport": [
+        306,
+        984
+      ],
+      "checks": [
+        {
+          "label": "screen loaded",
+          "passed": true
+        },
+        {
+          "label": "no page overflow",
+          "passed": true,
+          "details": [
+            294,
+            306
+          ]
+        },
+        {
+          "label": "screen contains its content in the page flow",
+          "passed": true,
+          "details": [
+            1032,
+            1032,
+            []
+          ]
+        },
+        {
+          "label": "search result survives a real pointer down",
+          "passed": true
+        },
+        {
+          "label": "original feed cards and book covers",
+          "passed": true
+        },
+        {
+          "label": "review vote responds",
+          "passed": true
+        },
+        {
+          "label": "real composer posts a comment",
+          "passed": true
+        },
+        {
+          "label": "original feed comment count updates",
+          "passed": true
+        },
+        {
+          "label": "explore navigation stays in the site",
+          "passed": true
+        }
+      ],
+      "runtimeErrors": [],
+      "brokenCompletedImages": []
+    },
+    {
+      "product": "opinioteca",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "label": "screen loaded",
+          "passed": true
+        },
+        {
+          "label": "no page overflow",
+          "passed": true,
+          "details": [
+            1234,
+            1246
+          ]
+        },
+        {
+          "label": "screen contains its content in the page flow",
+          "passed": true,
+          "details": [
+            922,
+            922,
+            []
+          ]
+        },
+        {
+          "label": "search result survives a real pointer down",
+          "passed": true
+        },
+        {
+          "label": "original feed cards and book covers",
+          "passed": true
+        },
+        {
+          "label": "review vote responds",
+          "passed": true
+        },
+        {
+          "label": "real composer posts a comment",
+          "passed": true
+        },
+        {
+          "label": "original feed comment count updates",
+          "passed": true
+        },
+        {
+          "label": "explore navigation stays in the site",
+          "passed": true
+        }
+      ],
+      "runtimeErrors": [],
+      "brokenCompletedImages": []
+    },
+    {
+      "product": "trato",
+      "viewport": [
+        306,
+        984
+      ],
+      "checks": [
+        {
+          "label": "screen loaded",
+          "passed": true
+        },
+        {
+          "label": "no page overflow",
+          "passed": true,
+          "details": [
+            294,
+            306
+          ]
+        },
+        {
+          "label": "screen contains its content in the page flow",
+          "passed": true,
+          "details": [
+            1004,
+            1004,
+            []
+          ]
+        },
+        {
+          "label": "booking step is visible",
+          "passed": true,
+          "details": "1"
+        },
+        {
+          "label": "original booking screen",
+          "passed": true
+        },
+        {
+          "label": "booking action stays in view",
+          "passed": true,
+          "details": [
+            42.58332824707031,
+            251.4166717529297,
+            306
+          ]
+        },
+        {
+          "label": "service advances to professional",
+          "passed": true
+        },
+        {
+          "label": "booking reaches date selection",
+          "passed": true
+        },
+        {
+          "label": "real booking reaches confirmation",
+          "passed": true
+        }
+      ],
+      "runtimeErrors": [],
+      "brokenCompletedImages": []
+    },
+    {
+      "product": "trato",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "label": "screen loaded",
+          "passed": true
+        },
+        {
+          "label": "no page overflow",
+          "passed": true,
+          "details": [
+            1234,
+            1246
+          ]
+        },
+        {
+          "label": "screen contains its content in the page flow",
+          "passed": true,
+          "details": [
+            1385,
+            1385,
+            []
+          ]
+        },
+        {
+          "label": "booking step is visible",
+          "passed": true,
+          "details": "1"
+        },
+        {
+          "label": "original booking screen",
+          "passed": true
+        },
+        {
+          "label": "booking action stays in view",
+          "passed": true,
+          "details": [
+            348.23333740234375,
+            885.7833251953125,
+            1246
+          ]
+        },
+        {
+          "label": "service advances to professional",
+          "passed": true
+        },
+        {
+          "label": "booking reaches date selection",
+          "passed": true
+        },
+        {
+          "label": "real booking reaches confirmation",
+          "passed": true
+        }
+      ],
+      "runtimeErrors": [],
+      "brokenCompletedImages": []
+    },
+    {
+      "product": "vwrks",
+      "viewport": [
+        306,
+        984
+      ],
+      "checks": [
+        {
+          "label": "screen loaded",
+          "passed": true
+        },
+        {
+          "label": "no page overflow",
+          "passed": true,
+          "details": [
+            294,
+            306
+          ]
+        },
+        {
+          "label": "screen contains its content in the page flow",
+          "passed": true,
+          "details": [
+            1823,
+            1823,
+            []
+          ]
+        },
+        {
+          "label": "original portfolio gallery",
+          "passed": true
+        },
+        {
+          "label": "original about page",
+          "passed": true
+        },
+        {
+          "label": "portfolio background isolated",
+          "passed": true
+        }
+      ],
+      "runtimeErrors": [],
+      "brokenCompletedImages": []
+    },
+    {
+      "product": "vwrks",
+      "viewport": [
+        1246,
+        984
+      ],
+      "checks": [
+        {
+          "label": "screen loaded",
+          "passed": true
+        },
+        {
+          "label": "no page overflow",
+          "passed": true,
+          "details": [
+            1234,
+            1246
+          ]
+        },
+        {
+          "label": "screen contains its content in the page flow",
+          "passed": true,
+          "details": [
+            2315,
+            2315,
+            []
+          ]
+        },
+        {
+          "label": "original portfolio gallery",
+          "passed": true
+        },
+        {
+          "label": "original about page",
+          "passed": true
+        },
+        {
+          "label": "portfolio background isolated",
+          "passed": true
+        }
+      ],
+      "runtimeErrors": [],
+      "brokenCompletedImages": []
+    }
+  ],
+  "passedChecks": 66,
+  "limitations": [
+    "Does not verify HTTP routing, production network delivery, dependency security or frame rate."
+  ]
+}

@@ -1,0 +1,1225 @@
+[
+  {
+    "id": 1,
+    "projectRoute": "/eninova",
+    "projectName": "Eninova",
+    "bgColor": "#E1D8F2",
+    "titulo": "ENINOVA®",
+    "data": "NOVEMBRO DE 2024",
+    "empresa": "@ ESTÚDIO KIMURA",
+    "tags": ["DIREÇÃO DE ARTE", "IDENTIDADE VISUAL", "LOGOTIPO", "ICONOGRAFIA"],
+    "descTopLeft": [
+      " Curadores de experiências e catalisadores de transformação.",
+      "A ENINOVA nasceu a partir do Hotel Dublê em Recife, estabelecendo-se como uma gestora hoteleira inovadora. Ao longo de sua trajetória, a empresa evoluiu de uma administradora hoteleira para um ecossistema completo de serviços de hospitalidade.",
+      "Sua atuação é focada no segmento premium, voltada para empreendimentos quatro estrelas e acima, onde se posiciona como curadora de experiências e gestora de destinos exclusivos.",
+      "Sua abordagem se fundamenta na criação de um ecossistema integrado que equilibra múltiplas dimensões essenciais para a excelência hoteleira.",
+      "Assim como a Halugo, -- uma marca dentro do guarda-chuva ENINOVA -- ela atende dois públicos distintos: hóspedes e hotéis. No mercado, a empresa opera com diferentes marcas para atender diversos segmentos. A marca principal, ENINOVA, subdivide-se em ENINOVA Collection (hotéis boutique e alto padrão), ENINOVA Hotels (quatro estrelas e acima) e ENINOVA Resorts (empreendimentos com estrutura de lazer ampliada). Além disso, também possui em seu ecossistema diversas outras marcas que servem tanto para atuar em diferentes segmentos da hotelaria, quanto para dar suporte a toda essa operação."
+    ],
+    "descTopRight": [
+      "O maior desafio foi projetar uma identidade que funcione com as diferentes possibilidades de arquitetura de marca e com seus diferentes públicos, ao mesmo tempo que representa visualmente os ideais da mesma.",
+      "A solução, então, foi uma identidade sóbria, exclusiva e imponente, que transita entre uma abordagem mais moderna e uma mais elegante em diferentes momentos, visando se comunicar sempre da melhor forma com seus públicos específicos. Quando fala com um público, ela é primariamente uma curadora de experiências. Quando fala com outro, é o catalizador de transformação dentro do mercado hoteleiro. Em ambos os casos, ENINOVA. "
+    ],
+    "descMiddle1": [
+      "Criamos esse elemento gráfico de apoio para trazer mais personalidade e sofisticação à identidade. Suas formas geométricas usam como inspiração os traços das letras que formam a palavra ENINOVA. Sua aplicação super ampliada foi pensada para lembrar obras de arte abstratas, conferindo assim um toque mais artístico e elegante ao universo da marca, sendo até utilizado como elemento decorativo em alguns casos."
+    ],
+    "descMiddle2": [
+      "Também criamos uma coleção de ícones para a identidade. Inspirados nos pesos e contrastes da tipografia escolhida para a assinatura, eles servem de apoio para os materiais físicos da marca, principalmente de sinalização."
+    ],
+    "descFonts": [
+      {
+        "title": "FONTES EM USO:",
+        "itens": [
+          "• LOGOTIPO: MATRIA - ",
+          "• TIPOGRAFIA DE APOIO: HANKEN GROTESK - ALFREDO MARCO PRADIL @ "
+        ],
+        "creator": ["PLAU DESIGN", "HANKEN DESIGN CO."],
+        "href": [
+          "https://plau.design/",
+          "https://www.instagram.com/hankendesignco/"
+        ]
+      }
+    ],
+    "descBottomLeft": [
+      {
+        "title": "CLIENTE:",
+        "text": "ENINOVA"
+      },
+      {
+        "title": "DESENVOLVIMENTO:",
+        "text": "ESTÚDIO KIMURA"
+      },
+      {
+        "title": "DESIGNERS:",
+        "text": "VICTOR FERNANDES, LAILA RIOS, MARCELO KIMURA"
+      }
+    ],
+    "descBottomRight": [
+      {
+        "title": "EXECUÇÃO:",
+        "text": "VICTOR FERNANDES"
+      },
+      {
+        "title": "SUPERVISÃO & DIRECIONAMENTO:",
+        "text": "LAILA RIOS, MARCELO KIMURA"
+      },
+      {
+        "title": "GRÁFICO DE APOIO:",
+        "text": "VICTOR FERNANDES"
+      },
+      {
+        "title": "ICONOGRAFIA:",
+        "text": "VICTOR FERNANDES"
+      },
+      {
+        "title": "ILUSTRAÇÕES:",
+        "text": "MARCELO KIMURA"
+      }
+    ],
+    "creditos": "/assets/pages/Good Burger/02-creditos-good-burger.txt",
+    "imagensTrabalho": [
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/05-Eninova/en-static.webp",
+        "alt": "Imagem de trabalho Eninova 1"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/05-Eninova/en-slide-01.webp",
+        "alt": "Imagem de trabalho Eninova 2"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/05-Eninova/en-slide-02.webp",
+        "alt": "Imagem de trabalho Eninova 3"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/05-Eninova/en-slide-03.webp",
+        "alt": "Imagem de trabalho Eninova 4"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/05-Eninova/en-slide-04.webp",
+        "alt": "Imagem de trabalho Eninova 5"
+      }
+    ],
+    "imagensBanner": [
+      {
+        "src": "/assets/pages/Eninova/banner/01.webp",
+        "alt": "Banner Eninova 1"
+      },
+      {
+        "src": "/assets/pages/Eninova/banner/02.webp",
+        "alt": "Banner Eninova 2"
+      },
+      {
+        "src": "/assets/pages/Eninova/banner/03.webp",
+        "alt": "Banner Eninova 3"
+      },
+      {
+        "src": "/assets/pages/Eninova/banner/04.webp",
+        "alt": "Banner Eninova 4"
+      },
+      {
+        "src": "/assets/pages/Eninova/banner/05.webp",
+        "alt": "Banner Eninova 5"
+      }
+    ],
+    "imagem1": {
+      "src": "/assets/pages/Eninova/galeria/01.webp",
+      "alt": "Galeria Eninova 1"
+    },
+    "imagens2": [
+      {
+        "src": "/assets/pages/Eninova/galeria/02-A.mp4",
+        "alt": "Galeria Eninova 2-A"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/02-B.webp",
+        "alt": "Galeria Eninova 2-B"
+      }
+    ],
+    "imagem3": {
+      "src": "/assets/pages/Eninova/galeria/03.webp",
+      "alt": "Galeria Eninova 3"
+    },
+    "imagens4": [
+      {
+        "src": "/assets/pages/Eninova/galeria/04-A.webp",
+        "alt": "Galeria Eninova 4-A"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/04-B.webp",
+        "alt": "Galeria Eninova 4-B"
+      }
+    ],
+    "imagens5": [
+      {
+        "src": "/assets/pages/Eninova/galeria/05-A.webp",
+        "alt": "Galeria Eninova 5-A"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/05-B.webp",
+        "alt": "Galeria Eninova 5-B"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/05-C.webp",
+        "alt": "Galeria Eninova 5-C"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/05-D.webp",
+        "alt": "Galeria Eninova 5-D"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/05-E.webp",
+        "alt": "Galeria Eninova 5-E"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/05-F.webp",
+        "alt": "Galeria Eninova 5-F"
+      }
+    ],
+    "imagem6": {
+      "src": "/assets/pages/Eninova/galeria/06.mp4",
+      "alt": "Galeria Eninova 6"
+    },
+    "imagem7": {
+      "src": "/assets/pages/Eninova/galeria/07.mp4",
+      "alt": "Galeria Eninova 7"
+    },
+    "imagem8": {
+      "src": "/assets/pages/Eninova/galeria/08.mp4",
+      "alt": "Galeria Eninova 8"
+    },
+    "imagens9": [
+      {
+        "src": "/assets/pages/Eninova/galeria/09-A.webm",
+        "alt": "Galeria Eninova 9-A"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/09-B.webm",
+        "alt": "Galeria Eninova 9-B"
+      }
+    ],
+    "imagem10": {
+      "src": "/assets/pages/Eninova/galeria/10.webp",
+      "alt": "Galeria Eninova 10"
+    },
+    "imagens11": [
+      {
+        "src": "/assets/pages/Eninova/galeria/11-A.webp",
+        "alt": "Galeria Eninova 11-A"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/11-B.webp",
+        "alt": "Galeria Eninova 11-B"
+      }
+    ],
+    "imagens12": [
+      {
+        "src": "/assets/pages/Eninova/galeria/12-A.webp",
+        "alt": "Galeria Eninova 12-A"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/12-B.webp",
+        "alt": "Galeria Eninova 12-B"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/12-C.webp",
+        "alt": "Galeria Eninova 12-C"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/12-D.webp",
+        "alt": "Galeria Eninova 12-D"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/12-E.webp",
+        "alt": "Galeria Eninova 12-E"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/12-F.webp",
+        "alt": "Galeria Eninova 12-F"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/12-G.webp",
+        "alt": "Galeria Eninova 12-G"
+      }
+    ],
+    "imagem13": {
+      "src": "/assets/pages/Eninova/galeria/13.mp4",
+      "alt": "Galeria Eninova 13"
+    },
+    "imagem14": {
+      "src": "/assets/pages/Eninova/galeria/14.webp",
+      "alt": "Galeria Eninova 14"
+    },
+    "imagens15": [
+      {
+        "src": "/assets/pages/Eninova/galeria/15-A.mp4",
+        "alt": "Galeria Eninova 15-A"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/15-B.mp4",
+        "alt": "Galeria Eninova 15-B"
+      }
+    ],
+    "imagem16": {
+      "src": "/assets/pages/Eninova/galeria/16.mp4",
+      "alt": "Galeria Eninova 16"
+    },
+    "imagens17": [
+      {
+        "src": "/assets/pages/Eninova/galeria/17-A.webp",
+        "alt": "Galeria Eninova 17-A"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/17-B.webp",
+        "alt": "Galeria Eninova 17-B"
+      }
+    ],
+    "imagem18": {
+      "src": "/assets/pages/Eninova/galeria/18.webp",
+      "alt": "Galeria Eninova 18"
+    },
+    "imagens19": [
+      {
+        "src": "/assets/pages/Eninova/galeria/19-A.webp",
+        "alt": "Galeria Eninova 19-A"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/19-B.webp",
+        "alt": "Galeria Eninova 19-B"
+      }
+    ],
+    "imagens20": [
+      {
+        "src": "/assets/pages/Eninova/galeria/20-A.webp",
+        "alt": "Galeria Eninova 20-A"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/20-B.webp",
+        "alt": "Galeria Eninova 20-B"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/20-C.webp",
+        "alt": "Galeria Eninova 20-C"
+      }
+    ],
+    "imagens21": [
+      {
+        "src": "/assets/pages/Eninova/galeria/21-A.webp",
+        "alt": "Galeria Eninova 21-A"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/21-B.webp",
+        "alt": "Galeria Eninova 21-B"
+      }
+    ],
+    "imagem22": {
+      "src": "/assets/pages/Eninova/galeria/22.webp",
+      "alt": "Galeria Eninova 22"
+    },
+    "imagens23": [
+      {
+        "src": "/assets/pages/Eninova/galeria/23-A.webp",
+        "alt": "Galeria Eninova 23-A"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/23-B.webp",
+        "alt": "Galeria Eninova 23-B"
+      },
+      {
+        "src": "/assets/pages/Eninova/galeria/23-C.webp",
+        "alt": "Galeria Eninova 23-C"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "projectRoute": "/halugo",
+    "projectName": "Halugo",
+    "bgColor": "#F3EFC8",
+    "titulo": "Halugo®",
+    "data": "JUNHO DE 2024",
+    "empresa": "@ ESTÚDIO KIMURA",
+    "tags": ["IDENTIDADE VISUAL", "ICONOGRAFIA", "LOGOTIPO"],
+    "descTopLeft": [
+      "A Halugo é uma marca inovadora no mercado de aluguel de propriedades.",
+      "Ela gerencia imóveis para investidores e oferece uma plataforma online onde as pessoas podem alugá-los de forma fácil e segura, tanto para duração longa quanto curta.",
+      "A empresa cuida de tudo, desde a criação de anúncios até a manutenção e limpeza dos imóveis, garantindo uma estadia tranquila e de alta qualidade para ambos, proprietários e hóspedes."
+    ],
+    "descTopRight": [
+      "O desafio foi criar um projeto capaz de refletir os princípios da marca, enquanto conversa com dois públicos diferentes: locadores e locatários.",
+      "O resultado: uma identidade moderna, objetiva, acessível e amigável, capaz de fazer a ponte entre ambos os tipos de usuários."
+    ],
+    "descFonts": [
+      {
+        "title": "FONTES EM USO:",
+        "itens": [
+          "LOGOTIPO: CARBONA (MODIFICADA) - CARLOS MIGNOT @ ",
+          "TIPOGRAFIA DE APOIO: PACAEMBU SANS - ÁLVARO FRANCA & FELIPE CASAPRIMA @ "
+        ],
+        "creator": ["PLAU", "NAIPE"],
+        "href": ["https://plau.design/", "https://store.naipe.xyz/"]
+      }
+    ],
+    "descMiddle1": [
+      "Para esse projeto foi criado um conjunto de mais de 100 ícones.",
+      "Suas formas são simples, geométricas e objetivas, e os cantos arredondados buscam inspiração no arco presente na letra H do logotipo.",
+      "Projetados primeiramente para o uso em interfaces, esses elementos também têm personalidade suficiente para serem utilizados como gráficos de apoio."
+    ],
+    "descMiddle2": [
+      "Além dos ícones, também foi criado um conjunto de ilustrações para a identidade.",
+      "Elas possuem um estilo maduro, buscam formas mais realistas e de traços simples. Suas composições mostram os clientes aproveitando os serviços que a Halugo oferece de forma tranquila, relaxada e despreocupada. "
+    ],
+    "descBottomLeft": [
+      {
+        "title": "CLIENTE:",
+        "text": "HALUGO"
+      },
+      {
+        "title": "DESENVOLVIMENTO:",
+        "text": "ESTÚDIO KIMURA"
+      },
+      {
+        "title": "DESIGNERS:",
+        "text": "VICTOR FERNANDES, LAILA RIOS, MARCELO KIMURA"
+      }
+    ],
+    "descBottomRight": [
+      {
+        "title": "EXECUÇÃO:",
+        "text": "VICTOR FERNANDES"
+      },
+      {
+        "title": "SUPERVISÃO E DIRECIONAMENTO:",
+        "text": "LAILA RIOS, MARCELO KIMURA"
+      },
+      {
+        "title": "IDENTIDADE VERBAL:",
+        "text": "LAILA RIOS, MARCELO KIMURA"
+      },
+      {
+        "title": "ICONOGRAFIA:",
+        "text": "VICTOR FERNANDES"
+      },
+      {
+        "title": "ILUSTRAÇÕES:",
+        "text": "MARCELO KIMURA"
+      }
+    ],
+    "imagensTrabalho": [
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/04-Halugo/hl-static.webp",
+        "alt": "Imagem de trabalho Halugo 1"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/04-Halugo/hl-slide-01.webp",
+        "alt": "Imagem de trabalho Halugo 2"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/04-Halugo/hl-slide-02.webp",
+        "alt": "Imagem de trabalho Halugo 3"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/04-Halugo/hl-slide-03.webp",
+        "alt": "Imagem de trabalho Halugo 4"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/04-Halugo/hl-slide-03.webp",
+        "alt": "Imagem de trabalho Halugo 5"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/04-Halugo/hl-slide-04.webp",
+        "alt": "Imagem de trabalho Halugo 6"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/04-Halugo/hl-slide-05.webp",
+        "alt": "Imagem de trabalho Halugo 7"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/04-Halugo/hl-slide-06.webp",
+        "alt": "Imagem de trabalho Halugo 8"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/04-Halugo/hl-slide-07.webp",
+        "alt": "Imagem de trabalho Halugo 9"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/04-Halugo/hl-slide-08.webp",
+        "alt": "Imagem de trabalho Halugo 10"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/04-Halugo/hl-slide-09.webp",
+        "alt": "Imagem de trabalho Halugo 11"
+      }
+    ],
+    "imagensBanner": [
+      {
+        "src": "/assets/pages/Halugo/banner/01.webp",
+        "alt": "Banner Halugo 1"
+      },
+      {
+        "src": "/assets/pages/Halugo/banner/02.webp",
+        "alt": "Banner Halugo 2"
+      },
+      {
+        "src": "/assets/pages/Halugo/banner/03.webp",
+        "alt": "Banner Halugo 3"
+      },
+      {
+        "src": "/assets/pages/Halugo/banner/04.webp",
+        "alt": "Banner Halugo 4"
+      },
+      { "src": "/assets/pages/Halugo/banner/05.webp", "alt": "Banner Halugo 5" }
+    ],
+    "imagem1": {
+      "src": "/assets/pages/Halugo/galeria/01.webp",
+      "alt": "Galeria Halugo 1"
+    },
+    "imagens2": [
+      {
+        "src": "/assets/pages/Halugo/galeria/02-A.webp",
+        "alt": "Galeria Halugo 2-A"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/02-B.webp",
+        "alt": "Galeria Halugo 2-B"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/02-C.webp",
+        "alt": "Galeria Halugo 2-C"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/02-D.webp",
+        "alt": "Galeria Halugo 2-D"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/02-E.webp",
+        "alt": "Galeria Halugo 2-E"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/02-F.webp",
+        "alt": "Galeria Halugo 2-F"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/02-G.webp",
+        "alt": "Galeria Halugo 2-G"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/02-H.webp",
+        "alt": "Galeria Halugo 2-H"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/02-I.webp",
+        "alt": "Galeria Halugo 2-I"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/02-J.webp",
+        "alt": "Galeria Halugo 2-J"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/02-K.webp",
+        "alt": "Galeria Halugo 2-K"
+      }
+    ],
+    "imagem3": {
+      "src": "/assets/pages/Halugo/galeria/03.webp",
+      "alt": "Galeria Halugo 3"
+    },
+    "imagem4": {
+      "src": "/assets/pages/Halugo/galeria/04.webm",
+      "alt": "Galeria Halugo 4"
+    },
+    "imagem5": {
+      "src": "/assets/pages/Halugo/galeria/05.webp",
+      "alt": "Galeria Halugo 5"
+    },
+    "imagens6": [
+      {
+        "src": "/assets/pages/Halugo/galeria/06-A.webp",
+        "alt": "Galeria Halugo 6-A"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/06-B.webp",
+        "alt": "Galeria Halugo 6-B"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/06-C.webp",
+        "alt": "Galeria Halugo 6-C"
+      }
+    ],
+    "imagem8": {
+      "src": "/assets/pages/Halugo/galeria/08.webm",
+      "alt": "Galeria Halugo 8"
+    },
+    "imagem9": {
+      "src": "/assets/pages/Halugo/galeria/09.webp",
+      "alt": "Galeria Halugo 9"
+    },
+    "imagens10": [
+      {
+        "src": "/assets/pages/Halugo/galeria/10-A.webp",
+        "alt": "Galeria Halugo 10-A"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/10-B.webp",
+        "alt": "Galeria Halugo 10-B"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/10-C.webp",
+        "alt": "Galeria Halugo 10-C"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/10-D.webp",
+        "alt": "Galeria Halugo 10-D"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/10-E.webp",
+        "alt": "Galeria Halugo 10-E"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/10-F.webp",
+        "alt": "Galeria Halugo 10-F"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/10-G.webp",
+        "alt": "Galeria Halugo 10-G"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/10-H.webp",
+        "alt": "Galeria Halugo 10-H"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/10-I.webp",
+        "alt": "Galeria Halugo 10-I"
+      }
+    ],
+    "imagem11": {
+      "src": "/assets/pages/Halugo/galeria/11.webp",
+      "alt": "Galeria Halugo 11"
+    },
+    "imagens12": [
+      {
+        "src": "/assets/pages/Halugo/galeria/12-A.webp",
+        "alt": "Galeria Halugo 12-A"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/12-B.webp",
+        "alt": "Galeria Halugo 12-B"
+      }
+    ],
+    "imagem13": {
+      "src": "/assets/pages/Halugo/galeria/13.webp",
+      "alt": "Galeria Halugo 13"
+    },
+    "imagens15": [
+      {
+        "src": "/assets/pages/Halugo/galeria/15-A.webp",
+        "alt": "Galeria Halugo 15-A"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/15-B.webp",
+        "alt": "Galeria Halugo 15-B"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/15-C.webp",
+        "alt": "Galeria Halugo 15-C"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/15-D.webp",
+        "alt": "Galeria Halugo 15-D"
+      }
+    ],
+    "imagem16": {
+      "src": "/assets/pages/Halugo/galeria/16.webp",
+      "alt": "Galeria Halugo 16"
+    },
+    "imagens17": [
+      {
+        "src": "/assets/pages/Halugo/galeria/17-A.webp",
+        "alt": "Galeria Halugo 17-A"
+      },
+      {
+        "src": "/assets/pages/Halugo/galeria/17-B.webp",
+        "alt": "Galeria Halugo 17-B"
+      }
+    ],
+    "imagem18": {
+      "src": "/assets/pages/Halugo/galeria/18.webm",
+      "alt": "Galeria Halugo 18"
+    },
+    "imagem19": {
+      "src": "/assets/pages/Halugo/galeria/19.webp",
+      "alt": "Galeria Halugo 19"
+    }
+  },
+  {
+    "id": 3,
+    "projectRoute": "/good-burger",
+    "projectName": "GoodBurger",
+    "bgColor": "#F6DCD5",
+    "titulo": "Good Burger™",
+    "data": "MAIO DE 2024",
+    "empresa": "PROJETO PESSOAL",
+    "tags": ["DIREÇÃO CRIATIVA", "IDENTIDADE VISUAL", "LOGOTIPO", "3D"],
+    "descTopLeft": [
+      "Good Burger – baseado no filme de mesmo nome de 97 – é parte de um projeto pessoal que busca inspiração em obras marcantes durante minha formação como indivíduo. Ele serve não só de tributo, mas também como uma forma de estudar novas técnicas e linguagens, de sair da minha zona de conforto e me divertir fazendo design."
+    ],
+    "descTopRight": [
+      "O projeto em si começa com perguntas como: “E se a marca realmente existisse? Como os acontecimentos do filme a afetariam?” ou então, “E se Ed se tornasse seu dono? Como ela seria impactada por isso?”.",
+      "A resposta é uma identidade forte, divertida e nostálgica, mas também simples e que sabe manter elementos memoráveis ​​presentes na original.",
+      "E, claro, o molho secreto do Ed é o personagem principal desse universo."
+    ],
+    "descFonts": [
+      {
+        "title": "FONTES EM USO:",
+        "itens": [
+          "HORNBILL (USO PESSOAL, MODIFICADA) - @ ",
+          "AUTHENTIC SANS - @ "
+        ],
+        "creator": ["EKO BIMANTARA", "CRISTINA JANUS & DESMOND WONG"],
+        "href": [
+          "https://www.instagram.com/ekobimantara_fonts/",
+          "https://www.instagram.com/veryauthentic/"
+        ]
+      }
+    ],
+    "descBottomLeft": [
+      {
+        "title": "CLIENTE:",
+        "text": "-"
+      },
+      {
+        "title": "DESENVOLVIMENTO:",
+        "text": "VICTOR FERNANDES"
+      }
+    ],
+    "descBottomRight": [
+      {
+        "title": "DESIGN E DIREÇÃO CRIATIVA:",
+        "text": "VICTOR FERNANDES"
+      },
+      {
+        "title": "DESIGN DE PERSONAGENS & ILUSTRAÇÕES:",
+        "text": "RAFAEL GERMANO"
+      },
+      {
+        "title": "MODELAGEM, TEXTURIZAÇÃO & RENDERIZAÇÃO 3D:",
+        "text": "VICTOR FERNANDES"
+      }
+    ],
+    "imagensTrabalho": [
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/03-Good Burger/gb-static.webp",
+        "alt": "Imagem de trabalho Good Burger 1"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/03-Good Burger/gb-slide-01.webp",
+        "alt": "Imagem de trabalho Good Burger 2"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/03-Good Burger/gb-slide-02.webp",
+        "alt": "Imagem de trabalho Good Burger 3"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/03-Good Burger/gb-slide-03.webp",
+        "alt": "Imagem de trabalho Good Burger 4"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/03-Good Burger/gb-slide-04.webp",
+        "alt": "Imagem de trabalho Good Burger 5"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/03-Good Burger/gb-slide-05.webp",
+        "alt": "Imagem de trabalho Good Burger 6"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/03-Good Burger/gb-slide-06.webp",
+        "alt": "Imagem de trabalho Good Burger 7"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/03-Good Burger/gb-slide-07.webp",
+        "alt": "Imagem de trabalho Good Burger 8"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/03-Good Burger/gb-slide-08.webp",
+        "alt": "Imagem de trabalho Good Burger 9"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/03-Good Burger/gb-slide-09.webp",
+        "alt": "Imagem de trabalho Good Burger 10"
+      }
+    ],
+    "imagensBanner": [
+      {
+        "src": "/assets/pages/Good Burger/banner/01.webp",
+        "alt": "Banner Good Burger 1"
+      },
+      {
+        "src": "/assets/pages/Good Burger/banner/02.webp",
+        "alt": "Banner Good Burger 2"
+      },
+      {
+        "src": "/assets/pages/Good Burger/banner/03.webp",
+        "alt": "Banner Good Burger 3"
+      },
+      {
+        "src": "/assets/pages/Good Burger/banner/04.webp",
+        "alt": "Banner Good Burger 4"
+      },
+      {
+        "src": "/assets/pages/Good Burger/banner/05.webp",
+        "alt": "Banner Good Burger 5"
+      }
+    ],
+    "imagem1": {
+      "src": "/assets/pages/Good Burger/galeria/01.webp",
+      "alt": "Galeria Good Burger 1"
+    },
+    "imagens2": [
+      {
+        "src": "/assets/pages/Good Burger/galeria/02-A.webp",
+        "alt": "Galeria Good Burger 2-A"
+      },
+      {
+        "src": "/assets/pages/Good Burger/galeria/02-B.webp",
+        "alt": "Galeria Good Burger 2-B"
+      }
+    ],
+    "imagens3": [
+      {
+        "src": "/assets/pages/Good Burger/galeria/03-A.webp",
+        "alt": "Galeria Good Burger 3-A"
+      },
+      {
+        "src": "/assets/pages/Good Burger/galeria/03-B.webm",
+        "alt": "Galeria Good Burger 3-B"
+      }
+    ],
+    "imagens4": [
+      {
+        "src": "/assets/pages/Good Burger/galeria/04-A.webm",
+        "alt": "Galeria Good Burger 4-A"
+      },
+      {
+        "src": "/assets/pages/Good Burger/galeria/04-B.webp",
+        "alt": "Galeria Good Burger 4-B"
+      }
+    ],
+    "imagens5": [
+      {
+        "src": "/assets/pages/Good Burger/galeria/05-A.webp",
+        "alt": "Galeria Good Burger 5-A"
+      },
+      {
+        "src": "/assets/pages/Good Burger/galeria/05-B.webp",
+        "alt": "Galeria Good Burger 5-B"
+      }
+    ],
+    "imagem6": {
+      "src": "/assets/pages/Good Burger/galeria/06.webm",
+      "alt": "Galeria Good Burger 6"
+    },
+    "imagem7": {
+      "src": "/assets/pages/Good Burger/galeria/07.webp",
+      "alt": "Galeria Good Burger 7"
+    },
+    "imagens8": [
+      {
+        "src": "/assets/pages/Good Burger/galeria/08-A.webp",
+        "alt": "Galeria Good Burger 8-A"
+      },
+      {
+        "src": "/assets/pages/Good Burger/galeria/08-B.webp",
+        "alt": "Galeria Good Burger 8-B"
+      }
+    ],
+    "imagem9": {
+      "src": "/assets/pages/Good Burger/galeria/09.webp",
+      "alt": "Galeria Good Burger 9"
+    },
+    "imagens10": [
+      {
+        "src": "/assets/pages/Good Burger/galeria/10-A.webp",
+        "alt": "Galeria Good Burger 10-A"
+      },
+      {
+        "src": "/assets/pages/Good Burger/galeria/10-B.webp",
+        "alt": "Galeria Good Burger 10-B"
+      }
+    ],
+    "imagem11": {
+      "src": "/assets/pages/Good Burger/galeria/11.webp",
+      "alt": "Galeria Good Burger 11"
+    },
+    "imagens12": [
+      {
+        "src": "/assets/pages/Good Burger/galeria/12-A.webp",
+        "alt": "Galeria Good Burger 12-A"
+      },
+      {
+        "src": "/assets/pages/Good Burger/galeria/12-B.webm",
+        "alt": "Galeria Good Burger 12-B"
+      }
+    ],
+    "imagem13": {
+      "src": "/assets/pages/Good Burger/galeria/13.webp",
+      "alt": "Galeria Good Burger 13"
+    },
+    "imagem14": {
+      "src": "/assets/pages/Good Burger/galeria/14.webm",
+      "alt": "Galeria Good Burger 14"
+    }
+  },
+  {
+    "id": 4,
+    "projectRoute": "/farolin",
+    "projectName": "Farolin",
+    "bgColor": "#F3EFC8",
+    "titulo": "Farolin®",
+    "data": "SETEMBRO DE 2022",
+    "empresa": "FREELANCE",
+    "tags": [
+      "DIREÇÃO CRIATIVA",
+      "BRANDING",
+      "IDENTIDADE VISUAL",
+      "LOGOTIPO",
+      "ICONOGRAFIA"
+    ],
+    "descTopLeft": [
+      "A farolin é uma empresa de marketing digital com atuação online. Seu objetivo é ajudar a desenvolver e destacar médios e pequenos negócios por meio do reposicionamento nas mídias sociais.",
+      "Seu trabalho é baseado em uma abordagem prestativa, amigável e colaborativa. Com foco nos vínculos criados, almejam sempre uma relação respeitosa e dedicada, capaz de mudar a vida daqueles envolvidos.",
+      "A marca também acredita e defende um futuro com mais inclusão digital, o que foi traduzido no tom de voz e em alguns elementos e conceitos da identidade visual."
+    ],
+    "descTopRight": [
+      "O nome 'farolin' tem sua origem derivada da figura do farol por trazer ideais de confiança, segurança e estabilidade, que são valores pessoais dos proprietários adicionados ao negócio.",
+      "O maior desafio foi retratar o que a marca é e, ao mesmo tempo, enriquecer o conceito reinterpretando a figura do farol - regularmente associada com uma simbologia rústica e viril.",
+      "A solução proposta foi um ponto em comum capaz de abordar todos esses nuances: a luz.",
+      "A certeza da segurança no meio de uma tempestade, o lampejo de uma nova ideia, o conforto do sol da manhã, o calor de um abraço... Esse foi o norte criativo do projeto, com o foco principal de reforçar a sensação de conforto associada a esse símbolo."
+    ],
+    "descFonts": [
+      {
+        "title": "FONTES EM USO:",
+        "itens": ["MANROPE - @ "],
+        "creator": ["MIKHAIL SHARANDA"],
+        "href": ["https://fonts.google.com/?query=Mikhail%20Sharanda"]
+      }
+    ],
+    "descBottomLeft": [
+      {
+        "title": "CLIENTE:",
+        "text": "FAROLIN"
+      },
+      {
+        "title": "DESENVOLVIMENTO:",
+        "text": "VICTOR FERNANDES"
+      }
+    ],
+    "descBottomRight": [
+      {
+        "title": "DESIGN & DIREÇÃO CRIATIVA:",
+        "text": "VICTOR FERNANDES"
+      },
+      {
+        "title": "NAMING & BRANDING:",
+        "text": "VICTOR FERNANDES"
+      },
+      {
+        "title": "ICONOGRAFIA:",
+        "text": "VICTOR FERNANDES"
+      },
+      {
+        "title": "MOTION GRAPHICS:",
+        "text": "DAVI MENEZES"
+      }
+    ],
+    "imagensTrabalho": [
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/02-Farolin/fa-static.webp",
+        "alt": "Imagem de trabalho Farolin 1"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/02-Farolin/fa-slide-01.webp",
+        "alt": "Imagem de trabalho Farolin 2"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/02-Farolin/fa-slide-02.webp",
+        "alt": "Imagem de trabalho Farolin 3"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/02-Farolin/fa-slide-03.webp",
+        "alt": "Imagem de trabalho Farolin 4"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/02-Farolin/fa-slide-04.webp",
+        "alt": "Imagem de trabalho Farolin 5"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/02-Farolin/fa-slide-05.webp",
+        "alt": "Imagem de trabalho Farolin 6"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/02-Farolin/fa-slide-06.webp",
+        "alt": "Imagem de trabalho Farolin 7"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/02-Farolin/fa-slide-07.webp",
+        "alt": "Imagem de trabalho Farolin 8"
+      }
+    ],
+    "imagensBanner": [
+      {
+        "src": "/assets/pages/Farolin/banner/01.webp",
+        "alt": "Banner Farolin 1"
+      },
+      {
+        "src": "/assets/pages/Farolin/banner/02.webp",
+        "alt": "Banner Farolin 2"
+      },
+      {
+        "src": "/assets/pages/Farolin/banner/03.webp",
+        "alt": "Banner Farolin 3"
+      },
+      {
+        "src": "/assets/pages/Farolin/banner/04.webp",
+        "alt": "Banner Farolin 4"
+      },
+      {
+        "src": "/assets/pages/Farolin/banner/05.webp",
+        "alt": "Banner Farolin 5"
+      }
+    ],
+    "imagens1": [
+      {
+        "src": "/assets/pages/Farolin/galeria/01-A.webm",
+        "alt": "Galeria Farolin 1-a"
+      },
+      {
+        "src": "/assets/pages/Farolin/galeria/01-B.webm",
+        "alt": "Galeria Farolin 1-b "
+      }
+    ],
+    "imagem2": {
+      "src": "/assets/pages/Farolin/galeria/02.webp",
+      "alt": "Galeria Farolin 2"
+    },
+    "imagens3": [
+      {
+        "src": "/assets/pages/Farolin/galeria/03-A.webp",
+        "alt": "Galeria Farolin 3-a"
+      },
+      {
+        "src": "/assets/pages/Farolin/galeria/03-B.webp",
+        "alt": "Galeria Farolin 3-b"
+      }
+    ],
+    "imagem4": {
+      "src": "/assets/pages/Farolin/galeria/04.webp",
+      "alt": "Galeria Farolin 4"
+    },
+    "imagem5": {
+      "src": "/assets/pages/Farolin/galeria/05.webp",
+      "alt": "Galeria Farolin 5"
+    },
+    "imagens6": [
+      {
+        "src": "/assets/pages/Farolin/galeria/06-A.webp",
+        "alt": "Galeria Farolin 6-a"
+      },
+      {
+        "src": "/assets/pages/Farolin/galeria/06-B.webp",
+        "alt": "Galeria Farolin 6-b"
+      },
+      {
+        "src": "/assets/pages/Farolin/galeria/06-C.webp",
+        "alt": "Galeria Farolin 6-c"
+      }
+    ],
+    "imagem7": {
+      "src": "/assets/pages/Farolin/galeria/07.webp",
+      "alt": "Galeria Farolin 7"
+    },
+    "imagem8": {
+      "src": "/assets/pages/Farolin/galeria/08.webp",
+      "alt": "Galeria Farolin 8"
+    },
+    "imagens9": [
+      {
+        "src": "/assets/pages/Farolin/galeria/09-A.webp",
+        "alt": "Galeria Farolin 9-a"
+      },
+      {
+        "src": "/assets/pages/Farolin/galeria/09-B.webp",
+        "alt": "Galeria Farolin 9-b"
+      },
+      {
+        "src": "/assets/pages/Farolin/galeria/09-C.webp",
+        "alt": "Galeria Farolin 9-c"
+      }
+    ],
+    "imagem10": {
+      "src": "/assets/pages/Farolin/galeria/10.webp",
+      "alt": "Galeria Farolin 10"
+    },
+    "imagem11": {
+      "src": "/assets/pages/Farolin/galeria/11.webp",
+      "alt": "Galeria Farolin 11"
+    },
+    "imagens12": [
+      {
+        "src": "/assets/pages/Farolin/galeria/12-A.webp",
+        "alt": "Galeria Farolin 12-a"
+      },
+      {
+        "src": "/assets/pages/Farolin/galeria/12-B.webp",
+        "alt": "Galeria Farolin 12-b"
+      },
+      {
+        "src": "/assets/pages/Farolin/galeria/12-C.webp",
+        "alt": "Galeria Farolin 12-c"
+      }
+    ],
+    "imagem13": {
+      "src": "/assets/pages/Farolin/galeria/13.webp",
+      "alt": "Galeria Farolin 13"
+    }
+  },
+  {
+    "id": 5,
+    "projectRoute": "/plena",
+    "projectName": "Plena",
+    "bgColor": "#D4EDD4",
+    "titulo": "Plena Dermatologia",
+    "data": "AGOSTO DE 2021",
+    "empresa": "@ ESTÚDIO KIMURA",
+    "tags": ["IDENTIDADE VISUAL"],
+    "descTopLeft": [
+      "Plena Dermatologia é uma clínica que tem como proposta atender seus clientes de uma maneira humanizada, valorizando a prevenção, o cuidado e amplo comprometimento com o indivíduo.",
+      "O próprio nome é inspirado na natureza humana ao resgatar com delicadeza e seriedade os princípios fundamentais da medicina: bem-estar físico, mental e social do paciente."
+    ],
+    "descTopRight": [
+      "Para a construção do símbolo, fizemos a união entre as letras iniciais dos nomes das clientes e da marca, e criamos um símbolo orgânico, com contrastes de espessuras e com um movimento que lembra de maneira quase abstrata, folhas e flores ao vento. As cores nude e verde, inspiradas em tons de pele e na natureza, nos ajudaram a criar um universo gráfico repleto de nuances, texturas e efeitos. A tipografia da assinatura foi levemente personalizada, trazendo consigo um visual sério, moderno e elegante.",
+      "Um dos princípios fundamentais da marca é o acolhimento. O público é, em maioria, composto por mulheres de 35 a 55 anos de classes sociais A e B, exigentes em relação ao seu próprio corpo e aos lugares que frequentam. A marca precisava acolher essas mulheres. ",
+      "E entre os atributos a serem promovidos encontramos a graça, delicadeza e outras características que nos levaram a crer que seria interessante buscar inspiração na natureza, projetando uma marca visual através de formas orgânicas e leves."
+    ],
+    "descBottomLeft": [
+      {
+        "title": "CLIENTE:",
+        "text": "PLENA DERMATOLOGIA"
+      },
+      {
+        "title": "DESENVOLVIMENTO:",
+        "text": "ESTÚDIO KIMURA"
+      },
+      {
+        "title": "DESIGNERS:",
+        "text": "VICTOR FERNANDES, LAILA RIOS, MARCELO KIMURA, WALTER MATTOS"
+      }
+    ],
+    "descBottomRight": [
+      {
+        "title": "EXECUÇÃO:",
+        "text": "VICTOR FERNANDES, LAILA RIOS, MARCELO KIMURA, WALTER MATTOS"
+      },
+      {
+        "title": "SUPERVISÃO & DIRECIONAMENTO:",
+        "text": "MARCELO KIMURA, WALTER MATTOS"
+      },
+      {
+        "title": "3D:",
+        "text": "VICTOR FERNANDES"
+      }
+    ],
+    "imagensTrabalho": [
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/01-Plena/pl-static.webp",
+        "alt": "Imagem de trabalho Plena 1"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-01.webp",
+        "alt": "Imagem de trabalho Plena 2"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-02.webp",
+        "alt": "Imagem de trabalho Plena 3"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-03.webp",
+        "alt": "Imagem de trabalho Plena 4"
+      },
+      {
+        "src": "/assets/pages/02-Trabalho/IMG/01-Plena/pl-slide-04.webp",
+        "alt": "Imagem de trabalho Plena 5"
+      }
+    ],
+    "imagensBanner": [
+      { "src": "/assets/pages/Plena/banner/01.webp", "alt": "Banner Plena 1" },
+      { "src": "/assets/pages/Plena/banner/02.webp", "alt": "Banner Plena 2" },
+      { "src": "/assets/pages/Plena/banner/03.webp", "alt": "Banner Plena 3" },
+      { "src": "/assets/pages/Plena/banner/04.webp", "alt": "Banner Plena 4" },
+      { "src": "/assets/pages/Plena/banner/05.webp", "alt": "Banner Plena 5" }
+    ],
+    "imagem1": {
+      "src": "/assets/pages/Plena/galeria/01.webp",
+      "alt": "Galeria Plena 1"
+    },
+    "imagens2": [
+      {
+        "src": "/assets/pages/Plena/galeria/02-A.webp",
+        "alt": "Galeria Plena 2-A"
+      },
+      {
+        "src": "/assets/pages/Plena/galeria/02-B.webm",
+        "alt": "Galeria Plena 2-B"
+      }
+    ],
+    "imagem3": {
+      "src": "/assets/pages/Plena/galeria/03.webp",
+      "alt": "Galeria Plena 3"
+    },
+    "imagens4": [
+      {
+        "src": "/assets/pages/Plena/galeria/04-A.webp",
+        "alt": "Galeria Plena 4-A"
+      },
+      {
+        "src": "/assets/pages/Plena/galeria/04-B.webp",
+        "alt": "Galeria Plena 4-B"
+      }
+    ],
+    "imagem5": {
+      "src": "/assets/pages/Plena/galeria/05.webp",
+      "alt": "Galeria Plena 5"
+    },
+    "imagem6": {
+      "src": "/assets/pages/Plena/galeria/06.webp",
+      "alt": "Galeria Plena 6"
+    },
+    "imagem7": {
+      "src": "/assets/pages/Plena/galeria/07.webp",
+      "alt": "Galeria Plena 7"
+    },
+    "imagem8": {
+      "src": "/assets/pages/Plena/galeria/08.webp",
+      "alt": "Galeria Plena 8"
+    },
+    "imagem9": {
+      "src": "/assets/pages/Plena/galeria/09.webp",
+      "alt": "Galeria Plena 9"
+    },
+    "imagem10": {
+      "src": "/assets/pages/Plena/galeria/10.webp",
+      "alt": "Galeria Plena 10"
+    },
+    "imagens11": [
+      {
+        "src": "/assets/pages/Plena/galeria/11-A.webp",
+        "alt": "Galeria Plena 11-A"
+      },
+      {
+        "src": "/assets/pages/Plena/galeria/11-B.webp",
+        "alt": "Galeria Plena 11-B"
+      },
+      {
+        "src": "/assets/pages/Plena/galeria/11-C.webp",
+        "alt": "Galeria Plena 11-C"
+      }
+    ]
+  }
+]
